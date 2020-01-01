@@ -22,7 +22,7 @@ dbo.collection("customers").find(c,{username:1,userpassword:1},{$exists:true}).t
     checkuser=result
     if(result.length){
       if(result[0].userpassword!=userpassword){
-          res.send(JSON.stringify("passwordwrong")) //password doesn't match
+          res.send(JSON.stringify("passwordwrong indication")) //password doesn't match
           }
          else{
       req.session.userid=result[0]._id;
