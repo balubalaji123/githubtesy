@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bg">
+        <div class="container-fluid mb-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-md-3">
+                 <div class="form-container">
+            <div class="heading">Resgistration form</div>
+            <form #userForm="ngForm" (ngSubmit)="onsubmit()">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" pattern='[^@]*@[^@]*' class="form-control" name="email" [(ngModel)]="registermodel.mail">
+                <small class="text-danger" [class.d-none]="name.valid || name.untouched">GMAIL IS REQUIRED</small>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" required #names="ngModel" [class.is-invalid]="names.invalid && names.touched" class="form-control" name="user" [(ngModel)]="registermodel.name">
+                <small class="text-danger" [class.d-none]="names.valid || names.untouched">USERNAME IS REQUIRED</small>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched" class="form-control" name="password" [(ngModel)]="registermodel.password">
+                 <small class="text-danger" [class.d-none]="pass.valid || pass.untouched">PASSWORD IS REQUIRED</small>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" required #passwd="ngModel" [class.is-invalid]="passwd.invalid && passwd.touched" class="form-control" name="passwords" [(ngModel)]="registermodel.passwords">
+                 <small class="text-danger" [class.d-none]="passwd.valid || passwd.untouched">PASSWORD IS REQUIRED</small>
+                </div>
+                
+                <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit" (click)='onclick(pass.value,passwd.value)'>submit</button>
+            </form><br>
+            <button (click)="socialSignIn('google')">Sign in with Google</button>              
+
+            <div *ngIf=a>
+                <h6>please check your <b>Email</b></h6>
+                <button class="btn button" onclick="window.location.href = 'http://www.gmail.com';"><a>Click</a> </button>
+            </div>
+           <div *ngIf=b>
+                <h6>please check your password</h6>
+           </div>
+            </div></div></div>
+            
+        </div>
+        </div>
+
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+.container{
+    padding: 10px;
+}
+.container input{
+    width: 80%;
+    padding: 10px;
+    background: #fff;
+}
+ul li{
+    list-style-type: none;
+}
+.card-style{
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #23415c;
+}
+.card-header{
+    background-color: none;
+}
+
+

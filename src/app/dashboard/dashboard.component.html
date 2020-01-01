@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dashboard</title>
+</head>
+<body>
+   <!-- <p [hidden]=subjectselected1 *ngFor="let a of result">{{a}}</p>
+    <button type="submit" (click)="classesattended()" >classes attended</button>
+    <button type="submit" (click)="classesenrolled()" >classes enrolled</button> -->
+    <script>
+        $(document).ready(function() {
+            $('.nav-trigger').click(function() {
+                $('.side-nav').toggleClass('visible');
+            });
+        });</script>
+        <div class="side-nav">
+            <nav>
+                <ul>
+                    <li>
+                        <button (click)='onclick3()' style="color: White ; background-color: transparent; border-color: transparent; cursor: default" class="navbar-brand">Dash Board</button> 
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <button type="submit" (click)="subjectsteached()" style="color: white; background-color: transparent; border-color: transparent; cursor: default;text-align: center;" class="navbar-brand">Courses</button>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                            <span><i class="fa fa-user"></i></span>
+                            <span>My Courses</span>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-envelope"></i></span>
+                            <span>Course Plans</span>
+                    </li>
+                    <li class="active">
+
+                            <span (click)='onsubmits()'><i class="fa fa-bar-chart" ></i></span>
+                            <span>Up Coming Courses</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <nav class="navbar navbar-sm navbar-light bg-light">
+            <button (click)='onclick3()'class="navbar-brand"></button> 
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav">
+              <button (click)='onclick1()'  style="color: transparent; background-color: transparent; border-color: transparent; cursor: default;"><li class="nav-item" class="nav-link"> Courses Teaching</li></button>
+              <button  (click)="learntselection()" style="color: transparent; background-color: transparent; border-color: transparent; cursor: default;"><li class="nav-item" class="nav-link">Courses Learning</li></button>
+            </ul>
+            </div>
+         </nav>
+         <a *ngIf=c>
+         <section id="team">
+         <div class="container my-3 py-5 text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-6 shadow-lg p-3 mb-5 bg-white rounded">
+                  <div class="card">
+                    <div class="card-body">
+                        <a style="color:cadetblue;font-size: 20px;">Crash Course</a>
+                        <p *ngFor="let a of Crashcourse">
+                            {{a}}</p>
+                     </div>
+                  </div>
+                </div>
+            </div>
+            <div class="container my-3 py-5 text-center">
+            <div class="row justify-content-center">
+         <div class="col-lg-6 col-md-6 shadow-lg p-3 mb-5 bg-white rounded">
+           <div class="card">
+             <div class="card-body">
+                <a style="color:cadetblue;font-size: 20px;">Compititive Course</a>
+                <p *ngFor="let a of Competative">{{a}}</p>
+            </div>
+           </div>
+         </div>
+        </div>
+       </div>
+       </div>
+    </section>
+</a>
+<a *ngIf=d>
+    <section id="team">
+    <div class="container my-3 py-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-6 shadow-lg p-3 mb-5 bg-white rounded">
+              <div class="card">
+                <div class="card-body">
+                    <a style="color:cadetblue;font-size: 20px;">Courses Teaching</a>
+                    <p *ngFor="let a of coursesteaching">{{a}}</p>
+                 </div>
+              </div>
+            </div>
+            </div>
+            </div>
+        </section>
+        </a>
+        <a *ngIf=e>
+            <section id="team">
+                <div class="container my-3 py-5 text-center">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-3 col-md-6 shadow-lg p-3 mb-5 bg-white rounded">
+                        <div class="card">
+                          <div class="card-body">
+                            <a style="color:cadetblue;font-size: 20px;">Courses Learning</a>
+                            <p *ngFor="let a of courses">{{a}}</p>
+                           </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+                </section>
+                </a>
+                <a *ngIf=b>
+                    <div class="row">
+                       <div class="col-4">
+                           <div class="container my-3 py-5 text-center">
+                               <div class="row justify-content-center">
+                        <div class="col-lg-6 col-md-6 shadow-lg p-3 mb-5 bg-white rounded">
+                          <div class="card">
+                            <div class="card-body">
+                           <h3>{{class[1].name}}</h3>
+                               <h5>Your Courses</h5>
+                               <ul>
+                               <li >{{class[1].time}}</li>
+                               <li >{{class[1].days}}</li>
+                               <li >{{class[1].Course}}</li>
+                               <li >{{class[1].Fees}}</li>
+                               </ul>
+                       </div>
+                     </div>
+                     </div> 
+                    </div>
+                </div>
+            </div>
+                       <div class="col-4">
+                           <div class="container my-3 py-5 text-center">
+                               <div class="row justify-content-center">
+                        <div class="col-lg-6 col-md-6 shadow-lg p-3 mb-5 bg-white rounded">
+                          <div class="card">
+                            <div class="card-body">
+                       <h3>{{class[2].name}}</h3>
+                       <h5>Your Courses</h5>
+                       <ul>
+                       <li >{{class[2].time}}</li>
+                       <li >{{class[2].days}}</li>
+                       <li >{{class[2].Course}}</li>
+                       <li >{{class[2].Fees}}</li>
+                       </ul>
+               </div>
+            </div> 
+        </div>
+    </div>
+</div>
+</div>
+                    </div>
+                    <div class="row">
+                       <div class="col-4">
+                           <div class="container my-3 py-5 text-center">
+                               <div class="row justify-content-center">
+                        <div class="col-lg-6 col-md-6 shadow-lg p-3 mb-5 bg-white rounded">
+                          <div class="card">
+                            <div class="card-body">
+                       <h3>{{class[4].name}}</h3>
+                       <h5>Your Courses</h5>
+                       <ul>
+                       <li >{{class[4].time}}</li>
+                       <li >{{class[4].days}}</li>
+                       <li >{{class[4].Course}}</li>
+                       <li >{{class[4].Fees}}</li>
+                       </ul>
+               </div>
+            </div>
+         </div>
+        </div>
+    </div>
+</div>
+                       <div class="col-4">
+                           <div class="container my-3 py-5 text-center">
+                               <div class="row justify-content-center">
+                        <div class="col-lg-6 col-md-6 shadow-lg p-3 mb-5 bg-white rounded">
+                          <div class="card">
+                            <div class="card-body">
+                       <h3>{{class[5].name}}</h3>
+                       <h5>Your Courses</h5>
+                       <ul>
+                       <li >{{class[5].time}}</li>
+                       <li >{{class[5].days}}</li>
+                       <li >{{class[5].Course}}</li>
+                       <li >{{class[5].Fees}}</li>
+                       </ul>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+   </div>
+        </a>
+</body>
+</html>

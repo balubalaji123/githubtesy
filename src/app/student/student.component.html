@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container"  *ngIf=!display>
+        <script type="text/javascript" src="functions/searchbar.js"></script>
+     
+             <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search">
+         </div>
+        
+        
+        <div class="card-display" *ngFor="let a of subjectslist" [hidden]=display>
+
+
+        <ul id="wrappers">
+          <li>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="card-styles">
+                            <div class="card">
+                                <div class="card-header row"><b>Subject:</b><div class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</div></div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card-body"><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card-body"><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</div> 
+                                    </div>
+                                    <div class="col">
+                                        <div class="card-body"><b>Course:</b>&nbsp;&nbsp;&nbsp;{{a.tutorcoursetype}}</div> 
+                                    </div>
+                                </div>
+                                <div class="card-footer"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
+                              </div>
+                              <button  type="submit" class="btn btn-info btn-lg" (click)="subjectselected(a.tutorname,a.tutorsubject,a.tutortime,a.tutorcoursetype,a.tutorfee,a.tutordescription,a.tutorwatsuplink)" >Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                              
+            </div>
+          
+          </li>
+        </ul>
+        </div>
+        <app-courseselected [selectedcouse]="selectedcouse" [hidden]=!display></app-courseselected> 

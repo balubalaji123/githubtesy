@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TUTOR</title>
+</head>
+<body>
+    <div class="bg" [hidden]=aftersubmission>
+        <div class="container">
+            <div class="row justify-content-center ">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="form-container">
+            <h1 class="heading">Registration Form</h1>
+            <form  #userForm="ngForm" (ngSubmit)="onsubmit()" >
+               
+                <div class="form-group">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU99YPsJ1c89QVmP_3Ymz8ihUndIl78rRsz-VQKHZ2MvNyyIPO&s" alt="Avatar">
+                </div>
+                <div class="form-group">
+                    <label>Name</label>
+                   <input type="text" required #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" placeholder="Enter Name" class="form-control"  name="Username" [(ngModel)]="tutor1.name">
+                    
+                    <small   class="text-danger" [class.d-none]="name.valid || name.untouched">Name Is Required</small>
+                </div>
+                <div class="form-group">
+                    <label>mail</label>
+                    <input type="Gmail" required #mail="ngModel"  [class.is-invalid]="mail.invalid && mail.touched" pattern='[^@]*@[^@]*' placeholder="Enter Gmail" class="form-control"  name="Gmail" [(ngModel)]="tutor1.mail">
+                    <small   class="text-danger" [class.d-none]="mail.valid || mail.untouched">Gmail Is Required</small>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" required #subject="ngModel"  [class.is-invalid]="subject.invalid && subject.touched"  placeholder="Enter Subject" class="form-control" name="Subject" [(ngModel)]="tutor1.subject">
+                    <small   class="text-danger" [class.d-none]="subject.valid || subject.untouched">Subject Is Required</small>
+                </div>
+                <div class="form-group">
+                    <label>Time-Duration</label>
+                    <input type="text" required #time="ngModel" [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Time 14-15" class="form-control" name="Time" [(ngModel)]="tutor1.time">
+                    <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Time Is Required</small>
+                </div>
+                <div class="form-group">
+                    <label>Whatsapp Link</label>
+                    <input type="text" required #link="ngModel" [class.is-invalid]="link.invalid && link.touched" placeholder="Enter Whatsapp link" class="form-control" name="link" [(ngModel)]="tutor1.watsuplink">
+                    <small   class="text-danger" [class.d-none]="link.valid || link.untouched">Link Is Required</small>
+                </div>
+                <div class="form-group">
+                    <label>Course</label>
+                    <select  required #course="ngModel" [class.is-invalid]="course.invalid && course.touched" class="custom-select" name="course" [(ngModel)]="tutor1.coursetype">
+                        <option value="">Select Course Type</option>
+                        <option *ngFor="let Course of Courses">{{Course}}</option>
+                    </select>
+                    <small   class="text-danger" [class.d-none]="course.valid || course.untouched">choose tyep of course</small>
+                </div>
+                <div class="form-group">
+                    <label>Days</label>
+                    <select required #day="ngModel" [class.is-invalid]="day.invalid && day.touched" class="custom-select" name="Day" [(ngModel)]="tutor1.day">
+                        <option value="">Select Days</option>
+                        <option *ngFor="let Day  of Days">{{Day}}</option>
+                    </select>
+                    <small   class="text-danger" [class.d-none]="day.valid || day.untouched">choose the day</small>
+                </div>
+                <div class="form-group">
+                    <label>Fee</label>
+                    <input type="text" required #fee="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter fees" class="form-control" name="fee" [(ngModel)]="tutor1.fee">
+                    <small   class="text-danger" [class.d-none]="fee.valid || fee.untouched">choose the fees</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea required #msg="ngModel" [class.is-invalid]="msg.invalid && msg.touched" placeholder="Enter Description" class="form-control" name="msg" [(ngModel)]="tutor1.description"  id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <small   class="text-danger" [class.d-none]="msg.valid || msg.untouched">Description is required</small>
+                  </div>
+                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit">Submit</button>
+            
+            </form>
+        </div></div>
+        </div>
+        </div></div>
+        <!-- <app-profile [userModel]="userModel"></app-profile> -->
+
+
+        <app-congrats *ngIf=aftersubmission></app-congrats> 
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <form (ngSubmit)="onsubmit()" [hidden]=aftersubmission>
+<p>ENTER YOUR NAME:</p>
+<input type="text" name="name" [(ngModel)]="tutor1.name">
+<p>ENTER YOUR SUBJECT:</p>
+<input type="text" name="subject" [(ngModel)]="tutor1.subject">
+<p>ENTER YOUR TIME:</p>
+<input type="number" name="time" [(ngModel)]="tutor1.time">
+<p>ENTER YOUR COURSETYPE:</p>
+<input type="text" name="coursetype" [(ngModel)]="tutor1.coursetype">
+<p>ENTER YOUR FEE:</p>
+<input type="number" name="fee" [(ngModel)]="tutor1.fee">
+<p>ENTER YOUR DESCRIPTIONB:</p>
+<input type="text" name="description" [(ngModel)]="tutor1.description">
+<p>ENTER YOUR WATSUPLINK TO COMMUNICATE WITH STUDENTS:</p>
+<input type="text" name="watsuplink" [(ngModel)]="tutor1.watsuplink">
+<button type="submit">SUBMIT</button>
+
+    </form>
+    <p *ngIf=aftersubmission>RECORDED</p> -->
