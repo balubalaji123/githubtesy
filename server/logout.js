@@ -7,7 +7,7 @@ router.get('/',function(req,res){
     req.session.destroy(err=>{
         if(err)
         {
-            console.log("erro")
+            console.log("checking for git")
             res.send(JSON.stringify("error"))
 
         }
