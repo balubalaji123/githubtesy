@@ -7,7 +7,7 @@ router.get('/',function(req,res){
     req.session.destroy(err=>{
         if(err)
         {
-            console.log("checking for git")
+            console.log("checking for clonning")
             res.send(JSON.stringify("error"))
 
         }
