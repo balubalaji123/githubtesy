@@ -7,7 +7,7 @@ router.get('/',function(req,res){
     req.session.destroy(err=>{
         if(err)
         {
-            console.log("checking for clonning")
+            console.log("checking for")
             res.send(JSON.stringify("error"))
 
         }
