@@ -29,7 +29,7 @@ router.post('/',function(req,res){
         // req.session.userid=result[0]._id;
         // req.session.mail=usermail
         // console.log("user exists")
-      res.send(JSON.stringify("userexists"))
+      res.send(JSON.stringify("useralreadyexists"))
     }
       else{
   
