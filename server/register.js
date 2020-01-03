@@ -71,6 +71,56 @@ router.get('/',function(req,res){
       res.send('enter a valid email address')
       }
 })
+// for gmail login
+router.post('/google',function(req,res){
+  username=req.body.googlename
+  usermail=req.body.googlemail
+  userpassword=req.body.password2
+  myobj={usermail:usermail}
+  dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
+    if (err) throw err;
+    // checkuser=result
+    if(result.length){
+      // req.session.userid=result[0]._id;
+      // req.session.mail=usermail
+      // console.log("user exists")
+    res.send(JSON.stringify("useralreadyexists"))
+  }
+    else{
+      myobj={username:username,usermail:usermail,userpassword:userpassword}
+      dbo.collection("customers").insertOne(myobj, function(err, res) {
+          req.session.userid=res.ops[0]._id
+        })
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'wolvesofthevalleysspardha@gmail.com',
+        pass: 'fmt@12345'
+      }
+    });
+    var mailOptions = {
+      from: 'find my tutor',
+      to: usermail,
+      subject: 'account conformation',
+      html:'welcome Mr.'+username+'   to find my tutor you have created succesfully an account'
+    };  
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent:');
+      }
+    });
+    res.send(JSON.stringify("account created"))
+  }});
+  
+  
+})
+
+
+
+
+
 
 
 module.exports=router
