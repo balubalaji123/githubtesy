@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboard:DashboardService) {
     this.dashboard.subjectselection()
     .subscribe(
-      data=>{this.data1=data,console.log("dashboard component"+data)}
+      data=>{this.data1=data,console.log("dashboard component"+JSON.stringify(data))}
       
       )
       this.dashboard.learntselection()

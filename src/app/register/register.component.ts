@@ -26,7 +26,9 @@ public googleuser;
   ngOnInit() {
   }
   onsubmit(){
+    console.log(this.registermodel)
 this.register.register(this.registermodel)
+
 .subscribe(
   data=>console.log("register"+data),
   error=>console.log(error)
