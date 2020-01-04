@@ -8,6 +8,8 @@ MongoClient.connect(url, function(err, db) {
    dbo = db.db("mydb");
 });
 router.post('/',function(req,res){
+
+     console.log("days"+JSON.stringify(req.body.days));
     tutorname=req.body.name
     tutorsubject=req.body.subject
     tutortime=req.body.time
