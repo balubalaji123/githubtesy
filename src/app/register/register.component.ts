@@ -75,8 +75,6 @@ this.register.register(this.registermodel)
 // model and other suff for gmail login
   onclickme(a:string){
     this.reg=new Googlepassword(this.googleuser,this.googlemail,a)
-    console.log("check"+JSON.stringify(this.reg))
-    console.log('a'+a)
 this.googleregister1.googlelogin(this.reg)
 .subscribe(
   data=>console.log(data),
