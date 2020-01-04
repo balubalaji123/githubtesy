@@ -15,7 +15,8 @@ import { FiresthomeComponent } from './firesthome/firesthome.component';
 import { CongratsComponent } from './congrats/congrats.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import{GoogleLoginProvider, FacebookLoginProvider, SocialLoginModule, AuthServiceConfig} from "angular-6-social-login";
-import { GoogleComponent } from './google/google.component'
+import { GoogleComponent } from './google/google.component';
+import { NavbarComponent } from './navbar/navbar.component'
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
@@ -42,6 +43,7 @@ export function getAuthServiceConfigs() {
     CongratsComponent,
     DashboardComponent,
     GoogleComponent,
+    NavbarComponent,
     // SocialLoginModule,
     // AuthServiceConfig
   ],

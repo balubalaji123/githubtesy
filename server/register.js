@@ -74,7 +74,7 @@ router.get('/',function(req,res){
 // for gmail login
 router.post('/google',function(req,res){
   username=req.body.googlename
-  usermail=req.body.googlemail
+  usermail=req.body.googleemail
   userpassword=req.body.password2
   myobj={usermail:usermail}
   dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
