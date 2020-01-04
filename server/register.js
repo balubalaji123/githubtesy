@@ -20,6 +20,7 @@ router.post('/',function(req,res){
     username=req.body.name
     usermail=req.body.mail
     userpassword=req.body.password
+    console.log("enter")
     myobj={usermail:usermail}
     dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
      console.log(result)
@@ -32,7 +33,7 @@ router.post('/',function(req,res){
       res.send(JSON.stringify("useralreadyexists"))
     }
       else{
-  
+  console.log("ene")
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -50,7 +51,7 @@ router.post('/',function(req,res){
         if (error) {
           console.log(error);
         } else {
-          console.log('Email sent:');
+          console.log('Email sent for general login');
         }
       });
       res.send(JSON.stringify("mailsent"))
@@ -73,6 +74,7 @@ router.get('/',function(req,res){
 })
 // for gmail login
 router.post('/google',function(req,res){
+  console.log(JSON.stringify(req.body))
   username=req.body.googlename
   usermail=req.body.googleemail
   userpassword=req.body.password2
