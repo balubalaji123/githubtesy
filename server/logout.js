@@ -7,7 +7,7 @@ router.get('/',function(req,res){
     req.session.destroy(err=>{
         if(err)
         {
-            console.log("error in logout backend")
+            console.log("checking for")
             res.send(JSON.stringify("error"))
 
         }

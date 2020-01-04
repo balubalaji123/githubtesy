@@ -9,7 +9,7 @@ import { from } from 'rxjs';
 export class FiresthomeComponent implements OnInit {
   constructor(public sessionservice:SessioncheckService) {
     sessionservice.sessioncheck().subscribe(
-      data=>console.log("from session"+data),
+      data=>console.log(data),
       error=>console.log(error)
     )
    }

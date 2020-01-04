@@ -19,10 +19,11 @@ router.get('/',function(req,res){
       });
 })
 router.get('/learnt',function(req,res){
-    dbo.collection("learnt").find({},{$exists:true}).toArray(function(err, result) {
+  usermail=req.session.usermail
+  c={usermail:usermail}
+    dbo.collection("learnt").find(c,{$exists:true}).toArray(function(err, result) {
         if (err) throw err;
         checkuser=result
-       
         res.send(JSON.stringify(checkuser))
       });
 })

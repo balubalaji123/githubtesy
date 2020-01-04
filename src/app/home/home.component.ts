@@ -23,6 +23,6 @@ tutor(){
   this.tutorcheck=true
 }
 dashboard(){
-  this.route.navigate(['/dashboard'])
+  this.route.navigate(['/dashboard1'])
 }
 }

@@ -7,6 +7,7 @@ import { StudentComponent } from './student/student.component';
 import { TutorComponent } from './tutor/tutor.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
 const routes: Routes = [
   // {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'login1',component:LoginComponent},
   {path:'student1',component:StudentComponent},
   {path:'tutor1',component:TutorComponent},
-  {path:'dashboard1',component:DashboardComponent}
+  {path:'dashboard1',component:DashboardComponent},
+  {path: 'navbar' , component:NavbarComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
