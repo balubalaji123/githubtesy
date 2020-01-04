@@ -11,6 +11,7 @@ const tutor=require('./server/tutor')
 const dashboard=require('./server/dashboard')
 const subjectselected=require('./server/subjectselected')
 const logout=require('./server/logout')
+const like=require('./server/like')
 const app=express();
 const cors=require('cors')
 app.use(cookieParser());
@@ -72,6 +73,7 @@ app.use('/tutor',redirectlogin,tutor)
 app.use('/subjectselected',redirectlogin,subjectselected)
 app.use('/dashboard',redirectlogin,dashboard)
 app.use('/session',sessioncheck)
+app.use('/like',like)
 // app.get('/users',function(req,res){
 //   console.log("using put request")
 //   res.send('hello')
