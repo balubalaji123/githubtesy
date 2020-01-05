@@ -1,6 +1,24 @@
 .navbar{
     background: #23415c;
     color: #fff;
-    padding: 1% 0;
+    padding: 10px 30px 10px 0;
     font-size: 1.2rem;
+}
+ul li{
+    text-decoration: none;
+    color: #fff;
+}
+.navbar-brand{
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+}
+.nav-link{
+    color: #fff;
+    padding: 10px;
+    
+}
+.dropdown-menu{
+    position: absolute;
+    right: 0;
 }

@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 const routes: Routes = [
   // {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
+  {path:'firesthime',component:FiresthomeComponent},
   {path:'register1',component:RegisterComponent},
   {path:'users1',component:HomeComponent},
   {path:'login1',component:LoginComponent},

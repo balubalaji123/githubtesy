@@ -9,11 +9,21 @@ import { from } from 'rxjs';
 export class FiresthomeComponent implements OnInit {
   constructor(public sessionservice:SessioncheckService) {
     sessionservice.sessioncheck().subscribe(
-      data=>console.log(data),
+      data=>{console.log(data),this.username=data;
+      if(this.username=="session not exists"){
+      this.normalnavbar=false
+    console.log("entered")}
+      else
+      this.sessionnavbar=false
+      
+      },
       error=>console.log(error)
     )
    }
   ngOnInit() {
   }
+  public username
+  public normalnavbar=true
+  public sessionnavbar=true
 
 }
