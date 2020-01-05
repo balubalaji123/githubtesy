@@ -8,9 +8,11 @@ export class DashboardService {
   private url1 ='http://localhost:3000/dashboard/learnt'
 
   constructor(private http:HttpClient) { }
+  // dashboard as a teacher
   subjectselection(){
     return this.http.get<any>(this.url)
   }
+  // dashboard as a student
   learntselection(){
     return this.http.get<any>(this.url1)
   }

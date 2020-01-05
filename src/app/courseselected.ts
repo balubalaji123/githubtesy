@@ -10,6 +10,7 @@ public coursetype:string,
 public fee:number,
 public description:string,
 public watsuplink:string,
+public tutormail:string
         // public mail:string
     ){}
 }

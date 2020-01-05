@@ -7,7 +7,6 @@ MongoClient.connect(url, function(err, db) {
   if (err) throw err;
    dbo = db.db("mydb");
 });
-
 const router=express.Router()
 router.post('/',function(req,res){
   console.log("session"+req.session.mail)
@@ -38,8 +37,15 @@ learnername=req.body.name
 learnermail=req.session.mail
 leanersubject=req.body.subject
 learnertime=req.body.time
+tutormail=req.body.tutormail
+time=new Date()
+var date=time.getDate();
+var month=time.getMonth()+1;
+var year=time.getFullYear()
+todaydate=date+'/'+month+'/'+year
+console.log(time)
 var q={learnername:learnername,learnermail:learnermail,leanersubject:leanersubject,learnertime:learnertime,
-    studentparticipitation:true}
+    studentparticipitation:true,date:todaydate,like:false,tutormail:tutormail}
     console.log("subjectselected"+JSON.stringify(q))
 dbo.collection("learnt").insertOne(q, function(err, res) { 
 })

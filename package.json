@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "express-sessions": "^1.0.6",
+    "mongodb": "^3.4.1",
     "nodemailer": "^6.4.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
@@ -50,5 +51,17 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.3.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balubalaji123/githubtesy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/balubalaji123/githubtesy/issues"
+  },
+  "homepage": "https://github.com/balubalaji123/githubtesy#readme"
 }
