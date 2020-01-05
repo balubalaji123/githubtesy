@@ -5,7 +5,7 @@ import{HttpClient,HttpHeaders} from '@angular/common/http'
   providedIn: 'root'
 })
 export class SessioncheckService {
-public url='http://localhost:3000/session'
+public url='http://192.168.100.9:3000/session'
   constructor(private http:HttpClient) { }
   sessioncheck(){
     return this.http.get<any>(this.url)
