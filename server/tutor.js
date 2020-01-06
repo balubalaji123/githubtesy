@@ -20,6 +20,7 @@ router.post('/',function(req,res){
     else{
         selecteddays=days
     }
+    console.log(selecteddays)
     tutorname=req.body.name
     tutorsubject=req.body.subject
     tutortime=req.body.time

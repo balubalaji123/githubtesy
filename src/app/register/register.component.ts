@@ -6,6 +6,7 @@ import { from } from 'rxjs';
 import{RegisterService} from'../register.service'
 import{GoogleloginService} from'../googlelogin.service'
 import { AuthService, GoogleLoginProvider } from 'angular-6-social-login';
+import{SessioncheckService}from'../sessioncheck.service'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,25 +15,32 @@ import { AuthService, GoogleLoginProvider } from 'angular-6-social-login';
 export class RegisterComponent implements OnInit {
 public checklogin=true
 public a;
+public functionreturn;
 public b;
 public pw=false;
 public password2;
 public googlemail;
 public googleuser;
+public tonavnextpage;
+public login1;
+public users1;
   registermodel=new Register('','','','')
   reg:Googlepassword
   googlepasswordmodel=new Googlepassword('fgh','fcgvhbj','')
-  constructor( private register:RegisterService,public route:Router,private socialAuthService: AuthService,public googleregister1:GoogleloginService) { }
+  constructor(private sessionservice:SessioncheckService, private register:RegisterService,public route:Router,private socialAuthService: AuthService,public googleregister1:GoogleloginService) { }
   ngOnInit() {
   }
-  onsubmit(){
+  onsubmit(x,y){
     console.log(this.registermodel)
+    this.functionreturn=this.onclick(x,y)
+    if(this.functionreturn)
+    {
 this.register.register(this.registermodel)
-
 .subscribe(
   data=>console.log("register"+data),
   error=>console.log(error)
 )
+    }
   }
   verify(){
     this.checklogin=false
@@ -42,11 +50,13 @@ this.register.register(this.registermodel)
     {
         this.b=false ;
         this.a=true;
+        return true
     }
     else
     {
       this.a=false;
       this.b=true;
+      return false;
     }
   }
   check(a:string){
@@ -77,19 +87,28 @@ this.register.register(this.registermodel)
     this.reg=new Googlepassword(this.googleuser,this.googlemail,a)
 this.googleregister1.googlelogin(this.reg)
 .subscribe(
-  data=>console.log(data),
-  error=>console.log("error in google login")
-)
-
+  data=>{console.log("hii"+data);
+  if(data=="useralreadyexists")
+  {
+    this.route.navigate(['/login1']);
+    this.login1=true;
   }
+  if(data=="account created"){
+    this.route.navigate(['/users1']);
+    this.users1=true;
+  }
+  // this.tonavnextpage=nextpage()
+},
+  error=>console.log("error in google login")
+)  
+  }
+
   onclick2(password2)
   {
     console.log(password2);
     // this.reg.password=password2
     // this.reg.password1=password2
-    console.log(this.reg)
-    
-    
+    console.log(this.reg)  
   }
 onlogin()
 {

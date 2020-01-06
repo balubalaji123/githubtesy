@@ -74,7 +74,7 @@ router.get('/',function(req,res){
 })
 // for gmail login
 router.post('/google',function(req,res){
-  console.log(JSON.stringify(req.body))
+  // console.log(JSON.stringify(req.body))
   username=req.body.googlename
   usermail=req.body.googleemail
   userpassword=req.body.password2
@@ -85,13 +85,31 @@ router.post('/google',function(req,res){
     if(result.length){
       // req.session.userid=result[0]._id;
       // req.session.mail=usermail
-      // console.log("user exists")
+      // console.log("user exists"+JSON.stringify(req.session))
     res.send(JSON.stringify("useralreadyexists"))
   }
     else{
+       req.session.username=username
+          req.session.mail=usermail
       myobj={username:username,usermail:usermail,userpassword:userpassword}
       dbo.collection("customers").insertOne(myobj, function(err, res) {
-          req.session.userid=res.ops[0]._id
+        // console.log("enter in register")
+          // req.session.userid=res.ops[0]._id
+          // req.session.username=username
+          // req.session.mail=usermail
+          // console.log("result form google login"+JSON.stringify(req.session))
+          // tried to creat session whe registered but failed
+          dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
+            if (err) throw err;
+            // checkuser=result
+            if(result.length){
+              req.session.userid=result[0]._id;
+              req.session.mail=usermail
+            // res.send(JSON.stringify("useralreadyexists"))
+          }
+          })
+        
+      
         })
     var transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -110,11 +128,15 @@ router.post('/google',function(req,res){
       if (error) {
         console.log(error);
       } else {
-        console.log('Email sent:');
+  // email sent
       }
     });
+    
     res.send(JSON.stringify("account created"))
-  }});
+  }
+  
+
+});
   
   
 })

@@ -45,7 +45,7 @@ app.use(session(sess))
 app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 
 const redirectlogin=(req,res,next)=>{
-  if(!req.session.userid){
+  if(!req.session.mail){
     console.log('redirect to login')
     res.send(JSON.stringify("redirect to login"))
   }
@@ -56,7 +56,7 @@ const redirectlogin=(req,res,next)=>{
 }
 // redirect home after register
 const redirecthome=(req,res,next)=>{
-  if(!req.session.userid){
+  if(!req.session.mail){
     console.log("register or login")
     res.send(true)
   }

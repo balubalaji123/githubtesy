@@ -16,7 +16,7 @@ public selectedcouse=[]
   constructor(private studentservice:StudentsService) {
     studentservice.subjectslist()
     .subscribe(
-      data=>{this.subjectslist=data,console.log("students component"+JSON.stringify(data))},
+      data=>{this.subjectslist=data},
       error=>console.log(error)
     )
     // for (let index = 0; index < this.subjectslist.length; index++) {
