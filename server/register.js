@@ -93,11 +93,7 @@ router.post('/google',function(req,res){
           req.session.mail=usermail
       myobj={username:username,usermail:usermail,userpassword:userpassword}
       dbo.collection("customers").insertOne(myobj, function(err, res) {
-        // console.log("enter in register")
           // req.session.userid=res.ops[0]._id
-          // req.session.username=username
-          // req.session.mail=usermail
-          // console.log("result form google login"+JSON.stringify(req.session))
           // tried to creat session whe registered but failed
           dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
             if (err) throw err;

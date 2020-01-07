@@ -8,16 +8,16 @@ MongoClient.connect(url, function(err, db) {
     });
     var likess
 router.post('/',function(req,res){
-    console.log(JSON.stringify(req.body))
-    var myquery={learnername:req.body.learnername,leanersubject:req.body.leanersubject,learnertime:req.body.learnertime,tutormail:req.body.tutormail}
+    console.log("from like"+JSON.stringify(req.body))
+    var myquery={tutormail:req.body.tutormail,learnermail:req.body.learnermail,leanersubject:req.body.leanersubject}
    
     var newvalues = { $set: {like:true} };
       dbo.collection("learnt").updateOne(myquery, newvalues, function(err, res) {
             if (err) throw err;
-            // console.log(res)
+            console.log("res")
           });
       var tutorquery={tutormail:req.body.tutormail,tutorname:req.body.learnername,tutorsubject:req.body.leanersubject}
-      dbo.collection("tutors").find(tutorquery,{likes:1},{$exists:true}).toArray(function(err,result){
+      dbo.collection("tutors").find(tutorquery,{likes:1}).toArray(function(err,result){
         if(err)
         console.log(err)
         else
