@@ -67,11 +67,12 @@ this.Like.like(this.liking)
     )
 
   }
-  delete(tutorsubject,cousetype){
-this.deletemode=new Delete(tutorsubject,cousetype)
+  delete(tutorsubject,cousetype,likes){
+this.deletemode=new Delete(tutorsubject,cousetype,likes)
+console.log(JSON.stringify(this.deletemode))
 this.Like.delete(this.deletemode).
 subscribe(
-  data=>console.log("data from delete"),
+  data=>{console.log(data),this.asatutor=data},
   error=>console.log("error")
 )
   }

@@ -36,10 +36,31 @@ router.post('/',function(req,res){
     res.send(JSON.stringify("like page"))
 })
 router.post('/delete',function(req,res){
-  console.log(JSON.stringify(req.body))
-  res.send()
+    tutorsubject=req.body.tutorsubject
+    cousetype=req.body.coursetype
+console.log(JSON.stringify(req.body));
+
+    console.log("course"+cousetype)
+    var query={tutormail:req.session.mail,tutorsubject:tutorsubject,tutorcoursetype:cousetype}
+    console.log(JSON.stringify(query));
+    
+    dbo.collection("tutors").deleteOne(query, function(err, obj) {
+      if (err) throw err;
+      usermail=req.session.usermail
+      c={usermail:usermail}
+        dbo.collection("tutors").find(c,{tutorsubject:1,tutortime:1,selecteddays:1},{$exists:true}).toArray(function(err, result) {
+            if (err) throw err;
+            checkuser=result
+           
+            res.send(JSON.stringify(checkuser))
+          });
+    });
+  
 })
+
 module.exports=router
+
+// tutorsubject,cousetype
 //   var myquery = { address: "Valley 345" };
 //   var newvalues = { $set: {name: "Mickey", address: "Canyon 123" } };
 //   dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
