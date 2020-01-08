@@ -1,6 +1,8 @@
 const express=require('express')
 var nodemailer = require('nodemailer');
 var MongoClient = require('mongodb').MongoClient;
+var dateTime = require('node-datetime');
+var formatted
 var url = "mongodb://localhost:27017/";
 var dbo=''
 MongoClient.connect(url, function(err, db) {
@@ -43,10 +45,14 @@ time=new Date()
 var date=time.getDate();
 var month=time.getMonth()+1;
 var year=time.getFullYear()
+var dt = dateTime.create();
+var formatted = dt.format('Y-m-d H:M:S');
+console.log("subject"+formatted);
+
 todaydate=date+'/'+month+'/'+year
 console.log(time)
 var q={learnername:learnername,learnermail:learnermail,leanersubject:leanersubject,learnertime:learnertime,
-    date:todaydate,like:false,tutormail:tutormail}
+    date:formatted,like:false,tutormail:tutormail}
     console.log("subjectselected"+JSON.stringify(q))
 dbo.collection("learnt").insertOne(q, function(err, res) { 
 })

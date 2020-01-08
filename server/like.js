@@ -35,6 +35,10 @@ router.post('/',function(req,res){
 
     res.send(JSON.stringify("like page"))
 })
+router.post('/delete',function(req,res){
+  console.log(JSON.stringify(req.body))
+  res.send()
+})
 module.exports=router
 //   var myquery = { address: "Valley 345" };
 //   var newvalues = { $set: {name: "Mickey", address: "Canyon 123" } };

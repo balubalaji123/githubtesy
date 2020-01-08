@@ -5,6 +5,7 @@ import{LikeService}from'../like.service'
 import{Like}from'../like'
 import { from } from 'rxjs';
 import { error } from 'protractor';
+import{Delete}  from'../delete'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,6 +15,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
   public asastudent
+  public deletemode:Delete
+  public asatutor
   public liking:Like
   public liking1:Like
   public disliked:Like
@@ -22,7 +25,7 @@ public dislike:boolean
   classesattended1(){
     this.dashboard.subjectselection()
     .subscribe(
-      data=>console.log(data),
+      data=>{console.log(data),this.asatutor=data},
       error=>console.log("error in dashboard")
     )
   }
@@ -64,7 +67,14 @@ this.Like.like(this.liking)
     )
 
   }
-  
+  delete(tutorsubject,cousetype){
+this.deletemode=new Delete(tutorsubject,cousetype)
+this.Like.delete(this.deletemode).
+subscribe(
+  data=>console.log("data from delete"),
+  error=>console.log("error")
+)
+  }
   public techer=true
   public student=false
 }
