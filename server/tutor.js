@@ -20,7 +20,7 @@ router.post('/',function(req,res){
     else{
         selecteddays=days
     }
-    tutorname=req.body.name
+    console.log(selecteddays)
     tutorsubject=req.body.subject
     tutortime=req.body.time
     tutorcoursetype=req.body.coursetype 
@@ -29,7 +29,7 @@ router.post('/',function(req,res){
     tutorwatsuplink=req.body.watsuplink
     tutorday=req.body.day
     tutormail=req.session.mail
-myobj={tutorname:tutorname,tutorsubject:tutorsubject,tutortime:tutortime,
+myobj={tutorname:req.session.username,tutorsubject:tutorsubject,tutortime:tutortime,
         tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,
         tutorwatsuplink:tutorwatsuplink,tutorday:tutorday,tutorparticipitation:true,selecteddays:selecteddays
     ,likes:0,tutormail:tutormail}
@@ -37,13 +37,5 @@ myobj={tutorname:tutorname,tutorsubject:tutorsubject,tutortime:tutortime,
         
         })
 res.send(true)
-
-
-
-
-
-
-
-
 })
-module.exports=router
+module.exports=router 

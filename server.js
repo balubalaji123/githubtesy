@@ -12,6 +12,7 @@ const dashboard=require('./server/dashboard')
 const subjectselected=require('./server/subjectselected')
 const logout=require('./server/logout')
 const like=require('./server/like')
+const dislike=require('./server/dislike')
 const app=express();
 const cors=require('cors')
 app.use(cookieParser());
@@ -45,7 +46,7 @@ app.use(session(sess))
 app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 
 const redirectlogin=(req,res,next)=>{
-  if(!req.session.userid){
+  if(!req.session.mail){
     console.log('redirect to login')
     res.send(JSON.stringify("redirect to login"))
   }
@@ -56,7 +57,7 @@ const redirectlogin=(req,res,next)=>{
 }
 // redirect home after register
 const redirecthome=(req,res,next)=>{
-  if(!req.session.userid){
+  if(!req.session.mail){
     console.log("register or login")
     res.send(true)
   }
@@ -69,6 +70,7 @@ app.use('/logout',redirecthome,logout)
 app.use('/login',login)
 app.use('/register',register)
 app.use('/student',student)
+app.use('/dislike',dislike)
 app.use('/tutor',redirectlogin,tutor)
 app.use('/subjectselected',redirectlogin,subjectselected)
 app.use('/dashboard',redirectlogin,dashboard)

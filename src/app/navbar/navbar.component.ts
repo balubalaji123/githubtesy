@@ -10,13 +10,14 @@ export class NavbarComponent implements OnInit {
 
   constructor(public sessionservice:SessioncheckService) {
     sessionservice.sessioncheck().subscribe(
-      data=>{console.log(data),this.username=data},
+      data=>{console.log("in session"+data),this.username=data},
             error=>console.log(error)
     )
    }
 public username
 
   ngOnInit() {
+
   }
 
 }

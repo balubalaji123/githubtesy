@@ -1,6 +1,8 @@
 const express=require('express')
 var nodemailer = require('nodemailer');
 var MongoClient = require('mongodb').MongoClient;
+var dateTime = require('node-datetime');
+var formatted
 var url = "mongodb://localhost:27017/";
 var dbo=''
 MongoClient.connect(url, function(err, db) {
@@ -9,7 +11,7 @@ MongoClient.connect(url, function(err, db) {
 });
 const router=express.Router()
 router.post('/',function(req,res){
-  console.log("session"+req.session.mail)
+  console.log("subject selected"+JSON.stringify(req.body))
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -33,19 +35,24 @@ router.post('/',function(req,res){
         }
       });
       // to store student registered course and to identify with particular student mailid
-learnername=req.body.name
-learnermail=req.session.mail
+      learnermail=req.session.mail
+      tutormail=req.body.tutormail
+// these indicates the details of the tutor which student is selected
+      learnername=req.body.name
 leanersubject=req.body.subject
 learnertime=req.body.time
-tutormail=req.body.tutormail
 time=new Date()
 var date=time.getDate();
 var month=time.getMonth()+1;
 var year=time.getFullYear()
+var dt = dateTime.create();
+var formatted = dt.format('Y-m-d H:M:S');
+console.log("subject"+formatted);
+
 todaydate=date+'/'+month+'/'+year
 console.log(time)
 var q={learnername:learnername,learnermail:learnermail,leanersubject:leanersubject,learnertime:learnertime,
-    studentparticipitation:true,date:todaydate,like:false,tutormail:tutormail}
+    date:formatted,like:false,tutormail:tutormail}
     console.log("subjectselected"+JSON.stringify(q))
 dbo.collection("learnt").insertOne(q, function(err, res) { 
 })

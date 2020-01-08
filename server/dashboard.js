@@ -13,7 +13,7 @@ MongoClient.connect(url, function(err, db) {
 router.get('/',function(req,res){
   usermail=req.session.usermail
   c={usermail:usermail}
-    dbo.collection("tutors").find(c,{tutorsubject:1,tutortime:1},{$exists:true}).toArray(function(err, result) {
+    dbo.collection("tutors").find(c,{tutorsubject:1,tutortime:1,selecteddays:1},{$exists:true}).toArray(function(err, result) {
         if (err) throw err;
         checkuser=result
        

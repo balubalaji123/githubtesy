@@ -7,6 +7,7 @@ export class Like {
         public learnertime:string,
         public learnerdate:string,
         public likecheck:boolean,
-        public tutormail:string
+        public tutormail:string,
+        public learnermail:string
     ){}
 }

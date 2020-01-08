@@ -7,6 +7,9 @@
     <title>dashboard</title>
 </head>
 <body>
+    <button type="submit" class="btn button" routerLink="/tutor1" routerLinkActive="active"><a>tutor</a></button>
+    <button type="submit" class="btn button"  routerLink="/student1" routerLinkActive="active"><a>student</a></button>
+
     <button type="submit" (click)="classesattended1()" >classes teached</button>
     <button type="submit" (click)="classesenrolled1()" >classes enrolled</button>
 <div *ngFor="let a of asastudent">
@@ -15,21 +18,15 @@
     <p>{{a.learnertime}}</p><br>
     <p>{{a.date}}</p><br>
     <p>{{a.like}}</p>
-    <button type="submit" (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail)">like</button>
+
+    <button type="submit" [hidden]=dislike (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)">like</button>
+<button type="submit" [hidden]=!dislike (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)" > dislike</button>
 </div>
-
-<nav class="navbar">
-    <div class="navbar-brand">Find my Tutor</div>
-    <div class=" nav">
-        <button type="button" class="btn button"><a routerLink="/firesthome" routerLinkActive="active" >Home</a></button>
-        <button type="button" class="btn button"><a >How To</a></button>
-        <button type="submit" class="btn button" (click)="classesattended1()" ><a>classes teached</a></button>
-        <button type="submit" class="btn button" (click)="classesenrolled1()" ><a>classes enrolled</a></button>
-        <button class="btn icon"><a><i class="fa fa-sign-out" ></i></a></button>
-    </div>
-    
-
-</nav>
-
-   </body>
-   </html>
+<div *ngFor="let b of asatutor">
+    <p>subject= &nbsp; {{b.tutorsubject}}</p>
+    <p>coursetype= &nbsp; {{b.tutorcoursetype}}</p>
+    <p>days= &nbsp; {{b.selecteddays}}</p>
+    <p>likes= &nbsp; {{b.likes}}</p>
+    <br>
+    <button type="submit" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes)">delete</button>
+</div>
