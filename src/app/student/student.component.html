@@ -11,8 +11,9 @@
     <div class="container"  *ngIf=!display>
         <script type="text/javascript" src="functions/searchbar.js"></script>
      
-             <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search">
-         </div>
+             <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
+        <input type="text">
+            </div>
         
         
         <div class="card-display" *ngFor="let a of subjectslist" [hidden]=display>

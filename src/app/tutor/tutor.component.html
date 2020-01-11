@@ -21,12 +21,7 @@
                     <input type="file"  #name="ngModel" class="form-control" name="img"  [(ngModel)]="tutor1.img"  (change)="handleFileInput($event.target.files)" >
                     <button type="button" (click)="onUpload()">onUpload</button>
                 </div> 
-                <div class="form-group">
-                    <label>Name</label>
-                   <input type="text" required #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" placeholder="Enter Name" class="form-control"  name="Username" [(ngModel)]="tutor1.name">
-                    
-                    <small   class="text-danger" [class.d-none]="name.valid || name.untouched">Name Is Required</small>
-                </div>
+            
                 <!-- <div class="form-group">
                     <label>mail</label>
                     <input type="Gmail" required #mail="ngModel"  [class.is-invalid]="mail.invalid && mail.touched" pattern='[^@]*@[^@]*' placeholder="Enter Gmail" class="form-control"  name="Gmail" [(ngModel)]="tutor1.mail">

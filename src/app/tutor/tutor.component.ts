@@ -15,7 +15,7 @@ fees=['fee','no fee'];
 topicHasError =true;
 imageUrl = '/assets/images/icontutorials41.jpg';
    fileToUpload: File = null;
-public tutor1=new Tutor('','','','','',{},'',0,'','')
+public tutor1=new Tutor('','','','',{},'',0,'','')
   constructor(private tutorservic:TutorService,private http: HttpClient) { }
 public aftersubmission=false
   ngOnInit() {

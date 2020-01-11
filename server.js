@@ -1,7 +1,6 @@
 const express=require('express')
 const bodyparser=require('body-parser')
 var cookieParser = require('cookie-parser');
-
 const session=require('express-session')
 const path=require('path')
 const login=require('./server/login')
@@ -28,6 +27,7 @@ app.use(bodyparser.json())
 //   console.log("in main"+req.session)
 //   res.send(__dirname+'dist/updated/index.html')
 // })
+
 
 var sess={
   name:'sid',
@@ -80,4 +80,8 @@ app.use('/like',like)
 //   console.log("using put request")
 //   res.send('hello')
 // })
+app.get('/*',function(req,res){
+  console.log("in wild"+JSON.stringify(req.session))
+  res.sendFile(__dirname+'/dist/updated/index.html')
+})
 app.listen(3000)
