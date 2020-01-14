@@ -14,7 +14,7 @@
              <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
         <!-- <input type="text"> -->
             </div>
-            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off">
+            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 
         <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
         <ul id="wrappers">
