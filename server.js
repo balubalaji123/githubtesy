@@ -81,7 +81,7 @@ app.use('/like',like)
 //   res.send('hello')
 // })
 app.get('/*',function(req,res){
-  console.log("in wild"+JSON.stringify(req.session))
+  // console.log("in wild"+JSON.stringify(req.session))
   res.sendFile(__dirname+'/dist/updated/index.html')
 })
 app.listen(3000)
