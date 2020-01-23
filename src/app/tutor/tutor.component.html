@@ -9,54 +9,53 @@
 </head>
 <body>
 
+
  <div class="container-fluid">
+
+    <app-navbar></app-navbar>
+
     <div class="bg" [hidden]=aftersubmission>
         <div class="container">
             <div class="row justify-content-center ">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="form-container">
 
-                <h1 class="heading">Registration Form</h1>
-                <form  #userForm="ngForm" (ngSubmit)="onsubmit()" >
-                   
-                    <div class="form-group">
-                        <img [src]="imageUrl" class="rounded-circle"   width="200"  height="200"><br>
-                        <input type="file"  #name="ngModel" class="form-control" name="img"  [(ngModel)]="tutor1.img"  (change)="handleFileInput($event.target.files)" >
-                        <button type="button" (click)="onUpload()">onUpload</button>
-                    </div> 
-                    <div class="form-group">
-                        <label>Name</label>
-                       <input type="text" required #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" placeholder="Enter Name" class="form-control"  name="Username" [(ngModel)]="tutor1.name">
-                        
-                        <small   class="text-danger" [class.d-none]="name.valid || name.untouched">Name Is Required</small>
-                    </div>
-                    <!-- <div class="form-group">
-                        <label>mail</label>
-                        <input type="Gmail" required #mail="ngModel"  [class.is-invalid]="mail.invalid && mail.touched" pattern='[^@]*@[^@]*' placeholder="Enter Gmail" class="form-control"  name="Gmail" [(ngModel)]="tutor1.mail">
-                        <small   class="text-danger" [class.d-none]="mail.valid || mail.untouched">Gmail Is Required</small>
-                    </div> -->
-                    <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" required #subject="ngModel"  [class.is-invalid]="subject.invalid && subject.touched"  placeholder="Enter Subject" class="form-control" name="Subject" [(ngModel)]="tutor1.subject">
-                        <small   class="text-danger" [class.d-none]="subject.valid || subject.untouched">Subject Is Required</small>
-                    </div>
-                    <div class="form-group">
-                        <label>Time-Duration</label>
-                        <input type="text" required #time="ngModel" [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Time 14-15" class="form-control" name="Time" [(ngModel)]="tutor1.time">
-                        <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Time Is Required</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="days1">days :</label>
-                        <div *ngFor=" let day of days1">
-                            <label>
-                                <input type="checkbox"
-                                       name="days1"
-                                       value="{{day}}"
-                                       
-                                       (change)="updateCheckedOptions(day, $event)"/>
-                                {{day}}
-                            </label>
-                        </div>
+            <h1 class="heading">Registration Form</h1>
+            <form  #userForm="ngForm" (ngSubmit)="onsubmit()" >
+               
+                <div class="form-group">
+                    <img [src]="imageUrl" class="rounded-circle"   width="200"  height="200"><br>
+                    <input type="file"  #name="ngModel" class="form-control" name="img"  [(ngModel)]="tutor1.img"  (change)="handleFileInput($event.target.files)" >
+                    <button type="button" (click)="onUpload()">onUpload</button>
+                </div> 
+            
+                <!-- <div class="form-group">
+                    <label>mail</label>
+                    <input type="Gmail" required #mail="ngModel"  [class.is-invalid]="mail.invalid && mail.touched" pattern='[^@]*@[^@]*' placeholder="Enter Gmail" class="form-control"  name="Gmail" [(ngModel)]="tutor1.mail">
+                    <small   class="text-danger" [class.d-none]="mail.valid || mail.untouched">Gmail Is Required</small>
+                </div> -->
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" required #subject="ngModel"  [class.is-invalid]="subject.invalid && subject.touched"  placeholder="Enter Subject" class="form-control" name="Subject" [(ngModel)]="tutor1.subject">
+                    <small   class="text-danger" [class.d-none]="subject.valid || subject.untouched">Subject Is Required</small>
+                </div>
+                <div class="form-group">
+                    <label>Time-Duration</label>
+                    <input type="text" required #time="ngModel" [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Time 14-15" class="form-control" name="Time" [(ngModel)]="tutor1.time">
+                    <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Time Is Required</small>
+                </div>
+                <div class="form-group">
+                    <label for="days1">days :</label>
+                    <div *ngFor=" let day of days1">
+                        <label>
+                            <input type="checkbox"
+                                   name="days1"
+                                   value="{{day}}"
+                                   
+                                   (change)="updateCheckedOptions(day, $event)"/>
+                            {{day}}
+                        </label>
+
                     </div>
                     <div class="form-group">
                         <label>Date</label><br>

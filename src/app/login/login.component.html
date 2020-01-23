@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <app-navbar></app-navbar>  
-    <div class="bg" [hidden]=entryhome>
+    <!-- <app-navbar></app-navbar>   -->
+    <div class="bg">
         <div class="container-fluid mb-5 ">
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-6 col-md-3">
@@ -25,14 +25,26 @@
                             <input type="password" placeholder="enter password" required #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched" class="form-control" name="password" [(ngModel)]="check.password">
                 <small class="text-danger" [class.d-none]="pass.valid || pass.untouched">PASSWORD IS REQUIRED</small>
                         </div>
+                        <p *ngIf="passwordwrong">
+                            Please check your password.
+                        </p>
                         <button type="submit" class="btn button btn-block"><a>Submit</a></button>
                         <!-- <p *ngIf="true" routerLink="/users1" routerLinkActive="active">yup</p> -->
                         <!-- this.router.navigate(['/users1']) -->
                         <!-- <a>{{data}}</a> -->
                     <!-- <a>{{b}}</a> -->
                     <!-- <button type="submit" class="btn button btn-block" *ngIf=b routerLink="/users1" routerLinkActive="active"><a>submits</a></button> -->
-                    </form>
-                    <!-- <p *ngIf="true">hiiii</p> -->
+                    
+                    <p *ngIf="notexists">
+                        please register first.
+                    </p> 
+                    <div>
+                    <p>Doesnot have an account??
+                     <a href="" type="submit" routerLink="/register1" routerLinkActive="active">register</a>
+                    </p>
+                    </div>
+                </form>
+                                 <!-- <p *ngIf="true">hiiii</p> -->
                     
                     <!-- <p *ngIf=!b>this is from flase </p> -->
                     <!-- <a>hey hii my dta is missing</a> -->
@@ -41,14 +53,16 @@
                        <h6>You need to register first</h6>
                        <button type="submit" class="btn button" routerLink="/register1" routerLinkActive="active"><a>register</a></button>
                    </div>
-                   <p *ngIf="notexists">PLEASE ENTER VALID DETAILS</p>
-                   <p *ngIf="passwordwrong">PLEASE ENTER VALID password DETAILS</p>
+                   <!-- <p *ngIf="notexists">PLEASE ENTER VALID DETAILS</p> -->
+                   <!-- <p *ngIf="passwordwrong">PLEASE ENTER VALID password DETAILS</p> -->
                 </div>
             </div>
             </div>
         </div>
         </div>            
         <!-- <app-home *ngIf=entryhome></app-home>  -->
+         
+
 
 </body>
 </html>

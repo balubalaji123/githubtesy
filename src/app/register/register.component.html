@@ -13,7 +13,7 @@
             <div class="col-12 col-sm-6 col-md-3">
                  <div class="form-container">
             <div class="heading">Resgistration form</div>
-            <form #userForm="ngForm" (ngSubmit)="onsubmit()" [hidden]=pw>
+            <form #userForm="ngForm" (ngSubmit)="onsubmit(pass.value,passwd.value)" [hidden]=pw>
                 <div class="form-group">
                     <label>Email</label>
                     <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" pattern='[^@]*@[^@]*' class="form-control" name="email" [(ngModel)]="registermodel.mail">
@@ -34,13 +34,28 @@
                     <input type="password" required #passwd="ngModel" [class.is-invalid]="passwd.invalid && passwd.touched" class="form-control" name="passwords" [(ngModel)]="registermodel.passwords">
                  <small class="text-danger" [class.d-none]="passwd.valid || passwd.untouched">PASSWORD IS REQUIRED</small>
                 </div>
-                <button type="submit">click</button>
+                <!-- <div class="button1"> -->
+                    <div class="row">
+                        <div class="col">
+                <button class= "btn button" type="submit">submit</button>
+            </div>
+            <div class="col">
+                <button class="btn button1" (click)="check('google')" [hidden]=pw>Sign in with Google</button>
+            </div>
+            </div>
             </form>
-                <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit" (click)='onclick(pass.value,passwd.value)' [hidden]=pw>submit</button>
-            <br>
-            <button (click)="check('google')" [hidden]=pw>Sign in with Google</button>
+                <!-- <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit" (click)='onclick()' [hidden]=pw>submit</button> -->
+            <!-- <button class="btn button1" (click)="check('google')" [hidden]=pw>Sign in with Google</button> -->
+        <!-- </div> -->
+        <br>
+        <div class="row">
+            <div class="col">
             <p [hidden]=pw>Already a user?</p>
-            <button (click)=onlogin() [hidden]=pw>login</button>              
+        </div>
+        <div class="col">
+            <button class="btn button" (click)=onlogin() [hidden]=pw>login</button> 
+        </div>
+        </div>             
             <form [hidden]=!pw>
             <div class="form-group">   
             <div>
@@ -51,6 +66,12 @@
                 <input type="password" #password>
                 <!-- <input type="password"  [(ngModel)]="reg.Password1"> -->
                 <button type="submit" (click)="onclickme(password.value)">done</button>
+                <!-- <a *ngIf=users1>
+                    Your Account Is Succesfully Created.
+                </a>
+                <a *ngIf=login1>
+                    Your are already a user.
+                </a> -->
                 </div>
             </div>
         </form>

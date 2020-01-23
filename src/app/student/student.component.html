@@ -8,11 +8,18 @@
     <!-- <script src="https://ajax.googleapis.co/ajax/libs/jquery/2.2.3/jquery/min.js"></script> -->
 </head>
 <body>
+    <app-navbar></app-navbar>
     <div class="container"  *ngIf=!display>
         <script type="text/javascript" src="functions/searchbar.js"></script>
-       <input type="text" #input  (keyup.enter)="check(input.value)" placeholder="Search">
-         </div>
-        <div class="card-display" *ngFor="let a of subjectslist" [hidden]=display>
+
+     
+             <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
+        <!-- <input type="text"> -->
+            </div>
+            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
+
+        <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
+>>>>>>> 299655ead32fed4752cc4827da29217245c1a4b8
         <ul id="wrappers">
           <li>
             <div class="container">
@@ -34,7 +41,8 @@
                                 </div>
                                 <div class="card-footer"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
                               </div>
-                              <button  type="submit" class="btn btn-info btn-lg" (click)="subjectselected(a.tutorname,a.tutorsubject,a.tutortime,a.tutorcoursetype,a.tutorfee,a.tutordescription,a.tutorwatsuplink)" >Subscribe</button>
+                              
+                              <button  type="submit" class="btn btn-info btn-lg" (click)="subjectselected(a.tutorname,a.tutorsubject,a.tutortime,a.tutorcoursetype,a.tutorfee,a.tutordescription,a.tutorwatsuplink,a.tutormail)" >Subscribe</button>
                         </div>
                     </div>
                 </div>
@@ -44,4 +52,5 @@
           </li>
         </ul>
         </div>
+
         <app-courseselected [selectedcouse]="selectedcouse" [hidden]=!display ></app-courseselected> 

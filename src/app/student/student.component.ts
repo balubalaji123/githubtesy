@@ -9,13 +9,17 @@ declare const check: any;
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-  subjectslist: Tutor[]
-public display = false
-public selectedcouse = []
+
+  subjectslist:Tutor[]
+  public searchText
+  public tutormail=false
+public display=false
+public selectedcouse=[]
+
   constructor(private studentservice:StudentsService) {
     studentservice.subjectslist()
     .subscribe(
-      data=>{this.subjectslist=data,console.log("students component"+data)},
+      data=>{this.subjectslist=data},
       error=>console.log(error)
     )
     // for (let index = 0; index < this.subjectslist.length; index++) {
@@ -26,7 +30,7 @@ public selectedcouse = []
 
   ngOnInit() {
   }
-  subjectselected(a1,a2,a3,a4,a5,a6,a7){
+  subjectselected(a1,a2,a3,a4,a5,a6,a7,a8){
     this.display=true
 this.selectedcouse.push(a1)
 this.selectedcouse.push(a2)
@@ -35,6 +39,7 @@ this.selectedcouse.push(a4)
 this.selectedcouse.push(a5)
 this.selectedcouse.push(a6)
 this.selectedcouse.push(a7)
+this.selectedcouse.push(a8)
 
   }
 
