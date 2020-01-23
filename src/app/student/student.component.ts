@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import{StudentsService} from'../students.service';
 import { from } from 'rxjs';
 import{Tutor} from '../tutor';
-declare const check:any;
+declare const check: any;
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-  subjectslist:Tutor[]
-public display=false
-public selectedcouse=[]
+  subjectslist: Tutor[]
+public display = false
+public selectedcouse = []
   constructor(private studentservice:StudentsService) {
     studentservice.subjectslist()
     .subscribe(
@@ -21,7 +21,6 @@ public selectedcouse=[]
     // for (let index = 0; index < this.subjectslist.length; index++) {
     //   const element = this.subjectslist[index];
     //   console.log("element="+element)
-      
     // }
    }
 
@@ -39,10 +38,13 @@ this.selectedcouse.push(a7)
 
   }
 
-searchFunction(){
+searchFunction() {
     check();
   }
-}
+  check(){
+    console.log("dwc");
+  }
+};
 
 
 

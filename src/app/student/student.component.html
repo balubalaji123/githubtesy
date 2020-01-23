@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- <script src="https://ajax.googleapis.co/ajax/libs/jquery/2.2.3/jquery/min.js"></script> -->
 </head>
 <body>
     <div class="container"  *ngIf=!display>
         <script type="text/javascript" src="functions/searchbar.js"></script>
-     
-             <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search">
+       <input type="text" #input  (keyup.enter)="check(input.value)" placeholder="Search">
          </div>
-        
-        
         <div class="card-display" *ngFor="let a of subjectslist" [hidden]=display>
-
-
         <ul id="wrappers">
           <li>
             <div class="container">
@@ -48,4 +44,4 @@
           </li>
         </ul>
         </div>
-        <app-courseselected [selectedcouse]="selectedcouse" [hidden]=!display></app-courseselected> 
+        <app-courseselected [selectedcouse]="selectedcouse" [hidden]=!display ></app-courseselected> 
