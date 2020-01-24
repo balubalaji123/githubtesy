@@ -26,7 +26,7 @@ public tonavnextpage;
 public login1;
 public users1;
 public gpw=false;
-  registermodel=new Register('','','','');
+  registermodel=new Register('','','','','');
   gpwmodel = new Googlepw('','')
   reg:Googlepassword
   googlepasswordmodel=new Googlepassword('fgh','fcgvhbj','')

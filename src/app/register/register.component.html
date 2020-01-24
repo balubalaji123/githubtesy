@@ -20,6 +20,10 @@
                 <small class="text-danger" [class.d-none]="name.valid || name.untouched">GMAIL IS REQUIRED</small>
                 </div>
                 <div class="form-group">
+                    <label>location</label>
+                    <input type="password" required #location="ngModel" [class.is-invalid]="passwd.invalid && passwd.touched" class="form-control" name="location" [(ngModel)]="registermodel.location">
+                </div>
+                <div class="form-group">
                     <label>Username</label>
                     <input type="text" required #names="ngModel" [class.is-invalid]="names.invalid && names.touched" class="form-control" name="user" [(ngModel)]="registermodel.name">
                 <small class="text-danger" [class.d-none]="names.valid || names.untouched">USERNAME IS REQUIRED</small>

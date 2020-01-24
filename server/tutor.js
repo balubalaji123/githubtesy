@@ -32,7 +32,7 @@ router.post('/',function(req,res){
 myobj={tutorname:req.session.username,tutorsubject:tutorsubject,tutortime:tutortime,
         tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,
         tutorwatsuplink:tutorwatsuplink,tutorday:tutorday,tutorparticipitation:true,selecteddays:selecteddays
-    ,likes:0,tutormail:tutormail}
+    ,likes:0,tutormail:tutormail,tutorlocation:req.session.location}
         dbo.collection("tutors").insertOne(myobj, function(err, res) {
         
         })
