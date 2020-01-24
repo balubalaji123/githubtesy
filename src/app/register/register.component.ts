@@ -7,6 +7,7 @@ import{RegisterService} from'../register.service'
 import{GoogleloginService} from'../googlelogin.service'
 import { AuthService, GoogleLoginProvider } from 'angular-6-social-login';
 import{SessioncheckService}from'../sessioncheck.service'
+import { Googlepw } from '../googlepw';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
 public checklogin=true
 public a;
 public functionreturn;
-public b;
+public b=false;
 public pw=false;
 public password2;
 public googlemail;
@@ -24,7 +25,9 @@ public googleuser;
 public tonavnextpage;
 public login1;
 public users1;
-  registermodel=new Register('','','','')
+public gpw=false;
+  registermodel=new Register('','','','');
+  gpwmodel = new Googlepw('','')
   reg:Googlepassword
   googlepasswordmodel=new Googlepassword('fgh','fcgvhbj','')
   constructor(private sessionservice:SessioncheckService, private register:RegisterService,public route:Router,private socialAuthService: AuthService,public googleregister1:GoogleloginService) { }
@@ -56,16 +59,36 @@ this.register.register(this.registermodel)
     {
       this.a=false;
       this.b=true;
+      console.log("b is going onclick method"+this.b);
       return false;
     }
   }
+  onclick1(x1,y1){ 
+    if(x1==y1)
+    {
+      console.log("b value at onclick1 method password matched"+this.b);
+        return true;
+    }
+    else
+    {
+      this.gpw=true;
+      console.log("b value at onclick1 method pwnot matched"+this.b);
+      return false;
+    }
+  }
+  gmailpassword(passwordgoogle,repasswordgoogle)
+  {
+    console.log(this.registermodel)
+     }
   check(a:string){
-    this.pw=true;  
+    this.pw=true; 
+    this.b=false; 
     console.log(""+this.pw)
     this.socialSignIn(a)
-
+    console.log("b value"+this.b);
   }
    socialSignIn(socialPlatform : string) {
+     this.b=false;
     let socialPlatformProvider;
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     this.socialAuthService.signIn(socialPlatformProvider).then(
@@ -76,15 +99,26 @@ this.register.register(this.registermodel)
         // console.log(this.password2);
         
         // Now sign-in with userData
-        // ...
-           
-            
+        // ...  
       }
     );
   }
 // model and other suff for gmail login
-  onclickme(a:string){
-    this.reg=new Googlepassword(this.googleuser,this.googlemail,a)
+  onclickme(passwordgoogle,repasswordgoogle){
+    this.functionreturn=this.onclick1(passwordgoogle,repasswordgoogle)
+    if(this.functionreturn)
+    {
+      this.googlepasswordmodel.password2=passwordgoogle
+this.register.register(this.registermodel)
+.subscribe(
+  data=>console.log("register"+data),
+  error=>console.log(error)
+)
+    
+    console.log("gmail password");
+ 
+
+    this.reg=new Googlepassword(this.googleuser,this.googlemail,passwordgoogle)
 this.googleregister1.googlelogin(this.reg)
 .subscribe(
   data=>{console.log("hii"+data);
@@ -101,7 +135,9 @@ this.googleregister1.googlelogin(this.reg)
 },
   error=>console.log("error in google login")
 )  
-  }
+console.log("on click me");
+
+  }}
 
   onclick2(password2)
   {

@@ -6,6 +6,7 @@ import{HttpClient,HttpHeaders} from '@angular/common/http'
 export class DashboardService {
   private url='http://localhost:3000/dashboard'
   private url1 ='http://localhost:3000/dashboard/learnt'
+  private profileurl='/dashboard/profileurl'
 
   constructor(private http:HttpClient) { }
   // dashboard as a teacher
@@ -15,6 +16,10 @@ export class DashboardService {
   // dashboard as a student
   learntselection(){
     return this.http.get<any>(this.url1)
+  } 
+  // for profile
+  profiledata(){
+    return this.http.get<any>(this.profileurl)
   }
 
 }

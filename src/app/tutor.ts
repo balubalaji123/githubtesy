@@ -10,10 +10,5 @@ public date: string,
 public fee:number,
 public description:string,
 public watsuplink:string
-
-
-
-
-
-    ){}
+ ){}
 }

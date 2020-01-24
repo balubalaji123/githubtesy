@@ -10,7 +10,11 @@ MongoClient.connect(url, function(err, db) {
 router.post('/',function(req,res){
     console.log("from like"+JSON.stringify(req.body))
     var myquery={tutormail:req.body.tutormail,learnermail:req.body.learnermail,leanersubject:req.body.leanersubject}
-   
+    dbo.collection("learnt").find(myquery,{$exists:true}).toArray(function(err, result) {
+      if (err) throw err;
+      checkuser=result
+      console.log(JSON.stringify(result))
+      if(result.length){
     var newvalues = { $set: {like:true} };
       dbo.collection("learnt").updateOne(myquery, newvalues, function(err, res) {
             if (err) throw err;
@@ -28,7 +32,7 @@ router.post('/',function(req,res){
     dbo.collection("tutors").updateOne(tutorquery, newtutorvalues, function(err, res) {
         if (err) throw err;
         // console.log(res)
-      });
+      });})}
     })
     
 
