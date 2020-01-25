@@ -22,8 +22,8 @@
     <p>{{a.learnertime}}</p><br>
     <p>{{a.date}}</p><br>
     <p>{{a.like}}</p>
-    <button type="submit" [hidden]=dislike (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)">like</button>
-<button type="submit" [hidden]=!dislike (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)" > dislike</button>
+    <button type="submit" *ngIf="!a.like" (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)">like</button>
+<button type="submit" *ngIf="a.like" (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)" > dislike</button>
 </div>
 <div *ngFor="let b of asatutor">
     <p>subject= &nbsp; {{b.tutorsubject}}</p>
