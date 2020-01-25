@@ -28,6 +28,7 @@ dbo.collection("customers").find(c,{username:1,userpassword:1},{$exists:true}).t
       req.session.userid=result[0]._id;
       req.session.username=result[0].username
       req.session.mail=usermail
+      req.session.location=result[0].userlocation
     res.send(JSON.stringify("account exists"))
   }}
     else{

@@ -1,7 +1,6 @@
 export class Tutor {
     constructor(
 public img:string,        
-public name:string,
 public subject:string,
 public time:string,
 public coursetype:string,
@@ -11,10 +10,5 @@ public date: string,
 public fee:number,
 public description:string,
 public watsuplink:string
-
-
-
-
-
-    ){}
+ ){}
 }

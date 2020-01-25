@@ -7,10 +7,10 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 var dbo=''
 MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
+  if (err) throw err;
    dbo = db.db("mydb");
   //Create a collection name "customers":
-  
+  
 });
 var check=Math.random()
 var usermail
@@ -20,6 +20,7 @@ router.post('/',function(req,res){
     username=req.body.name
     usermail=req.body.mail
     userpassword=req.body.password
+    userlocation=req.body.location
     console.log("enter")
     myobj={usermail:usermail}
     dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
@@ -62,7 +63,7 @@ router.post('/',function(req,res){
 router.get('/',function(req,res){
   
    if(check==req.query['id']){
-   myobj={username:username,usermail:usermail,userpassword:userpassword}
+   myobj={username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
     dbo.collection("customers").insertOne(myobj, function(err, res) {
         req.session.userid=res.ops[0]._id
       })
@@ -91,7 +92,7 @@ router.post('/google',function(req,res){
     else{
        req.session.username=username
           req.session.mail=usermail
-      myobj={username:username,usermail:usermail,userpassword:userpassword}
+      myobj={username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
       dbo.collection("customers").insertOne(myobj, function(err, res) {
           // req.session.userid=res.ops[0]._id
           // tried to creat session whe registered but failed

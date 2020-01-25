@@ -11,13 +11,12 @@
     <div class="container"  *ngIf=!display>
         <script type="text/javascript" src="functions/searchbar.js"></script>
      
-             <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search">
-         </div>
-        
-        
-        <div class="card-display" *ngFor="let a of subjectslist" [hidden]=display>
+             <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
+        <!-- <input type="text"> -->
+            </div>
+            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 
-
+        <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
         <ul id="wrappers">
           <li>
             <div class="container">
@@ -50,4 +49,6 @@
           </li>
         </ul>
         </div>
+        <!-- <input  type="text" name="search1" [(ngModel)]="searchText.tutordescription" autocomplete="off"> -->
+
         <app-courseselected [selectedcouse]="selectedcouse" [hidden]=!display></app-courseselected> 

@@ -10,6 +10,7 @@ declare const check:any;
 })
 export class StudentComponent implements OnInit {
   subjectslist:Tutor[]
+  public searchText
   public tutormail=false
 public display=false
 public selectedcouse=[]

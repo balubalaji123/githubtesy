@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +18,8 @@ import { CongratsComponent } from './congrats/congrats.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import{GoogleLoginProvider, FacebookLoginProvider, SocialLoginModule, AuthServiceConfig} from "angular-6-social-login";
 import { GoogleComponent } from './google/google.component';
-import { NavbarComponent } from './navbar/navbar.component'
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProfileComponent } from './profile/profile.component'
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
@@ -44,6 +47,7 @@ export function getAuthServiceConfigs() {
     DashboardComponent,
     GoogleComponent,
     NavbarComponent,
+    ProfileComponent,
     // SocialLoginModule,
     // AuthServiceConfig
   ],
@@ -52,6 +56,7 @@ export function getAuthServiceConfigs() {
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
 
     // AuthServiceConfig,
     // GoogleLoginProvider,
