@@ -7,11 +7,15 @@
     <title>dashboard</title>
 </head>
 <body>
-    <button type="submit" class="btn button" routerLink="/tutor1" routerLinkActive="active"><a>tutor</a></button>
-    <button type="submit" class="btn button"  routerLink="/student1" routerLinkActive="active"><a>student</a></button>
-
-    <button type="submit" (click)="classesattended1()" >classes teached</button>
-    <button type="submit" (click)="classesenrolled1()" >classes enrolled</button>
+    <nav class="navbar">
+        <div class="nav">
+        <button type="submit" class="btn button" routerLink="/tutor1" routerLinkActive="active"><a>tutor</a></button>
+        <button type="submit" class="btn button"  routerLink="/student1" routerLinkActive="active"><a>student</a></button>
+        <button type="submit" class="btn button" (click)="classesattended1()" >classes teached</button>
+        <button type="submit" class="btn button" (click)="classesenrolled1()" >classes enrolled</button>
+    </div>
+    </nav>
+   
 <div *ngFor="let a of asastudent">
     <p>{{a.learnername}}</p><br>
     <p>{{a.leanersubject}}</p><br>

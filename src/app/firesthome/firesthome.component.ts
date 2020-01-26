@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import{SessioncheckService}from '../sessioncheck.service'
 import { from } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
+import{LogoutService} from'../logout.service'
+
 
 @Component({
   selector: 'app-firesthome',
@@ -9,7 +11,7 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./firesthome.component.css']
 })
 export class FiresthomeComponent implements OnInit {
-  constructor(public sessionservice:SessioncheckService,public route:Router) {
+  constructor(public sessionservice:SessioncheckService,public route:Router,public logoutservice:LogoutService) {
     sessionservice.sessioncheck().subscribe(
       data=>{console.log(data),this.username=data;
       if(this.username=="session not exists"){
@@ -30,5 +32,20 @@ export class FiresthomeComponent implements OnInit {
   dashboard(){
     this.route.navigate(['/dashboard1'])
   }
-  
+  logout(){
+    this.logoutservice.logout()
+    .subscribe(
+      data=>{console.log("logout component "+data);
+    if(data=="logout sucess"){
+      this.normalnavbar=false
+      this.sessionnavbar=true
+
+
+    }
+    },
+      error=>console.log(error)
+    )
+    this.route.navigate([''])
+
+  }
 }

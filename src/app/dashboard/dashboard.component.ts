@@ -81,5 +81,3 @@ subscribe(
   public techer=true
   public student=false
 }
-
-
