@@ -23,7 +23,7 @@ public password2;
 public googlemail;
 public googleuser;
 public tonavnextpage;
-public login1;
+public login1=false;
 public users1;
 public gpw=false;
   registermodel=new Register('','','','','');
@@ -40,7 +40,13 @@ public gpw=false;
     {
 this.register.register(this.registermodel)
 .subscribe(
-  data=>console.log("register"+data),
+  data=>{console.log("register"+data);
+if(data=="useralreadyexists"){
+  this.login1=true;
+  this.a=false
+  // this.route.navigate(['/login1'])
+}
+},
   error=>console.log(error)
 )
     }

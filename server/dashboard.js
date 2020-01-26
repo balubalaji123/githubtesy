@@ -33,6 +33,16 @@ router.get('/learnt',function(req,res){
         res.send(JSON.stringify(checkuser))
       });
 })
+
+
+
+
+
+
+
+
+
+
 router.get('/profileurl',function(req,res){
   usermail=req.session.mail
   c={usermail:usermail}
