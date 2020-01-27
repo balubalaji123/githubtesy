@@ -7,7 +7,7 @@ import{Delete} from'./delete'
   providedIn: 'root'
 })
 export class LikeService {
-  private url='http://localhost:3000/like'
+  private url='/like'
 private url1='/dislike'
 private url2='like/delete'
   constructor(private http:HttpClient) { }

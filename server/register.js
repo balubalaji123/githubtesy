@@ -46,7 +46,7 @@ router.post('/',function(req,res){
         from: 'find my tutor',
         to: usermail,
         subject: 'account conformation',
-        html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://localhost:3000/register?id='+check+'">click</a>'
+        html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.100.6:3000/register?id='+check+'">click</a>'
       };  
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {

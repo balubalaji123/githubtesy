@@ -1,6 +1,6 @@
 export class Tutor {
     constructor(
-public img:string,        
+// public image:File,        
 public subject:string,
 public time:string,
 public coursetype:string,

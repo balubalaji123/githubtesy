@@ -5,7 +5,7 @@ import{HttpClient,HttpHeaders} from '@angular/common/http'
   providedIn: 'root'
 })
 export class LogoutService {
-  private url='http://localhost:3000/logout'
+  private url='/logout'
 
   constructor(private http:HttpClient) { }
   logout(){

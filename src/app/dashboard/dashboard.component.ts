@@ -67,7 +67,6 @@ this.Like.like(this.liking)
       data=>{console.log(data),this.asastudent=data},
       error=>console.log("error in dashboard")
     )
-
   }
   delete(tutorsubject,cousetype,likes){
 this.deletemode=new Delete(tutorsubject,cousetype,likes)

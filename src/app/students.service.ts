@@ -5,7 +5,7 @@ import { from } from 'rxjs';
   providedIn: 'root'
 })
 export class StudentsService {
-public url='http://localhost:3000/student'
+public url='/student'
   constructor(private http:HttpClient) { }
   subjectslist(){
 return this.http.get<any>(this.url)

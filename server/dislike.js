@@ -28,8 +28,7 @@ MongoClient.connect(url, function(err, db) {
             if (err) throw err;
             // console.log(res)
           });}
-          else
-          console.log("checking")
+          e
         })
         
     
