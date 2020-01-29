@@ -77,3 +77,7 @@
     opacity: 1;
     right: 0;
   }
+  .myrow{
+    vertical-align: middle;
+    padding: 50px;
+  }

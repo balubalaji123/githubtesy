@@ -9,17 +9,33 @@
 </head>
 <body>
     <app-navbar></app-navbar>
+    <div class="container">
+        <!-- <h4>subject</h4> -->
+        <mat-form-field>
+          <mat-label>Subjects</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let subject of subjects" value="" >
+              {{subject}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Subtopics</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let sub of subs" value="" >
+                {{sub}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>&nbsp;&nbsp;
+          <button type="button" (click)="onsel()" mat-raised-button>Today Classes</button>
+    </div>
     <div class="container"  *ngIf=!display>
-        <script type="text/javascript" src="functions/searchbar.js"></script>
+        <!-- <script type="text/javascript" src="functions/searchbar.js"></script> -->
 
-     
-             <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
-        <!-- <input type="text"> -->
-            </div>
-            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
+            <!-- <input  type="text" name="search" [(ngModel)]="globalSearch.subject" autocomplete="off" placeholder="enter text to search"> -->
 
-        <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
->>>>>>> 299655ead32fed4752cc4827da29217245c1a4b8
+        <div class="card-display" *ngFor="let a of subjectslist | filter:globalSearch" [hidden]=display>
+
         <ul id="wrappers">
           <li>
             <div class="container">
@@ -27,7 +43,7 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="card-styles">
                             <div class="card">
-                                <div class="card-header row"><b>Subject:</b><div class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</div></div>
+                                <div class="card-header row"><b>Subject:</b><div name="subject" class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</div></div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="card-body"><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>

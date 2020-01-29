@@ -2,21 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import{StudentsService} from'../students.service';
 import { from } from 'rxjs';
 import{Tutor} from '../tutor';
-declare const check: any;
+import{Router} from '@angular/router';
+// declare const check: any;
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
+  subjects = ['DS', 'Python', 'ADS', 'Maths', 'Science'];
+  subs = ['tree','graphs','df','sdf'];
+  subjectslist: Tutor[];
+  public searchText;
+  public tutormail = false;
+public display = false;
+public selectedcouse = [];
 
-  subjectslist:Tutor[]
-  public searchText
-  public tutormail=false
-public display=false
-public selectedcouse=[]
-
-  constructor(private studentservice:StudentsService) {
+  constructor(private studentservice: StudentsService , private router: Router) {
     studentservice.subjectslist()
     .subscribe(
       data=>{this.subjectslist=data},
@@ -42,12 +44,8 @@ this.selectedcouse.push(a7)
 this.selectedcouse.push(a8)
 
   }
-
-searchFunction() {
-    check();
-  }
-  check(){
-    console.log("dwc");
+  onsel(){
+    this.router.navigate(['/list'])
   }
 };
 

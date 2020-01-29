@@ -1,9 +1,10 @@
-/* body{
+body{
     margin: 0;
     padding: 0;
     font-weight:bold;
     font-family: sans-serif;
 }
+/*
 .box{
      position: absolute;
     top: 50%;
@@ -124,7 +125,7 @@ top: 10%;
     left: 20%; }*/
 .form-container{
         position: absolute;
-        top: 15vh;
+        top: 7vh;
         background: #fff;
         padding: 30px;
         border-radius: 10px;
@@ -161,4 +162,8 @@ input[type=text] {
     background: transparent;
     border: none;
     border-bottom: 1px solid #000;
+}
+.heading{
+    text-align: center;
+    /* justify-content: start; */
 }

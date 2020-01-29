@@ -8,9 +8,11 @@ import { TutorComponent } from './tutor/tutor.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ListComponent } from './list/list.component';
 const routes: Routes = [
   // {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
+  {path:'list',component: ListComponent},
   {path:'firesthime',component:FiresthomeComponent},
   {path:'register1',component:RegisterComponent},
   {path:'users1',component:HomeComponent},
