@@ -19,7 +19,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import{GoogleLoginProvider, FacebookLoginProvider, SocialLoginModule, AuthServiceConfig} from "angular-6-social-login";
 import { GoogleComponent } from './google/google.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './profile/profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+// import { ListComponent } from './list/list.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
@@ -57,11 +66,19 @@ export function getAuthServiceConfigs() {
     FormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatDialogModule,
 
     // AuthServiceConfig,
     // GoogleLoginProvider,
     // FacebookLoginProvider,
-    SocialLoginModule
+    SocialLoginModule,
+
+    BrowserAnimationsModule
 
 
   ],

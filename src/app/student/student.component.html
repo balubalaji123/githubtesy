@@ -8,6 +8,26 @@
 </head>
 <body>
     <app-navbar></app-navbar>
+    <div class="container">
+        <!-- <h4>subject</h4> -->
+        <mat-form-field>
+          <mat-label>Subjects</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let subject of subjects" value="" >
+              {{subject}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Subtopics</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let sub of subs" value="" >
+                {{sub}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>&nbsp;&nbsp;
+          <button type="button" (click)="onsel()" mat-raised-button>Today Classes</button>
+    </div>
     <div class="container"  *ngIf=!display>
         <script type="text/javascript" src="functions/searchbar.js"></script>
         <h1>subjects</h1>
@@ -50,7 +70,6 @@
                 </div>
                               
             </div>
-          
           </li>
         </ul>
         </div>
