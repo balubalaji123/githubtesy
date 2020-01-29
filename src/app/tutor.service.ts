@@ -6,7 +6,7 @@ import { from } from 'rxjs';
   providedIn: 'root'
 })
 export class TutorService {
-private url='http://localhost:3000/tutor'
+private url='/tutor'
 
   constructor(private http:HttpClient) { }
   tutor(details:Tutor){

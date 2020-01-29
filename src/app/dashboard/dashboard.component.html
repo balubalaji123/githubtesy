@@ -7,19 +7,23 @@
     <title>dashboard</title>
 </head>
 <body>
-    <button type="submit" class="btn button" routerLink="/tutor1" routerLinkActive="active"><a>tutor</a></button>
-    <button type="submit" class="btn button"  routerLink="/student1" routerLinkActive="active"><a>student</a></button>
-
-    <button type="submit" (click)="classesattended1()" >classes teached</button>
-    <button type="submit" (click)="classesenrolled1()" >classes enrolled</button>
+    <nav class="navbar">
+        <div class="nav">
+        <button type="submit" class="btn button" routerLink="/tutor1" routerLinkActive="active"><a>tutor</a></button>
+        <button type="submit" class="btn button"  routerLink="/student1" routerLinkActive="active"><a>student</a></button>
+        <button type="submit" class="btn button" (click)="classesattended1()" >classes teached</button>
+        <button type="submit" class="btn button" (click)="classesenrolled1()" >classes enrolled</button>
+    </div>
+    </nav>
+   
 <div *ngFor="let a of asastudent">
     <p>{{a.learnername}}</p><br>
     <p>{{a.leanersubject}}</p><br>
     <p>{{a.learnertime}}</p><br>
     <p>{{a.date}}</p><br>
     <p>{{a.like}}</p>
-    <button type="submit" [hidden]=dislike (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)">like</button>
-<button type="submit" [hidden]=!dislike (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)" > dislike</button>
+    <button type="submit" *ngIf="!a.like" (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)">like</button>
+<button type="submit" *ngIf="a.like" (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)" > dislike</button>
 </div>
 <div *ngFor="let b of asatutor">
     <p>subject= &nbsp; {{b.tutorsubject}}</p>
@@ -29,3 +33,4 @@
     <br>
     <button type="submit" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes)">delete</button>
 </div>
+<button routerLink="/profile">profile</button>

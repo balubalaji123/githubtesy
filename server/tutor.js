@@ -10,6 +10,7 @@ MongoClient.connect(url, function(err, db) {
 var days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 var selecteddays=[]
 router.post('/',function(req,res){
+    console.log(JSON.stringify(req.body))
     selecteddays=[]
     tutordays=req.body.days
     if(tutordays["EveryDay"]!=true){
@@ -20,7 +21,7 @@ router.post('/',function(req,res){
     else{
         selecteddays=days
     }
-    console.log(selecteddays)
+    // console.log(selecteddays)
     tutorsubject=req.body.subject
     tutortime=req.body.time
     tutorcoursetype=req.body.coursetype 
@@ -32,7 +33,7 @@ router.post('/',function(req,res){
 myobj={tutorname:req.session.username,tutorsubject:tutorsubject,tutortime:tutortime,
         tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,
         tutorwatsuplink:tutorwatsuplink,tutorday:tutorday,tutorparticipitation:true,selecteddays:selecteddays
-    ,likes:0,tutormail:tutormail}
+    ,likes:0,tutormail:tutormail,tutorlocation:req.session.location}
         dbo.collection("tutors").insertOne(myobj, function(err, res) {
         
         })

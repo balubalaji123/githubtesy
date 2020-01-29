@@ -6,7 +6,7 @@ import{Login} from './login'
 })
 // 
 export class LoginService {
-  private url='http://localhost:3000/login'
+  private url='/login'
  
   
   constructor(private http:HttpClient) { }

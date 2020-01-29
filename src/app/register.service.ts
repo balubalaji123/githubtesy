@@ -8,7 +8,7 @@ import { Register } from './register';
   providedIn: 'root'
 })
 export class RegisterService {
-  private url='http://localhost:3000/register'
+  private url='/register'
   constructor(private http:HttpClient) { }
 register(details:Register){
   let headers=new Headers({'Content-Type':'application/json'})

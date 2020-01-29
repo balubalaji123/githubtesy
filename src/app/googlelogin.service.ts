@@ -5,7 +5,7 @@ import {Googlepassword} from './googlepassword';
   providedIn: 'root'
 })
 export class GoogleloginService {
-  private url='http://localhost:3000/register/google'
+  private url='/register/google'
   constructor(private http:HttpClient) { }
   googlelogin(details:Googlepassword){
     return this.http.post<any>(this.url,JSON.stringify(details),httpOptions)

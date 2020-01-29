@@ -6,7 +6,7 @@ import { from } from 'rxjs';
   providedIn: 'root'
 })
 export class SubjectselectedService {
-private url='http://localhost:3000/subjectselected'
+private url='/subjectselected'
   constructor(private http:HttpClient) { }
   subjectselected(list:Courseselected){
     let headers=new Headers({'Content-Type':'application/json'})

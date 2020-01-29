@@ -20,6 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import{GoogleLoginProvider, FacebookLoginProvider, SocialLoginModule, AuthServiceConfig} from "angular-6-social-login";
 import { GoogleComponent } from './google/google.component';
 import { NavbarComponent } from './navbar/navbar.component';
+<<<<<<< HEAD
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
@@ -27,6 +28,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { ListComponent } from './list/list.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
+=======
+import { ProfileComponent } from './profile/profile.component'
+>>>>>>> 130b77d9f43d151e8b35cdc8f488a1cd2052399f
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
@@ -53,9 +57,13 @@ export function getAuthServiceConfigs() {
     DashboardComponent,
     GoogleComponent,
     NavbarComponent,
+<<<<<<< HEAD
     ListComponent,
   
 
+=======
+    ProfileComponent,
+>>>>>>> 130b77d9f43d151e8b35cdc8f488a1cd2052399f
     // SocialLoginModule,
     // AuthServiceConfig
   ],

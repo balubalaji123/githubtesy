@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
 public dislike:boolean
   constructor(private dashboard:DashboardService,public Like:LikeService) {}
   classesattended1(){
+    this.asastudent=[]
     this.dashboard.subjectselection()
     .subscribe(
       data=>{console.log(data),this.asatutor=data},
@@ -44,6 +45,7 @@ this.dashboard.learntselection()
 
   }
   classesenrolled1(){
+    this.asatutor=[]
     this.student=!this.student
     this.dashboard.learntselection()
     .subscribe(
@@ -65,7 +67,6 @@ this.Like.like(this.liking)
       data=>{console.log(data),this.asastudent=data},
       error=>console.log("error in dashboard")
     )
-
   }
   delete(tutorsubject,cousetype,likes){
 this.deletemode=new Delete(tutorsubject,cousetype,likes)
@@ -79,5 +80,3 @@ subscribe(
   public techer=true
   public student=false
 }
-
-

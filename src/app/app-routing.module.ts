@@ -8,11 +8,15 @@ import { TutorComponent } from './tutor/tutor.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ListComponent } from './list/list.component';
+
+// import { ListComponent } from './list/list.component';
+
+import { ProfileComponent } from './profile/profile.component';
+
 const routes: Routes = [
   // {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
-  {path:'list',component: ListComponent},
+  // {path:'list',component: ListComponent},
   {path:'firesthime',component:FiresthomeComponent},
   {path:'register1',component:RegisterComponent},
   {path:'users1',component:HomeComponent},
@@ -20,7 +24,8 @@ const routes: Routes = [
   {path:'student1',component:StudentComponent},
   {path:'tutor1',component:TutorComponent},
   {path:'dashboard1',component:DashboardComponent},
-  {path: 'navbar' , component:NavbarComponent}
+  {path: 'navbar' , component:NavbarComponent},
+  {path:'profile',component:ProfileComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

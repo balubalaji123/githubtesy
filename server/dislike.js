@@ -19,7 +19,7 @@ MongoClient.connect(url, function(err, db) {
           dbo.collection("tutors").find(tutorquery,{likes:1}).toArray(function(err,result){
             if(err)
             console.log(err)
-            else
+            else if(result.length){
             likess=result[0].likes
             // for increase likes in tutors account
             likess=likess-1;
@@ -27,7 +27,8 @@ MongoClient.connect(url, function(err, db) {
         dbo.collection("tutors").updateOne(tutorquery, newtutorvalues, function(err, res) {
             if (err) throw err;
             // console.log(res)
-          });
+          });}
+          e
         })
         
     

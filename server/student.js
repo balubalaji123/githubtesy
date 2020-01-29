@@ -11,7 +11,8 @@ MongoClient.connect(url, function(err, db) {
        dbo = db.db("mydb");
     });
 router.get('/', function(req,res){
-    dbo.collection("tutors").find().toArray(function(err, result) {
+    c={tutorlocation:req.session.location}
+    dbo.collection("tutors").find(c).sort({"likes":-1}).toArray(function(err, result) {
         if (err) throw err;
         checkuser=result
         res.send(JSON.stringify(checkuser))
