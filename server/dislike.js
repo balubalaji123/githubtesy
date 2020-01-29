@@ -28,11 +28,7 @@ MongoClient.connect(url, function(err, db) {
             if (err) throw err;
             // console.log(res)
           });}
-          e
         })
-        
-    
-    
         res.send(JSON.stringify("dislike page"))
     })
     module.exports=router

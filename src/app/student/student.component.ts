@@ -14,7 +14,15 @@ export class StudentComponent implements OnInit {
   public tutormail=false
 public display=false
 public selectedcouse=[]
+public allsubjects=[]
   constructor(private studentservice:StudentsService) {
+    // to get all subjects list
+studentservice.allsubjects().subscribe(
+  data=>this.allsubjects=data,
+  error=>console.log(error)
+)
+
+// to get all details
     studentservice.subjectslist()
     .subscribe(
       data=>{this.subjectslist=data},

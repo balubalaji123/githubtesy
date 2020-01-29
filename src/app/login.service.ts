@@ -8,7 +8,7 @@ import{Login} from './login'
 export class LoginService {
   private url='/login'
  
-  
+  public datafromts
   constructor(private http:HttpClient) { }
 login(details:Login){
   return this.http.post<any>(this.url,JSON.stringify(details),httpOptions)

@@ -6,8 +6,12 @@ import { from } from 'rxjs';
 })
 export class StudentsService {
 public url='/student'
+public url1='/student/sujects'
   constructor(private http:HttpClient) { }
   subjectslist(){
 return this.http.get<any>(this.url)
+  }
+  allsubjects(){
+    return this.http.get<any>(this.url1)
   }
 }
