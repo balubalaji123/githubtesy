@@ -30,11 +30,21 @@
           <button type="button" (click)="onsel()" mat-raised-button>Today Classes</button>
     </div>
     <div class="container"  *ngIf=!display>
+
         <!-- <script type="text/javascript" src="functions/searchbar.js"></script> -->
 
             <!-- <input  type="text" name="search" [(ngModel)]="globalSearch.subject" autocomplete="off" placeholder="enter text to search"> -->
 
         <div class="card-display" *ngFor="let a of subjectslist | filter:globalSearch" [hidden]=display>
+
+        <script type="text/javascript" src="functions/searchbar.js"></script>
+        <h1>subjects</h1>
+     <li *ngFor="let sub of allsubjects">{{sub}}</li>
+     <br>
+             <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
+        <!-- <input type="text"> -->
+            </div>
+            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 
         <ul id="wrappers">
           <li>

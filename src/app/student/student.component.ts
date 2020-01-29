@@ -10,15 +10,27 @@ import{Router} from '@angular/router';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-  subjects = ['DS', 'Python', 'ADS', 'Maths', 'Science'];
-  subs = ['tree','graphs','df','sdf'];
   subjectslist: Tutor[];
   public searchText;
   public tutormail = false;
 public display = false;
 public selectedcouse = [];
 
-  constructor(private studentservice: StudentsService , private router: Router) {
+  // subjectslist:Tutor[]
+  // public searchText
+  // public tutormail=false
+// public display=false
+// public selectedcouse=[]
+public allsubjects=[]
+  constructor(private studentservice:StudentsService) {
+    // to get all subjects list
+studentservice.allsubjects().subscribe(
+  data=>this.allsubjects=data,
+  error=>console.log(error)
+)
+
+// to get all details
+
     studentservice.subjectslist()
     .subscribe(
       data=>{this.subjectslist=data},
@@ -45,7 +57,7 @@ this.selectedcouse.push(a8)
 
   }
   onsel(){
-    this.router.navigate(['/list'])
+    // this.router.navigate(['/list'])
   }
 };
 

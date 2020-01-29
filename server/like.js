@@ -33,13 +33,9 @@ router.post('/',function(req,res){
         if (err) throw err;
         // console.log(res)
       });}
-    else
-    console.log("checking")
+    
     })}
     })
-    
-
-
     res.send(JSON.stringify("like page"))
 })
 router.post('/delete',function(req,res){
