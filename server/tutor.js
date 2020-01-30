@@ -65,7 +65,6 @@ checksub=1
         temp.push(tutorsubsubject)
         subsubjectarr[i][tutorsubject]=temp
         console.log(subsubjectarr[i][tutorsubject])
-
     }
 }
     }
