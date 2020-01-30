@@ -15,7 +15,7 @@ export class StudentComponent implements OnInit {
   public tutormail = false;
 public display = false;
 public selectedcouse = [];
-
+public fees=["nofees","fees"];
   // subjectslist:Tutor[]
   // public searchText
   // public tutormail=false

@@ -27,6 +27,14 @@
               </mat-option>
             </mat-select>
           </mat-form-field>&nbsp;&nbsp;
+          <mat-form-field>
+            <mat-label>Subtopics</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let fe of fees" value="" >
+                {{fe}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>&nbsp;&nbsp;
           <button type="button" (click)="onsel()" mat-raised-button>Today Classes</button>
     </div>
     <div class="container"  *ngIf=!display>
