@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import{StudentsService} from'../students.service';
 import { from } from 'rxjs';
 import{Tutor} from '../tutor';
+<<<<<<< HEAD
 import{Router} from '@angular/router';
 // declare const check: any;
+=======
+import { error } from 'protractor';
+declare const check:any;
+>>>>>>> 58a86d5565ff1e6a6a79f0915b6a3f510afbf0c2
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -25,7 +30,12 @@ public allsubjects=[]
   constructor(private studentservice:StudentsService) {
     // to get all subjects list
 studentservice.allsubjects().subscribe(
-  data=>this.allsubjects=data,
+  data=>{console.log("data"+data);this.allsubjects=data},
+  error=>console.log(error)
+)
+// to get all subsubjects
+studentservice.allsubsubjects().subscribe(
+  data=>{console.log(data)},
   error=>console.log(error)
 )
 
