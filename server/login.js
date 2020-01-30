@@ -14,6 +14,7 @@ MongoClient.connect(url, function(err, db) {
 });
 router.post('/',function(req,res){
     // checkuser=[]
+  
 usermail=req.body.mail
 userpassword=req.body.password
 c={usermail:usermail}

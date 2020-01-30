@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import{StudentsService} from'../students.service';
 import { from } from 'rxjs';
 import{Tutor} from '../tutor';
+import { error } from 'protractor';
 declare const check:any;
 @Component({
   selector: 'app-student',
@@ -18,7 +19,12 @@ public allsubjects=[]
   constructor(private studentservice:StudentsService) {
     // to get all subjects list
 studentservice.allsubjects().subscribe(
-  data=>this.allsubjects=data,
+  data=>{console.log("data"+data);this.allsubjects=data},
+  error=>console.log(error)
+)
+// to get all subsubjects
+studentservice.allsubsubjects().subscribe(
+  data=>{console.log(data)},
   error=>console.log(error)
 )
 
