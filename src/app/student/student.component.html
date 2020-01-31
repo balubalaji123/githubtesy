@@ -13,16 +13,16 @@
         <mat-form-field>
           <mat-label>Subjects</mat-label>
           <mat-select>
-            <mat-option *ngFor="let subject of subjects" value="" >
-              {{subject}}
+            <mat-option *ngFor="let subject of allsubjects"  >
+           <p (click)="subjectselection(subject)">  {{subject}}</p>  
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Subtopics</mat-label>
             <mat-select>
-              <mat-option *ngFor="let sub of subs" value="" >
-                {{sub}}
+              <mat-option *ngFor="let sub of subsubjects" v >
+                <p (click)="subsubjectselection(sub)">  {{sub}}</p> 
               </mat-option>
             </mat-select>
           </mat-form-field>&nbsp;&nbsp;
@@ -31,7 +31,7 @@
     <div class="container"  *ngIf=!display>
         <script type="text/javascript" src="functions/searchbar.js"></script>
         <h1>subjects</h1>
-     <li *ngFor="let sub of allsubjects">{{sub}}</li>
+     <!-- <li *ngFor="let sub of allsubjects">{{sub}}</li> -->
      <br>
              <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
         <!-- <input type="text"> -->
@@ -60,6 +60,9 @@
                                     <div class="col">
                                         <div class="card-body"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
                                     </div>
+                                    <div class="col">
+                                      <div class="card-body"><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
+                                  </div>
                                 </div>
                                 <div class="card-footer"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
                               </div>

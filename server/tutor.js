@@ -47,39 +47,40 @@ router.post('/',function(req,res){
     // for subsubject
     check1=0
     checksub=0
-    for(i=0;i<subsubjectarr.length;i++){
-        // if subject exists
-if(tutorsubject==Object.keys(subsubjectarr[i]))
-{
-// check for subject exists
-    check1=1
-    temp=[]
-    var temp=subsubjectarr[i][tutorsubject]
-    for(j=0;j<temp.length;j++){
-        if(temp[i]==tutorsubsubject){
-// if subsubjectexists
-checksub=1
-        }
-    }
-    if(checksub==0){
-        temp.push(tutorsubsubject)
-        subsubjectarr[i][tutorsubject]=temp
-        console.log(subsubjectarr[i][tutorsubject])
-    }
-}
-    }
-    if(check1==0){
-        var c={}
-        c[tutorsubject]=[tutorsubsubject]
-        subsubjectarr.push(c)
-        console.log("sub subject"+JSON.stringify(subsubjectarr))
-    }
+//     for(i=0;i<subsubjectarr.length;i++){
+//         // if subject exists
+// if(tutorsubject==Object.keys(subsubjectarr[i]))
+// {
+// // check for subject exists
+//     check1=1
+//     temp=[]
+//     var temp=subsubjectarr[i][tutorsubject]
+//     for(j=0;j<temp.length;j++){
+//         if(temp[i]==tutorsubsubject){
+// // if subsubjectexists
+// checksub=1
+//         }
+//     }
+//     if(checksub==0){
+//         temp.push(tutorsubsubject)
+//         subsubjectarr[i][tutorsubject]=temp
+//         console.log(subsubjectarr[i][tutorsubject])
+//     }
+// }
+//     }
+//     if(check1==0){
+//         var c={}
+//         c[tutorsubject]=[tutorsubsubject]
+//         subsubjectarr.push(c)
+//         console.log("sub subject"+JSON.stringify(subsubjectarr))
+//     }
 
 myobj={tutorname:req.session.username,tutorsubject:tutorsubject,tutortime:tutortime,
         tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,
         tutorwatsuplink:tutorwatsuplink,tutorday:tutorday,tutorparticipitation:true,selecteddays:selecteddays
-    ,likes:0,tutormail:tutormail,tutorlocation:req.session.location}
+    ,likes:0,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject}
         dbo.collection("tutors").insertOne(myobj, function(err, res) {
+            
         })
 res.send(true)
 })
@@ -103,14 +104,14 @@ router.post('/image',function(req,res){
     })
 res.send(JSON.stringify("after"))
 })
-router.get('/sujects',function(req,res){
+// router.get('/sujects',function(req,res){
 
-res.send(JSON.stringify(subjectsarr))
-})
+// res.send(JSON.stringify(subjectsarr))
+// })
 
-router.get('/subsubjects',function(req,res){
-    res.send(JSON.stringify(subsubjectarr))
-})
+// router.get('/subsubjects',function(req,res){
+//     res.send(JSON.stringify(subsubjectarr))
+// })
 
 
 
