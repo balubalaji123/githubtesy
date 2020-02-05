@@ -52,6 +52,24 @@
                                         <div class="card-body"><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
                                     </div>
                                     <div class="col">
+                                      <div class="card-body"><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</div>
+                                  </div>
+                                    <div class="col">
+                                      <div class="card-body">
+                                        <div *ngIf="a.tutorimage===null;else image">
+                                        <img src="../../assets/uploads1/ydijjitgpalmtnznukljdzbauf.jpg" alt="dsxcz">{{a.tutorimage}}
+                                        </div>
+
+
+<!-- add the else block -->
+
+                                                                                  
+                                        <ng-template #image>
+                                          <img src="../../assets/uploads1/{{a.tutorimage}}" alt="dsxcz">{{a.tutorimage}}
+                                          </ng-template>
+                                      </div>
+                                  </div>
+                                    <div class="col">
                                         <div class="card-body"><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</div> 
                                     </div>
                                     <div class="col">

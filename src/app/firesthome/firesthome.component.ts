@@ -23,6 +23,7 @@ export class FiresthomeComponent implements OnInit {
       },
       error=>console.log(error)
     )
+    
    }
   ngOnInit() {
   }

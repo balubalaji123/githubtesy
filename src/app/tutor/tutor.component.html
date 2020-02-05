@@ -14,10 +14,15 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="form-container">
             <h1 class="heading">Registration Form</h1>
-            <input type="file" (change)="imageupload($event)">
-            <button type="submit" (click)="upload()">upload</button>
+                    
+                  <img src={{imageurl}} alt="dlxc">
+            <!-- <input type="file" (change)="handlefileinput($event.target.files)" ng2FileSelect [uploader]="uploader">
+            <button type="submit" (click)="uploader.uploadAll()">image</button>
+         -->
+<!-- <button type="submit" >image</button> -->
             <form  #userForm="ngForm" (ngSubmit)="onsubmit()" >
-              
+                <input type="file" (change)="selectimage($event)">
+
                 <!-- <div class="form-group">
                     <img [src]="imageUrl" class="rounded-circle"   width="200"  height="200"><br>
                     <input type="file"  #name="ngModel" class="form-control" name="img"  [(ngModel)]="tutor1.img"  (change)="handleFileInput($event.target.files)" >
@@ -64,10 +69,10 @@
                         <option *ngFor="let day of days1">{{day}}</option>
                     </select>
                     <small class="text-danger" [class.d-none]="daysi.valid || daysi.untouched">choose the day</small>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label>Date</label>
                         <input type="date" name="date" [(ngModel)]="tutor1.date"><br><br>
-                    </div>
+                    </div> -->
                 </div>
                 <div *ngIf="b"  class="form-group">
                     <label> days:</label>
@@ -117,7 +122,7 @@
                     <textarea required #msg="ngModel" [class.is-invalid]="msg.invalid && msg.touched" placeholder="Enter Description" class="form-control" name="msg" [(ngModel)]="tutor1.description"  id="exampleFormControlTextarea1" rows="3"></textarea>
                     <small   class="text-danger" [class.d-none]="msg.valid || msg.untouched">Description is required</small>
                   </div>
-                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit">Submit</button>
+                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit" (click)="onimage()">Submit</button>
             
             </form>
         </div></div>

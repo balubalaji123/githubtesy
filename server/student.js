@@ -5,8 +5,6 @@ var dbo=''
 var checkuser
 var temp
 var url = "mongodb://localhost:27017/";
-
-
 MongoClient.connect(url, function(err, db) {
       if (err) throw err;
        dbo = db.db("mydb");
@@ -17,8 +15,7 @@ router.get('/', function(req,res){
         if (err) throw err;
         checkuser=result
         res.send(JSON.stringify(checkuser))
-      });
-      
+      });    
 })
 router.get('/subjects',function(req,res){
     var subjectarray=[]
@@ -38,8 +35,6 @@ router.get('/subjects',function(req,res){
         }
     res.send(JSON.stringify(subjectarray))
     })
-   
-
 })
 router.post('/subsubjects',function(req,res){
     console.log(JSON.stringify(req.body))
