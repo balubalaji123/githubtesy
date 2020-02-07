@@ -15,7 +15,7 @@ export class TutorComponent implements OnInit {
 days1=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','EveryDay'];
 fees=['fee','no fee'];
 topicHasError =true;
-imageUrl = '/assets/images/icontutorials41.jpg';
+public imageUrl = '../../assets/TeacherStudent.jpg';
 public a=false;
 public images
 public rand
@@ -58,7 +58,8 @@ selectimage(event){
   if(event.target.files.length>0){
     const file=event.target.files[0]
 this.images=file
-this.imageUrl=file
+this.imageUrl=event.target.result
+console.log(this.imageUrl)
   }
   
 }

@@ -18,7 +18,7 @@ var d
 
 var store=multer.diskStorage({
 destination:function(req,file,cb){
-        cb(null,'./src/assets/uploads1')
+        cb(null,'./server/uploads1')
     },
     filename:function(req,file,cb){
         // console.log("c"+JSON.stringify(file))
@@ -67,6 +67,10 @@ router.post('/',function(req,res){
     else{
         selecteddays=days
     }
+    if(!selecteddays.length){
+        selecteddays=req.body.days
+
+    }
     // console.log(selecteddays)
     tutorsubject=req.body.subject
     check=0
@@ -83,7 +87,6 @@ router.post('/',function(req,res){
     tutorfee=req.body.fee 
     tutordescription=req.body.description 
     tutorwatsuplink=req.body.watsuplink
-    tutorday=req.body.day
     tutormail=req.session.mail
     tutorsubsubject=req.body.subsubject
     // for subsubject
@@ -119,7 +122,7 @@ router.post('/',function(req,res){
 // console.log('d',d)
 myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutortime:tutortime,
         tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,
-        tutorwatsuplink:tutorwatsuplink,tutorday:tutorday,tutorparticipitation:true,selecteddays:selecteddays
+        tutorwatsuplink:tutorwatsuplink,tutorparticipitation:true,selecteddays:selecteddays
     ,likes:0,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject}
         dbo.collection("tutors").insertOne(myobj, function(err, res) {
             
