@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
 body{
     padding: 0;
     margin: 0;
 }
+=======
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+>>>>>>> 3c9404d3d6d7d64f5619fda13f5fcbf0c8c66421
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

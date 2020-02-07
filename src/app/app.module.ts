@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import {FileUploadModule} from'ng2-file-upload'
 import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,8 +20,19 @@ import{GoogleLoginProvider, FacebookLoginProvider, SocialLoginModule, AuthServic
 import { GoogleComponent } from './google/google.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
+
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+// import { ListComponent } from './list/list.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
@@ -61,11 +72,20 @@ export function getAuthServiceConfigs() {
     FormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatDialogModule,
+    FileUploadModule,
 
     // AuthServiceConfig,
     // GoogleLoginProvider,
     // FacebookLoginProvider,
-    SocialLoginModule
+    SocialLoginModule,
+
+    BrowserAnimationsModule
 
 
   ],

@@ -9,6 +9,7 @@ public days: Object=[{"mon":false,"tue":false,"wed":false,"thu":false,"fri":fals
 public date: string,
 public fee:number,
 public description:string,
-public watsuplink:string
+public watsuplink:string,
+public subsubject:string
  ){}
 }

@@ -8,9 +8,31 @@
 </head>
 <body>
     <app-navbar></app-navbar>
+    <div class="container">
+        <!-- <h4>subject</h4> -->
+        <mat-form-field>
+          <mat-label>Subjects</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let subject of allsubjects"  >
+           <p (click)="subjectselection(subject)">  {{subject}}</p>  
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Subtopics</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let sub of subsubjects" v >
+                <p (click)="subsubjectselection(sub)">  {{sub}}</p> 
+              </mat-option>
+            </mat-select>
+          </mat-form-field>&nbsp;&nbsp;
+          <button type="button" (click)="onsel()" mat-raised-button>Today Classes</button>
+    </div>
     <div class="container"  *ngIf=!display>
         <script type="text/javascript" src="functions/searchbar.js"></script>
-     
+        <h1>subjects</h1>
+     <!-- <li *ngFor="let sub of allsubjects">{{sub}}</li> -->
+     <br>
              <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
         <!-- <input type="text"> -->
             </div>
@@ -30,6 +52,24 @@
                                         <div class="card-body"><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
                                     </div>
                                     <div class="col">
+                                      <div class="card-body"><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</div>
+                                  </div>
+                                    <div class="col">
+                                      <div class="card-body">
+                                        <div *ngIf="a.tutorimage===null;else image">
+                                        <img src="../../assets/uploads1/ydijjitgpalmtnznukljdzbauf.jpg" alt="dsxcz">{{a.tutorimage}}
+                                        </div>
+
+
+<!-- add the else block -->
+
+                                                                                  
+                                        <ng-template #image>
+                                          <img src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">{{a.tutorimage}}
+                                          </ng-template>
+                                      </div>
+                                  </div>
+                                    <div class="col">
                                         <div class="card-body"><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</div> 
                                     </div>
                                     <div class="col">
@@ -38,6 +78,9 @@
                                     <div class="col">
                                         <div class="card-body"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
                                     </div>
+                                    <div class="col">
+                                      <div class="card-body"><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
+                                  </div>
                                 </div>
                                 <div class="card-footer"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
                               </div>
@@ -48,7 +91,6 @@
                 </div>
                               
             </div>
-          
           </li>
         </ul>
         </div>

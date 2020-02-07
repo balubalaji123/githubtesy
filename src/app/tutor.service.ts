@@ -7,12 +7,16 @@ import { from } from 'rxjs';
 })
 export class TutorService {
 private url='/tutor'
+private imageurl='/tutor/image'
 
   constructor(private http:HttpClient) { }
   tutor(details:Tutor){
     let headers=new Headers({'Content-Type':'application/json'})
   return this.http.post<any>(this.url,details)
 
+  }
+  image(image){
+    return this.http.post<any>(this.imageurl,image)
   }
 }
 

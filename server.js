@@ -76,6 +76,14 @@ app.use('/subjectselected',redirectlogin,subjectselected)
 app.use('/dashboard',redirectlogin,dashboard)
 app.use('/session',sessioncheck)
 app.use('/like',like)
+var name
+var address
+app.get('/imageget',function(req,res){
+  name=req.query['name']
+  address=__dirname+'/server/uploads1/'+name
+  res.sendFile(address)
+})
+
 // app.get('/users',function(req,res){
 //   console.log("using put request")
 //   res.send('hello')

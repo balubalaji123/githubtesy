@@ -12,20 +12,16 @@ import { Router, RouterModule } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(private login:LoginService,public router:Router) {
-    console.log("fsdjclm")
- 
+
    }
 public loginexists=true
 public entryhome:boolean
-
 public know
 public data;
 public a;
 public passwordwrong=false;
 public notexists;
-
   ngOnInit() {
-  
   }
   check=new Login('','')
   onselect(){
