@@ -7,30 +7,103 @@
     <title>dashboard</title>
 </head>
 <body>
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <div class="nav">
         <button type="submit" class="btn button" routerLink="/tutor1" routerLinkActive="active"><a>tutor</a></button>
         <button type="submit" class="btn button"  routerLink="/student1" routerLinkActive="active"><a>student</a></button>
         <button type="submit" class="btn button" (click)="classesattended1()" >classes teached</button>
         <button type="submit" class="btn button" (click)="classesenrolled1()" >classes enrolled</button>
     </div>
-    </nav>
-   
-<div *ngFor="let a of asastudent">
-    <p>{{a.learnername}}</p><br>
-    <p>{{a.leanersubject}}</p><br>
-    <p>{{a.learnertime}}</p><br>
-    <p>{{a.date}}</p><br>
-    <p>{{a.like}}</p>
-    <button type="submit" *ngIf="!a.like" (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)">like</button>
-<button type="submit" *ngIf="a.like" (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)" > dislike</button>
-</div>
-<div *ngFor="let b of asatutor">
-    <p>subject= &nbsp; {{b.tutorsubject}}</p>
-    <p>coursetype= &nbsp; {{b.tutorcoursetype}}</p>
-    <p>days= &nbsp; {{b.selecteddays}}</p>
-    <p>likes= &nbsp; {{b.likes}}</p>
-    <br>
-    <button type="submit" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes)">delete</button>
-</div>
+    </nav>  -->
+
+
+    <nav class="navbar navbar-expand-md ">
+  
+        <div class="navbar-brand" >Find my Tutor</div>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+          <span class="fa fa-bars"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav  ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/firesthome" ><i class="fa fa-home"> &nbsp;Home</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about" ><i class="fa fa-clone"> &nbsp;How It works</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/tutor1" ><i class="fa fa-user"> &nbsp;Tutor</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/student1" ><i class="fa fa-graduation-cap"> &nbsp;Student</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  type="submit" (click)="logout()" ><i class="fas fa-sign-out-alt"></i></a>
+          </li>
+          </ul></div>
+      </nav><br>
+      
+      <div class="container-fluid mycontainer">
+          <div class="row justify-content-end ">
+            <!-- <div class="col-6"></div> -->
+              <div style="padding: 20px;" ><button type="submit" class="btn button " (click)="classesattended1()" ><img class="img-icon" src="../../assets/undraw_teaching_f1cm.svg">&nbsp;  Teached</button></div>
+              <div style="padding: 20px;"><button type="submit" class="btn button" (click)="classesenrolled1()" ><img class="img-icon" src="../../assets/undraw_exams_g4ow.svg">&nbsp;  Enrolled</button></div>
+          </div>
+      </div>
+      <!-- cards -->
+
+      
+
+        
+        <div *ngIf="a">
+          <div *ngFor="let a of asastudent" class="container">
+            <div class="row myrow">
+            <div  class="card mycard">
+              <div class="card-body">
+                <div class="card-data">
+                  <p><b>Name</b> &nbsp;: &nbsp;{{a.learnername}}</p>
+                  <p><b>Subject</b>&nbsp;:&nbsp;{{a.leanersubject}}</p>
+                  <p><b>Time</b>&nbsp;:&nbsp;{{a.learnertime}}</p>
+                  <p><b>Date</b>&nbsp;:&nbsp;{{a.date}}</p>
+                  <p><b>Like</b>&nbsp;:&nbsp;{{a.like}}</p>
+                  <button type="submit" *ngIf="!a.like" (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)"><i [style.color]= "hasError ? '#23415c' :'gray'"  class="fa fa-thumbs-up"></i></button>
+              <button type="submit" *ngIf="a.like" (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail)" ><i class="fa fa-thumbs-up"></i></button>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+
+      
+        <div *ngIf="b">
+          <div *ngFor="let b of asatutor" class="container">
+            <div class="row myrow">
+            <div   class="card mycard">
+              <div class="card-body">
+                <div class="card-data" >
+                  <p><b>Subject</b>&nbsp;= &nbsp; {{b.tutorsubject}}</p>
+                  <p><b>Coursetype</b>&nbsp;= &nbsp; {{b.tutorcoursetype}}</p>
+                  <p><b>Days</b>&nbsp;= &nbsp; {{b.selecteddays}}</p>
+                  <p><b>Likes</b>&nbsp;= &nbsp; {{b.likes}}</p>
+                  <br>
+                  <button class="del-button" type="submit" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes)">delete</button >
+              </div>
+              </div>
+            </div>
+          </div><br>
+        </div>
+      </div>
+
+
+    
+
+      </body>
+
+
+   <!-- as tutor -->
+ 
+
+<!-- as student -->
+
 <button routerLink="/profile">profile</button>

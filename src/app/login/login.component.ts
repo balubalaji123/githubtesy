@@ -12,7 +12,7 @@ import { Router, RouterModule } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   constructor(private login:LoginService,public router:Router) {
-    
+    console.log("fsdjclm")
  
    }
 public loginexists=true
@@ -29,10 +29,10 @@ public notexists;
   }
   check=new Login('','')
   onselect(){
-    // this.data=false;
+  
     this.login.login(this.check)
 .subscribe(
-  (data)=>{this.loginexists=data,this.entryhome=data,console.log(data),this.a=data;
+  (data)=>{this.loginexists=data,this.entryhome=data,console.log("login"+data),this.a=data;
     if(this.a=="not exists")
     {
       //if user not exists

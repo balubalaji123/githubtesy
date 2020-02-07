@@ -1,54 +1,32 @@
-
-
-<!-- <app-navbar></app-navbar> -->
 <!-- session navbar  code -->
-<!-- <p>navbar works!</p> -->
-<!-- <div [hidden]=sessionnavbar> -->
-<!-- <app-navbar></app-navbar> -->
-<!-- </div> -->
 
-<nav class="navbar navbar-expand-sm " [hidden]=sessionnavbar>
-    <!-- Brand -->
-    <div class="navbar-brand">Find my Tutor</div>
-  
-    <!-- Links -->
-    <ul class="navbar-nav  ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">How To</a>
-      </li>
-  <p>{{username}}</p>
-  <button (click)="dashboard()">DASHBOARD</button>
-  <button type="submit" (click)="logout()">logout</button>
-
-
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link " href="#" id="navbardrop" data-toggle="dropdown">
-            <i class="fa fa-bars" ></i>
-        </a>
-        
-        <div class="dropdown-menu ">
-          <a class="dropdown-item" href="#">Link 1</a>
-          <a class="dropdown-item" href="#">Link 2</a>
-          <a class="dropdown-item" href="#">Link 3</a>
-        </div>
-      </li>
-    </ul>
-  </nav>
+  <div [hidden]=sessionnavbar>
+<app-navbar></app-navbar>
+</div>
 
 <!-- session not exists navbar code -->
-<div class="navbar navbar-default navbar-fixed top" role="navigation" [hidden]="normalnavbar">
-    <div class="container-fluid">
-     <div class="navbar-brand">Find myTutor</div>
-     <div class=" nav">
+<nav class="navbar  navbar-expand-sm" role="navigation" [hidden]="normalnavbar">
+         <div class="navbar-brand">Find myTutor</div>
+         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+            <span class="fa fa-bars"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">  
+        <ul class="navbar-nav  ml-auto">
+            <li class="nav-item">
+              <a class="nav-link"  routerLink="/firesthome" >Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/about" >How It works</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/student1" routerLinkActive="active+">Courses</a>
+            </li>
+      
          <button type="button" class="btn button"><a routerLink="/login1" routerLinkActive="active" >Login</a></button>
          <button type="button" class="btn button"><a routerLink="/register1" routerLinkActive="active">Register</a></button>
-     </div>
-    </div>
- </div>
+        </ul>
+        </div>
+ </nav>
  
  <div class="bg">
      <div class="centered">

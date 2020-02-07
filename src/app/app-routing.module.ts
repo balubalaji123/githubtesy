@@ -9,10 +9,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AboutComponent } from './about/about.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 const routes: Routes = [
-  // {path:'',redirectTo:'home',pathMatch:'full'},
+  {path:'',redirectTo:'firesthome',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
-  {path:'firesthime',component:FiresthomeComponent},
+  {path:'firesthome',component:FiresthomeComponent},
   {path:'register1',component:RegisterComponent},
   {path:'users1',component:HomeComponent},
   {path:'login1',component:LoginComponent},
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path:'tutor1',component:TutorComponent},
   {path:'dashboard1',component:DashboardComponent},
   {path: 'navbar' , component:NavbarComponent},
-  {path:'profile',component:ProfileComponent}
+  {path:'profile',component:ProfileComponent},
+  {path:'about',component:AboutComponent},
+  {path:'**',component:PageNotFoundComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

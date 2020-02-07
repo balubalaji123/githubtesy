@@ -19,7 +19,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import{GoogleLoginProvider, FacebookLoginProvider, SocialLoginModule, AuthServiceConfig} from "angular-6-social-login";
 import { GoogleComponent } from './google/google.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './profile/profile.component';
+import { AboutComponent } from './about/about.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
@@ -48,6 +50,8 @@ export function getAuthServiceConfigs() {
     GoogleComponent,
     NavbarComponent,
     ProfileComponent,
+    AboutComponent,
+    PageNotFoundComponent,
     // SocialLoginModule,
     // AuthServiceConfig
   ],

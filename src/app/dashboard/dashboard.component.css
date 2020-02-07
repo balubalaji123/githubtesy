@@ -1,27 +1,99 @@
+body{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 .navbar{
     background: #23415c;
     color: #fff;
-    padding: 1% 0;
+    padding: 10px 60px 10px 0;
     font-size: 1.2rem;
+    font-weight: 500;
+    font-family: sans-serif;
+    width: 100%;
+}
+.navbar-brand{
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+}
+.nav-link{
+    color: #fff;
+}
+.nav-item{
+    padding:7px;  
+
+}
+.fa{
+    color: #fff;
+
+}
+.fas{
+    color: #fff;
+}
+.img-icon{
+    width: 45px;
+    height: 45px;
+    border: 2px solid #23415c;
+    border-radius: 50%;
+    background: #fff;
+    
+
 }
 .button{
-    background: #fff;
-    border: 3px solid #23415c;
-    border-radius: 20px;
-    color: black;
+    background:#23415c;
+    border: 2px solid #23415c;
+    border-radius: 10px;
+    color:#fff;
     font-size: 18px;
     font-weight: 600;
-}
-.button a{
-    color:black;
-    text-decoration: none;
-}
-.icon{
-    background:#fff;
-    border: 3px solid #23415c;
-    border-radius: 50%;
-    color:black;
-    font-size: 20px;
-    font-weight: 600;
+    padding: 10px;
+    font-family: sans-serif;
     
+  
+}
+.mycontainer{
+    border-bottom: 2px solid lightgrey;
+    padding-bottom: 20px;
+    float: right;
+    
+}
+.myrow{
+    padding: 20px 0px 10px 0px;
+    width: 100%;
+}
+.mycard{
+    background: rgb(250, 247, 255);
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px #cacfd3;
+    width: 100%;
+    
+}
+.card-data p{
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    font-family: sans-serif;
+
+}
+.card-data button{
+    border: none;
+}
+.card-data button i{
+    color: gray;
+    font-size: 25px;
+}
+.card-data button i:visited{
+    color: #23415c;
+}
+.del-button{
+    background:#23415c;
+    border: 2px solid #23415c;
+    border-radius: 5px;
+    color:#fff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px; 
 }

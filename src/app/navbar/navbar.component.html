@@ -1,29 +1,26 @@
-<!-- <p>navbar works!</p> -->
+
 
 <nav class="navbar navbar-expand-sm ">
-    <!-- Brand -->
-    <div class="navbar-brand" href="#">Find my Tutor</div>
   
-    <!-- Links -->
+    <div class="navbar-brand" >Find my Tutor</div>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+      <span class="fa fa-bars"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarMenu">
     <ul class="navbar-nav  ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link"  routerLink="/firesthome" ><i class="fa fa-home"> &nbsp; Home</i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">How It works</a>
+        <a class="nav-link" routerLink="/about" ><i class="fa fa-clone"> &nbsp;How It works</i></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/student1" routerLinkActive="active+">Courses</a>
+        <a class="nav-link" routerLink="/dashboard1" ><i class="fa fa-user"> &nbsp; MyProfile</i></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link"  type="submit" (click)="logout()" ><i class="fas fa-sign-out-alt"></i></a>
+      </li>
+      </ul></div>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa fa-user" ></i>&nbsp;&nbsp;{{username}}</a>
-        
-      </li>
-
-       
-    
-      
-    </ul>
   </nav>
   <!-- <button type="submit" (click)="logout()">logout</button> -->

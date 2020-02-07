@@ -5,7 +5,9 @@ import{LikeService}from'../like.service'
 import{Like}from'../like'
 import { from } from 'rxjs';
 import { error } from 'protractor';
-import{Delete}  from'../delete'
+import{Delete}  from'../delete';
+import{LogoutService} from'../logout.service';
+import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,6 +16,18 @@ import{Delete}  from'../delete'
 export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
+  logout(){
+    this.logoutservice.logout()
+    .subscribe(
+      data=>{console.log("logout component "+data)},
+      error=>console.log(error)
+    )
+    this.route.navigate([''])
+
+  }
+  public hasError=true;
+  public a=false;
+  public b=false;
   public asastudent
   public deletemode:Delete
   public asatutor
@@ -21,9 +35,10 @@ export class DashboardComponent implements OnInit {
   public liking1:Like
   public disliked:Like
 public dislike:boolean
-  constructor(private dashboard:DashboardService,public Like:LikeService) {}
+  constructor(private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {}
   classesattended1(){
     this.asastudent=[]
+    this.b=true;
     this.dashboard.subjectselection()
     .subscribe(
       data=>{console.log(data),this.asatutor=data},
@@ -47,6 +62,7 @@ this.dashboard.learntselection()
   classesenrolled1(){
     this.asatutor=[]
     this.student=!this.student
+    this.a=true;
     this.dashboard.learntselection()
     .subscribe(
       data=>{console.log(data),this.asastudent=data,this.dislike=data.like},
