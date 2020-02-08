@@ -51,8 +51,13 @@
           </div>
       </div>
       <!-- cards -->
-
-      
+<div *ngIf="showimmediatecourses">
+      <h1>immediate courses</h1>
+      <div *ngFor="let a of immediatecourse">
+        <p>{{a.maxstudents}}</p>
+        <p>{{a.tutorsubject}}</p>
+        <p>{{a.likes}}</p>
+      </div></div>
 
         
         <div *ngIf="a">

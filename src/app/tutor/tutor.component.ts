@@ -5,6 +5,8 @@ import{TutorService} from '../tutor.service'
 import { HttpClient } from '@angular/common/http';
 import { error } from 'protractor';
 import{FileSelectDirective,FileUploader} from 'ng2-file-upload';
+import { Router, RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-tutor',
   templateUrl: './tutor.component.html',
@@ -25,8 +27,8 @@ public b=false;
  public result: string 
 public uri='http://localhost:3000/tutor/upload'
 public uploader:FileUploader=new FileUploader({url:this.uri})
-public tutor1=new Tutor('','','',{},'',0,'','','')
-  constructor(private tutorservic:TutorService,private http: HttpClient) {
+public tutor1=new Tutor('','','',{},'',10,0,'','','')
+  constructor(private tutorservic:TutorService,private http: HttpClient,public router:Router) {
 
    }
 public aftersubmission=false
@@ -40,6 +42,7 @@ onsubmit(){
     data=>console.log("tutor"+data),
     error=>console.log(error)
   )
+
 }  
 updateCheckedOptions(option, event) {
   this.tutor1.days[option] = event.target.checked;

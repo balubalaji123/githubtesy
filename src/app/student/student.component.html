@@ -8,8 +8,20 @@
 </head>
 <body>
     <app-navbar></app-navbar>
-    <div class="container">
-        <!-- <h4>subject</h4> -->
+   
+        
+      
+    <div class="container"  *ngIf=!display>
+      <div class="container">
+      <mat-form-field>
+        <mat-label>course type filter</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let Course of Courses">
+         <p (click)="typeselection(Course)">  {{Course}}</p>  
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
         <mat-form-field>
           <mat-label>Subjects</mat-label>
           <mat-select>
@@ -28,15 +40,11 @@
           </mat-form-field>&nbsp;&nbsp;
           <button type="button" (click)="onsel()" mat-raised-button>Today Classes</button>
     </div>
-    <div class="container"  *ngIf=!display>
-        <script type="text/javascript" src="functions/searchbar.js"></script>
-        <h1>subjects</h1>
-     <!-- <li *ngFor="let sub of allsubjects">{{sub}}</li> -->
      <br>
              <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
         <!-- <input type="text"> -->
             </div>
-            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
+            <input *ngIf=!display type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 
         <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
         <ul id="wrappers">
@@ -57,7 +65,7 @@
                                     <div class="col">
                                       <div class="card-body">
                                         <div *ngIf="a.tutorimage===null;else image">
-                                        <img src="../../assets/uploads1/ydijjitgpalmtnznukljdzbauf.jpg" alt="dsxcz">{{a.tutorimage}}
+                                        <img src="../../assets/student-img1.jpg" alt="dsxcz">{{a.tutorimage}}
                                         </div>
 
 
@@ -79,13 +87,16 @@
                                         <div class="card-body"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
                                     </div>
                                     <div class="col">
+                                      <div class="card-body"><b>remaining entries:</b>&nbsp;&nbsp;&nbsp;{{a.maxstudents}}</div>
+                                  </div>
+                                    <div class="col">
                                       <div class="card-body"><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
                                   </div>
                                 </div>
                                 <div class="card-footer"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
                               </div>
                               
-                              <button  type="submit" class="btn btn-info btn-lg" (click)="subjectselected(a.tutorname,a.tutorsubject,a.tutortime,a.tutorcoursetype,a.tutorfee,a.tutordescription,a.tutorwatsuplink,a.tutormail)" >Subscribe</button>
+                              <button  type="submit" class="btn btn-info btn-lg" (click)="subjectselected(a.tutorname,a.tutorsubject,a.tutortime,a.tutorcoursetype,a.tutorfee,a.tutordescription,a.tutorwatsuplink,a.tutormail,a.tutorsubsubject)" >Subscribe</button>
                         </div>
                     </div>
                 </div>

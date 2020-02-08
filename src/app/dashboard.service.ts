@@ -7,6 +7,7 @@ export class DashboardService {
   private url='/dashboard'
   private url1 ='/dashboard/learnt'
   private profileurl='/dashboard/profileurl'
+  private fastfillurl='/dashboard/fastfilling'
 
   constructor(private http:HttpClient) {}
   // dashboard as a teacher
@@ -20,6 +21,9 @@ export class DashboardService {
   // for profile
   profiledata(){
     return this.http.get<any>(this.profileurl)
+  }
+  getfastfilling(){
+    return this.http.get<any>(this.fastfillurl)
   }
 
 }

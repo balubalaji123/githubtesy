@@ -14,6 +14,7 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  
   ngOnInit() {
   }
   logout(){
@@ -34,16 +35,25 @@ export class DashboardComponent implements OnInit {
   public liking:Like
   public liking1:Like
   public disliked:Like
+  public immediatecourse
+  public showimmediatecourses=true
 public dislike:boolean
-  constructor(private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {}
+  constructor(private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {
+    // for fast filling classes
+    this.dashboard.getfastfilling().subscribe(
+      data=>this.immediatecourse=data,
+      error=>console.log(error)
+    )
+  }
   classesattended1(){
-    this.asastudent=[]
+    this.showimmediatecourses=false
     this.b=true;
     this.dashboard.subjectselection()
     .subscribe(
       data=>{console.log(data),this.asatutor=data},
       error=>console.log("error in dashboard")
     )
+    
   }
   dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
     this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
@@ -60,6 +70,7 @@ this.dashboard.learntselection()
 
   }
   classesenrolled1(){
+    this.showimmediatecourses=false
     this.asatutor=[]
     this.student=!this.student
     this.a=true;

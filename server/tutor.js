@@ -122,8 +122,8 @@ router.post('/',function(req,res){
 // console.log('d',d)
 myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutortime:tutortime,
         tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,
-        tutorwatsuplink:tutorwatsuplink,tutorparticipitation:true,selecteddays:selecteddays
-    ,likes:0,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject}
+        tutorwatsuplink:tutorwatsuplink,selecteddays:selecteddays
+    ,likes:0,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,maxstudents:req.body.maxstudents}
         dbo.collection("tutors").insertOne(myobj, function(err, res) {
             
         })

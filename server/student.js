@@ -10,7 +10,7 @@ MongoClient.connect(url, function(err, db) {
        dbo = db.db("mydb");
     });
 router.get('/', function(req,res){
-    c={tutorlocation:req.session.location}
+    c={tutorlocation:req.session.location,maxstudents: { $gt: 0 }}
     dbo.collection("tutors").find(c).sort({"likes":-1}).toArray(function(err, result) {
         if (err) throw err;
         checkuser=result
@@ -69,5 +69,12 @@ router.post('/filter',function(req,res){
     })
     // res.send(JSON.stringify("sucess of fiter"))
 })
+router.post('/coursetype',function(req,res){
+    dbo.collection("tutors").find(req.body,{$exists:true}).toArray(function(err,response){
+        res.send(JSON.stringify(response))
+
+    })
+})
+
 
 module.exports=router

@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 const routes: Routes = [
   {path:'',redirectTo:'firesthome',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'navbar' , component:NavbarComponent},
   {path:'profile',component:ProfileComponent},
   {path:'about',component:AboutComponent},
+  {path:'forgotpassword',component:ForgotpasswordComponent},
   {path:'**',component:PageNotFoundComponent}
 ];
 @NgModule({

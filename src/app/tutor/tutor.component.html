@@ -104,18 +104,15 @@
                     </select>
                     <small   class="text-danger" [class.d-none]="course.valid || course.untouched">choose tyep of course</small>
                 </div>
-                <!-- <div class="form-group">
-                    <label>Days</label>
-                    <select required #day="ngModel" [class.is-invalid]="day.invalid && day.touched" class="custom-select" name="Day" [(ngModel)]="tutor1.day">
-                        <option value="">Select Days</option>
-                        <option *ngFor="let Day  of Days">{{Day}}</option>
-                    </select>
-                    <small   class="text-danger" [class.d-none]="day.valid || day.untouched">choose the day</small>
-                </div> --> 
                 <div class="form-group">
                     <label>Fee</label>
                     <input type="text" required #fee="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter fees" class="form-control" name="fee" [(ngModel)]="tutor1.fee">
                     <small   class="text-danger" [class.d-none]="fee.valid || fee.untouched">choose the fees</small>
+                </div>
+                <div class="form-group">
+                    <label>maximum students</label>
+                    <input type="number" required #maxstudents="ngModel" [class.is-invalid]="maxstudents.invalid && maxstudents.touched" placeholder="Enter maximum students" class="form-control" name="maxstudents" [(ngModel)]="tutor1.maxstudents">
+                    <small   class="text-danger" [class.d-none]="link.valid || link.untouched">Link Is Required</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description</label>
@@ -128,7 +125,7 @@
         </div></div>
         </div>
         </div></div>
-        <!-- <app-profile [userModel]="userModel"></app-profile> -->
+        
 
 
         <app-congrats *ngIf=aftersubmission></app-congrats> 

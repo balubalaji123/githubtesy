@@ -55,4 +55,14 @@ router.get('/profileurl',function(req,res){
       });
   
 })
+router.get('/fastfilling',function(req,res){
+  c={tutorlocation:req.session.location,maxstudents: { $gt: 0 }}
+
+  dbo.collection('tutors').find(c).sort({"maxstudents":-1}).limit(10).toArray(function(err,result){
+   if(err)throw err
+   console.log("result")
+    res.send(JSON.stringify(result))
+  })
+})
+
 module.exports=router

@@ -32,6 +32,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 // import { ListComponent } from './list/list.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -63,6 +64,7 @@ export function getAuthServiceConfigs() {
     ProfileComponent,
     AboutComponent,
     PageNotFoundComponent,
+    ForgotpasswordComponent,
     // SocialLoginModule,
     // AuthServiceConfig
   ],

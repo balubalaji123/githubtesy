@@ -5,7 +5,8 @@ import{Tutor} from '../tutor';
 import{Subsubject} from '../subsubject'
 import{Filter} from'../filter'
 import { error } from 'protractor';
-declare const check:any;
+import{Coursetype} from'../coursetype'
+
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -18,9 +19,11 @@ export class StudentComponent implements OnInit {
 public display=false
 public selectedcouse=[]
 public subject
+public   Courses=['Crash','Competative'];
 public filterdata:Filter
 public subsubject
 public allsubjects=[]
+public selectedcoursetype:Coursetype
 public subsubjects=[]
 public subjectoption:Subsubject
 public filter:Filter
@@ -53,7 +56,7 @@ studentservice.allsubjects().subscribe(
   ngOnInit() {
   }
  
-  subjectselected(a1,a2,a3,a4,a5,a6,a7,a8){
+  subjectselected(a1,a2,a3,a4,a5,a6,a7,a8,a9){
     this.display=true
 this.selectedcouse.push(a1)
 this.selectedcouse.push(a2)
@@ -63,6 +66,8 @@ this.selectedcouse.push(a5)
 this.selectedcouse.push(a6)
 this.selectedcouse.push(a7)
 this.selectedcouse.push(a8)
+this.selectedcouse.push(a9)
+
 
   }
 
@@ -84,8 +89,15 @@ this.selectedcouse.push(a8)
     )
 
   }
-
+  typeselection(Course){
+    this.selectedcoursetype=new Coursetype(this.subject,this.subsubject,Course)
+this.studentservice.coursetype(this.selectedcoursetype).subscribe(
+  data=>this.subjectslist=data,
+  error=>console.log("error",error)
+)
+  }
 }
+
 
 
 
