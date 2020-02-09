@@ -54,14 +54,15 @@ var q={learnername:learnername,learnermail:learnermail,leanersubject:leanersubje
 dbo.collection("learnt").insertOne(q, function(err, res) { 
 })
 var c={tutorsubject:leanersubject,tutorsubsubject:req.body.subsubject,tutormail:tutormail}
-dbo.collection('tutors').find(c,{$exists:true}).toArray(function(req,result){
+dbo.collection('onceteacher').find(c,{$exists:true}).toArray(function(req,result){
   if(result.length){
   var check=result[0].maxstudents
   check=check-1
   var newtutorvalues = { $set: {maxstudents:check} };
-  dbo.collection('tutors').updateOne(c,newtutorvalues,function(err,resu){
+  dbo.collection('onceteacher').updateOne(c,newtutorvalues,function(err,resu){
     if(err)throw err
   })}
 })
+res.end()
 })
 module.exports=router

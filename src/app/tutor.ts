@@ -2,7 +2,9 @@ export class Tutor {
     constructor(
 // public image:File,        
 public subject:string,
-public time:string,
+public timeduration:string,
+// for which time
+public teachingtime:string,
 public coursetype:string,
 public days: Object=[{"mon":false,"tue":false,"wed":false,"thu":false,"fri":false,"sat":false,"sun":false,"every":false}],
 // courseduration:number,

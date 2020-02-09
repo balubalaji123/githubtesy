@@ -10,7 +10,7 @@
     <app-navbar></app-navbar>
    
         
-      
+      <button (click)="gettodayclasses()">today classes</button>
     <div class="container"  *ngIf=!display>
       <div class="container">
       <mat-form-field>
@@ -59,7 +59,7 @@
                                     <div class="col">
                                         <div class="card-body"><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col" *ngIf="a.selecteddays">
                                       <div class="card-body"><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</div>
                                   </div>
                                     <div class="col">
@@ -81,12 +81,20 @@
                                         <div class="card-body"><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</div> 
                                     </div>
                                     <div class="col">
+                                      <div class="card-body"><b>time duration:</b>&nbsp;&nbsp;&nbsp;{{a.timeduration}}</div> 
+                                  </div>
+                                  <div class="col" *ngIf="a.tutordate">
+                                    <div class="card-body"><b>class date:</b>&nbsp;&nbsp;&nbsp;{{a.tutordate}}</div> 
+                                </div>
+                                  
+
+                                    <div class="col">
                                         <div class="card-body"><b>Course:</b>&nbsp;&nbsp;&nbsp;{{a.tutorcoursetype}}</div> 
                                     </div>
-                                    <div class="col">
+                                    <div class="col" *ngIf="a.likes">
                                         <div class="card-body"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col" *ngIf="a.maxstudents">
                                       <div class="card-body"><b>remaining entries:</b>&nbsp;&nbsp;&nbsp;{{a.maxstudents}}</div>
                                   </div>
                                     <div class="col">

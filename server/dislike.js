@@ -16,7 +16,7 @@ MongoClient.connect(url, function(err, db) {
                 console.log("res from dislike")
               });
           var tutorquery={tutormail:req.body.tutormail,tutorname:req.body.learnername,tutorsubject:req.body.leanersubject}
-          dbo.collection("tutors").find(tutorquery,{likes:1}).toArray(function(err,result){
+          dbo.collection("continousteacher").find(tutorquery,{likes:1}).toArray(function(err,result){
             if(err)
             console.log(err)
             else if(result.length){
@@ -24,7 +24,7 @@ MongoClient.connect(url, function(err, db) {
             // for increase likes in tutors account
             likess=likess-1;
         var newtutorvalues = { $set: {likes:likess} };
-        dbo.collection("tutors").updateOne(tutorquery, newtutorvalues, function(err, res) {
+        dbo.collection("continousteacher").updateOne(tutorquery, newtutorvalues, function(err, res) {
             if (err) throw err;
             // console.log(res)
           });}

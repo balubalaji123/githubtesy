@@ -52,13 +52,24 @@
       </div>
       <!-- cards -->
 <div *ngIf="showimmediatecourses">
-      <h1>immediate courses</h1>
+      <h1>fastfilling</h1>
       <div *ngFor="let a of immediatecourse">
-        <p>{{a.maxstudents}}</p>
-        <p>{{a.tutorsubject}}</p>
-        <p>{{a.likes}}</p>
+        <p><strong>seats  left:</strong>{{a.maxstudents}}</p>
+        <p><strong>subject:</strong>{{a.tutorsubject}}</p>
+        <p><strong>sub subject :</strong>{{a.tutorsubsubject}}</p>
+        <p><strong>date:</strong>{{a.tutordate}}</p>
+        <!-- <p><strong>likes:</strong>{{a.likes}}</p> -->
+<br>
       </div></div>
+<div *ngIf="showimmediatecourses">
+  <h3>famous courses</h3>
+  <div *ngFor="let a of mostliked">
+    <p><strong>subject:</strong>{{a.tutorsubject}}</p>
+    <p><strong>sub subject:</strong>{{a.tutorsubsubject}}</p>
+    <p><strong>course type :</strong>{{a.tutorcoursetype}}</p>
+    <p><strong>likes:</strong>{{a.likes}}</p>
 
+</div></div>
         
         <div *ngIf="a">
           <div *ngFor="let a of asastudent" class="container">
@@ -88,11 +99,13 @@
               <div class="card-body">
                 <div class="card-data" >
                   <p><b>Subject</b>&nbsp;= &nbsp; {{b.tutorsubject}}</p>
+                  <p><b>Subsubject</b>&nbsp;= &nbsp; {{b.tutorsubsubject}}</p>
+
                   <p><b>Coursetype</b>&nbsp;= &nbsp; {{b.tutorcoursetype}}</p>
                   <p><b>Days</b>&nbsp;= &nbsp; {{b.selecteddays}}</p>
                   <p><b>Likes</b>&nbsp;= &nbsp; {{b.likes}}</p>
                   <br>
-                  <button class="del-button" type="submit" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes)">delete</button >
+                  <button class="del-button" type="submit" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes,b.tutorsubsubject)">delete</button >
               </div>
               </div>
             </div>

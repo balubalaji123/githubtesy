@@ -19,6 +19,7 @@ export class StudentComponent implements OnInit {
 public display=false
 public selectedcouse=[]
 public subject
+public todayclasseslist:Tutor[]
 public   Courses=['Crash','Competative'];
 public filterdata:Filter
 public subsubject
@@ -34,23 +35,14 @@ studentservice.allsubjects().subscribe(
   data=>{console.log("data"+data);this.allsubjects=data},
   error=>console.log(error)
 )
-// to get all subsubjects
-// studentservice.allsubsubjects().subscribe(
-//   data=>{console.log(data)},
-//   error=>console.log(error)
-// )
-
 // to get all details
     studentservice.subjectslist()
     .subscribe(
-      data=>{this.subjectslist=data},
+      data=>{console.log("check",data),this.subjectslist=data},
       error=>console.log(error)
     )
-    // for (let index = 0; index < this.subjectslist.length; index++) {
-    //   const element = this.subjectslist[index];
-    //   console.log("element="+element)
-      
-    // }
+    
+    
    }
 
   ngOnInit() {
@@ -96,16 +88,13 @@ this.studentservice.coursetype(this.selectedcoursetype).subscribe(
   error=>console.log("error",error)
 )
   }
+  gettodayclasses(){
+this.studentservice.todayclasses().subscribe(
+  data=>console.log(data),
+  err=>console.log(err)
+)
+  }
 }
 
 
 
-
-// name:string,
-// subject:string,
-// time:number,
-// coursetype:string,
-// // courseduration:number,
-// fee:number,
-// description:string,
-// watsuplink:string

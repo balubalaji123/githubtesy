@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
     this.route.navigate([''])
 
   }
+  public mostliked
   public hasError=true;
   public a=false;
   public b=false;
@@ -44,13 +45,19 @@ public dislike:boolean
       data=>this.immediatecourse=data,
       error=>console.log(error)
     )
+    // for most liked
+    this.dashboard.highliked().subscribe(
+      data=>this.mostliked=data,
+      error=>console.log(error)
+    )
   }
   classesattended1(){
     this.showimmediatecourses=false
+    this.asastudent=[]
     this.b=true;
     this.dashboard.subjectselection()
     .subscribe(
-      data=>{console.log(data),this.asatutor=data},
+      data=>{this.asatutor=[],console.log(data),this.asatutor=data},
       error=>console.log("error in dashboard")
     )
     
@@ -95,8 +102,8 @@ this.Like.like(this.liking)
       error=>console.log("error in dashboard")
     )
   }
-  delete(tutorsubject,cousetype,likes){
-this.deletemode=new Delete(tutorsubject,cousetype,likes)
+  delete(tutorsubject,cousetype,likes,tutorsubsubject){
+this.deletemode=new Delete(tutorsubject,cousetype,likes,tutorsubsubject)
 console.log(JSON.stringify(this.deletemode))
 this.Like.delete(this.deletemode).
 subscribe(

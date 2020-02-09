@@ -54,8 +54,6 @@ router.post('/upload',upload.single('file'),function(req,res){
 
 
 router.post('/',function(req,res){
-    // console.log(typeof(makeid(5)));
-
     console.log("tutor"+JSON.stringify(req.body))
     selecteddays=[]
     tutordays=req.body.days
@@ -69,94 +67,54 @@ router.post('/',function(req,res){
     }
     if(!selecteddays.length){
         selecteddays=req.body.days
-
     }
-    // console.log(selecteddays)
     tutorsubject=req.body.subject
-    check=0
-    // for subjects
-    for(i=0;i<subjectsarr.length;i++){
-        if(subjectsarr[i]==tutorsubject)
-        {check=1}
-    }
-    if(check==0){
-        subjectsarr.push(tutorsubject)
-    }    
-    tutortime=req.body.time
+    tutortime=req.body.teachingtime
+    timeduration=req.body.timeduration
     tutorcoursetype=req.body.coursetype 
     tutorfee=req.body.fee 
     tutordescription=req.body.description 
     tutorwatsuplink=req.body.watsuplink
     tutormail=req.session.mail
     tutorsubsubject=req.body.subsubject
-    // for subsubject
-    check1=0
-    checksub=0
-//     for(i=0;i<subsubjectarr.length;i++){
-//         // if subject exists
-// if(tutorsubject==Object.keys(subsubjectarr[i]))
-// {
-// // check for subject exists
-//     check1=1
-//     temp=[]
-//     var temp=subsubjectarr[i][tutorsubject]
-//     for(j=0;j<temp.length;j++){
-//         if(temp[i]==tutorsubsubject){
-// // if subsubjectexists
-// checksub=1
-//         }
-//     }
-//     if(checksub==0){
-//         temp.push(tutorsubsubject)
-//         subsubjectarr[i][tutorsubject]=temp
-//         console.log(subsubjectarr[i][tutorsubject])
-//     }
-// }
-//     }
-//     if(check1==0){
-//         var c={}
-//         c[tutorsubject]=[tutorsubsubject]
-//         subsubjectarr.push(c)
-//         console.log("sub subject"+JSON.stringify(subsubjectarr))
-//     }
-// console.log('d',d)
-myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutortime:tutortime,
-        tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,
-        tutorwatsuplink:tutorwatsuplink,selecteddays:selecteddays
-    ,likes:0,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,maxstudents:req.body.maxstudents}
-        dbo.collection("tutors").insertOne(myobj, function(err, res) {
+    if(req.body.date===""){
+        myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,
+        tutormail:tutormail,tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,tutortime:tutortime,timeduration:timeduration, tutorwatsuplink:tutorwatsuplink,selecteddays:selecteddays,likes:0
+    }
+        dbo.collection("continousteacher").insertOne(myobj, function(err, res) {
             
         })
+    }
+    else
+    {
+        
+        // for once
+        myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,
+            tutormail:tutormail,tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,tutortime:tutortime,timeduration:timeduration, tutorwatsuplink:tutorwatsuplink,
+            maxstudents:req.body.maxstudents,tutordate:new Date(req.body.date)
+        }
+        dbo.collection("onceteacher").insertOne(myobj, function(err, res) {
+            
+        })
+
+    }
+
+
+
+
+
+
+
+
+    // myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutortime:tutortime,
+    //     tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,
+    //     tutorwatsuplink:tutorwatsuplink,selecteddays:selecteddays
+    // ,likes:0,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,maxstudents:req.body.maxstudents}
+    //     dbo.collection("tutors").insertOne(myobj, function(err, res) {
+            
+    //     })
 res.send(true)
 })
-// var store=multer.diskStorage({
-//     destination:function(req,file,cb){
-//         cb(null,'./uploads')
-//     },
-//     filename:function(req,file,cb){
-//         cb(null,"filename")
-//     }
-// });
-// var upload=multer({storage:store}).single('file');
-
-// router.post('/image',function(req,res){
-//     upload(req,res,function(err){
-//         if(err){
-//             res.send(JSON.stringify("error"))
-//         }
-//         else
-//         res.send(JSON.stringify("sucess"))
-//     })
-// res.send(JSON.stringify("after"))
-// })
-// router.get('/sujects',function(req,res){
-
-// res.send(JSON.stringify(subjectsarr))
-// })
-
-// router.get('/subsubjects',function(req,res){
-//     res.send(JSON.stringify(subsubjectarr))
-// })
 
 
 

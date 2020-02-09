@@ -15,6 +15,8 @@ public ull2='/student/subsubjects'
 public url3='/student/filter'
 // filter for coursetype
 public url4='/student/coursetype'
+// for today classes
+public url5='/student/todayclasses'
   constructor(private http:HttpClient) { }
   subjectslist(){
 return this.http.get<any>(this.url)
@@ -33,6 +35,9 @@ return this.http.get<any>(this.url)
   coursetype(data:Coursetype){
     console.log("ser",data)
     return this.http.post<any>(this.url4,data)
+  }
+  todayclasses(){
+    return this.http.get<any>(this.url5)
   }
 
 }

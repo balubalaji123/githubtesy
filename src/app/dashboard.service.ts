@@ -8,7 +8,7 @@ export class DashboardService {
   private url1 ='/dashboard/learnt'
   private profileurl='/dashboard/profileurl'
   private fastfillurl='/dashboard/fastfilling'
-
+private mostlikedurl='/dashboard/mostliked'
   constructor(private http:HttpClient) {}
   // dashboard as a teacher
   subjectselection(){
@@ -26,4 +26,7 @@ export class DashboardService {
     return this.http.get<any>(this.fastfillurl)
   }
 
+  highliked(){
+    return this.http.get<any>(this.mostlikedurl)
+  }
 }
