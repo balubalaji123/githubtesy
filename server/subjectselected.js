@@ -48,14 +48,17 @@ var year=time.getFullYear()
 var dt = dateTime.create();
 var formatted = dt.format('Y-m-d H:M:S');
 todaydate=date+'/'+month+'/'+year
-var q={learnername:learnername,learnermail:learnermail,leanersubject:leanersubject,leanersubsubject:req.body.subsubject,learnertime:learnertime,
+var q={tutorimage:req.body.tutorimage,learnername:learnername,learnermail:learnermail,leanersubject:leanersubject,leanersubsubject:req.body.subsubject,
     date:formatted,like:false,tutormail:tutormail}
-    console.log("subjectselected"+JSON.stringify(q))
+    console.log("query   "+JSON.stringify(q))
 dbo.collection("learnt").insertOne(q, function(err, res) { 
 })
 var c={tutorsubject:leanersubject,tutorsubsubject:req.body.subsubject,tutormail:tutormail}
+console.log('c'+JSON.stringify(c))
 dbo.collection('onceteacher').find(c,{$exists:true}).toArray(function(req,result){
+  console.log("outside")
   if(result.length){
+    console.log('if')
   var check=result[0].maxstudents
   check=check-1
   var newtutorvalues = { $set: {maxstudents:check} };
@@ -63,6 +66,6 @@ dbo.collection('onceteacher').find(c,{$exists:true}).toArray(function(req,result
     if(err)throw err
   })}
 })
-res.end()
+
 })
 module.exports=router

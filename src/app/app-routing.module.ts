@@ -12,6 +12,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { CongratsComponent } from './congrats/congrats.component';
+// import { Courseselected } from './courseselected';
+import { CourseselectedComponent } from './courseselected/courseselected.component';
 const routes: Routes = [
   {path:'',redirectTo:'firesthome',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
@@ -27,6 +29,7 @@ const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'forgotpassword',component:ForgotpasswordComponent},
   {path:'congrats',component:CongratsComponent},
+  {path:'courseselected',component:CourseselectedComponent}
   
 ];
 @NgModule({

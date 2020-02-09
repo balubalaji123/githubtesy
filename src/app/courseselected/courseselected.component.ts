@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import{Courseselected} from'../courseselected'
 import { EmailValidator } from '@angular/forms';
 import{ SubjectselectedService} from'../subjectselected.service'
 import { from } from 'rxjs';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-courseselected',
   templateUrl: './courseselected.component.html',
@@ -13,16 +15,40 @@ export class CourseselectedComponent implements OnInit {
 public course=new Array()
 public mail
 public registermodel:Courseselected
-  constructor(public subjectservice:SubjectselectedService) { }
+  constructor(public subjectservice:SubjectselectedService,private roter:ActivatedRoute) {
+    this.name=this.roter.snapshot.paramMap.get('tutorname')
+    this.subject=this.roter.snapshot.paramMap.get('tutorsubject')
+    this.time=this.roter.snapshot.paramMap.get('tutortime')
+    this.coursetype=this.roter.snapshot.paramMap.get('tutorcoursetype')
+    this.tutordate=this.roter.snapshot.paramMap.get('tutordate')
+    this.fee=this.roter.snapshot.paramMap.get('tutorfee')
+    this.subsubject=this.roter.snapshot.paramMap.get('tutorsubsubject')
+    this.tutormail=this.roter.snapshot.paramMap.get('tutormail')
+    this.watsuplink=this.roter.snapshot.paramMap.get('tutorwatsuplink')
+this.image=this.roter.snapshot.paramMap.get('tutorimage')
 
+
+   }
+  //  http://localhost:3000/courseselected;_id=5e4044dd303f22c3207fdcb6;tutorimage=null;tutorname=Balaji;tutorsubject=sub1;tutormail=balajipuvvada12289@gmail.com;tutorlocation=bhimavaram;tutorsubsubject=a;tutorcoursetype=Crash;tutorfee=0;tutordescription=daxz;tutortime=23:12;timeduration=1;tutorwatsuplink=fdcvx;maxstudents=10;tutordate=2020-02-10T00:00:00.000Z
   ngOnInit() {
   }
  
- 
+  public name
+public subject
+public time
+public coursetype
+public tutordate
+// courseduration:number,
+public fee
+public description
+public watsuplink
+public tutormail
+public subsubject
+public image    
   fun(a){
 this.course=a
 // this.mail=b
-this.registermodel=new Courseselected(this.course[0],this.course[1],this.course[2],this.course[3],this.course[4],this.course[5],this.course[6],this.course[7],this.course[8])
+this.registermodel=new Courseselected(this.name,this.subject,this.tutormail,this.subsubject,this.watsuplink,this.image)
 console.log("hello"+this.registermodel)
 this.subjectservice.subjectselected(this.registermodel)
 .subscribe(

@@ -8,7 +8,9 @@
 </head>
 <body>
     <app-navbar></app-navbar>
-   
+    <!-- <app-courseselected [selectedcouse]="selectedcouse" *ngIf=display></app-courseselected>  -->
+    
+    
         
       <button (click)="gettodayclasses()">today classes</button>
     <div class="container"  *ngIf=!display>
@@ -47,11 +49,11 @@
      <br>
              <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
         <!-- <input type="text"> -->
-            </div>
+            
             <input *ngIf=!display type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 
 
-        <!-- <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
+         <div class="card-display" *ngFor="let a of subjectslist | filter:searchText;let i=index" [hidden]=display>
         <ul id="wrappers">
           <li>
             <div class="container">
@@ -74,7 +76,7 @@
                                         </div>
 
 
- add the else block
+ <!-- add the else block -->
 
                                                                                   
                                         <ng-template #image>
@@ -109,7 +111,10 @@
                                 <div class="card-footer"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
                               </div>
                               
-                              <button  type="submit" class="btn btn-info btn-lg" (click)="subjectselected(a.tutorname,a.tutorsubject,a.tutortime,a.tutorcoursetype,a.tutorfee,a.tutordescription,a.tutorwatsuplink,a.tutormail,a.tutorsubsubject)" >Subscribe</button>
+                              <!-- <button  class="btn btn-info btn-lg" (click)="subjectselected(a.tutorname,a.tutorsubject,a.tutortime,a.tutorcoursetype,a.tutorfee,a.tutordescription,a.tutorwatsuplink,a.tutormail,a.tutorsubsubject)" >Subscribe</button>
+                               -->
+                              <button  class="btn btn-info btn-lg" (click)="subjectselected(i)" >Subscribe</button>
+
                         </div>
                     </div>
                 </div>
@@ -117,10 +122,11 @@
             </div>
           </li>
         </ul>
-        </div> -->
+        </div> 
 
 <!-- new card-body -->
-<div class="container">
+<!-- <div class="container">
+  <div *ngIf="!display">
   <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 </div>
 <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
@@ -134,8 +140,8 @@
         <div *ngIf="a.tutorimage===null;else image">
           <img src="../../assets/uploads1/ydijjitgpalmtnznukljdzbauf.jpg" alt="dsxcz">{{a.tutorimage}}
           </div>
-<!-- add the else block -->                                         
-          <ng-template #image>
+add the else block -->                                         
+          <!-- <ng-template #image>
             <img src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">{{a.tutorimage}}
             </ng-template>
         
@@ -157,13 +163,13 @@
 </li>
 </ul>
 </div>
+</div>
+</div> --> 
 
 
 
 
 
+        
 
-
-        <!-- <input  type="text" name="search1" [(ngModel)]="searchText.tutordescription" autocomplete="off"> -->
-
-        <app-courseselected [selectedcouse]="selectedcouse" [hidden]=!display></app-courseselected> 
+        

@@ -35,6 +35,8 @@ export class DashboardComponent implements OnInit {
   public asatutor
   public liking:Like
   public liking1:Like
+  public show
+  public showbutton=true
   public disliked:Like
   public immediatecourse
   public showimmediatecourses=true
@@ -52,7 +54,9 @@ public dislike:boolean
     )
   }
   classesattended1(){
+    this.showbutton=true
     this.showimmediatecourses=false
+    this.show=true
     this.asastudent=[]
     this.b=true;
     this.dashboard.subjectselection()
@@ -63,6 +67,7 @@ public dislike:boolean
     
   }
   dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
+    this.showbutton=true
     this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
 this.Like.dislike(this.liking1)
 .subscribe(
@@ -77,6 +82,8 @@ this.dashboard.learntselection()
 
   }
   classesenrolled1(){
+    this.showbutton=true
+    this.show=false
     this.showimmediatecourses=false
     this.asatutor=[]
     this.student=!this.student
@@ -89,6 +96,7 @@ this.dashboard.learntselection()
     
   }
   like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
+    this.showbutton=true
 this.liking=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
 this.dislike=false
 this.Like.like(this.liking)
@@ -113,4 +121,23 @@ subscribe(
   }
   public techer=true
   public student=false
+  onlyonce(){
+    this.asatutor=[]
+    this.showbutton=false
+    this.dashboard.temptutor().subscribe(
+      data=>{console.log(data),this.asatutor=data},
+      error=>console.log(error)
+    )
+
+  }
+  multiple(){
+    this.showbutton=true
+    this.asatutor=[]
+    this.dashboard.permenattutor().subscribe(
+      data=>this.asatutor=data,
+      error=>console.log(error)
+    )
+
+
+  }
 }

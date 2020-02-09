@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import{HttpClient,HttpHeaders} from '@angular/common/http'
+import { timingSafeEqual } from 'crypto';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +10,8 @@ export class DashboardService {
   private profileurl='/dashboard/profileurl'
   private fastfillurl='/dashboard/fastfilling'
 private mostlikedurl='/dashboard/mostliked'
+private onceselection='/dashboard/once'
+private multipleselection='/dashboard/multiple'
   constructor(private http:HttpClient) {}
   // dashboard as a teacher
   subjectselection(){
@@ -28,5 +31,11 @@ private mostlikedurl='/dashboard/mostliked'
 
   highliked(){
     return this.http.get<any>(this.mostlikedurl)
+  }
+  temptutor(){
+    return this.http.get<any>(this.onceselection)
+  }
+  permenattutor(){
+    return this.http.get<any>(this.multipleselection)
   }
 }
