@@ -21,24 +21,24 @@
         <mat-form-field>
             <mat-label>Subtopics</mat-label>
             <mat-select>
-              <mat-option *ngFor="let sub of subsubjects" v >
+              <mat-option *ngFor="let sub of subsubjects"  >
                 <p (click)="subsubjectselection(sub)">  {{sub}}</p> 
               </mat-option>
             </mat-select>
           </mat-form-field>&nbsp;&nbsp;
-          <button type="button" (click)="onsel()" mat-raised-button>Today Classes</button>
+          <!-- <button type="button" (click)="onsel()" mat-raised-button>Today Classes</button> -->
     </div>
     <div class="container"  *ngIf=!display>
         <script type="text/javascript" src="functions/searchbar.js"></script>
         <h1>subjects</h1>
      <!-- <li *ngFor="let sub of allsubjects">{{sub}}</li> -->
-     <br>
+     <br> </div>
              <!-- <input type="text" name="search" value="" autocomplete="off"  id="myinput"   class="b"  (keyup.enter)="searchFunction()" placeholder="Search"> -->
         <!-- <input type="text"> -->
-            </div>
-            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
+           
+            
 
-        <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
+        <!-- <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
         <ul id="wrappers">
           <li>
             <div class="container">
@@ -61,7 +61,7 @@
                                         </div>
 
 
-<!-- add the else block -->
+ add the else block
 
                                                                                   
                                         <ng-template #image>
@@ -93,7 +93,53 @@
             </div>
           </li>
         </ul>
-        </div>
+        </div> -->
+
+<!-- new card-body -->
+<div class="container">
+  <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
+</div>
+<div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
+  <ul id="wrappers">
+    <li>
+      <div class="container">
+<div class="card mycard">
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <div *ngIf="a.tutorimage===null;else image">
+          <img src="../../assets/uploads1/ydijjitgpalmtnznukljdzbauf.jpg" alt="dsxcz">{{a.tutorimage}}
+          </div>
+<!-- add the else block -->                                         
+          <ng-template #image>
+            <img src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">{{a.tutorimage}}
+            </ng-template>
+        
+      </div>
+      <div class="col">
+        <div ><b>Subject:</b><span class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</span></div>
+          <div ><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
+        <div ><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</div>
+          <div ><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</div> 
+    <div ><b>Course:</b>&nbsp;&nbsp;&nbsp;{{a.tutorcoursetype}}</div> 
+          <div ><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
+        <div ><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
+      <div><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
+      <div style="float: right;"><button  type="submit" class="btn btn-info btn-lg" (click)="subjectselected(a.tutorname,a.tutorsubject,a.tutortime,a.tutorcoursetype,a.tutorfee,a.tutordescription,a.tutorwatsuplink,a.tutormail)" >Subscribe</button></div>
+    </div>
+</div>
+</div></div>
+</div>
+</li>
+</ul>
+</div>
+
+
+
+
+
+
+
         <!-- <input  type="text" name="search1" [(ngModel)]="searchText.tutordescription" autocomplete="off"> -->
 
         <app-courseselected [selectedcouse]="selectedcouse" [hidden]=!display></app-courseselected> 
