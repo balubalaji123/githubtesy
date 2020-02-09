@@ -14,6 +14,7 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  
   ngOnInit() {
   }
   logout(){
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
     this.route.navigate([''])
 
   }
+  public mostliked
   public hasError=true;
   public a=false;
   public b=false;
@@ -34,16 +36,31 @@ export class DashboardComponent implements OnInit {
   public liking:Like
   public liking1:Like
   public disliked:Like
+  public immediatecourse
+  public showimmediatecourses=true
 public dislike:boolean
-  constructor(private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {}
+  constructor(private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {
+    // for fast filling classes
+    this.dashboard.getfastfilling().subscribe(
+      data=>this.immediatecourse=data,
+      error=>console.log(error)
+    )
+    // for most liked
+    this.dashboard.highliked().subscribe(
+      data=>this.mostliked=data,
+      error=>console.log(error)
+    )
+  }
   classesattended1(){
+    this.showimmediatecourses=false
     this.asastudent=[]
     this.b=true;
     this.dashboard.subjectselection()
     .subscribe(
-      data=>{console.log(data),this.asatutor=data},
+      data=>{this.asatutor=[],console.log(data),this.asatutor=data},
       error=>console.log("error in dashboard")
     )
+    
   }
   dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
     this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
@@ -60,6 +77,7 @@ this.dashboard.learntselection()
 
   }
   classesenrolled1(){
+    this.showimmediatecourses=false
     this.asatutor=[]
     this.student=!this.student
     this.a=true;
@@ -84,8 +102,8 @@ this.Like.like(this.liking)
       error=>console.log("error in dashboard")
     )
   }
-  delete(tutorsubject,cousetype,likes){
-this.deletemode=new Delete(tutorsubject,cousetype,likes)
+  delete(tutorsubject,cousetype,likes,tutorsubsubject){
+this.deletemode=new Delete(tutorsubject,cousetype,likes,tutorsubsubject)
 console.log(JSON.stringify(this.deletemode))
 this.Like.delete(this.deletemode).
 subscribe(

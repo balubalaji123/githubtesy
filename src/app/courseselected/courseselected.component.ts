@@ -22,8 +22,8 @@ public registermodel:Courseselected
   fun(a){
 this.course=a
 // this.mail=b
-this.registermodel=new Courseselected(this.course[0],this.course[1],this.course[2],this.course[3],this.course[4],this.course[5],this.course[6],this.course[7])
-// console.log("hello"+this.registermodel.mail)
+this.registermodel=new Courseselected(this.course[0],this.course[1],this.course[2],this.course[3],this.course[4],this.course[5],this.course[6],this.course[7],this.course[8])
+console.log("hello"+this.registermodel)
 this.subjectservice.subjectselected(this.registermodel)
 .subscribe(
   data=>console.log("course selected component"+data),

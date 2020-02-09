@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { CongratsComponent } from './congrats/congrats.component';
 const routes: Routes = [
   {path:'',redirectTo:'firesthome',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
@@ -24,7 +25,9 @@ const routes: Routes = [
   {path: 'navbar' , component:NavbarComponent},
   {path:'profile',component:ProfileComponent},
   {path:'about',component:AboutComponent},
-  {path:'**',component:PageNotFoundComponent}
+  {path:'forgotpassword',component:ForgotpasswordComponent},
+  {path:'congrats',component:CongratsComponent},
+  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

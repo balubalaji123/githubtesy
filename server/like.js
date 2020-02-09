@@ -21,7 +21,7 @@ router.post('/',function(req,res){
             console.log("res")
           });
       var tutorquery={tutormail:req.body.tutormail,tutorname:req.body.learnername,tutorsubject:req.body.leanersubject}
-      dbo.collection("tutors").find(tutorquery,{likes:1}).toArray(function(err,result){
+      dbo.collection("continousteacher").find(tutorquery,{likes:1}).toArray(function(err,result){
         if(err)
         console.log(err)
        else if(result.length){
@@ -29,7 +29,7 @@ router.post('/',function(req,res){
         // for increase likes in tutors account
         likess=likess+1;
     var newtutorvalues = { $set: {likes:likess} };
-    dbo.collection("tutors").updateOne(tutorquery, newtutorvalues, function(err, res) {
+    dbo.collection("continousteacher").updateOne(tutorquery, newtutorvalues, function(err, res) {
         if (err) throw err;
         // console.log(res)
       });}
@@ -39,22 +39,25 @@ router.post('/',function(req,res){
     res.send(JSON.stringify("like page"))
 })
 router.post('/delete',function(req,res){
+  checkuser=[]
     tutorsubject=req.body.tutorsubject
+    tutorsubsubject=req.body.tutorsubsubject
     cousetype=req.body.coursetype
+    usermail=req.session.usermail
 console.log(JSON.stringify(req.body));
 
     console.log("course"+cousetype)
-    var query={tutormail:req.session.mail,tutorsubject:tutorsubject,tutorcoursetype:cousetype}
+    var query={tutormail:req.session.mail,tutorsubject:tutorsubject,tutorcoursetype:cousetype,tutorsubsubject:tutorsubsubject}
     console.log(JSON.stringify(query));
     
-    dbo.collection("tutors").deleteOne(query, function(err, obj) {
+    dbo.collection("continousteacher").deleteOne(query, function(err, obj) {
       if (err) throw err;
       usermail=req.session.usermail
-      c={usermail:usermail}
-        dbo.collection("tutors").find(c,{tutorsubject:1,tutortime:1,selecteddays:1},{$exists:true}).toArray(function(err, result) {
+      c={tutormail:usermail}
+        dbo.collection("continousteacher").find(c,{$exists:true}).toArray(function(err, result) {
             if (err) throw err;
             checkuser=result
-           
+           console.log("check"+result)
             res.send(JSON.stringify(checkuser))
           });
     });

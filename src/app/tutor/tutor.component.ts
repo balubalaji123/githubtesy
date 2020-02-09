@@ -5,6 +5,8 @@ import{TutorService} from '../tutor.service'
 import { HttpClient } from '@angular/common/http';
 import { error } from 'protractor';
 import{FileSelectDirective,FileUploader} from 'ng2-file-upload';
+import { Router, RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-tutor',
   templateUrl: './tutor.component.html',
@@ -16,6 +18,8 @@ days1=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','E
 fees=['fee','no fee'];
 topicHasError =true;
 public imageUrl = '../../assets/TeacherStudent.jpg';
+public once=false
+public continousteacher=false
 public a=false;
 public images
 public rand
@@ -25,8 +29,8 @@ public b=false;
  public result: string 
 public uri='http://localhost:3000/tutor/upload'
 public uploader:FileUploader=new FileUploader({url:this.uri})
-public tutor1=new Tutor('','','',{},'',0,'','','')
-  constructor(private tutorservic:TutorService,private http: HttpClient) {
+public tutor1=new Tutor('','','','',{},'',10,0,'','','')
+  constructor(private tutorservic:TutorService,private http: HttpClient,public router:Router) {
 
    }
 public aftersubmission=false
@@ -40,12 +44,20 @@ onsubmit(){
     data=>console.log("tutor"+data),
     error=>console.log(error)
   )
+this.router.navigate(['/congrats'])
 }  
 updateCheckedOptions(option, event) {
   this.tutor1.days[option] = event.target.checked;
   
 }
-
+onlyonce(){
+  this.once=true
+  this.continousteacher=false
+}
+continous(){
+  this.once=false
+  this.continousteacher=true
+}
 single(){
 this.a=true;
 this.b=false;
@@ -61,28 +73,10 @@ this.images=file
 this.imageUrl=event.target.result
 console.log(this.imageUrl)
   }
-  
 }
-makeString(): string {
-  let outString: string = '';
-  let inOptions: string = 'abcdefghijklmnopqrstuvwxyz';
-
-  for (let i = 0; i < 26; i++) {
-
-    outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
-
-  }
-
-  return outString;
-}
-
-
-
 onimage(){
-  this.result= this.makeString();
     const formdata=new FormData()
     formdata.append('file',this.images)
-    formdata.append('rand',this.result)
     this.http.post<any>(this.uri,formdata).subscribe(
       data=>console.log(data),
       error=>console.log(error)

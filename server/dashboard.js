@@ -1,6 +1,7 @@
 const express=require('express')
 const router=express.Router()
 var MongoClient = require('mongodb').MongoClient;
+var dateTime = require('node-datetime');
 
 var url = "mongodb://localhost:27017/";
 var dbo=''
@@ -10,15 +11,23 @@ MongoClient.connect(url, function(err, db) {
   if (err) throw err;
    dbo = db.db("mydb");
 });
+time=new Date()
+var date=time.getDate();
+var month=time.getMonth()+1;
+var year=time.getFullYear()
+var dt = dateTime.create();
+var formatted = dt.format('Y-m-d H:M:S');
+todaydate=year+'-'+month+'-'+date
 router.get('/',function(req,res){
+  checkuser=[]
   usermail=req.session.mail
   c={tutormail:usermail}
   console.log(JSON.stringify(c))
-    dbo.collection("tutors").find(c,{tutorsubject:1,tutortime:1,selecteddays:1},{$exists:true}).toArray(function(err, result) {
+    dbo.collection("continousteacher").find(c,{tutorsubject:1,tutortime:1,selecteddays:1},{$exists:true}).toArray(function(err, result) {
         if (err) throw err;
+        if(result.length)
         checkuser=result
-       
-        res.send(JSON.stringify(checkuser))
+  res.send(JSON.stringify(checkuser))
       });
 })
 // learner name in dashboarddefines the tutor anme of particular class
@@ -55,4 +64,22 @@ router.get('/profileurl',function(req,res){
       });
   
 })
+router.get('/fastfilling',function(req,res){
+  c={tutorlocation:req.session.location,maxstudents: { $gt: 0 },tutordate:{ $gt:new Date(todaydate)  }}
+
+  dbo.collection('onceteacher').find(c).sort({"maxstudents":-1}).limit(10).toArray(function(err,result){
+   if(err)throw err
+   if(result.length){
+   console.log("result")
+    res.send(JSON.stringify(result))}
+  })
+})
+router.get('/mostliked',function(req,res){
+  dbo.collection('continousteacher').find({}).sort({"likes":-1}).limit(10).toArray(function(err,result){
+    if(err) throw err
+    res.send(JSON.stringify(result))
+  })
+})
+
+
 module.exports=router
