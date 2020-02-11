@@ -16,16 +16,37 @@
                         <div class="card-body">
                             <div class="row ">
                                 <div class="col">
-                                    <div *ngFor="let a of selectedcouse">{{a}}</div>
+                                    <p>name:&nbsp;&nbsp;{{name}}</p>
+                                    <p>subject:&nbsp;&nbsp;{{subject}}</p>
+                                    <p>coursetype:&nbsp;&nbsp;{{coursetype}}</p>
+                                    <p>time:&nbsp;&nbsp;{{time}}</p>
+                                    <p *ngIf="tutordate">tutordate:&nbsp;&nbsp;{{tutordate}}</p>
+                                    <p>fee:&nbsp;&nbsp;{{fee}}</p>
+                                    <p>subsubject:&nbsp;&nbsp;{{subsubject}}</p>
+                                    <p>time:&nbsp;&nbsp;{{time}}</p>
+
+
+
                                     <!-- <form>
                                         <input type="email" name="mail" #input>
                                         <br><br>
                                        
                                         </form> -->
-                                        <button class="btn btn-primary" type="submit" (click)="fun(selectedcouse)" > submit</button>
+                                        <button class="btn btn-primary" type="submit" (click)="fun()" > submit</button>
                                 </div>
                                 <div class="col">
-                                    <img  class="rounded-circle tq" src="../../assets/tq.jpg">
+                                    <div *ngIf="image==='null';else image1">
+                                        <img src="../../assets/student-img1.jpg" alt="nooooo">
+                                        </div>
+
+
+ <!-- add the else block -->
+
+                                                                                  
+                                        <ng-template #image1>
+                                          <img src="http://localhost:3000/imageget?name={{image}}" alt="dsxcz">
+                                          </ng-template>
+
                                </div>
                                 </div>
                                

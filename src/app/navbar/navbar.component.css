@@ -1,8 +1,10 @@
 .navbar{
     background: #23415c;
     color: #fff;
-    padding: 10px 40px 10px 0;
+    padding: 10px 60px 10px 0;
     font-size: 1.2rem;
+    font-weight: 500;
+    font-family: sans-serif;
 }
 .navbar-brand{
     color: #fff;
@@ -11,7 +13,15 @@
 }
 .nav-link{
     color: #fff;
-    padding: 15px;
-    
-    
+}
+.nav-item{
+    padding:7px;  
+
+}
+.fa{
+    color: #fff;
+
+}
+.fas{
+    color: #fff;
 }

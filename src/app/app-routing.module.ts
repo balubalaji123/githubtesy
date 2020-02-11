@@ -12,12 +12,18 @@ import { NavbarComponent } from './navbar/navbar.component';
 // import { ListComponent } from './list/list.component';
 
 import { ProfileComponent } from './profile/profile.component';
+import { CourseselectedComponent } from './courseselected/courseselected.component';
+import { CongratsComponent } from './congrats/congrats.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
-  // {path:'',redirectTo:'home',pathMatch:'full'},
+  {path:'',redirectTo:'firesthome',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
-  // {path:'list',component: ListComponent},
+    // {path:'list',component: ListComponent},
   {path:'firesthime',component:FiresthomeComponent},
+
+ 
   {path:'register1',component:RegisterComponent},
   {path:'users1',component:HomeComponent},
   {path:'login1',component:LoginComponent},
@@ -25,7 +31,12 @@ const routes: Routes = [
   {path:'tutor1',component:TutorComponent},
   {path:'dashboard1',component:DashboardComponent},
   {path: 'navbar' , component:NavbarComponent},
-  {path:'profile',component:ProfileComponent}
+  {path:'profile',component:ProfileComponent},
+  {path:'about',component:AboutComponent},
+  {path:'forgotpassword',component:ForgotpasswordComponent},
+  {path:'congrats',component:CongratsComponent},
+  {path:'courseselected',component:CourseselectedComponent}
+  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

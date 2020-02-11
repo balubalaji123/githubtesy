@@ -9,18 +9,18 @@
 </head>
 <body>
     <app-navbar></app-navbar>
-    <div class="bg" [hidden]=aftersubmission>
+    <div class="bg">
         <div class="container">
             <div class="row justify-content-center ">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="form-container">
-            <h1 class="heading">Registration Form</h1>
-            <input type="file" (change)="imageupload($event)">
-            <button type="submit" (click)="upload()">upload</button>
+            <h3 class="heading">Registration Form</h3>
+                  <img src={{imageUrl}} class="rounded-circle"   width="200"  height="200" alt="image not found">
             <form  #userForm="ngForm" (ngSubmit)="onsubmit()" >
-              
+                <input type="file" (change)="selectimage($event)">
+
                 <!-- <div class="form-group">
-                    <img [src]="imageUrl" class="rounded-circle"   width="200"  height="200"><br>
+                    <img [src]="imageUrl" ><br>
                     <input type="file"  #name="ngModel" class="form-control" name="img"  [(ngModel)]="tutor1.img"  (change)="handleFileInput($event.target.files)" >
                     <button type="button" (click)="onUpload()">onUpload</button>
                 </div>  -->
@@ -36,39 +36,37 @@
                 </div>
                 <div class="form-group">
                     <label>Time-Duration</label>
-                    <input type="text" required #time="ngModel" [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Time 14-15" class="form-control" name="Time" [(ngModel)]="tutor1.time">
+                    <input type="text" required #time="ngModel" [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Time 14-15" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
                     <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Time Is Required</small>
                 </div>
                 <div class="form-group">
-                    <label>Days</label>
-                    <button type="button" (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
-                    <button type="button" (click)="multiple()" mat-raised-button>MultipleDays</button>
+                    <label>teaching type selection</label>
+                    <button type="button" (click)="onlyonce()">only once</button>
+                    <button type="button" (click)="continous()">continous</button>
                 </div>
-
-                <!-- <div class="form-group">
-                    <label for="days1">days :</label>
-                    <div *ngFor=" let day of days1">
-                        <label>
-                            <input type="checkbox"
-                                   name="days1"
-                                   value="{{day}}"
-                                   
-                                   (change)="updateCheckedOptions(day, $event)"/>
-                            {{day}}
-                        </label>
-                    </div>
-                </div> -->
-                <div *ngIf="a" class="form-group">
+                <div class="form-group" *ngIf="once">
+                    <label>select date</label>
+                    <input type="date" placeholder="select date" name="date" [(ngModel)]="tutor1.date" >
+                </div>
+                <div class="form-group" *ngIf="once">
+                    <label>maximum students</label>
+                    <input type="number" required #maxstudents="ngModel" [class.is-invalid]="maxstudents.invalid && maxstudents.touched" placeholder="Enter maximum students" class="form-control" name="maxstudents" [(ngModel)]="tutor1.maxstudents">
+                    <small   class="text-danger" [class.d-none]="maxstudents.valid || maxstudents.untouched">maxstudents Is Required</small>
+                </div>
+                
+                <div *ngIf="continousteacher">
+                    <div class="form-group">
+                        <label>Days</label>
+                        <button type="button" (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
+                        <button type="button" (click)="multiple()" mat-raised-button>MultipleDays</button>
+                    </div>      
+                      <div *ngIf="a" class="form-group">
                     <label>Select a day</label>
                     <select required #daysi="ngModel" [class.is-invalid]="daysi.invalid && daysi.touched" class="custom-select" name="daysi" [(ngModel)]="tutor1.days">
                         <option value="">Select a day</option>
                         <option *ngFor="let day of days1">{{day}}</option>
                     </select>
                     <small class="text-danger" [class.d-none]="daysi.valid || daysi.untouched">choose the day</small>
-                    <div class="form-group">
-                        <label>Date</label>
-                        <input type="date" name="date" [(ngModel)]="tutor1.date"><br><br>
-                    </div>
                 </div>
                 <div *ngIf="b"  class="form-group">
                     <label> days:</label>
@@ -80,13 +78,11 @@
                             </div>
                         </label>
                     </div>
-                </div>
+                </div></div>
                 <div class="form-group">
-                    <label>Date</label><br>
-                    <!-- <input type="text" required #fee="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter fees" class="form-control" name="fee" [(ngModel)]="tutor1.fee"> -->
-                    <input type="date" name="date" [(ngModel)]="tutor1.date"><br><br>
-                    <!-- <small   class="text-danger" [class.d-none]="fee.valid || fee.untouched">choose the fees</small> -->
-                </div> 
+                    <label>teaching time</label>
+                    <input type="time"  placeholder="Enter time" name="teachingtime"  [(ngModel)]="tutor1.teachingtime">
+                </div>
                 <div class="form-group">
                     <label>Whatsapp Link</label>
                     <input type="text" required #link="ngModel" [class.is-invalid]="link.invalid && link.touched" placeholder="Enter Whatsapp link" class="form-control" name="link" [(ngModel)]="tutor1.watsuplink">
@@ -100,37 +96,23 @@
                     </select>
                     <small   class="text-danger" [class.d-none]="course.valid || course.untouched">choose tyep of course</small>
                 </div>
-                <!-- <div class="form-group">
-                    <label>Days</label>
-                    <select required #day="ngModel" [class.is-invalid]="day.invalid && day.touched" class="custom-select" name="Day" [(ngModel)]="tutor1.day">
-                        <option value="">Select Days</option>
-                        <option *ngFor="let Day  of Days">{{Day}}</option>
-                    </select>
-                    <small   class="text-danger" [class.d-none]="day.valid || day.untouched">choose the day</small>
-                </div> --> 
                 <div class="form-group">
                     <label>Fee</label>
                     <input type="text" required #fee="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter fees" class="form-control" name="fee" [(ngModel)]="tutor1.fee">
                     <small   class="text-danger" [class.d-none]="fee.valid || fee.untouched">choose the fees</small>
                 </div>
+               
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description</label>
                     <textarea required #msg="ngModel" [class.is-invalid]="msg.invalid && msg.touched" placeholder="Enter Description" class="form-control" name="msg" [(ngModel)]="tutor1.description"  id="exampleFormControlTextarea1" rows="3"></textarea>
                     <small   class="text-danger" [class.d-none]="msg.valid || msg.untouched">Description is required</small>
                   </div>
-                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit">Submit</button>
+                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit" (click)="onimage()">Submit</button>
             
             </form>
         </div></div>
         </div>
         </div></div>
-        <!-- <app-profile [userModel]="userModel"></app-profile> -->
-
-
-        <app-congrats *ngIf=aftersubmission></app-congrats> 
-
-
-
 </body>
 </html>
 
@@ -147,24 +129,4 @@
 
 
 
-
-  <!-- <form (ngSubmit)="onsubmit()" [hidden]=aftersubmission>
-<p>ENTER YOUR NAME:</p>
-<input type="text" name="name" [(ngModel)]="tutor1.name">
-<p>ENTER YOUR SUBJECT:</p>
-<input type="text" name="subject" [(ngModel)]="tutor1.subject">
-<p>ENTER YOUR TIME:</p>
-<input type="number" name="time" [(ngModel)]="tutor1.time">
-<p>ENTER YOUR COURSETYPE:</p>
-<input type="text" name="coursetype" [(ngModel)]="tutor1.coursetype">
-<p>ENTER YOUR FEE:</p>
-<input type="number" name="fee" [(ngModel)]="tutor1.fee">
-<p>ENTER YOUR DESCRIPTIONB:</p>
-<input type="text" name="description" [(ngModel)]="tutor1.description">
-<p>ENTER YOUR WATSUPLINK TO COMMUNICATE WITH STUDENTS:</p>
-<input type="text" name="watsuplink" [(ngModel)]="tutor1.watsuplink">
-<button type="submit">SUBMIT</button>
-
-    </form>
-    <p *ngIf=aftersubmission>RECORDED</p> -->
 

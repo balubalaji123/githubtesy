@@ -1,0 +1,120 @@
+<!-- session navbar  code -->
+
+<div [hidden]=sessionnavbar>
+  <app-navbar></app-navbar>
+  </div>
+  
+  <!-- session not exists navbar code -->
+  <nav class="navbar  navbar-expand-md" role="navigation" [hidden]="normalnavbar">
+           <div class="navbar-brand">Find myTutor</div>
+           <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+              <span class="fa fa-bars"></span>
+            </button>
+          <div class="collapse navbar-collapse" id="navbarMenu">  
+          <ul class="navbar-nav  ml-auto">
+              <li class="nav-item">
+                <a class="nav-link"  routerLink="/firesthome" >Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/about" >How It works</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/student1" routerLinkActive="active+">Courses</a>
+              </li>
+        
+           <button type="button" class="btn button"><a   routerLink="/login1" routerLinkActive="active" >Login</a></button>
+           <button type="button" class="btn button"><a routerLink="/register1" routerLinkActive="active">Register</a></button>
+          </ul>
+          </div>
+   </nav>
+  
+<!-- <div class="container-fluid"> -->
+       
+    <div ><h3><b>HOW TO USE FINDMYTUTOR ?</b></h3></div><br>
+    <div style="text-align: center;"><i class='fas fa-meh-rolling-eyes' style='font-size:50px;color:black'></i></div>
+  
+        <div class="matter">
+          <img class="this-img" src="../assets/this.jpg" alt="IMAGE">
+          <p >FindMyTutor is all about connecting people and sharing knowledge. We help you in finding your Ideal Tutor at your comfort.
+            Our tutors provide a wide range of courses, you name it and you got it! So where do you start ?</p>
+      </div>
+
+      <div class="a" >
+          <h3 ><b>ALL YOU NEED TO DO IS</b></h3>
+      </div>   
+      <div class="row justify-content-center">
+      <img class="mm-img" src="../assets/MM.png" alt="IMAGE" >
+      </div><br>
+     
+      <!-- RIGHT AFTER BUTTONS -->
+    <div class="container box">  
+      <h3>AND PICK A PATH</h3>
+      <div class="row">
+        <div class="col-sm-6 btn-div"><button class="btn" (click)="onClickT()">TUTOR</button></div>
+        <br>
+        <div class="col-sm-6 btn-div" ><button class="btn" (click)="onClickS()">STUDENT</button></div>
+      </div>
+      <div style="padding: 15px;">
+          <div *ngIf='Btutor'>
+        <div #T>
+        <div class="row">
+          <div class="col col-md-4 col-sm-12 btn-matter" >
+            <i class='fas fa-map-signs'></i>
+            <h3><b>CHOOSE YOUR PATH</b></h3>
+            <h5>FindMyTutor gives an opportunity to be a Tutor in any given Domain, Course-type, Time </h5>
+          </div>
+          <div class="col col-md-4 col-sm-12 btn-matter" >
+          <i class='fas fa-clipboard-list' ></i>
+          <h3><b>REGISTER</b></h3>
+          <h5>To register as a Tutor click here and fill in details along with a Whatsapp group invite link</h5>
+          </div>
+          <div class="col col-md-4 col-sm-12 btn-matter" >
+            <i class='fas fa-grin-beam' ></i>
+          <h3><b>HAPPY SHARING</b></h3>
+          <h5>Finally you can join the students and help them as they subscribe by joining the whatsapp group provided</h5>
+          </div>  
+        </div>
+        </div>
+      </div>
+      <div *ngIf='Bstu'>
+          <div #s style="text-align: center;">
+       <div class="row" >
+        <div class="col col-md-4 col-sm-12 btn-matter"  >
+          <i class='fas fa-map-signs' ></i>
+          <h3><b>CHOOSE YOUR PATH</b></h3>
+          <h5>FindMyTutor gives an opportunity to learn from a wide range of Tutors, Subjects, Course-types at your comfort</h5>
+        </div>
+        <div class="col col-md-4 col-sm-12 btn-matter" >
+        <i class='fas fa-binoculars' ></i>
+        <h3><b>SEARCH</b></h3>
+        <h5>Selecting your Ideal Tutor from the heaps of Tutors could be tough, but we got your back with efficient filters! </h5>
+        </div>
+        <div class="col col-md-4 col-sm-12 btn-matter">
+          <i class='fas fa-grin-beam' ></i>
+        <h3><b>HAPPY LEARNING</b></h3>
+        <h5>Finally click subscribe on The Tutor you chose, and we send a Whatsapp group invite link to your e-mail</h5>
+        </div>
+       </div>
+       
+          </div>
+      </div> 
+    </div>
+
+    </div><br>
+    
+    
+    <footer  class="container-fluid text-center">
+      <div class="row">
+          <div class="col-sm-4 "></div>
+          <div class="col-sm-4 ">
+              <h3>Connect</h3>
+              <a href="#" class="fa fa-facebook"></a>
+              <a href="#" class="fa fa-twitter"></a>
+              <a href="#" class="fa fa-youtube"></a>
+              <a href="#" class="fa fa-linkedin"></a>
+              <a href="#" class="fa fa-google"></a>
+              <a href="#" class="fa fa-instagram"></a>
+          </div>
+          <div class="col-sm-4 "></div>
+      </div>
+</footer>
