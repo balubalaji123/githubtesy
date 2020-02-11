@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import{StudentsService} from'../students.service';
 import { from } from 'rxjs';
 import{Tutor} from '../tutor';
-<<<<<<< HEAD
+
 import{Router} from '@angular/router';
 // declare const check: any;
-=======
-import { error } from 'protractor';
-declare const check:any;
->>>>>>> 58a86d5565ff1e6a6a79f0915b6a3f510afbf0c2
+
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -21,22 +18,25 @@ export class StudentComponent implements OnInit {
 public display = false;
 public selectedcouse = [];
 public fees=["nofees","fees"];
+// public subject=["wsfd","sads","csc"];
   // subjectslist:Tutor[]
   // public searchText
   // public tutormail=false
 // public display=false
 // public selectedcouse=[]
-public allsubjects=[]
+public subsubjects=[];
+public allsubjects=[];
   constructor(private studentservice:StudentsService) {
     // to get all subjects list
 studentservice.allsubjects().subscribe(
   data=>{console.log("data"+data);this.allsubjects=data},
   error=>console.log(error)
 )
+
 // to get all subsubjects
 studentservice.allsubsubjects().subscribe(
-  data=>{console.log(data)},
-  error=>console.log(error)
+  data => {console.log(data);this.subsubjects=data},
+  error => console.log(error)
 )
 
 // to get all details
@@ -65,6 +65,9 @@ this.selectedcouse.push(a6)
 this.selectedcouse.push(a7)
 this.selectedcouse.push(a8)
 
+  }
+  subjectslist1(q){
+      console.log(q);
   }
   onsel(){
     // this.router.navigate(['/list'])

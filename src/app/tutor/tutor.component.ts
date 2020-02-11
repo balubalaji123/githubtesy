@@ -19,7 +19,7 @@ topicHasError =true;
 imageUrl = '/assets/images/icontutorials41.jpg';
 public a=false;
 public b=false;
-public tutor1=new Tutor('','','',{},'',0,'','','')
+public tutor1=new Tutor('xsc', 'fds', 'fdgfd', {}, 'gfd', 0, 'sgdg', 'fsdg', 'setr')
   constructor(private tutorservic:TutorService,private http: HttpClient) {
 
    }
@@ -46,17 +46,17 @@ upload(){
   const fd=new FormData()
   fd.append('image',this.selectedfile,this.selectedfile.name)
   this.tutorservic.image(fd).subscribe(
-    data=>console.log(data),
-    error=>console.log("error"+error)
+    data => console.log(data),
+    error => console.log("error"+error)
   )
 }
 single(){
-this.a=true;
-this.b=false;
+this.a = true;
+this.b = false;
 }
 multiple(){
-  this.b=true;
-  this.a=false;
+  this.b = true;
+  this.a = false;
 }
 }
 

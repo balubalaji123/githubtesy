@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!-- <script src="https://ajax.googleapis.co/ajax/libs/jquery/2.2.3/jquery/min.js"></script> -->
 </head>
 <body>
     <app-navbar></app-navbar>
@@ -14,37 +13,22 @@
         <mat-form-field>
           <mat-label>Subjects</mat-label>
           <mat-select>
-            <mat-option *ngFor="let subject of subjects" value="" >
-              {{subject}}
+            <mat-option *ngFor="let subject of allsubjects" value="" >
+              <p (click)="subjectslist1(subject)">{{subject}}</p>
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Subtopics</mat-label>
             <mat-select>
-              <mat-option *ngFor="let sub of subs" value="" >
+              <mat-option *ngFor="let sub of subsubjects" value="" >
                 {{sub}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>&nbsp;&nbsp;
-          <mat-form-field>
-            <mat-label>Subtopics</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let fe of fees" value="" >
-                {{fe}}
               </mat-option>
             </mat-select>
           </mat-form-field>&nbsp;&nbsp;
           <button type="button" (click)="onsel()" mat-raised-button>Today Classes</button>
     </div>
     <div class="container"  *ngIf=!display>
-
-        <!-- <script type="text/javascript" src="functions/searchbar.js"></script> -->
-
-            <!-- <input  type="text" name="search" [(ngModel)]="globalSearch.subject" autocomplete="off" placeholder="enter text to search"> -->
-
-        <div class="card-display" *ngFor="let a of subjectslist | filter:globalSearch" [hidden]=display>
-
         <script type="text/javascript" src="functions/searchbar.js"></script>
         <h1>subjects</h1>
      <li *ngFor="let sub of allsubjects">{{sub}}</li>
@@ -54,6 +38,7 @@
             </div>
             <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 
+        <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
         <ul id="wrappers">
           <li>
             <div class="container">
@@ -61,7 +46,7 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="card-styles">
                             <div class="card">
-                                <div class="card-header row"><b>Subject:</b><div name="subject" class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</div></div>
+                                <div class="card-header"><span><b>Subject:</b></span><span class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</span></div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="card-body"><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
@@ -88,5 +73,7 @@
           </li>
         </ul>
         </div>
+        <!-- <input  type="text" name="search1" [(ngModel)]="searchText.tutordescription" autocomplete="off"> -->
 
-        <app-courseselected [selectedcouse]="selectedcouse" [hidden]=!display ></app-courseselected> 
+        <app-courseselected [selectedcouse]="selectedcouse" [hidden]=!display></app-courseselected>
+ 

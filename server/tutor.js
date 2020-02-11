@@ -112,6 +112,4 @@ router.get('/subsubjects',function(req,res){
     res.send(JSON.stringify(subsubjectarr))
 })
 
-
-
 module.exports=router 
