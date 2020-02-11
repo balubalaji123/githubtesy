@@ -7,7 +7,9 @@ public subject:string,
 public tutormail:string,
 public subsubject:string,
 public watsuplink:string,
-public tutorimage:string
+public tutorimage:string,
+public tutordate:string,
+public classtime:string
         // public mail:string
     ){}
 }
