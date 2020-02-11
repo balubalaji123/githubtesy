@@ -61,14 +61,13 @@ public dislike:boolean
     this.b=true;
     this.dashboard.subjectselection()
     .subscribe(
-      data=>{this.asatutor=[],console.log(data),this.asatutor=data},
+      data=>{console.log(data),this.asatutor=data},
       error=>console.log("error in dashboard")
     )
-    
   }
-  dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
+  dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time){
     this.showbutton=true
-    this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
+    this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time)
 this.Like.dislike(this.liking1)
 .subscribe(
   data=>console.log(data),
@@ -95,9 +94,9 @@ this.dashboard.learntselection()
     )
     
   }
-  like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
+  like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time){
     this.showbutton=true
-this.liking=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
+this.liking=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time)
 this.dislike=false
 this.Like.like(this.liking)
 .subscribe(

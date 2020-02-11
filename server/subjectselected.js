@@ -19,14 +19,12 @@ router.post('/',function(req,res){
           pass: 'fmt@12345'
         }
       });
-      
       var mailOptions = {
         from: 'find my tutor',
         to: req.session.mail,
         subject: 'Regisered course details',
         html:'u registerd for course   '+req.body.subject+'and tutor is   '+req.body.name+'  to join group   <a href='+req.body.watsuplink+'> click</a>'
       };
-      
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
           console.log(error);
@@ -49,7 +47,8 @@ var dt = dateTime.create();
 var formatted = dt.format('Y-m-d H:M:S');
 todaydate=date+'/'+month+'/'+year
 var q={tutorimage:req.body.tutorimage,learnername:learnername,learnermail:learnermail,leanersubject:leanersubject,leanersubsubject:req.body.subsubject,
-    date:formatted,like:false,tutormail:tutormail}
+  tutordate:new Date(req.body.tutordate),tutororgdate:req.body.tutordate,like:false,tutormail:tutormail,
+time:req.body.classtime}
     console.log("query   "+JSON.stringify(q))
 dbo.collection("learnt").insertOne(q, function(err, res) { 
 })
@@ -69,3 +68,14 @@ dbo.collection('onceteacher').find(c,{$exists:true}).toArray(function(req,result
 
 })
 module.exports=router
+// may be useful for multiple regitration of a particular course by single person
+// dbo.collection("learnt").find(check,{$exists:true}).toArray(function(err1,respoding){
+//   if (err1) throw err1
+//   if(respoding.length)
+//   res.send(JSON.stringify("you already registerd"))
+//   else{
+    
+// dbo.collection("learnt").insertOne(q, function(err, res) { 
+// })
+//   }
+// })

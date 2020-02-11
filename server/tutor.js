@@ -3,6 +3,8 @@ const multer=require('multer')
 const path=require('path')
 var ObjectId = require('mongodb').ObjectID;
 const router=express.Router()
+var dateTime = require('node-datetime');
+
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 var dbo=''
@@ -49,10 +51,6 @@ router.post('/upload',upload.single('file'),function(req,res){
     console.log(req.file.filename)
     res.send(JSON.stringify("sucess"))
 })
-
-
-
-
 router.post('/',function(req,res){
     console.log("tutor"+JSON.stringify(req.body))
     selecteddays=[]
@@ -87,11 +85,17 @@ router.post('/',function(req,res){
     }
     else
     {
-        
+        // for date
+        time=new Date()
+var date=time.getDate();
+var month=time.getMonth()+1;
+var year=time.getFullYear()
+var dt = dateTime.create();
+todaydate=year+'-'+month+'-'+date        
         // for once
         myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,
             tutormail:tutormail,tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,tutortime:tutortime,timeduration:timeduration, tutorwatsuplink:tutorwatsuplink,
-            maxstudents:req.body.maxstudents,tutordate:new Date(req.body.date)
+            maxstudents:req.body.maxstudents,tutordate:new Date(req.body.date),tuorgdate:req.body.date,
         }
         dbo.collection("onceteacher").insertOne(myobj, function(err, res) {
             
