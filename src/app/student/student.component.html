@@ -16,7 +16,7 @@
     <div class="container">
       <div class="container">
       <mat-form-field>
-        <mat-label>course type filter</mat-label>
+        <mat-label>{{filter1}}</mat-label>
         <mat-select>
           <mat-option *ngFor="let Course of Courses">
          <p  (click)="typeselection(Course)">  {{Course}}</p>  

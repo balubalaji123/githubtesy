@@ -16,6 +16,7 @@ import { Router, RouterModule } from '@angular/router';
 export class StudentComponent implements OnInit {
   subjectslist:Tutor[]
   public searchText
+  public filter1='course type filter'
 public display=false
 public notfilter=true
 public subject
@@ -75,6 +76,8 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
 
   }
   typeselection(Course){
+
+this.filter1=Course
     this.selectedcoursetype=new Coursetype(this.subject,this.subsubject,Course)
 this.studentservice.coursetype(this.selectedcoursetype).subscribe(
   data=>this.subjectslist=data,
