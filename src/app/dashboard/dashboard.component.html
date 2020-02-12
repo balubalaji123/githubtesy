@@ -7,17 +7,8 @@
     <title>dashboard</title>
 </head>
 <body>
-    <!-- <nav class="navbar">
-        <div class="nav">
-        <button type="submit" class="btn button" routerLink="/tutor1" routerLinkActive="active"><a>tutor</a></button>
-        <button type="submit" class="btn button"  routerLink="/student1" routerLinkActive="active"><a>student</a></button>
-        <button type="submit" class="btn button" (click)="classesattended1()" >classes teached</button>
-        <button type="submit" class="btn button" (click)="classesenrolled1()" >classes enrolled</button>
-    </div>
-    </nav>  -->
-
-
-    <nav class="navbar navbar-expand-md ">
+   
+   <!-- <nav class="navbar navbar-expand-md ">
   
         <div class="navbar-brand" >Find my Tutor</div>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
@@ -41,18 +32,30 @@
             <a class="nav-link"  type="submit" (click)="logout()" ><i class="fas fa-sign-out-alt"></i></a>
           </li>
           </ul></div>
-      </nav><br>
-      
-      <div class="container-fluid mycontainer">
-          <div class="row justify-content-end ">
-            <!-- <div class="col-6"></div> -->
-              <div style="padding: 20px;" ><button type="submit" class="btn button " (click)="classesattended1()" ><img class="img-icon" src="../../assets/undraw_teaching_f1cm.svg">&nbsp;  Teached</button></div>
-              <div style="padding: 20px;"><button type="submit" class="btn button" (click)="classesenrolled1()" ><img class="img-icon" src="../../assets/undraw_exams_g4ow.svg">&nbsp;  Enrolled</button></div>
-          </div>
+      </nav>
+   -->
+
+      <!-- side navbar -->
+      <div class="container-fluid">
+      <div class="sidebar">
+        <div class="img-style"><img   src="../../assets/student.jpg"></div><br>
+        <div class="name">{{username}}</div>
+
+
+        <a class="nav-link" routerLink="/firesthome" ><i class="fa fa-home i"> &nbsp;Home</i></a>
+        <a class="nav-link" routerLink="/about" ><i class="fa fa-clone"> &nbsp;How It works</i></a>
+        <a class="nav-link" routerLink="/tutor1" ><i class="fa fa-user"> &nbsp;Tutor</i></a>
+        <a class="nav-link" routerLink="/student1" ><i class="fa fa-graduation-cap"> &nbsp;Student</i></a>
+        <a ><i class="fa fa-user"></i><button type="submit" class="btn button " (click)="classesattended1()" >&nbsp;  Teached</button></a>
+        <a ><i class="fa fa-graduation-cap"></i><button type="submit" class="btn button" (click)="classesenrolled1()" >&nbsp;  Enrolled</button></a>
+        <a class="nav-link"  type="submit" (click)="logout()" ><i class="fas fa-sign-out-alt">&nbsp;Logout</i></a>
       </div>
+    </div>
+      
+      
       <!-- cards -->
-<div *ngIf="showimmediatecourses">
-      <h1>fastfilling</h1>
+<div *ngIf="showimmediatecourses" class="main">
+      <h6>fastfilling</h6>
       <div *ngFor="let a of immediatecourse">
         <p><strong>seats  left:</strong>{{a.maxstudents}}</p>
         <p><strong>subject:</strong>{{a.tutorsubject}}</p>
@@ -61,8 +64,8 @@
         <!-- <p><strong>likes:</strong>{{a.likes}}</p> -->
 <br>
       </div></div>
-<div *ngIf="showimmediatecourses">
-  <h3>famous courses</h3>
+<div *ngIf="showimmediatecourses" class="main">
+  <h6>famous courses</h6>
   <div *ngFor="let a of mostliked">
     <p><strong>subject:</strong>{{a.tutorsubject}}</p>
     <p><strong>sub subject:</strong>{{a.tutorsubsubject}}</p>
@@ -71,7 +74,7 @@
 
 </div></div>
         
-        <div *ngIf="a">
+        <div *ngIf="a" class="main">
           <div *ngFor="let a of asastudent" class="container">
             <div class="row myrow">
             <div  class="card mycard">

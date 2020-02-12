@@ -7,6 +7,7 @@ import { from } from 'rxjs';
 import { error } from 'protractor';
 import{Delete}  from'../delete';
 import{LogoutService} from'../logout.service';
+import{SessioncheckService}from '../sessioncheck.service';
 import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
@@ -39,7 +40,8 @@ export class DashboardComponent implements OnInit {
   public immediatecourse
   public showimmediatecourses=true
 public dislike:boolean
-  constructor(private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {
+public username;
+  constructor(private dashboard:DashboardService,public sessionservice:SessioncheckService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {
     // for fast filling classes
     this.dashboard.getfastfilling().subscribe(
       data=>this.immediatecourse=data,
@@ -49,6 +51,10 @@ public dislike:boolean
     this.dashboard.highliked().subscribe(
       data=>this.mostliked=data,
       error=>console.log(error)
+    )
+    sessionservice.sessioncheck().subscribe(
+      data=>{console.log("in session"+data),this.username=data},
+            error=>console.log(error)
     )
   }
   classesattended1(){
