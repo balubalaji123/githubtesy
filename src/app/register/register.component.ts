@@ -3,6 +3,8 @@ import {Register} from '../register';
 import { Router, RouterModule } from '@angular/router';
 import {Googlepassword} from '../googlepassword';
 import { from } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 import{RegisterService} from'../register.service'
 import{GoogleloginService} from'../googlelogin.service'
 import { AuthService, GoogleLoginProvider } from 'angular-6-social-login';
@@ -24,13 +26,18 @@ public googlemail;
 public googleuser;
 public tonavnextpage;
 public login1=false;
+public imageUrl = '../../assets/TeacherStudent.jpg';
+public uri='http://localhost:3000/register/upload'
+
 public users1;
 public gpw=false;
+public images
+public imageurl="../../assets/TeacherStudent.jpg"
   registermodel=new Register('','','','','');
   gpwmodel = new Googlepw('','')
   reg:Googlepassword
   googlepasswordmodel=new Googlepassword('fgh','fcgvhbj','')
-  constructor(private sessionservice:SessioncheckService, private register:RegisterService,public route:Router,private socialAuthService: AuthService,public googleregister1:GoogleloginService) { }
+  constructor(private sessionservice:SessioncheckService, private register:RegisterService,public route:Router,private socialAuthService: AuthService,public googleregister1:GoogleloginService,private http: HttpClient) { }
   ngOnInit() {
   }
   onsubmit(x,y){
@@ -156,4 +163,22 @@ onlogin()
 {
   this.route.navigate(['/login1'])
 }
+selectimage(event){
+  if(event.target.files.length>0){
+    const file=event.target.files[0]
+this.images=file
+this.imageUrl=event.target.result
+console.log(this.imageUrl)
+  }
+}
+onimage(){
+  const formdata=new FormData()
+  console.log("on image")
+  formdata.append('file',this.images)
+  this.http.post<any>(this.uri,formdata).subscribe(
+    data=>console.log(data),
+    error=>console.log(error)
+  )
+}
+
 }
