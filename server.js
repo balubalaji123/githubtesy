@@ -85,6 +85,11 @@ app.get('/imageget',function(req,res){
   address=__dirname+'/server/uploads1/'+name
   res.sendFile(address)
 })
+// for dashboard
+app.get('/dashboardimage',function(req,res){
+  address=__dirname+'/server/uploads1/'+req.session.userimage
+  res.sendFile(address)
+})
 
 // app.get('/users',function(req,res){
 //   console.log("using put request")

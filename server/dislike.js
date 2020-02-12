@@ -7,9 +7,7 @@ MongoClient.connect(url, function(err, db) {
        dbo = db.db("mydb");
     });
     router.post('/',function(req,res){
-        console.log("from like"+JSON.stringify(req.body))
         var myquery={tutormail:req.body.tutormail,learnermail:req.session.mail,leanersubject:req.body.leanersubject,time:req.body.time}
-       console.log("query",JSON.stringify(myquery))
         var newvalues = { $set: {like:false} };
           dbo.collection("learnt").updateOne(myquery, newvalues, function(err, res) {
                 if (err) throw err;

@@ -1,11 +1,14 @@
 const express=require('express')
 const router=express.Router()
+const multer=require('multer')
 const session=require('express-session')
 // const session=require('express-session')
 var nodemailer = require('nodemailer');
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 var dbo=''
+var d
+
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
    dbo = db.db("mydb");
@@ -15,12 +18,50 @@ MongoClient.connect(url, function(err, db) {
 var check=Math.random()
 var usermail
 var username
+var store=multer.diskStorage({
+  destination:function(req,file,cb){
+          cb(null,'./server/uploads1')
+      },
+      filename:function(req,file,cb){
+          // console.log("c"+JSON.stringify(file))
+          function makeString() {
+              let outString = '';
+              let inOptions= 'abcdefghijklmnopqrstuvwxyz';
+            
+              for (let i = 0; i < 26; i++) {
+            
+                outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
+            
+              }
+            
+              return outString;
+            }
+            const rand=()=>{
+              d=makeString()+".jpg"
+              // console.log("d",d)
+            }
+          rand()
+          console.log('d',d)
+          cb(null,d)
+      }
+  });
+  var upload=multer({storage:store})
+  router.post('/upload',upload.single('file'),function(req,res){
+      
+      d=req.file.filename
+      res.send(JSON.stringify("sucess"))
+  })
+  
+
+
+
 
 router.post('/',function(req,res){
     username=req.body.name
     usermail=req.body.mail
     userpassword=req.body.password
     userlocation=req.body.location
+    userimage=d
     console.log("enter")
     myobj={usermail:usermail}
     dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
@@ -60,9 +101,10 @@ router.post('/',function(req,res){
     
 })
 router.get('/',function(req,res){
-  
+  req.session.image=d
+  console.log("d",d)
    if(check==req.query['id']){
-   myobj={username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
+   myobj={userimage:d,username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
     dbo.collection("customers").insertOne(myobj, function(err, res) {
         req.session.userid=res.ops[0]._id
       })

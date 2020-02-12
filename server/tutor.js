@@ -18,39 +18,39 @@ var subjectsarr=[]
 var subsubjectarr=[]
 var d
 
-var store=multer.diskStorage({
-destination:function(req,file,cb){
-        cb(null,'./server/uploads1')
-    },
-    filename:function(req,file,cb){
-        // console.log("c"+JSON.stringify(file))
-        function makeString() {
-            let outString = '';
-            let inOptions= 'abcdefghijklmnopqrstuvwxyz';
+// // var store=multer.diskStorage({
+// // destination:function(req,file,cb){
+// //         cb(null,'./server/uploads1')
+// //     },
+// //     filename:function(req,file,cb){
+// //         // console.log("c"+JSON.stringify(file))
+// //         function makeString() {
+// //             let outString = '';
+// //             let inOptions= 'abcdefghijklmnopqrstuvwxyz';
           
-            for (let i = 0; i < 26; i++) {
+// //             for (let i = 0; i < 26; i++) {
           
-              outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
+// //               outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
           
-            }
+// //             }
           
-            return outString;
-          }
-          const rand=()=>{
-            d=makeString()+".jpg"
-            // console.log("d",d)
-          }
-        rand()
-        console.log('d',d)
-        cb(null,d)
-    }
-});
-var upload=multer({storage:store})
-router.post('/upload',upload.single('file'),function(req,res){
-    // console.log(req.body.rand)
-    console.log(req.file.filename)
-    res.send(JSON.stringify("sucess"))
-})
+// //             return outString;
+// //           }
+// //           const rand=()=>{
+// //             d=makeString()+".jpg"
+// //             // console.log("d",d)
+// //           }
+// //         rand()
+// //         console.log('d',d)
+// //         cb(null,d)
+// //     }
+// // });
+// // var upload=multer({storage:store})
+// router.post('/upload',upload.single('file'),function(req,res){
+//     // console.log(req.body.rand)
+//     console.log(req.file.filename)
+//     res.send(JSON.stringify("sucess"))
+// })
 router.post('/',function(req,res){
     console.log("tutor"+JSON.stringify(req.body))
     selecteddays=[]
@@ -76,7 +76,7 @@ router.post('/',function(req,res){
     tutormail=req.session.mail
     tutorsubsubject=req.body.subsubject
     if(req.body.date===""){
-        myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,
+        myobj={tutorimage:req.session.userimage,tutorname:req.session.username,tutorsubject:tutorsubject,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,
         tutormail:tutormail,tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,tutortime:tutortime,timeduration:timeduration, tutorwatsuplink:tutorwatsuplink,selecteddays:selecteddays,likes:0
     }
         dbo.collection("continousteacher").insertOne(myobj, function(err, res) {
@@ -93,7 +93,7 @@ var year=time.getFullYear()
 var dt = dateTime.create();
 todaydate=year+'-'+month+'-'+date        
         // for once
-        myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,
+        myobj={tutorimage:req.session.userimage,tutorname:req.session.username,tutorsubject:tutorsubject,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,
             tutormail:tutormail,tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,tutortime:tutortime,timeduration:timeduration, tutorwatsuplink:tutorwatsuplink,
             maxstudents:req.body.maxstudents,tutordate:new Date(req.body.date),tuorgdate:req.body.date,
         }
