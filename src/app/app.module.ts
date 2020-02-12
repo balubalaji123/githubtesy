@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FileUploadModule } from 'ng2-file-upload';
+
+// import { FileUploadModule } from 'ng2-file-upload';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 // import { ListComponent } from './list/list.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 export function getAuthServiceConfigs() {
@@ -59,6 +63,7 @@ export function getAuthServiceConfigs() {
     ProfileComponent,
     AboutComponent,
     ForgotpasswordComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -66,13 +71,17 @@ export function getAuthServiceConfigs() {
     FormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
+    MatButtonModule,
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
     MatSidenavModule,
     MatTableModule,
     MatDialogModule,
-    FileUploadModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    AmazingTimePickerModule,
+    // FileUploadModule,
 
     // AuthServiceConfig,
     // GoogleLoginProvider,
@@ -91,9 +100,7 @@ export function getAuthServiceConfigs() {
   ],
   bootstrap: [AppComponent]
 })
-<<<<<<< HEAD
-export class AppModule { }
-=======
+
 export class AppModule {
 }
->>>>>>> 280aeba32f85154f2e0830e77de87b8c300dba5a
+

@@ -12,25 +12,21 @@
     
     
         
-      <button (click)="gettodayclasses()">today classes</button>
+      <!-- <button (click)="gettodayclasses()">today classes</button> -->
     <div class="container">
       <div class="container">
       <mat-form-field>
         <mat-label>course type filter</mat-label>
         <mat-select>
           <mat-option *ngFor="let Course of Courses">
-         <p (click)="typeselection(Course)">  {{Course}}</p>  
+         <p  (click)="typeselection(Course)">  {{Course}}</p>  
           </mat-option>
         </mat-select>
       </mat-form-field>
-
         <mat-form-field>
           <mat-label>Subjects</mat-label>
           <mat-select>
-<!-- <<<<<<< HEAD
-            <mat-option *ngFor="let subject of allsubjects" value="" >
-              <p (click)="subjectslist1(subject)">{{subject}}</p>
-======= -->
+
             <mat-option *ngFor="let subject of allsubjects"  >
            <p (click)="subjectselection(subject)">  {{subject}}</p>  
 
@@ -40,25 +36,25 @@
         <mat-form-field>
             <mat-label>Subtopics</mat-label>
             <mat-select>
-<!-- <<<<<<< HEAD
-              <mat-option *ngFor="let sub of subsubjects" value="" >
-                {{sub}}
-======= -->
+
               <mat-option *ngFor="let sub of subsubjects"  >
                 <p (click)="subsubjectselection(sub)">  {{sub}}</p> 
 
               </mat-option>
             </mat-select>
           </mat-form-field>&nbsp;&nbsp;
+       
+          
+          
     </div>
 
     <div class="container">
     
             
-     <br>
+     <!-- <br> -->
              
             
-            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
+            <!-- <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search"> -->
 
 
          <div class="card-display" *ngFor="let a of subjectslist | filter:searchText;let i=index" [hidden]=display>

@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TUTOR</title>
+        <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
     <app-navbar></app-navbar>
@@ -31,22 +36,29 @@
                 </div>
                 <div class="form-group">
                     <label>sub subject</label>
-                    <input type="text" required #subsubject="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter fees" class="form-control" name="subsubject" [(ngModel)]="tutor1.subsubject">
+                    <input type="text" required #subsubject="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter subsubject" class="form-control" name="subsubject" [(ngModel)]="tutor1.subsubject">
                     <small   class="text-danger" [class.d-none]="subsubject.valid || subsubject.untouched">choose the subsubject</small>
                 </div>
                 <div class="form-group">
                     <label>Time-Duration</label>
-                    <input type="text" required #time="ngModel" [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Time 14-15" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
+                    <input type="number" required #time="ngModel"     [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Time 14-15" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
                     <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Time Is Required</small>
                 </div>
                 <div class="form-group">
                     <label>teaching type selection</label>
-                    <button type="button" (click)="onlyonce()">only once</button>
-                    <button type="button" (click)="continous()">continous</button>
+                    <!-- <button mat-fab>Basic</button> -->
+                    <button type="button" required mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
+                    <button type="button" required mat-stroked-button (click)="continous()">continous</button>
                 </div>
                 <div class="form-group" *ngIf="once">
-                    <label>select date</label>
-                    <input type="date" placeholder="select date" name="date" [(ngModel)]="tutor1.date" >
+                    <label>select date</label><br>
+                    <!-- <input type="date" placeholder="select date" name="date" [(ngModel)]="tutor1.date" > -->
+                    <mat-form-field>
+                        <!-- <mat-label>Choose a date</mat-label> -->
+                        <input required  matInput [matDatepicker]="picker" name="date"  [(ngModel)]="tutor1.date" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
                 </div>
                 <div class="form-group" *ngIf="once">
                     <label>maximum students</label>
@@ -57,6 +69,7 @@
                 <div *ngIf="continousteacher">
                     <div class="form-group">
                         <label>Days</label>
+                        
                         <button type="button" (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
                         <button type="button" (click)="multiple()" mat-raised-button>MultipleDays</button>
                     </div>      
@@ -73,15 +86,16 @@
                     <div *ngFor="let day of days1">
                         <label>
                             <div *ngIf="!day2">
-                                <input type="checkbox" name="days1" value="{{day}}" (change)="updateCheckedOptions(day, $event)"/>
-                                {{day}}
+                                <input required type="checkbox" name="days1" value="{{day}}" (change)="updateCheckedOptions(day, $event)"/>
+                                <span>{{day}}</span>
                             </div>
                         </label>
                     </div>
                 </div></div>
                 <div class="form-group">
-                    <label>teaching time</label>
-                    <input type="time"  placeholder="Enter time" name="teachingtime"  [(ngModel)]="tutor1.teachingtime">
+                    <label>teaching time</label><br>
+                    <!-- <input type="time"  > -->
+                    <input atp-time-picker  type="text" placeholder="Enter time" name="teachingtime"  [(ngModel)]="tutor1.teachingtime">
                 </div>
                 <div class="form-group">
                     <label>Whatsapp Link</label>
