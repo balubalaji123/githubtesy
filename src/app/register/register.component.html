@@ -6,8 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<img src={{imageUrl}} class="rounded-circle"   width="200"  height="200" alt="image not found">
-<input type="file" (change)="selectimage($event)">
+<!-- <img src={{imageUrl}} class="rounded-circle"   width="200"  height="200" alt="image not found"> -->
+<!-- <img [src]="imageUrl" class="rounded-circle"   width="200"  height="200"><br>
+<input type="file"  #name="ngModel" class="form-control" name="img"  [(ngModel)]="tutor1.img"  (change)="handleFileInput($event.target.files)" >
+<button type="button" (click)="onUpload()">onUpload</button> -->
+
+<!-- <input type="file" (change)="selectimage($event)"> -->
 
     <div class="bg" >
         <div class="container-fluid mb-5">
@@ -16,7 +20,9 @@
                  <div class="form-container">
                      
             <div class="heading" [hidden]=pw>Resgistration form</div>
-
+            <img [src]="imageUrl" style="width: 250px; height: 200px;">
+            <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+            <!-- <button type="submit" class="btn-large btn-submit" [disabled]="Image.value==''||!imageForm.valid">submit</button> -->
             <form #userForm="ngForm" (ngSubmit)="onsubmit(pass.value,passwd.value)" [hidden]=pw>
                 <div class="form-group">
                     <label>Email</label>

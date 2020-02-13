@@ -45,10 +45,10 @@
                     <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Time Is Required</small>
                 </div>
                 <div class="form-group">
-                    <label>teaching type selection</label>
+                    <h4>teaching type selection</h4><br>
                     <!-- <button mat-fab>Basic</button> -->
-                    <button type="button" required mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
-                    <button type="button" required mat-stroked-button (click)="continous()">continous</button>
+                    <button type="button"  required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
+                    <button type="button"  required mat-stroked-button (click)="continous()">continous</button>
                 </div>
                 <div class="form-group" *ngIf="once">
                     <label>select date</label><br>
@@ -70,8 +70,8 @@
                     <div class="form-group">
                         <label>Days</label>
                         
-                        <button type="button" (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
-                        <button type="button" (click)="multiple()" mat-raised-button>MultipleDays</button>
+                        <button type="button" required  (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
+                        <button type="button" required (click)="multiple()" mat-raised-button>MultipleDays</button>
                     </div>      
                       <div *ngIf="a" class="form-group">
                     <label>Select a day</label>
@@ -84,9 +84,12 @@
                 <div *ngIf="b"  class="form-group">
                     <label> days:</label>
                     <div *ngFor="let day of days1">
+                        
                         <label>
                             <div *ngIf="!day2">
                                 <input required type="checkbox" name="days1" value="{{day}}" (change)="updateCheckedOptions(day, $event)"/>
+                                <span class="btn"></span>
+
                                 <span>{{day}}</span>
                             </div>
                         </label>

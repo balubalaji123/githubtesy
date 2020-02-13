@@ -13,8 +13,12 @@ import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 })
 export class CourseselectedComponent implements OnInit {
 public course=new Array()
+public array=new Array()
+public a=false;
+public split;
 public mail;
 public selecteddays;
+public days={};
 public registermodel:Courseselected
   constructor(public subjectservice:SubjectselectedService,private roter:ActivatedRoute) {
     this.name=this.roter.snapshot.paramMap.get('tutorname')
@@ -27,6 +31,21 @@ public registermodel:Courseselected
     this.tutormail=this.roter.snapshot.paramMap.get('tutormail')
     this.watsuplink=this.roter.snapshot.paramMap.get('tutorwatsuplink')
     this.selecteddays = this.roter.snapshot.paramMap.get('selecteddays')
+    console.log(typeof(this.selecteddays));
+    var str=this.selecteddays;
+    console.log(str.length);
+    var splitted = str.split(","); 
+    this.days = splitted;
+      console.log(splitted)
+      console.log(typeof(splitted));
+      console.log(splitted.length);
+      this.split=splitted.length;
+      if(this.split>1)
+      {
+        this.a=true;
+      }
+    // console.log()
+    
     //http://localhost:3000/courseselected;_id=5e42bc461d8e52111973b7b5;tutorimage=null;tutorname=botcha%20tulasi;tutorsubject=dfc;tutormail=botchatulasi1356@gmail.com;tutorlocation=null;tutorsubsubject=eaeraqrh;tutorcoursetype=Competative;tutorfee=0;tutordescription=dxr;tutortime=05:00;timeduration=fds;tutorwatsuplink=wedw;selecteddays=%5Bobject%20Object%5D;likes=0
 this.image=this.roter.snapshot.paramMap.get('tutorimage')
 console.log(this.tutordate)
@@ -34,7 +53,13 @@ console.log(this.tutordate)
   //  http://localhost:3000/courseselected;_id=5e4044dd303f22c3207fdcb6;tutorimage=null;tutorname=Balaji;tutorsubject=sub1;tutormail=balajipuvvada12289@gmail.com;tutorlocation=bhimavaram;tutorsubsubject=a;tutorcoursetype=Crash;tutorfee=0;tutordescription=daxz;tutortime=23:12;timeduration=1;tutorwatsuplink=fdcvx;maxstudents=10;tutordate=2020-02-10T00:00:00.000Z
   ngOnInit() {
   }
- 
+ onsel(q1)
+ {
+  //  console.log(q1);
+  this.array.push(q1);
+  console.log(this.array)
+   
+ }
   public name
 public subject
 public time
@@ -60,8 +85,6 @@ this.subjectservice.subjectselected(this.registermodel)
   }
   
 }
-
-
 
 
 

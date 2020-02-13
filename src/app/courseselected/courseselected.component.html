@@ -23,7 +23,14 @@
                                     <p *ngIf="tutordate">tutordate:&nbsp;&nbsp;{{tutordate}}</p>
                                     <p>fee:&nbsp;&nbsp;{{fee}}</p>
                                     <p>subsubject:&nbsp;&nbsp;{{subsubject}}</p>
-                                    <p>days:&nbsp;&nbsp;{{selecteddays}}</p>
+                                    <div  *ngIf="!a">days:&nbsp;&nbsp;{{selecteddays}}</div>
+                                    <div *ngIf="a">
+                                        days:<br>
+                                        <div  *ngFor="let day of days">
+                                            <input (click)="onsel(day)"type="checkbox" >{{day}}
+                                        </div>
+
+                                    </div>
                                         <button class="btn btn-primary" type="submit" (click)="fun()" > submit</button>
                                 </div>
                                 <div class="col">

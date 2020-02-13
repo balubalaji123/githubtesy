@@ -16,7 +16,9 @@ import { Router, RouterModule } from '@angular/router';
 export class StudentComponent implements OnInit {
   subjectslist:Tutor[]
   public searchText
-  public filter1='course type filter'
+  public filter1='course type filter';
+  public filter2='Subject';
+  public filter3='Subsubject';
 public display=false
 public notfilter=true
 public subject
@@ -58,6 +60,7 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
   }
 
   subjectselection(subject){
+    this.filter2=subject;
     this.subject=subject
     this.subjectoption=new Subsubject(subject)
     this.studentservice.allsubsubjects(this.subjectoption).subscribe(
@@ -67,6 +70,7 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
     
   }
   subsubjectselection(subject){
+    this.filter3=subject;
     this.subsubject=subject
     this.filterdata=new Filter(this.subject,this.subsubject)
     this.studentservice.filterdata(this.filterdata).subscribe(

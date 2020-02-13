@@ -24,7 +24,7 @@
         </mat-select>
       </mat-form-field>
         <mat-form-field>
-          <mat-label>Subjects</mat-label>
+          <mat-label>{{filter2}}</mat-label>
           <mat-select>
 
             <mat-option *ngFor="let subject of allsubjects"  >
@@ -34,7 +34,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Subtopics</mat-label>
+            <mat-label>{{filter3}}</mat-label>
             <mat-select>
 
               <mat-option *ngFor="let sub of subsubjects"  >
@@ -54,7 +54,7 @@
      <!-- <br> -->
              
             
-            <!-- <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search"> -->
+            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 
 
          <div class="card-display" *ngFor="let a of subjectslist | filter:searchText;let i=index" [hidden]=display>
