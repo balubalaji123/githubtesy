@@ -12,6 +12,7 @@ const subjectselected=require('./server/subjectselected')
 const logout=require('./server/logout')
 const like=require('./server/like')
 const dislike=require('./server/dislike')
+const updateprofile=require('./server/profile')
 const app=express();
 const forgotpassword=require('./server/forgotpassword')
 const cors=require('cors')
@@ -78,6 +79,7 @@ app.use('/dashboard',redirectlogin,dashboard)
 app.use('/session',sessioncheck)
 app.use('/like',like)
 app.use('/password',forgotpassword)
+app.use('/profileupdate',updateprofile)
 var name
 var address
 app.get('/imageget',function(req,res){
@@ -87,14 +89,19 @@ app.get('/imageget',function(req,res){
 })
 // for dashboard
 app.get('/dashboardimage',function(req,res){
+  console.log(req.session)
+  if(req.session.userimage===null){
+    address=__dirname+'/server/uploads1/default.jpg'
+console.log("enere")
+    res.sendFile(__dirname+'/server/uploads1/default.jpg')
+  }
+  else{
   address=__dirname+'/server/uploads1/'+req.session.userimage
-  res.sendFile(address)
-})
+  res.sendFile(address)}
+  
+  })
 
-// app.get('/users',function(req,res){
-//   console.log("using put request")
-//   res.send('hello')
-// })
+
 app.get('/*',function(req,res){
   // console.log("in wild"+JSON.stringify(req.session))
   res.sendFile(__dirname+'/dist/updated/index.html')

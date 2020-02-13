@@ -16,13 +16,13 @@ export class TutorComponent implements OnInit {
 days1=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','EveryDay'];
 fees=['fee','no fee'];
 topicHasError =true;
-public imageUrl = '../../assets/TeacherStudent.jpg';
+// public imageUrl = '../../assets/TeacherStudent.jpg';
 public once=false
 public continousteacher=false
 public a=false;
 public images
 public rand
-public imageurl="../../assets/TeacherStudent.jpg"
+// public imageurl="../../assets/TeacherStudent.jpg"
 public filetoupload:File=null
 public b=false;
  public result: string 
@@ -65,6 +65,7 @@ multiple(){
   this.b=true;
   this.a=false;
 }
+<<<<<<< HEAD
 selectimage(event){
   if(event.target.files.length>0){
     const file=event.target.files[0]
@@ -82,3 +83,27 @@ onimage(){
     )
 }
 }
+=======
+// selectimage(event){
+//   if(event.target.files.length>0){
+//     const file=event.target.files[0]
+// this.images=file
+// this.imageUrl=event.target.result
+// console.log(this.imageUrl)
+//   }
+// }
+// onimage(){
+//     const formdata=new FormData()
+//     formdata.append('file',this.images)
+//     this.http.post<any>(this.uri,formdata).subscribe(
+//       data=>console.log(data),
+//       error=>console.log(error)
+//     )
+// }
+}
+
+
+
+
+
+>>>>>>> d58201f3a89b5ac8e9ab7b3141a253ce3c1d3f71

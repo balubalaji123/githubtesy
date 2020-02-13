@@ -47,7 +47,7 @@
           
           
     </div>
-
+<!-- 
     <div class="container">
     
             
@@ -76,12 +76,12 @@
                                     <div class="col">
                                       <div class="card-body">
                                         <div *ngIf="a.tutorimage===null;else image">
-                                        <img src="../../assets/student-img1.jpg" alt="dsxcz">{{a.tutorimage}}
+                                        <img src="../../assets/default.jpg" alt="dsxcz">{{a.tutorimage}}
                                         </div>
 
 
- <!-- add the else block -->
-
+  add the else block -->
+<!-- 
                                                                                   
                                         <ng-template #image>
                                           <img src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">{{a.tutorimage}}
@@ -123,10 +123,10 @@
             </div>
           </li>
         </ul>
-        </div> 
+        </div>   -->
 
 <!-- new card-body -->
-<!-- <div class="container">
+ <div class="container">
   <div *ngIf="!display">
   <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 </div>
@@ -139,10 +139,10 @@
     <div class="row">
       <div class="col">
         <div *ngIf="a.tutorimage===null;else image">
-          <img src="../../assets/uploads1/ydijjitgpalmtnznukljdzbauf.jpg" alt="dsxcz">{{a.tutorimage}}
+          <img src="../../assets/default.jpg" alt="dsxcz">{{a.tutorimage}}
           </div>
-add the else block -->                                         
-          <!-- <ng-template #image>
+<!-- add the else block                                          -->
+           <ng-template #image>
             <img src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">{{a.tutorimage}}
             </ng-template>
         
@@ -150,10 +150,13 @@ add the else block -->
       <div class="col">
         <div ><b>Subject:</b><span class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</span></div>
           <div ><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
-        <div ><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</div>
+          <div *ngIf="a.tuorgdate"><b>date:</b>&nbsp;&nbsp;&nbsp;{{a.tuorgdate}}</div>
+          <div *ngIf="a.maxstudents" ><b>remaining entries:</b>&nbsp;&nbsp;&nbsp;{{a.maxstudents}}</div> 
+
+        <div *ngIf="a.selecteddays" ><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</div>
           <div ><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</div> 
     <div ><b>Course:</b>&nbsp;&nbsp;&nbsp;{{a.tutorcoursetype}}</div> 
-          <div ><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
+          <div *ngIf="a.likes"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
         <div ><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
       <div><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
       <div style="float: right;"><button  type="submit" class="btn btn-info btn-lg" (click)="subjectselected(a.tutorname,a.tutorsubject,a.tutortime,a.tutorcoursetype,a.tutorfee,a.tutordescription,a.tutorwatsuplink,a.tutormail)" >Subscribe</button></div>
@@ -165,4 +168,16 @@ add the else block -->
 </ul>
 </div>
 </div>
+<<<<<<< HEAD
 </div> --> 
+=======
+</div>  
+
+
+
+
+
+        
+
+        
+>>>>>>> d58201f3a89b5ac8e9ab7b3141a253ce3c1d3f71
