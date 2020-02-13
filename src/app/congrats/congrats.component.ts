@@ -10,6 +10,7 @@ export class CongratsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
