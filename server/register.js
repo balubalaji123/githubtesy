@@ -7,7 +7,7 @@ var nodemailer = require('nodemailer');
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 var dbo=''
-var d
+var d=null
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
@@ -86,7 +86,7 @@ router.post('/',function(req,res){
         from: 'find my tutor',
         to: usermail,
         subject: 'account conformation',
-        html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.100.20:3000/register?id='+check+'">click</a>'
+        html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://localhost:3000/register?id='+check+'">click</a>'
       };  
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
@@ -101,7 +101,7 @@ router.post('/',function(req,res){
     
 })
 router.get('/',function(req,res){
-  req.session.image=d
+  req.session.userimage=d
   console.log("d",d)
    if(check==req.query['id']){
    myobj={userimage:d,username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
@@ -117,6 +117,7 @@ router.get('/',function(req,res){
 // for gmail login
 router.post('/google',function(req,res){
   // console.log(JSON.stringify(req.body))
+  d=null
   username=req.body.googlename
   usermail=req.body.googleemail
   userpassword=req.body.password2
@@ -133,7 +134,8 @@ router.post('/google',function(req,res){
     else{
        req.session.username=username
           req.session.mail=usermail
-      myobj={username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
+          req.session.userimage=d
+      myobj={userimage:d,username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
       dbo.collection("customers").insertOne(myobj, function(err, res) {
           // req.session.userid=res.ops[0]._id
           // tried to creat session whe registered but failed

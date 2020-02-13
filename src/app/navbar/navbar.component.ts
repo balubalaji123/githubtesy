@@ -3,6 +3,7 @@ import{SessioncheckService}from '../sessioncheck.service';
 import{LogoutService} from'../logout.service'
 import { from } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
+import { DashboardService } from '../dashboard.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,13 +12,19 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public sessionservice:SessioncheckService,public logoutservice:LogoutService,public route:Router) {
-    sessionservice.sessioncheck().subscribe(
-      data=>{console.log("in session"+data),this.username=data},
-            error=>console.log(error)
-    )
+  constructor(dashboard:DashboardService,public sessionservice:SessioncheckService,public logoutservice:LogoutService,public route:Router) {
+  //   sessionservice.sessioncheck().subscribe(
+  //     data=>{console.log("in session"+JSON.stringify(data.userimage)),this.userimage=data.userimage},
+  //           error=>console.log(error)
+  //   )
+  dashboard.profiledata().subscribe(
+    data=>this.user=data,
+    error=>console.log(error)
+  )
+  
+
    }
-public username
+public user
 
   ngOnInit() {
 

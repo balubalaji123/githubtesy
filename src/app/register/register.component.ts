@@ -4,7 +4,6 @@ import { Router, RouterModule } from '@angular/router';
 import {Googlepassword} from '../googlepassword';
 import { from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
 import{RegisterService} from'../register.service'
 import{GoogleloginService} from'../googlelogin.service'
 import { AuthService, GoogleLoginProvider } from 'angular-6-social-login';
@@ -26,13 +25,12 @@ public googlemail;
 public googleuser;
 public tonavnextpage;
 public login1=false;
-public imageUrl = '../../assets/TeacherStudent.jpg';
+public imageUrl = '../../assets/default.jpg';
 public uri='http://localhost:3000/register/upload'
-
 public users1;
 public gpw=false;
 public images
-public imageurl="../../assets/TeacherStudent.jpg"
+public imageurl="../../assets/default.jpg"
   registermodel=new Register('','','','','');
   gpwmodel = new Googlepw('','')
   reg:Googlepassword
@@ -110,7 +108,6 @@ if(data=="useralreadyexists"){
     this.googlemail=userData.email;
     this.googleuser=userData.name;
         // console.log(this.password2);
-        
         // Now sign-in with userData
         // ...  
       }
@@ -126,11 +123,8 @@ this.register.register(this.registermodel)
 .subscribe(
   data=>console.log("register"+data),
   error=>console.log(error)
-)
-    
+)   
     console.log("gmail password");
- 
-
     this.reg=new Googlepassword(this.googleuser,this.googlemail,passwordgoogle)
 this.googleregister1.googlelogin(this.reg)
 .subscribe(
@@ -149,9 +143,7 @@ this.googleregister1.googlelogin(this.reg)
   error=>console.log("error in google login")
 )  
 console.log("on click me");
-
   }}
-
   onclick2(password2)
   {
     console.log(password2);
@@ -180,5 +172,4 @@ onimage(){
     error=>console.log(error)
   )
 }
-
 }

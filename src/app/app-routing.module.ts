@@ -29,7 +29,8 @@ const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'forgotpassword',component:ForgotpasswordComponent},
   {path:'congrats',component:CongratsComponent},
-  {path:'courseselected',component:CourseselectedComponent}
+  {path:'courseselected',component:CourseselectedComponent},
+  // {path:'profile',component:ProfileComponent}
   
 ];
 @NgModule({
