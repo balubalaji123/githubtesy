@@ -36,6 +36,8 @@ export class DashboardComponent implements OnInit {
   public asatutor
   public liking:Like
   public liking1:Like
+  public show
+  public showbutton=true
   public disliked:Like
   public immediatecourse
   public showimmediatecourses=true
@@ -58,18 +60,20 @@ public username;
     )
   }
   classesattended1(){
+    this.showbutton=true
     this.showimmediatecourses=false
+    this.show=true
     this.asastudent=[]
     this.b=true;
     this.dashboard.subjectselection()
     .subscribe(
-      data=>{this.asatutor=[],console.log(data),this.asatutor=data},
+      data=>{console.log(data),this.asatutor=data},
       error=>console.log("error in dashboard")
     )
-    
   }
-  dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
-    this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
+  dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time){
+    this.showbutton=true
+    this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time)
 this.Like.dislike(this.liking1)
 .subscribe(
   data=>console.log(data),
@@ -83,6 +87,8 @@ this.dashboard.learntselection()
 
   }
   classesenrolled1(){
+    this.showbutton=true
+    this.show=false
     this.showimmediatecourses=false
     this.asatutor=[]
     this.student=!this.student
@@ -94,8 +100,9 @@ this.dashboard.learntselection()
     )
     
   }
-  like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
-this.liking=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
+  like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time){
+    this.showbutton=true
+this.liking=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time)
 this.dislike=false
 this.Like.like(this.liking)
 .subscribe(
@@ -119,4 +126,23 @@ subscribe(
   }
   public techer=true
   public student=false
+  onlyonce(){
+    this.asatutor=[]
+    this.showbutton=false
+    this.dashboard.temptutor().subscribe(
+      data=>{console.log(data),this.asatutor=data},
+      error=>console.log(error)
+    )
+
+  }
+  multiple(){
+    this.showbutton=true
+    this.asatutor=[]
+    this.dashboard.permenattutor().subscribe(
+      data=>this.asatutor=data,
+      error=>console.log(error)
+    )
+
+
+  }
 }

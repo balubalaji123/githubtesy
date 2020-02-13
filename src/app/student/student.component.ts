@@ -6,6 +6,7 @@ import{Subsubject} from '../subsubject'
 import{Filter} from'../filter'
 import { error } from 'protractor';
 import{Coursetype} from'../coursetype'
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-student',
@@ -15,9 +16,8 @@ import{Coursetype} from'../coursetype'
 export class StudentComponent implements OnInit {
   subjectslist:Tutor[]
   public searchText
-  public tutormail=false
 public display=false
-public selectedcouse=[]
+public notfilter=true
 public subject
 public todayclasseslist:Tutor[]
 public   Courses=['Crash','Competative'];
@@ -29,7 +29,7 @@ public subsubjects=[]
 public subjectoption:Subsubject
 public filter:Filter
 public selectedsubject:string
-  constructor(private studentservice:StudentsService) {
+  constructor(private studentservice:StudentsService,public router:Router) {
     // to get all subjects list
 studentservice.allsubjects().subscribe(
   data=>{console.log("data"+data);this.allsubjects=data},
@@ -48,18 +48,11 @@ studentservice.allsubjects().subscribe(
   ngOnInit() {
   }
  
-  subjectselected(a1,a2,a3,a4,a5,a6,a7,a8,a9){
-    this.display=true
-this.selectedcouse.push(a1)
-this.selectedcouse.push(a2)
-this.selectedcouse.push(a3)
-this.selectedcouse.push(a4)
-this.selectedcouse.push(a5)
-this.selectedcouse.push(a6)
-this.selectedcouse.push(a7)
-this.selectedcouse.push(a8)
-this.selectedcouse.push(a9)
+  subjectselected(i){
 
+this.display=true
+console.log(this.subjectslist[i])
+this.router.navigate(['/courseselected',this.subjectslist[i]])
 
   }
 
@@ -89,8 +82,9 @@ this.studentservice.coursetype(this.selectedcoursetype).subscribe(
 )
   }
   gettodayclasses(){
+    this.notfilter=false
 this.studentservice.todayclasses().subscribe(
-  data=>console.log(data),
+  data=>this.subjectslist=data,
   err=>console.log(err)
 )
   }

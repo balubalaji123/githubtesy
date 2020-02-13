@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { error } from 'protractor';
 import{FileSelectDirective,FileUploader} from 'ng2-file-upload';
 import { Router, RouterModule } from '@angular/router';
-
 @Component({
   selector: 'app-tutor',
   templateUrl: './tutor.component.html',

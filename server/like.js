@@ -8,19 +8,17 @@ MongoClient.connect(url, function(err, db) {
     });
     var likess
 router.post('/',function(req,res){
-    console.log("from like"+JSON.stringify(req.body))
-    var myquery={tutormail:req.body.tutormail,learnermail:req.body.learnermail,leanersubject:req.body.leanersubject}
+    var myquery={tutormail:req.body.tutormail,learnermail:req.session.mail,leanersubject:req.body.leanersubject,time:req.body.time}
     dbo.collection("learnt").find(myquery,{$exists:true}).toArray(function(err, result) {
       if (err) throw err;
       checkuser=result
-      console.log(JSON.stringify(result))
       if(result.length){
     var newvalues = { $set: {like:true} };
       dbo.collection("learnt").updateOne(myquery, newvalues, function(err, res) {
             if (err) throw err;
             console.log("res")
           });
-      var tutorquery={tutormail:req.body.tutormail,tutorname:req.body.learnername,tutorsubject:req.body.leanersubject}
+      var tutorquery={tutormail:req.body.tutormail,tutorname:req.body.learnername,tutorsubject:req.body.leanersubject,}
       dbo.collection("continousteacher").find(tutorquery,{likes:1}).toArray(function(err,result){
         if(err)
         console.log(err)
@@ -44,12 +42,7 @@ router.post('/delete',function(req,res){
     tutorsubsubject=req.body.tutorsubsubject
     cousetype=req.body.coursetype
     usermail=req.session.usermail
-console.log(JSON.stringify(req.body));
-
-    console.log("course"+cousetype)
-    var query={tutormail:req.session.mail,tutorsubject:tutorsubject,tutorcoursetype:cousetype,tutorsubsubject:tutorsubsubject}
-    console.log(JSON.stringify(query));
-    
+    var query={tutormail:req.session.mail,tutorsubject:tutorsubject,tutorcoursetype:cousetype,tutorsubsubject:tutorsubsubject}  
     dbo.collection("continousteacher").deleteOne(query, function(err, obj) {
       if (err) throw err;
       usermail=req.session.usermail
@@ -61,16 +54,5 @@ console.log(JSON.stringify(req.body));
             res.send(JSON.stringify(checkuser))
           });
     });
-  
 })
-
 module.exports=router
-
-// tutorsubject,cousetype
-//   var myquery = { address: "Valley 345" };
-//   var newvalues = { $set: {name: "Mickey", address: "Canyon 123" } };
-//   dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
-//     if (err) throw err;
-//     console.log("1 document updated");
-//     db.close();
-//   });

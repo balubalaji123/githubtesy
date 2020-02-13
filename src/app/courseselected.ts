@@ -4,14 +4,12 @@ export class Courseselected {
     constructor(
        public name:string,
 public subject:string,
-public time:number,
-public coursetype:string,
-// courseduration:number,
-public fee:number,
-public description:string,
-public watsuplink:string,
 public tutormail:string,
-public subsubject:string
+public subsubject:string,
+public watsuplink:string,
+public tutorimage:string,
+public tutordate:string,
+public classtime:string
         // public mail:string
     ){}
 }

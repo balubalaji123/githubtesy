@@ -19,14 +19,12 @@ router.post('/',function(req,res){
           pass: 'fmt@12345'
         }
       });
-      
       var mailOptions = {
         from: 'find my tutor',
         to: req.session.mail,
         subject: 'Regisered course details',
         html:'u registerd for course   '+req.body.subject+'and tutor is   '+req.body.name+'  to join group   <a href='+req.body.watsuplink+'> click</a>'
       };
-      
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
           console.log(error);
@@ -48,14 +46,18 @@ var year=time.getFullYear()
 var dt = dateTime.create();
 var formatted = dt.format('Y-m-d H:M:S');
 todaydate=date+'/'+month+'/'+year
-var q={learnername:learnername,learnermail:learnermail,leanersubject:leanersubject,leanersubsubject:req.body.subsubject,learnertime:learnertime,
-    date:formatted,like:false,tutormail:tutormail}
-    console.log("subjectselected"+JSON.stringify(q))
+var q={tutorimage:req.body.tutorimage,learnername:learnername,learnermail:learnermail,leanersubject:leanersubject,leanersubsubject:req.body.subsubject,
+  tutordate:new Date(req.body.tutordate),tutororgdate:req.body.tutordate,like:false,tutormail:tutormail,
+time:req.body.classtime}
+    console.log("query   "+JSON.stringify(q))
 dbo.collection("learnt").insertOne(q, function(err, res) { 
 })
 var c={tutorsubject:leanersubject,tutorsubsubject:req.body.subsubject,tutormail:tutormail}
+console.log('c'+JSON.stringify(c))
 dbo.collection('onceteacher').find(c,{$exists:true}).toArray(function(req,result){
+  console.log("outside")
   if(result.length){
+    console.log('if')
   var check=result[0].maxstudents
   check=check-1
   var newtutorvalues = { $set: {maxstudents:check} };
@@ -63,6 +65,17 @@ dbo.collection('onceteacher').find(c,{$exists:true}).toArray(function(req,result
     if(err)throw err
   })}
 })
-res.end()
+
 })
 module.exports=router
+// may be useful for multiple regitration of a particular course by single person
+// dbo.collection("learnt").find(check,{$exists:true}).toArray(function(err1,respoding){
+//   if (err1) throw err1
+//   if(respoding.length)
+//   res.send(JSON.stringify("you already registerd"))
+//   else{
+    
+// dbo.collection("learnt").insertOne(q, function(err, res) { 
+// })
+//   }
+// })

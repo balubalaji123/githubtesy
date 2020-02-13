@@ -22,6 +22,7 @@ router.get('/',function(req,res){
   checkuser=[]
   usermail=req.session.mail
   c={tutormail:usermail}
+  // we will dispaly only permenant tutors
   console.log(JSON.stringify(c))
     dbo.collection("continousteacher").find(c,{tutorsubject:1,tutortime:1,selecteddays:1},{$exists:true}).toArray(function(err, result) {
         if (err) throw err;
@@ -35,7 +36,6 @@ router.get('/learnt',function(req,res){
   usermail=req.session.mail
   c={learnermail:usermail}
   console.log(JSON.stringify(c))
-
     dbo.collection("learnt").find(c,{learnername:1,leanersubject:1,learnertime:1,time:1,date:1,like:1,tutormail:1},{$exists:true}).toArray(function(err, result) {
         if (err) throw err;
         checkuser=result
@@ -78,6 +78,20 @@ router.get('/mostliked',function(req,res){
   dbo.collection('continousteacher').find({}).sort({"likes":-1}).limit(10).toArray(function(err,result){
     if(err) throw err
     res.send(JSON.stringify(result))
+  })
+})
+router.get('/once',function(req,res){
+  var g={tutormail:req.session.mail}
+  dbo.collection('onceteacher').find(g,{$exists:true}).toArray(function(err,resp){
+    if(err) throw err
+    res.send(JSON.stringify(resp))
+  })
+})
+router.get('/multiple',function(req,res){
+  var h={tutormail:req.session.mail}
+  dbo.collection('continousteacher').find(h,{$exists:true}).toArray(function(err,resp){
+    if(err) throw err
+    res.send(JSON.stringify(resp))
   })
 })
 
