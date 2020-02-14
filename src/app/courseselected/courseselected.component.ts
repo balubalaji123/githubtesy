@@ -4,7 +4,7 @@ import { EmailValidator } from '@angular/forms';
 import{ SubjectselectedService} from'../subjectselected.service'
 import { from } from 'rxjs';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
-
+import { ChecksessionService } from '../checksession.service';
 @Component({
   selector: 'app-courseselected',
   templateUrl: './courseselected.component.html',
@@ -15,7 +15,20 @@ export class CourseselectedComponent implements OnInit {
 public course=new Array()
 public mail
 public registermodel:Courseselected
-  constructor(public subjectservice:SubjectselectedService,private roter:ActivatedRoute) {
+  constructor(public subjectservice:SubjectselectedService,private roter:ActivatedRoute,public router:Router,private chechsession:ChecksessionService) {
+      this.chechsession.verifysession().subscribe(
+        data=>{if(!data){
+          this.router.navigate(['/login1'])
+        }}
+      )
+    
+  
+
+
+
+
+
+
     this.name=this.roter.snapshot.paramMap.get('tutorname')
     this.subject=this.roter.snapshot.paramMap.get('tutorsubject')
     this.time=this.roter.snapshot.paramMap.get('tutortime')
@@ -52,7 +65,10 @@ this.registermodel=new Courseselected(this.name,this.subject,this.tutormail,this
 console.log("hello"+this.registermodel)
 this.subjectservice.subjectselected(this.registermodel)
 .subscribe(
-  data=>console.log("course selected component"+data),
+  data=>{if(data)
+  {
+    this.router.navigate(['/dashboard1'])
+  }},
   error=>console.log(error)
 )
   }

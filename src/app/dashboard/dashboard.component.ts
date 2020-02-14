@@ -9,18 +9,28 @@ import{Delete}  from'../delete';
 import{LogoutService} from'../logout.service';
 import { Router, RouterModule } from '@angular/router';
 import { SessioncheckService } from '../sessioncheck.service';
+import { ChecksessionService } from '../checksession.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(public sessionservice:SessioncheckService,private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {
+  constructor(public sessionservice:SessioncheckService,private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router,private chechsession:ChecksessionService) {
     // for fast filling classes
     this.dashboard.getfastfilling().subscribe(
       data=>this.immediatecourse=data,
       error=>console.log(error)
     )
+    
+    this.chechsession.verifysession().subscribe(
+      data=>{if(!data){
+        this.route.navigate(['/login1'])
+      }}
+    )
+
+
+
     // for most liked
     this.dashboard.highliked().subscribe(
       data=>this.mostliked=data,

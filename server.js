@@ -13,6 +13,8 @@ const logout=require('./server/logout')
 const like=require('./server/like')
 const dislike=require('./server/dislike')
 const updateprofile=require('./server/profile')
+// for session checking
+const checksession=require('./server/entrancecheck')
 const app=express();
 const forgotpassword=require('./server/forgotpassword')
 const cors=require('cors')
@@ -68,18 +70,19 @@ const redirecthome=(req,res,next)=>{
     next();
   }
 }
-app.use('/logout',redirecthome,logout)
+app.use('/logout',logout)
 app.use('/login',login)
 app.use('/register',register)
 app.use('/student',student)
 app.use('/dislike',dislike)
-app.use('/tutor',redirectlogin,tutor)
-app.use('/subjectselected',redirectlogin,subjectselected)
-app.use('/dashboard',redirectlogin,dashboard)
+app.use('/tutor',tutor)
+app.use('/subjectselected',subjectselected)
+app.use('/dashboard',dashboard)
 app.use('/session',sessioncheck)
 app.use('/like',like)
 app.use('/password',forgotpassword)
 app.use('/profileupdate',updateprofile)
+app.use('/checksession',checksession)
 var name
 var address
 app.get('/imageget',function(req,res){
@@ -92,7 +95,6 @@ app.get('/dashboardimage',function(req,res){
   console.log(req.session)
   if(req.session.userimage===null){
     address=__dirname+'/server/uploads1/default.jpg'
-console.log("enere")
     res.sendFile(__dirname+'/server/uploads1/default.jpg')
   }
   else{
@@ -103,7 +105,6 @@ console.log("enere")
 
 
 app.get('/*',function(req,res){
-  // console.log("in wild"+JSON.stringify(req.session))
   res.sendFile(__dirname+'/dist/updated/index.html')
 })
 app.listen(3000)
