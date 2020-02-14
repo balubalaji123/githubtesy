@@ -27,11 +27,9 @@ public googlemail;
 public googleuser;
 public tonavnextpage;
 public login1=false;
-<<<<<<< HEAD
-// public imageUrl = '../../assets/TeacherStudent.jpg';
-=======
-public imageUrl = '../../assets/default.jpg';
->>>>>>> d58201f3a89b5ac8e9ab7b3141a253ce3c1d3f71
+
+public imageUrl1 = '../../assets/default.jpg';
+
 public uri='http://localhost:3000/register/upload'
 public users1;
 public gpw=false;

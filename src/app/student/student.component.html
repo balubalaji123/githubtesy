@@ -54,8 +54,15 @@
      <!-- <br> -->
              
             
-            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
-
+            <!-- <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search"> -->
+            <div class="main">
+              <div *ngIf="!display">
+                <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
+                <!-- <div class="btn">
+                  <a href="#"><i class="fa fa-search"></i></a>
+                </div> -->
+              </div>
+            </div>
 
          <div class="card-display" *ngFor="let a of subjectslist | filter:searchText;let i=index" [hidden]=display>
         <ul id="wrappers">
@@ -127,11 +134,14 @@
 
 <!-- new card-body -->
  <div class="container">
-  <div *ngIf="!display">
+  <!-- <div *ngIf="!display">
   <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
-</div>
+</div> -->
+
 <div class="card-display" *ngFor="let a of subjectslist | filter:searchText" [hidden]=display>
   <ul id="wrappers">
+    
+
     <li>
       <div class="container">
 <div class="card mycard">
@@ -168,9 +178,9 @@
 </ul>
 </div>
 </div>
-<<<<<<< HEAD
-</div> --> 
-=======
+<!-- <<<<<<< HEAD -->
+</div> 
+<!-- ======= -->
 </div>  
 
 
@@ -180,4 +190,4 @@
         
 
         
->>>>>>> d58201f3a89b5ac8e9ab7b3141a253ce3c1d3f71
+<!-- >>>>>>> d58201f3a89b5ac8e9ab7b3141a253ce3c1d3f71 -->

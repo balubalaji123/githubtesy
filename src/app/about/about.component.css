@@ -113,7 +113,20 @@ footer{
   color: #D5D5D5;
   text-decoration: none;
 }
-
+.button{
+  background:#23415c;
+  border: 2px solid #23415c;
+  border-radius: 10px;
+  color:#fff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+  font-family: sans-serif;
+}
+ .button a{
+   text-decoration: none;
+   color: black;
+ }
 
 
 

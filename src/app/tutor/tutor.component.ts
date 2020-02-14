@@ -16,7 +16,7 @@ export class TutorComponent implements OnInit {
 days1=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','EveryDay'];
 fees=['fee','no fee'];
 topicHasError =true;
-// public imageUrl = '../../assets/TeacherStudent.jpg';
+public imageUrl = '../../assets/TeacherStudent.jpg';
 public once=false
 public continousteacher=false
 public a=false;
@@ -65,25 +65,7 @@ multiple(){
   this.b=true;
   this.a=false;
 }
-<<<<<<< HEAD
-selectimage(event){
-  if(event.target.files.length>0){
-    const file=event.target.files[0]
-this.images=file
-this.imageUrl=event.target.result
-console.log(this.imageUrl)
-  }
-}
-onimage(){
-    const formdata=new FormData()
-    formdata.append('file',this.images)
-    this.http.post<any>(this.uri,formdata).subscribe(
-      data=>console.log(data),
-      error=>console.log(error)
-    )
-}
-}
-=======
+
 // selectimage(event){
 //   if(event.target.files.length>0){
 //     const file=event.target.files[0]
@@ -100,10 +82,32 @@ onimage(){
 //       error=>console.log(error)
 //     )
 // }
+fileToUpload: File = null;
+handleFileInput(file: FileList) {
+  this.fileToUpload = file.item(0);
+  var reader = new FileReader();
+  reader.onload = (event : any) => {
+    this.imageUrl = event.target.result;
+  }
+  reader.readAsDataURL(this.fileToUpload);
+   console.log(file);
+}
 }
 
-
-
-
-
->>>>>>> d58201f3a89b5ac8e9ab7b3141a253ce3c1d3f71
+// selectimage(event){
+//   if(event.target.files.length>0){
+//     const file=event.target.files[0]
+// this.images=file
+// this.imageUrl=event.target.result
+// console.log(this.imageUrl)
+//   }
+// }
+// onimage(){
+//     const formdata=new FormData()
+//     formdata.append('file',this.images)
+//     this.http.post<any>(this.uri,formdata).subscribe(
+//       data=>console.log(data),
+//       error=>console.log(error)
+//     )
+// }
+// }
