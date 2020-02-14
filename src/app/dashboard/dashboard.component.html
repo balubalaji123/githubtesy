@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,13 @@
     <title>dashboard</title>
 </head>
 <body>
+  <div class="sidenav">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#clients">Clients</a>
+    <a href="#contact">Contact</a>
+  </div>
+  
     <nav class="navbar navbar-expand-md ">
   <!-- <img src="dashboardimage" class="rounded-circle"   width="200"  height="200" alt="no image1"> -->
   <!-- for profile -->
@@ -58,12 +64,12 @@
       <div class="container-fluid mycontainer">
           <div class="row justify-content-end ">
             <!-- <div class="col-6"></div> -->
-              <div style="padding: 20px;" ><button type="submit" class="btn button " (click)="classesattended1()" ><img class="img-icon" src="../../assets/undraw_teaching_f1cm.svg">&nbsp;  Teached</button></div>
+              <div style="padding: 20px;" ><button type="submit" class="btn button " (click)="classesattended1()" >&nbsp;  Teached</button></div>
              <div *ngIf="show">
               <button type="submit" (click)="onlyonce()">once</button>
               <button type="submit" (click)="multiple()">multiple</button>
             </div>
-              <div style="padding: 20px;"><button type="submit" class="btn button" (click)="classesenrolled1()" ><img class="img-icon" src="../../assets/undraw_exams_g4ow.svg">&nbsp;  Enrolled</button></div>
+              <div style="padding: 20px;"><button type="submit" class="btn button" (click)="classesenrolled1()" >&nbsp;  Enrolled</button></div>
           </div>
       </div>
       <!-- cards -->
@@ -158,3 +164,4 @@
 <!-- as student -->
 
 <button routerLink="/profile">profile</button>
+
