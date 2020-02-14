@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { ChecksessionService } from '../checksession.service';
 
 @Component({
   selector: 'app-congrats',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CongratsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router:Router,private chechsession:ChecksessionService) { 
+    this.chechsession.verifysession().subscribe(
+      data=>{if(!data){
+        this.router.navigate(['/login1'])
+      }}
+    )
+  }
 
   ngOnInit() {
   }

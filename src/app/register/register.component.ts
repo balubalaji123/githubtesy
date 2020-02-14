@@ -30,11 +30,12 @@ public uri='http://localhost:3000/register/upload'
 public users1;
 public gpw=false;
 public images
+public location
 public imageurl="../../assets/default.jpg"
   registermodel=new Register('','','','','');
   gpwmodel = new Googlepw('','')
   reg:Googlepassword
-  googlepasswordmodel=new Googlepassword('fgh','fcgvhbj','')
+  // googlepasswordmodel=new Googlepassword('fgh','fcgvhbj','')
   constructor(private sessionservice:SessioncheckService, private register:RegisterService,public route:Router,private socialAuthService: AuthService,public googleregister1:GoogleloginService,private http: HttpClient) { }
   ngOnInit() {
   }
@@ -114,18 +115,19 @@ if(data=="useralreadyexists"){
     );
   }
 // model and other suff for gmail login
-  onclickme(passwordgoogle,repasswordgoogle){
+  onclickme(passwordgoogle,repasswordgoogle,location){
     this.functionreturn=this.onclick1(passwordgoogle,repasswordgoogle)
     if(this.functionreturn)
     {
-      this.googlepasswordmodel.password2=passwordgoogle
+      this.location=location
+      // this.googlepasswordmodel.password2=passwordgoogle
 this.register.register(this.registermodel)
 .subscribe(
   data=>console.log("register"+data),
   error=>console.log(error)
 )   
     console.log("gmail password");
-    this.reg=new Googlepassword(this.googleuser,this.googlemail,passwordgoogle)
+    this.reg=new Googlepassword(this.googleuser,this.googlemail,passwordgoogle,this.location)
 this.googleregister1.googlelogin(this.reg)
 .subscribe(
   data=>{console.log("hii"+data);
@@ -159,10 +161,28 @@ selectimage(event){
   if(event.target.files.length>0){
     const file=event.target.files[0]
 this.images=file
-this.imageUrl=event.target.result
-console.log(this.imageUrl)
+// this.imageUrl=event.target.result
+var reader = new FileReader();
+  reader.onload = (event : any) => {
+    this.imageUrl = event.target.result;
+    console.log(this.imageUrl)
+
+  }
+  reader.readAsDataURL(file);
   }
 }
+// tulasi
+// fileToUpload: File = null;
+// handleFileInput(file: FileList) {
+//   this.fileToUpload = file.item(0);
+//   var reader = new FileReader();
+//   reader.onload = (event : any) => {
+//     this.imageUrl = event.target.result;
+//   }
+//   reader.readAsDataURL(this.fileToUpload);
+//    console.log(file);
+// }
+
 onimage(){
   const formdata=new FormData()
   console.log("on image")

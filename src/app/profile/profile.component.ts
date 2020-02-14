@@ -23,12 +23,20 @@ dashboard.profiledata().subscribe(
   public images
   public check
   public uri='/profileupdate'
+  public imageUrl = '../../assets/default.jpg';
+
   selectimage(event){
     if(event.target.files.length>0){
       const file=event.target.files[0]
   this.images=file
-  // this.imageUrl=event.target.result
-  // console.log(this.imageUrl)
+  var reader = new FileReader();
+  reader.onload = (event : any) => {
+    this.imageUrl = event.target.result;
+    console.log(this.imageUrl)
+
+  }
+  reader.readAsDataURL(file);
+
     }
   }
   onimage(a){
@@ -40,7 +48,7 @@ dashboard.profiledata().subscribe(
       data=>{this.check=data;
       if(this.check=='ok'){
         console.log('d',data)
-        this.router.navigate(['/profile'])}},
+        this.router.navigate(['/dashboard1'])}},
       error=>console.log(error)
     )
   }

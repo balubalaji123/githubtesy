@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<img src={{imageUrl}} class="rounded-circle"   width="200"  height="200" alt="image not found">
-<input type="file" (change)="selectimage($event)">
+<img src={{imageUrl}} [hidden]=pw class="rounded-circle"   width="200"  height="200" alt="image not found">
+<input type="file" value="" [hidden]=pw title=" " (change)="selectimage($event)">
 
     <div class="bg" >
         <div class="container-fluid mb-5">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label>location</label>
-                    <input type="password" required #location="ngModel" [class.is-invalid]="passwd.invalid && passwd.touched" class="form-control" name="location" [(ngModel)]="registermodel.location">
+                    <input type="text" required #location="ngModel" [class.is-invalid]="passwd.invalid && passwd.touched" class="form-control" name="location" [(ngModel)]="registermodel.location">
                 </div>
                 <div class="form-group">
                     <label>Username</label>
@@ -51,10 +51,11 @@
 
         <div class=" container row">
         <div class="row">
+            <div *ngIf="!a">
             <button class="btn button" (click)="check('google')" [hidden]=pw>Sign in with Google</button>
-        </div>
+        </div></div>
         <br>
-        <div class="row">
+        <div class="row" *ngIf="!a">
             <div class="col">
             <p [hidden]=pw>Already a user?</p>
         </div>
@@ -63,16 +64,8 @@
         </div>
         </div>             
             <form [hidden]=!pw>
-            <!-- <div class="form-group1">   
-            <div> -->
-                    
-                    <!-- <input type="password" required  [class.is-invalid]="password2.invalid && password2.touched" class="form-control" name="passwords2" [(ngModel)]=" googlepasswordmodel.password2"> -->
-                    <!-- <small class="text-danger" [class.d-none]="password2.valid || password2.untouched">PASSWORD IS REQUIRED</small> -->
-                <!-- <button (click)=onclick2(password2)>done</button> -->
-                <!-- <input type="password" #password> -->
-                <!-- <input type="password"  [(ngModel)]="reg.Password1"> -->
                 <div class="container-fluid">
-                <form #userForm1="ngForm" (ngSubmit)="onclickme(passwordgoogle.value,repasswordgoogle.value)">
+                <form #userForm1="ngForm" (ngSubmit)="onclickme(passwordgoogle.value,repasswordgoogle.value,location.value)">
                    <div class="form-group">
                     <label>Set Your Password</label>
                 <p><input type="password" name="password" class="form-control" #passwordgoogle="ngModel"
@@ -84,7 +77,13 @@
                 <p><input type="password" name="reenter password" class="form-control" #repasswordgoogle="ngModel"
                     [class.is-invalid]="repasswordgoogle.invalid && repasswordgoogle.touched" [(ngModel)]="gpwmodel.repasswordgoogle"></p>
                     <small class="text-danger" [class.d-none]="repasswordgoogle.valid || repasswordgoogle.untouched"></small>
-                <button [disabled]="userForm1.form.invalid" type="submit">done</button>
+<!-- for location -->
+<div class="form-group">
+    <label>enter location</label>
+    <p><input type="text" n class="form-control" #location></p>
+    </div>
+
+                    <button [disabled]="userForm1.form.invalid" type="submit">done</button>
             </div>   
             </form> 
                 </div>

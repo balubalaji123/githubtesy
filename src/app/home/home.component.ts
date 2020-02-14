@@ -22,7 +22,5 @@ tutor(){
   this.notselected=true
   this.tutorcheck=true
 }
-dashboard(){
-  this.route.navigate(['/dashboard1'])
-}
+
 }
