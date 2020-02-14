@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DashboardService} from '../dashboard.service'
 import { from } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -8,7 +10,7 @@ import { from } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(dashboard:DashboardService) {
+  constructor(dashboard:DashboardService,private http: HttpClient,public router:Router) {
 dashboard.profiledata().subscribe(
   data=>this.profile=data,
   error=>console.log(error)
@@ -18,5 +20,30 @@ dashboard.profiledata().subscribe(
   ngOnInit() {
   }
   public profile
+  public images
+  public check
+  public uri='/profileupdate'
+  selectimage(event){
+    if(event.target.files.length>0){
+      const file=event.target.files[0]
+  this.images=file
+  // this.imageUrl=event.target.result
+  // console.log(this.imageUrl)
+    }
+  }
+  onimage(a){
+    const formdata=new FormData()
+    console.log("on image")
+    formdata.append('file',this.images)
+    formdata.append('usermail',a)
+    this.http.post<any>(this.uri,formdata).subscribe(
+      data=>{this.check=data;
+      if(this.check=='ok'){
+        console.log('d',data)
+        this.router.navigate(['/profile'])}},
+      error=>console.log(error)
+    )
+  }
+  
 
 }

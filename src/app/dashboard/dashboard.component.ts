@@ -8,13 +8,36 @@ import { error } from 'protractor';
 import{Delete}  from'../delete';
 import{LogoutService} from'../logout.service';
 import { Router, RouterModule } from '@angular/router';
+import { SessioncheckService } from '../sessioncheck.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  
+  constructor(public sessionservice:SessioncheckService,private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {
+    // for fast filling classes
+    this.dashboard.getfastfilling().subscribe(
+      data=>this.immediatecourse=data,
+      error=>console.log(error)
+    )
+    // for most liked
+    this.dashboard.highliked().subscribe(
+      data=>this.mostliked=data,
+      error=>console.log(error)
+    )
+    // for image
+    sessionservice.sessioncheck().subscribe(
+      data=>{console.log("in session"+data),this.username=data},
+            error=>console.log(error)
+    )
+    // for profile image
+    dashboard.profiledata().subscribe(
+      data=>this.user=data,
+      error=>console.log(error)
+    )
+   
+  }
   ngOnInit() {
   }
   logout(){
@@ -29,30 +52,22 @@ export class DashboardComponent implements OnInit {
   public mostliked
   public hasError=true;
   public a=false;
+  public user
   public b=false;
   public asastudent
   public deletemode:Delete
   public asatutor
   public liking:Like
   public liking1:Like
+  public username
   public show
   public showbutton=true
   public disliked:Like
   public immediatecourse
   public showimmediatecourses=true
 public dislike:boolean
-  constructor(private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router) {
-    // for fast filling classes
-    this.dashboard.getfastfilling().subscribe(
-      data=>this.immediatecourse=data,
-      error=>console.log(error)
-    )
-    // for most liked
-    this.dashboard.highliked().subscribe(
-      data=>this.mostliked=data,
-      error=>console.log(error)
-    )
-  }
+  
+
   classesattended1(){
     this.showbutton=true
     this.showimmediatecourses=false
@@ -61,14 +76,13 @@ public dislike:boolean
     this.b=true;
     this.dashboard.subjectselection()
     .subscribe(
-      data=>{this.asatutor=[],console.log(data),this.asatutor=data},
+      data=>{console.log(data),this.asatutor=data},
       error=>console.log("error in dashboard")
     )
-    
   }
-  dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
+  dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time){
     this.showbutton=true
-    this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
+    this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time)
 this.Like.dislike(this.liking1)
 .subscribe(
   data=>console.log(data),
@@ -95,9 +109,9 @@ this.dashboard.learntselection()
     )
     
   }
-  like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail){
+  like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time){
     this.showbutton=true
-this.liking=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail)
+this.liking=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time)
 this.dislike=false
 this.Like.like(this.liking)
 .subscribe(
@@ -141,3 +155,4 @@ subscribe(
 
   }
 }
+

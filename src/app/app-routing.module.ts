@@ -14,6 +14,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { CongratsComponent } from './congrats/congrats.component';
 // import { Courseselected } from './courseselected';
 import { CourseselectedComponent } from './courseselected/courseselected.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 const routes: Routes = [
   {path:'',redirectTo:'firesthome',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
@@ -29,7 +30,9 @@ const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'forgotpassword',component:ForgotpasswordComponent},
   {path:'congrats',component:CongratsComponent},
-  {path:'courseselected',component:CourseselectedComponent}
+  {path:'courseselected',component:CourseselectedComponent},
+  {path:"**",component:PagenotfoundComponent}
+  // {path:'profile',component:ProfileComponent}
   
 ];
 @NgModule({

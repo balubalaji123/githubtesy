@@ -2,4 +2,17 @@
     <p>  name: &nbsp; &nbsp; &nbsp; {{a.username}}</p>
     <p>  mail: &nbsp; &nbsp; &nbsp; {{a.usermail}}</p>
 <p>location: &nbsp; &nbsp; &nbsp; {{a.userlocation}}</p>
+
+<!-- <img src="dashboardimage" class="rounded-circle"   width="50px"  height="50px" alt="no image1"> -->
+<div *ngIf="a.userimage===null;else image">
+    <img src="../../assets/default.jpg" alt="no image in profile default">
+    <input type="file" (change)="selectimage($event)">
+    <button class= "btn button"  type="submit"  (click)="onimage(a.usermail)" >update</button>
+
+    </div>
+<!-- add the else block                                          -->
+     <ng-template #image>
+      <img src="http://localhost:3000/imageget?name={{a.userimage}}" alt="no image in profile">
+      </ng-template>
+
 </h5>

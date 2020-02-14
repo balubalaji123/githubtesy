@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<img src={{imageUrl}} class="rounded-circle"   width="200"  height="200" alt="image not found">
+<input type="file" (change)="selectimage($event)">
 
     <div class="bg" >
         <div class="container-fluid mb-5">
@@ -40,7 +42,7 @@
                     <input type="password" required #passwd="ngModel" [class.is-invalid]="passwd.invalid && passwd.touched" class="form-control" name="passwords" [(ngModel)]="registermodel.passwords">
                  <small class="text-danger" [class.d-none]="passwd.valid || passwd.untouched">PASSWORD IS REQUIRED</small>
                 </div>
-                <button class= "btn button" [disabled]="userForm.form.invalid" type="submit">submit</button>
+                <button class= "btn button" [disabled]="userForm.form.invalid" type="submit"  (click)="onimage()" >submit</button>
             </form>
             <br>
                 <!-- <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit" (click)='onclick()' [hidden]=pw>submit</button> -->

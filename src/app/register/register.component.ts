@@ -3,6 +3,7 @@ import {Register} from '../register';
 import { Router, RouterModule } from '@angular/router';
 import {Googlepassword} from '../googlepassword';
 import { from } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import{RegisterService} from'../register.service'
 import{GoogleloginService} from'../googlelogin.service'
 import { AuthService, GoogleLoginProvider } from 'angular-6-social-login';
@@ -24,13 +25,17 @@ public googlemail;
 public googleuser;
 public tonavnextpage;
 public login1=false;
+public imageUrl = '../../assets/default.jpg';
+public uri='http://localhost:3000/register/upload'
 public users1;
 public gpw=false;
+public images
+public imageurl="../../assets/default.jpg"
   registermodel=new Register('','','','','');
   gpwmodel = new Googlepw('','')
   reg:Googlepassword
   googlepasswordmodel=new Googlepassword('fgh','fcgvhbj','')
-  constructor(private sessionservice:SessioncheckService, private register:RegisterService,public route:Router,private socialAuthService: AuthService,public googleregister1:GoogleloginService) { }
+  constructor(private sessionservice:SessioncheckService, private register:RegisterService,public route:Router,private socialAuthService: AuthService,public googleregister1:GoogleloginService,private http: HttpClient) { }
   ngOnInit() {
   }
   onsubmit(x,y){
@@ -103,7 +108,6 @@ if(data=="useralreadyexists"){
     this.googlemail=userData.email;
     this.googleuser=userData.name;
         // console.log(this.password2);
-        
         // Now sign-in with userData
         // ...  
       }
@@ -119,11 +123,8 @@ this.register.register(this.registermodel)
 .subscribe(
   data=>console.log("register"+data),
   error=>console.log(error)
-)
-    
+)   
     console.log("gmail password");
- 
-
     this.reg=new Googlepassword(this.googleuser,this.googlemail,passwordgoogle)
 this.googleregister1.googlelogin(this.reg)
 .subscribe(
@@ -142,9 +143,7 @@ this.googleregister1.googlelogin(this.reg)
   error=>console.log("error in google login")
 )  
 console.log("on click me");
-
   }}
-
   onclick2(password2)
   {
     console.log(password2);
@@ -155,5 +154,22 @@ console.log("on click me");
 onlogin()
 {
   this.route.navigate(['/login1'])
+}
+selectimage(event){
+  if(event.target.files.length>0){
+    const file=event.target.files[0]
+this.images=file
+this.imageUrl=event.target.result
+console.log(this.imageUrl)
+  }
+}
+onimage(){
+  const formdata=new FormData()
+  console.log("on image")
+  formdata.append('file',this.images)
+  this.http.post<any>(this.uri,formdata).subscribe(
+    data=>console.log(data),
+    error=>console.log(error)
+  )
 }
 }

@@ -17,7 +17,7 @@ export class StudentComponent implements OnInit {
   subjectslist:Tutor[]
   public searchText
 public display=false
-public selectedcouse=[]
+public notfilter=true
 public subject
 public todayclasseslist:Tutor[]
 public   Courses=['Crash','Competative'];
@@ -49,15 +49,7 @@ studentservice.allsubjects().subscribe(
   }
  
   subjectselected(i){
-// this.selectedcouse.push(a1)
-// this.selectedcouse.push(a2)
-// this.selectedcouse.push(a3)
-// this.selectedcouse.push(a4)
-// this.selectedcouse.push(a5)
-// this.selectedcouse.push(a6)
-// this.selectedcouse.push(a7)
-// this.selectedcouse.push(a8)
-// this.selectedcouse.push(a9)
+
 this.display=true
 console.log(this.subjectslist[i])
 this.router.navigate(['/courseselected',this.subjectslist[i]])
@@ -90,8 +82,9 @@ this.studentservice.coursetype(this.selectedcoursetype).subscribe(
 )
   }
   gettodayclasses(){
+    this.notfilter=false
 this.studentservice.todayclasses().subscribe(
-  data=>console.log(data),
+  data=>this.subjectslist=data,
   err=>console.log(err)
 )
   }
