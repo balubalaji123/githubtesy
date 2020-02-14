@@ -95,7 +95,6 @@ app.get('/dashboardimage',function(req,res){
   console.log(req.session)
   if(req.session.userimage===null){
     address=__dirname+'/server/uploads1/default.jpg'
-console.log("enere")
     res.sendFile(__dirname+'/server/uploads1/default.jpg')
   }
   else{
@@ -106,7 +105,6 @@ console.log("enere")
 
 
 app.get('/*',function(req,res){
-  // console.log("in wild"+JSON.stringify(req.session))
   res.sendFile(__dirname+'/dist/updated/index.html')
 })
 app.listen(3000)
