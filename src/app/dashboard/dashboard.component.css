@@ -3,55 +3,72 @@ body{
     padding: 0;
     margin: 0;
 }
-
-.navbar{
-    background: #23415c;
+.main{
+    margin-left: 20%; 
+    padding: 0px 10px;
+  
+}
+.sidebar {
+    height: 100%;
+    width: 20%;
+    float: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #23415c;
+    padding: 16px 25px;
+  }
+  .sidebar a {
+    padding: 6px 8px 10px 60px;
+    text-decoration: none;
+    font-size: 20px;
     color: #fff;
-    padding: 10px 60px 10px 0;
-    font-size: 1.2rem;
-    font-weight: 500;
+    display: block;
     font-family: sans-serif;
-    width: 100%;
-}
-.navbar-brand{
+    border-bottom: 1px dotted #fff;
+       
+  }
+  .sidebar a:last-child{
+      border-bottom: none;
+  }
+  .name{
+      text-align: center;
+      color: #fff;
+      font-size: 20px;
+  }
+
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  .button{
+    padding: 6px 0px 0px 0px;
+    text-decoration: none;
+    font-size: 20px;
     color: #fff;
-    font-size: 25px;
-    font-weight: 600;
-}
+    
+  }
+  .sidebar img{
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+  }
+  .img-style{
+      text-align: center;
+  }
+  
+
+
 .nav-link{
     color: #fff;
 }
-.nav-item{
-    padding:7px;  
 
-}
 .fa{
     color: #fff;
 
 }
 .fas{
     color: #fff;
-}
-.img-icon{
-    width: 45px;
-    height: 45px;
-    border: 2px solid #23415c;
-    border-radius: 50%;
-    background: #fff;
-    
-
-}
-.button{
-    background:#23415c;
-    border: 2px solid #23415c;
-    border-radius: 10px;
-    color:#fff;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px;
-    font-family: sans-serif;
-    
-  
 }
 .mycontainer{
     border-bottom: 2px solid lightgrey;

@@ -118,7 +118,6 @@
           </li>
         </ul>
         </div>   -->
-        
 <!-- new card-body -->
  <div class="container">
   <div *ngIf="!display">
@@ -133,11 +132,11 @@
     <div class="row">
       <div class="col">
         <div *ngIf="a.tutorimage===null;else image">
-          <img src="../../assets/default.jpg" alt="dsxcz">{{a.tutorimage}}
+          <img class="img" src="../../assets/default.jpg" alt="dsxcz">{{a.tutorimage}}
           </div>
 <!-- add the else block                                          -->
            <ng-template #image>
-            <img src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">{{a.tutorimage}}
+            <img class="img" src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">{{a.tutorimage}}
             </ng-template>
         
       </div>
@@ -153,7 +152,9 @@
           <div *ngIf="a.likes"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
         <div ><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
       <div><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
+
       <div style="float: right;"><button  class="btn btn-info btn-lg"  (click)="subjectselected(i)" >Subscribe</button></div>
+
     </div>
 </div>
 </div></div>
