@@ -18,6 +18,7 @@ export class CongratsComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
 }
