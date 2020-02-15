@@ -62,7 +62,6 @@ router.post('/',function(req,res){
     userpassword=req.body.password
     userlocation=req.body.location
     userimage=d
-    console.log("enter")
     myobj={usermail:usermail}
     dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
      console.log(result)
@@ -101,8 +100,6 @@ router.post('/',function(req,res){
     
 })
 router.get('/',function(req,res){
-  req.session.userimage=d
-  console.log("d",d)
    if(check==req.query['id']){
    myobj={userimage:d,username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
     dbo.collection("customers").insertOne(myobj, function(err, res) {
@@ -121,6 +118,7 @@ router.post('/google',function(req,res){
   username=req.body.googlename
   usermail=req.body.googleemail
   userpassword=req.body.password2
+  userlocation=req.body.location
   myobj={usermail:usermail}
   dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
     if (err) throw err;

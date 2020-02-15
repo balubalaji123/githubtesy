@@ -65,7 +65,7 @@ dbo.collection('onceteacher').find(c,{$exists:true}).toArray(function(req,result
     if(err)throw err
   })}
 })
-
+res.send(true)
 })
 module.exports=router
 // may be useful for multiple regitration of a particular course by single person

@@ -7,6 +7,7 @@ import{Filter} from'../filter'
 import { error } from 'protractor';
 import{Coursetype} from'../coursetype'
 import { Router, RouterModule } from '@angular/router';
+import { ChecksessionService } from '../checksession.service';
 
 @Component({
   selector: 'app-student',
@@ -28,8 +29,9 @@ public selectedcoursetype:Coursetype
 public subsubjects=[]
 public subjectoption:Subsubject
 public filter:Filter
+public oops=false
 public selectedsubject:string
-  constructor(private studentservice:StudentsService,public router:Router) {
+  constructor(private studentservice:StudentsService,public router:Router,private chechsession:ChecksessionService) {
     // to get all subjects list
 studentservice.allsubjects().subscribe(
   data=>{console.log("data"+data);this.allsubjects=data},
@@ -38,11 +40,19 @@ studentservice.allsubjects().subscribe(
 // to get all details
     studentservice.subjectslist()
     .subscribe(
-      data=>{console.log("check",data),this.subjectslist=data},
+      data=>{if(data.length==0){
+        console.log("entered")
+this.oops=true
+      }
+      else{
+      this.subjectslist=data}},
       error=>console.log(error)
     )
-    
-    
+    this.chechsession.verifysession().subscribe(
+      data=>{if(!data){
+        this.router.navigate(['/login1'])
+      }}
+    )    
    }
 
   ngOnInit() {
@@ -51,12 +61,12 @@ studentservice.allsubjects().subscribe(
   subjectselected(i){
 
 this.display=true
-console.log(this.subjectslist[i])
+console.log('s',this.subjectslist[i])
 this.router.navigate(['/courseselected',this.subjectslist[i]])
-
   }
 
   subjectselection(subject){
+    this.oops=false
     this.subject=subject
     this.subjectoption=new Subsubject(subject)
     this.studentservice.allsubsubjects(this.subjectoption).subscribe(
@@ -66,6 +76,7 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
     
   }
   subsubjectselection(subject){
+    this.oops=false
     this.subsubject=subject
     this.filterdata=new Filter(this.subject,this.subsubject)
     this.studentservice.filterdata(this.filterdata).subscribe(
@@ -75,16 +86,27 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
 
   }
   typeselection(Course){
+    this.oops=false
     this.selectedcoursetype=new Coursetype(this.subject,this.subsubject,Course)
 this.studentservice.coursetype(this.selectedcoursetype).subscribe(
-  data=>this.subjectslist=data,
+  data=>{if(!data.length){
+    this.oops=true
+    this.subjectslist=[]
+          }
+          else{
+          this.subjectslist=data}},
   error=>console.log("error",error)
 )
   }
   gettodayclasses(){
     this.notfilter=false
 this.studentservice.todayclasses().subscribe(
-  data=>this.subjectslist=data,
+  data=>{if(!data.length){
+    this.oops=true
+    
+          }
+          else{
+          this.subjectslist=data}},
   err=>console.log(err)
 )
   }

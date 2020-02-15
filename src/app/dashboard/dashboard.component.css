@@ -2,6 +2,34 @@ body{
     width: 100%;
     padding: 0;
     margin: 0;
+        font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+/* #team{
+    float:left;
+} */
+#team img{
+    margin-top: -50px;
+    align-items: center;
+}
+#team i{
+    font-size: 26px;
+    color: #555;
+}
+#team p{
+    font-weight: 500;
+}
+#team .card{
+    border-radius: 0;
+    box-shadow: 2px 2px 5px #012c41;
+    transition:all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+}
+#team .card:hover{
+    background: #0e9cdd;
+
 }
 .main{
     margin-left: 20%; 
@@ -60,6 +88,14 @@ body{
 
 
 .nav-link{
+
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 5px 5px 10px #9E9E9E;
+}
+
+#team .card:hover h3,#iteam .card:hover i{
     color: #fff;
 }
 
@@ -69,6 +105,29 @@ body{
 }
 .fas{
     color: #fff;
+}
+
+.img-icon{
+    width: 45px;
+    height: 45px;
+    border: 2px solid #23415c;
+    border-radius: 50%;
+    background: #fff;
+    
+
+}
+.button{
+    background:#23415c;
+    /* border: 2px solid #23415c; */
+    border-radius: 10px;
+    color:#fff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    font-family: sans-serif;
+    border-style: none;
+    
+  
 }
 .mycontainer{
     border-bottom: 2px solid lightgrey;
@@ -114,3 +173,36 @@ body{
     font-weight: 600;
     padding: 15px; 
 }
+
+.sidenav {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #23415c;
+    overflow-x: hidden;
+    /* padding-top: 20px; */
+    padding: 40px;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    border-bottom: 1px dashed #fff;
+
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  .main {
+    margin-left: 20%; 
+    font-size: 28px; 
+    padding: 0px 10px;
+  }
+  

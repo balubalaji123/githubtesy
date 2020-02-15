@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { error } from 'protractor';
 import{FileSelectDirective,FileUploader} from 'ng2-file-upload';
 import { Router, RouterModule } from '@angular/router';
+import { ChecksessionService} from'../checksession.service'
 @Component({
   selector: 'app-tutor',
   templateUrl: './tutor.component.html',
@@ -29,8 +30,12 @@ public b=false;
 public uri='http://localhost:3000/tutor/upload'
 public uploader:FileUploader=new FileUploader({url:this.uri})
 public tutor1=new Tutor('','','','',{},'',10,0,'','','')
-  constructor(private tutorservic:TutorService,private http: HttpClient,public router:Router) {
-
+  constructor(private tutorservic:TutorService,private http: HttpClient,public router:Router,private chechsession:ChecksessionService) {
+this.chechsession.verifysession().subscribe(
+  data=>{if(!data){
+    this.router.navigate(['/login1'])
+  }}
+)
    }
 public aftersubmission=false
   ngOnInit() {
