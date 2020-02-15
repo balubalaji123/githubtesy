@@ -23,7 +23,17 @@
                                     <p *ngIf="tutordate">tutordate:&nbsp;&nbsp;{{tutordate}}</p>
                                     <p>fee:&nbsp;&nbsp;{{fee}}</p>
                                     <p>subsubject:&nbsp;&nbsp;{{subsubject}}</p>
-                                    <p>time:&nbsp;&nbsp;{{time}}</p>                                
+                                    <p>time:&nbsp;&nbsp;{{time}}</p>   
+                                    <div *ngIf=selecteddays>  
+                                    <div  *ngIf="!a">days:&nbsp;&nbsp;{{selecteddays}}</div>
+                                    <div *ngIf="a">
+                                        days:<br>
+                                        <div  *ngFor="let day of days">
+                                            <input (click)="onsel(day)"type="checkbox" >{{day}}
+                                        </div>
+
+                                    </div></div>
+                           
                                         <button class="btn btn-primary" type="submit" (click)="fun()" > submit</button>
                                 </div>
                                 <div class="col">
@@ -51,7 +61,80 @@
         </div>
       
 </div>
+<p *ngIf="regitered">ALREADY REGISTERED</p>
 
 
 </body>
 </html>
+
+
+<!-- 
+tulasi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container"> 
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-sm-12">
+                <div class="card-styles">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row ">
+                                <div class="col">
+                                    <p>name:&nbsp;&nbsp;{{name}}</p>
+                                    <p>subject:&nbsp;&nbsp;{{subject}}</p>
+                                    <p>coursetype:&nbsp;&nbsp;{{coursetype}}</p>
+                                    <p>time:&nbsp;&nbsp;{{time}}</p>
+                                    <p *ngIf="tutordate">tutordate:&nbsp;&nbsp;{{tutordate}}</p>
+                                    <p>fee:&nbsp;&nbsp;{{fee}}</p>
+                                    <p>subsubject:&nbsp;&nbsp;{{subsubject}}</p>
+
+                                    <div  *ngIf="!a">days:&nbsp;&nbsp;{{selecteddays}}</div>
+                                    <div *ngIf="a">
+                                        days:<br>
+                                        <div  *ngFor="let day of days">
+                                            <input (click)="onsel(day)"type="checkbox" >{{day}}
+                                        </div>
+
+                                    </div>
+
+                                    <p>time:&nbsp;&nbsp;{{time}}</p>                                
+
+                                        <button class="btn btn-primary" type="submit" (click)="fun()" > submit</button>
+                                </div>
+                                <div class="col">
+                                    <div *ngIf="image==='null';else image1">
+                                        <img src="../../assets/default.jpg" alt="nooooo">
+                                        </div>
+
+
+ 
+
+                                                                                  
+                                        <ng-template #image1>
+                                          <img src="http://localhost:3000/imageget?name={{image}}" alt="dsxcz">
+                                          </ng-template>
+
+                               </div>
+                                </div>
+                               
+                
+                            </div>
+                            
+                      </div>
+                    </div>
+            </div>
+        </div>
+      
+</div>
+
+
+</body>
+</html> -->

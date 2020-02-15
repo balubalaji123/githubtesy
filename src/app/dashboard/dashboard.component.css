@@ -21,7 +21,7 @@ body{
     font-weight: 500;
 }
 #team .card{
-    border-radius: 0;
+    border-radius: 5px;
     box-shadow: 2px 2px 5px #012c41;
     transition:all 0.3s ease-in;
     -webkit-transition: all 0.3s ease-in;
@@ -29,6 +29,7 @@ body{
 }
 #team .card:hover{
     background: #0e9cdd;
+    color: #fff;
 
 }
 .main{
@@ -125,23 +126,21 @@ body{
     font-weight: 600;
     padding: 10px;
     font-family: sans-serif;
-    border-style: none;
-    
-  
+    border-style: none; 
 }
-.mycontainer{
-    border-bottom: 2px solid lightgrey;
-    padding-bottom: 20px;
-    float: right;
-    
+.nav-link:hover{
+    background:lightgray ;
+}
+.nav-link:visited{
+    background:lightgray ;
 }
 .myrow{
-    padding: 20px 0px 10px 0px;
+    padding: 10% 10% 0% 10% ;
     width: 100%;
 }
 .mycard{
-    background: rgb(250, 247, 255);
-    padding: 18px;
+    background: #fff;
+    padding: 2%;
     border-radius: 10px;
     box-shadow: 0px 0px 5px 0px #cacfd3;
     width: 100%;
@@ -176,7 +175,7 @@ body{
 
 .sidenav {
     height: 100%;
-    width: 20%;
+    width: 25%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -193,7 +192,7 @@ body{
     font-size: 25px;
     color: #fff;
     display: block;
-    border-bottom: 1px dashed #fff;
+    border-bottom: 1px solid #fff;
 
   }
   

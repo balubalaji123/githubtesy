@@ -13,7 +13,14 @@ import { ChecksessionService } from '../checksession.service';
 })
 export class CourseselectedComponent implements OnInit {
 public course=new Array()
-public mail
+public a=false;
+public array=new Array()
+
+public split;
+public mail;
+public selecteddays;
+public days={};
+
 public registermodel:Courseselected
   constructor(public subjectservice:SubjectselectedService,private roter:ActivatedRoute,public router:Router,private chechsession:ChecksessionService) {
       this.chechsession.verifysession().subscribe(
@@ -21,14 +28,6 @@ public registermodel:Courseselected
           this.router.navigate(['/login1'])
         }}
       )
-    
-  
-
-
-
-
-
-
     this.name=this.roter.snapshot.paramMap.get('tutorname')
     this.subject=this.roter.snapshot.paramMap.get('tutorsubject')
     this.time=this.roter.snapshot.paramMap.get('tutortime')
@@ -40,9 +39,22 @@ public registermodel:Courseselected
     this.watsuplink=this.roter.snapshot.paramMap.get('tutorwatsuplink')
 this.image=this.roter.snapshot.paramMap.get('tutorimage')
 
-console.log(this.tutordate)
+console.log('data',this.tutordate)
+this.selecteddays = this.roter.snapshot.paramMap.get('selecteddays')
+console.log('selected',this.selecteddays)
+if(this.selecteddays!=null){
+var str=this.selecteddays;
+console.log(str.length);
+var splitted = str.split(","); 
+this.days = splitted;
+  this.split=splitted.length;
+  if(this.split>1)
+  {
+    this.a=true;
+  }
+
    }
-  //  http://localhost:3000/courseselected;_id=5e4044dd303f22c3207fdcb6;tutorimage=null;tutorname=Balaji;tutorsubject=sub1;tutormail=balajipuvvada12289@gmail.com;tutorlocation=bhimavaram;tutorsubsubject=a;tutorcoursetype=Crash;tutorfee=0;tutordescription=daxz;tutortime=23:12;timeduration=1;tutorwatsuplink=fdcvx;maxstudents=10;tutordate=2020-02-10T00:00:00.000Z
+  }
   ngOnInit() {
   }
  
@@ -51,24 +63,36 @@ public subject
 public time
 public coursetype
 public tutordate
-// courseduration:number,
 public fee
 public description
 public watsuplink
 public tutormail
 public subsubject
-public image    
+public image 
+public regitered=false
+onsel(q1)
+{
+ //  console.log(q1);
+ this.array.push(q1);
+ console.log(this.array)
+  
+}
   fun(a){
 this.course=a
 // this.mail=b
-this.registermodel=new Courseselected(this.name,this.subject,this.tutormail,this.subsubject,this.watsuplink,this.image,this.tutordate,this.time)
+this.registermodel=new Courseselected(this.name,this.subject,this.tutormail,this.subsubject,this.watsuplink,this.image,this.tutordate,this.time,this.array)
 console.log("hello"+this.registermodel)
 this.subjectservice.subjectselected(this.registermodel)
 .subscribe(
-  data=>{if(data)
+  data=>{console.log('course selected',data);if(data==true)
   {
     this.router.navigate(['/dashboard1'])
-  }},
+  };
+  if(data=="already registered")
+  {
+    this.regitered=true
+  }
+},
   error=>console.log(error)
 )
   }
