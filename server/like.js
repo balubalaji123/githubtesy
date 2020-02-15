@@ -41,11 +41,11 @@ router.post('/delete',function(req,res){
     tutorsubject=req.body.tutorsubject
     tutorsubsubject=req.body.tutorsubsubject
     cousetype=req.body.coursetype
-    usermail=req.session.usermail
+    usermail=req.session.mail
     var query={tutormail:req.session.mail,tutorsubject:tutorsubject,tutorcoursetype:cousetype,tutorsubsubject:tutorsubsubject}  
     dbo.collection("continousteacher").deleteOne(query, function(err, obj) {
       if (err) throw err;
-      usermail=req.session.usermail
+      usermail=req.session.mail
       c={tutormail:usermail}
         dbo.collection("continousteacher").find(c,{$exists:true}).toArray(function(err, result) {
             if (err) throw err;

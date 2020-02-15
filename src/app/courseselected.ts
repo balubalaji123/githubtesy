@@ -9,7 +9,8 @@ public subsubject:string,
 public watsuplink:string,
 public tutorimage:string,
 public tutordate:string,
-public classtime:string
+public classtime:string,
+public selecteddays:Array<string>
         // public mail:string
     ){}
 }

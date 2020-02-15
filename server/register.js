@@ -133,6 +133,8 @@ router.post('/google',function(req,res){
        req.session.username=username
           req.session.mail=usermail
           req.session.userimage=d
+        req.session.location=userlocation
+        console.log('google',req.session)
       myobj={userimage:d,username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
       dbo.collection("customers").insertOne(myobj, function(err, res) {
           // req.session.userid=res.ops[0]._id

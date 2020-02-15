@@ -75,7 +75,7 @@ router.get('/fastfilling',function(req,res){
   })
 })
 router.get('/mostliked',function(req,res){
-  dbo.collection('continousteacher').find({}).sort({"likes":-1}).limit(10).toArray(function(err,result){
+  dbo.collection('continousteacher').find({tutorlocation:req.session.location}).sort({"likes":-1}).limit(10).toArray(function(err,result){
     if(err) throw err
     res.send(JSON.stringify(result))
   })
