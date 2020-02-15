@@ -30,7 +30,8 @@ var year=time.getFullYear()
 var dt = dateTime.create();
 var formatted = dt.format('Y-m-d H:M:S');
 todaydate=year+'-'+month+'-'+date
-
+var time1=todaydate+'T'+time.getHours()+':'+time.getMinutes()+':'+time.getSeconds()+'Z'
+console.log('time1',time1)
     checkuser=[]
 
     c={tutorlocation:req.session.location}
@@ -40,7 +41,8 @@ todaydate=year+'-'+month+'-'+date
         if(result.length){
         checkuser=result
     }
-        d={tutorlocation:req.session.location,maxstudents: { $gt: 0 },tutordate:{$gte: new Date(todaydate)} } 
+        d={tutorlocation:req.session.location,maxstudents: { $gt: 0 },tutordate:{$gte:new Date()} } 
+        console.log('d',JSON.stringify(d))
         dbo.collection("onceteacher").find(d).toArray(function(err,result1){
             if(err) throw err
             if(result1.length){
@@ -75,7 +77,7 @@ router.get('/subjects',function(req,res){
                 {
                     subjectarray.push(result[i].tutorsubject)
                 }}
-                var e={tutordate: { $gte:new Date(todaydate)},tutorlocation:req.session.location}
+                var e={tutordate: { $gte:new Date()},tutorlocation:req.session.location}
                dbo.collection('onceteacher').find(e,{$exists:true}).toArray(function(err,result1){
                 for(i=0;i<result1.length;i++){
                     check=0
@@ -123,7 +125,7 @@ router.post('/subsubjects',function(req,res){
                 }
            
         }}
-        var e={tutorsubject:req.body.subject,tutordate:{ $gte:new Date(todaydate)},tutorlocation:req.session.location}
+        var e={tutorsubject:req.body.subject,tutordate:{ $gte:new Date()},tutorlocation:req.session.location}
         dbo.collection('onceteacher').find(e,{$exists:true}).toArray(function(err,result1){
             if(result1.length){
             for(i=0;i<result1.length;i++){
@@ -162,7 +164,7 @@ checkuser=[]
     dbo.collection("continousteacher").find(c,{$exists:true}).toArray(function(err,response){
         if (err) throw err;
         checkuser=response
-        var e={tutorlocation:req.session.location,tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject,tutordate:{ $gt:new Date(todaydate)  }}
+        var e={tutorlocation:req.session.location,tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject,tutordate:{ $gt:new Date()  }}
         dbo.collection("onceteacher").find(e).toArray(function(err,result1){
             if(err) throw err
             for(i=0;i<result1.length;i++)
@@ -190,7 +192,7 @@ checkuser=[]
         if(response.length){
         checkuser=response
     }
-    req.body["tutordate"]={ $gte:new Date(todaydate)} 
+    req.body["tutordate"]={ $gte:new Date()} 
     req.body["tutorlocation"]=req.session.location
         dbo.collection("onceteacher").find(req.body).toArray(function(err,result1){
             if(err) throw err
@@ -212,7 +214,7 @@ router.get('/todayclasses',function(req,res){
     var dt = dateTime.create();
     var formatted = dt.format('Y-m-d H:M:S');
     todaydate=year+'-'+month+'-'+date
-    var f={tuorgdate:todaydate,tutorlocation:req.session.location}
+    var f={tutordate:{ $gte:new Date()},tutorlocation:req.session.location}
     dbo.collection('onceteacher').find(f,{$exists:true}).toArray(function(err,response){
         if(err)throw err
         checkuser=response

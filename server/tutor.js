@@ -51,7 +51,7 @@ var d
 //     res.send(JSON.stringify("sucess"))
 // })
 router.post('/',function(req,res){
-    console.log("tutor"+JSON.stringify(req.body))
+    // console.log('time',new Date().getHours())
     selecteddays=[]
     tutordays=req.body.days
     if(tutordays["EveryDay"]!=true){
@@ -90,11 +90,13 @@ var date=time.getDate();
 var month=time.getMonth()+1;
 var year=time.getFullYear()
 var dt = dateTime.create();
-todaydate=year+'-'+month+'-'+date        
+todaydate=year+'-'+month+'-'+date 
+time=req.body.date+'T'+tutortime+'z'
+
         // for once
         myobj={tutorimage:req.session.userimage,tutorname:req.session.username,tutorsubject:tutorsubject,tutormail:tutormail,tutorlocation:req.session.location,tutorsubsubject:req.body.subsubject,
             tutormail:tutormail,tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,tutortime:tutortime,timeduration:timeduration, tutorwatsuplink:tutorwatsuplink,
-            maxstudents:req.body.maxstudents,tutordate:new Date(req.body.date),tuorgdate:req.body.date,
+            maxstudents:req.body.maxstudents,tutordate:new Date(time),tuorgdate:req.body.date,
         }
         console.log(JSON.stringify(myobj))
         dbo.collection("onceteacher").insertOne(myobj, function(err, res) {
