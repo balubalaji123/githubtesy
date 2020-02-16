@@ -75,13 +75,16 @@
               <div style="padding: 20px;"><button type="submit" class="btn button" (click)="classesenrolled1()" ><img class="img-icon" src="../../assets/undraw_exams_g4ow.svg">&nbsp;  Enrolled</button></div>
           </div>
       </div> -->
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
       <!-- <p><strong>seats  left:</strong>{{a.maxstudents}}</p>
       <p><strong>subject:</strong>{{a.tutorsubject}}</p>
       <p><strong>sub subject :</strong>{{a.tutorsubsubject}}</p>
       <p><strong>date:</strong>{{a.tutordate}}</p> -->
 
 <!-- sidenavbar -->
+<!--  -->
+<!--  -->
+
 <div class="sidenav">
     <div *ngFor="let a of user">
 
@@ -114,11 +117,11 @@
 
 
       <!-- cards -->
-<button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>&nbsp;&nbsp;
-<button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
+<button (click)="selection()" mat-stroked-button color="primary" class="main1">Fastfilling</button>&nbsp;&nbsp;
+<button (click)="selection1()" mat-stroked-button color="primary" class="main">Famous courses</button>
   <!-- <form> -->
-    <div *ngIf="showimmediatecourses&&sele" class="main" >
-      <div style="text-align: center;">Fastfilling</div>
+    <div *ngIf="showimmediatecourses&&sele" class="main1">
+      <div style="text-align: center;font-size: 30px;">Fastfilling</div>
         <div class="row">
           <div  *ngFor="let a of immediatecourse" >
             <div class="container">
@@ -129,10 +132,11 @@
                   <!-- <p>#name</p> -->
                   <!-- <div> -->
                 <div class="card-body">
-                  <div style="font-size: 15px;"><b>seats  left:</b>{{a.maxstudents}}</div>
-                  <div style="font-size: 15px;"><b>subject:</b>{{a.tutorsubject}}</div>
-                  <div style="font-size: 15px;"><b>sub subject :</b>{{a.tutorsubsubject}}</div>
-                  <div style="font-size: 15px;"><b>date:</b>{{a.tutordate}}</div>
+                  <!-- <h4>{{a.tutorname}}</h4> -->
+                      <div style="font-size: 15px;"><strong>subject:</strong>{{a.tutorsubject}}</div>
+                      <div style="font-size: 15px;"><strong>sub subject:</strong>{{a.tutorsubsubject}}</div>
+                      <div style="font-size: 15px;"><strong>course type :</strong>{{a.tutorcoursetype}}</div>
+                      <div style="font-size: 15px;"><strong>likes:</strong>{{a.likes}}</div>
                 </div>
                   <!-- <ul class="social-media">
                     <li><a href="www.facebook.com"><i class="fab fa-facebook-square"></i></a></li>
@@ -152,50 +156,32 @@
   </div>
 <!-- </div> -->
 <!-- </form> -->
-<div *ngIf="showimmediatecourses&&!sele" class="main">
-  <div style="text-align: center;">Famous Course</div>
+<div *ngIf="showimmediatecourses&&!sele" class="main1">
+  <div style="text-align: center;font-size: 30px;">Famousfilling</div>
   <div class="row">
-  <div class="col-4" *ngFor="let a of mostliked" >
-    <section id="team">
-      <div class="container my-3 py-5 ">
-      <div class="row">
-      <div class="col">
-
-      <div class="card">
-      <div class="card-body">
-        <img src="../../assets/default.jpg" alt="nooooo" class="img-fluid rounded-circle
-        w-50 mb-3">
-      <h4>{{a.tutorname}}</h4>
-      <div><strong>subject:</strong>{{a.tutorsubject}}</div>
-    <div><strong>sub subject:</strong>{{a.tutorsubsubject}}</div>
-    <div><strong>course type :</strong>{{a.tutorcoursetype}}</div>
-    <div><strong>likes:</strong>{{a.likes}}</div>
-    <div class="d-flex flex-row justify-content-center">
-      <div class="p-4">
-        <a href="#">
-          <i class="fa fa-facebook"></i>
-        </a>
+    <div  *ngFor="let a of mostliked" >
+      <div class="container">
+        <div class="card-wrapper">
+          <div class="card1">
+            <img src="https://img.freepik.com/free-photo/network-with-nodes-connected-background-technology-concept_34478-108.jpg?size=626&ext=jpg" alt="card background" class="card-img">
+            <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
+            <!-- <p>#name</p> -->
+            <!-- <div> -->
+          <div class="card-body">
+            <div style="font-size: 15px;"><b>seats  left:</b>{{a.maxstudents}}</div>
+            <div style="font-size: 15px;"><b>subject:</b>{{a.tutorsubject}}</div>
+            <div style="font-size: 15px;"><b>sub subject :</b>{{a.tutorsubsubject}}</div>
+            <div style="font-size: 15px;"><b>date:</b>{{a.tutordate}}</div>
+          </div>
+           
+          </div>
+        </div>
       </div>
-      <div class="p-4">
-        <a href="#">
-          <i class="fa fa-twitter">
-          </i>
-        </a>
-      </div>
-      <div class="p-4">
-        <a href="#">
-          <i class="fa fa-instagram"></i>
-        </a>
-      </div>
-    </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </section>
-
-</div></div></div>
+     
+  </div>
+</div>
+<br>
+</div>
 
 
 

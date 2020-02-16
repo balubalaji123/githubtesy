@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'',redirectTo:'firesthome',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
     // {path:'list',component: ListComponent},
-  {path:'firesthime',component:FiresthomeComponent},
+  {path:'firesthome',component:FiresthomeComponent},
 
  
   {path:'register1',component:RegisterComponent},

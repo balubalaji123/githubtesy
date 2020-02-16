@@ -13,10 +13,11 @@ import { ChecksessionService} from'../checksession.service'
   styleUrls: ['./tutor.component.css']
 })
 export class TutorComponent implements OnInit {
-  Courses=['Crash','Competative'];
+  Courses=['Academic Course','Competitive Course', 'Art Course','Technical Course'];
 days1=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','EveryDay'];
 fees=['fee','no fee'];
 topicHasError =true;
+
 public imageUrl = '../../assets/TeacherStudent.jpg';
 public once=false
 public continousteacher=false
@@ -60,7 +61,15 @@ onsubmit(){
 this.router.navigate(['/congrats'])
 }  
 updateCheckedOptions(option, event) {
+  // console.log('.....',option)
+  // if(option=='Everyday')
+  // {dust krish
+  //   for(let i=0;i<7;i++)
+  //   {this.tutor1.days[this.days1.indexOf(option)] = event.target.checked;  console.log(this.tutor1.days[i])
+  //   }
+  // }
   this.tutor1.days[option] = event.target.checked;
+  console.log("proved",this.tutor1)
   
 }
 

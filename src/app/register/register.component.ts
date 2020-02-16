@@ -97,8 +97,8 @@ if(data=="useralreadyexists"){
     console.log(this.registermodel)
      }
   check(a:string){
-    this.pw=true; 
-    this.b=false; 
+    this.pw=true;
+    this.b=false;
     console.log(""+this.pw)
     this.socialSignIn(a)
     console.log("b value"+this.b);

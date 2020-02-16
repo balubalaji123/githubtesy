@@ -1,5 +1,6 @@
 .container{
     padding: 10px;
+    
 }
 .container input{
     width: 80%;
@@ -37,4 +38,8 @@ padding: 0px 10px;
     text-align: center;
     font-style: italic;
     margin-top:350px ;
+}
+.sub{
+    padding: 10px;
+    /* justify-content: end; */
 }

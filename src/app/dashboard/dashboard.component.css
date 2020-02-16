@@ -7,33 +7,7 @@ body{
     font-weight: 400;
 
 }
-/* #team{
-    float:left;
-} */
-#team img{
-    margin-top: -50px;
-    align-items: center;
-}
-#team i{
-    font-size: 26px;
-    color: #555;
-}
-#team p{
-    font-weight: 500;
-}
-#team .card{
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #012c41;
-    transition:all 0.3s ease-in;
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-}
-#team .card:hover{
-    background: #0e9cdd;
-    color: #fff;
 
-
-}
 a{
     text-decoration: none;
     color: #fff;
@@ -59,7 +33,9 @@ a{
     align-items: center;
     justify-content: center;
     margin: 2rem 0;
-    box-shadow: -5rem .5rem 3rem rgba(0,0,0,0.2);
+    border:2px solid gray ;
+
+    /* box-shadow: -5rem .5rem 3rem rgba(0,0,0,0.2); */
     
 
 }
@@ -120,7 +96,7 @@ transition: color .5s;
     margin-left: 40%; 
     padding: 0px 10px;
     margin-top: 5%;
-    font-size: 50px;
+    /* font-size: 30px; */
 }
 .card-body
 {
@@ -184,10 +160,10 @@ transition: color .5s;
     border: none;
     box-shadow: 5px 5px 10px #9E9E9E;
 }
-
+/* 
 #team .card:hover h3,#iteam .card:hover i{
     color: #fff;
-}
+} */
 
 .fa{
     color: #fff;

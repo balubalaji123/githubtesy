@@ -61,6 +61,8 @@ router.post('/',function(req,res){
     usermail=req.body.mail
     userpassword=req.body.password
     userlocation=req.body.location
+    userlocation=userlocation.toLowerCase()
+    console.log("loc",userlocation)
     userimage=d
     myobj={usermail:usermail}
     dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
