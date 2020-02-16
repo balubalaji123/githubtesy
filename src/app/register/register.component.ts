@@ -15,8 +15,10 @@ import { Googlepw } from '../googlepw';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-public checklogin=true
+  imageUrl: string ="/assets/MM.png";
+  public checklogin=true
 public a;
+// public imageUrl;
 public functionreturn;
 public b=false;
 public pw=false;
@@ -25,7 +27,9 @@ public googlemail;
 public googleuser;
 public tonavnextpage;
 public login1=false;
-public imageUrl = '../../assets/default.jpg';
+
+public imageUrl1 = '../../assets/default.jpg';
+
 public uri='http://localhost:3000/register/upload'
 public users1;
 public gpw=false;
@@ -164,6 +168,18 @@ onimage(){
   this.http.post<any>(this.uri,formdata).subscribe(
     data=>{},
     error=>console.log(error)
-  )
+  ) 
+}
+
+
+fileToUpload: File = null;
+handleFileInput(file: FileList) {
+  this.fileToUpload = file.item(0);
+  var reader = new FileReader();
+  reader.onload = (event : any) => {
+    this.imageUrl = event.target.result;
+  }
+  reader.readAsDataURL(this.fileToUpload);
+   console.log(file);
 }
 }

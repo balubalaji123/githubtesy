@@ -8,7 +8,6 @@ import { error } from 'protractor';
 import{Coursetype} from'../coursetype'
 import { Router, RouterModule } from '@angular/router';
 import { ChecksessionService } from '../checksession.service';
-
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
@@ -16,7 +15,10 @@ import { ChecksessionService } from '../checksession.service';
 })
 export class StudentComponent implements OnInit {
   subjectslist:Tutor[]
-  public searchText
+  public searchText;
+  public filter1='course type filter';
+public filter2='Subject';
+public filter3='Subsubject';
 public display=false
 public notfilter=true
 public subject
@@ -64,6 +66,7 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
   }
 
   subjectselection(subject){
+    this.filter2=subject;
     this.oops=false
     this.subject=subject
     this.subjectoption=new Subsubject(subject)
@@ -74,6 +77,7 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
     
   }
   subsubjectselection(subject){
+    this.filter3=subject;
     this.oops=false
     this.subsubject=subject
     this.filterdata=new Filter(this.subject,this.subsubject)
@@ -84,6 +88,7 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
 
   }
   typeselection(Course){
+    this.filter1=Course
     this.oops=false
     this.selectedcoursetype=new Coursetype(this.subject,this.subsubject,Course)
 this.studentservice.coursetype(this.selectedcoursetype).subscribe(
@@ -110,6 +115,7 @@ this.studentservice.todayclasses().subscribe(
 )
   }
 }
+
 
 
 

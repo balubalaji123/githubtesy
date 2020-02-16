@@ -94,9 +94,7 @@ time=req.body.date+'T'+tutortime+'z'
             tutormail:tutormail,tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,tutortime:tutortime,timeduration:timeduration, tutorwatsuplink:tutorwatsuplink,
             maxstudents:req.body.maxstudents,tutordate:new Date(time),tuorgdate:req.body.date,
         }
-        console.log(JSON.stringify(myobj))
         dbo.collection("onceteacher").insertOne(myobj, function(err, res) {
-            
         })
 
     }
@@ -109,7 +107,5 @@ time=req.body.date+'T'+tutortime+'z'
     //     })
 res.send(true)
 })
-
-
 
 module.exports=router 

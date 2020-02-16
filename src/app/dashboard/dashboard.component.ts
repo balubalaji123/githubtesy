@@ -146,7 +146,9 @@ subscribe(
   error=>console.log("error")
 )
   }
+  public sele=true;
   public techer=true
+
   public student=false
   onlyonce(){
     this.asatutor=[]
@@ -165,5 +167,15 @@ subscribe(
       error=>console.log(error)
     )
   }
+selection()
+{
+  this.sele=true;
+  // console.log(this.sele);
+}
+selection1()
+{
+  this.sele=false;
+  // console.log(this.sele);
+}
 }
 
