@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname,'dist/updated')))
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
 
-// app.get('/',function(req,res){
+// app.get('/',function(req,res){ 
 //   console.log("in main"+req.session)
 //   res.send(__dirname+'dist/updated/index.html')
 // })
@@ -47,7 +47,7 @@ var sess={
   }  
 }
 app.use(session(sess))
-app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
+// app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 
 const redirectlogin=(req,res,next)=>{
   if(!req.session.mail){

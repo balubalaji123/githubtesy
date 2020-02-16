@@ -53,6 +53,8 @@ export class DashboardComponent implements OnInit {
    
   }
   ngOnInit() {
+    document.getElementById("mySidenav").style.width = "20%";
+
   }
   logout(){
     this.logoutservice.logout()
@@ -81,6 +83,15 @@ export class DashboardComponent implements OnInit {
   public immediatecourse
   public showimmediatecourses=true
 public dislike:boolean
+
+
+openNav() {
+  document.getElementById("mySidenav").style.width = "20%";
+}
+closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
   forprofile(){
     this.profile=true
 this.showbutton=false
@@ -92,6 +103,7 @@ this.a=false;
 
 
   }
+
 
   classesattended1(){
     this.showbutton=true
