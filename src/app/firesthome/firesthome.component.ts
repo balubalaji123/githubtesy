@@ -13,7 +13,7 @@ import{LogoutService} from'../logout.service'
 export class FiresthomeComponent implements OnInit {
   constructor(public sessionservice:SessioncheckService,public route:Router,public logoutservice:LogoutService) {
     sessionservice.sessioncheck().subscribe(
-      data=>{console.log(data),this.username=data;
+      data=>{this.username=data;
       if(this.username=="session not exists"){
       this.normalnavbar=false
     }
@@ -36,7 +36,7 @@ export class FiresthomeComponent implements OnInit {
   logout(){
     this.logoutservice.logout()
     .subscribe(
-      data=>{console.log("logout component "+data);
+      data=>{
     if(data=="logout sucess"){
       this.normalnavbar=false
       this.sessionnavbar=true

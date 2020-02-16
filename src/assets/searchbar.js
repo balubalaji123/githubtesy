@@ -10,6 +10,7 @@ function check() {
         if(a.innerHTML.toUpperCase().indexOf(filter) > -1){
             li[i].style.display = "";
         }
+        if(filter in a === true){ li[i].style.display="";console.log('YES')}
 
         else{
             li[i].style.display = 'none';

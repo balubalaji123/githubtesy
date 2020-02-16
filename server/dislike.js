@@ -11,7 +11,6 @@ MongoClient.connect(url, function(err, db) {
         var newvalues = { $set: {like:false} };
           dbo.collection("learnt").updateOne(myquery, newvalues, function(err, res) {
                 if (err) throw err;
-                console.log("res from dislike")
               });
           var tutorquery={tutormail:req.body.tutormail,tutorname:req.body.learnername,tutorsubject:req.body.leanersubject}
           dbo.collection("continousteacher").find(tutorquery,{likes:1}).toArray(function(err,result){

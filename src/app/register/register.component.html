@@ -65,6 +65,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row" *ngIf="!a">
             <p *ngIf=!pw>Already a user?</p>
             <p><button class="button button4"  (click)=onlogin() *ngIf=!pw>login</button></p> 
@@ -77,12 +78,14 @@
 </a>
 
 
+
+
 <a *ngIf=forseccard>
 <div class="bg1" style="width: 90%;text-align: center;" >
     <div class="container-fluid mb-6" style="width: 90%;text-align: center;">
         <div class="row justify-content-center" style="width: 100%;text-align: center;" >
             <div class="col-12" style="width: 90%;text-align: center;">
-<div class="form-container1">
+               <div class="form-container1">
     <!-- <div class="container row">             -->
         <!-- <div class="container-fluid"> -->
             <form #userForm1="ngForm" *ngIf=pw (ngSubmit)="onclickme(passwordgoogle.value,repasswordgoogle.value,location.value)">

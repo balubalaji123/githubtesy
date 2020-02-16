@@ -32,7 +32,6 @@ dashboard.profiledata().subscribe(
   var reader = new FileReader();
   reader.onload = (event : any) => {
     this.imageUrl = event.target.result;
-    console.log(this.imageUrl)
 
   }
   reader.readAsDataURL(file);
@@ -41,13 +40,11 @@ dashboard.profiledata().subscribe(
   }
   onimage(a){
     const formdata=new FormData()
-    console.log("on image")
     formdata.append('file',this.images)
     formdata.append('usermail',a)
     this.http.post<any>(this.uri,formdata).subscribe(
       data=>{this.check=data;
       if(this.check=='ok'){
-        console.log('d',data)
         this.router.navigate(['/dashboard1'])}},
       error=>console.log(error)
     )

@@ -7,18 +7,10 @@ import { NgModule } from '@angular/core';
   templateUrl: './google.component.html',
   styleUrls: ['./google.component.css']
 })
-// export class GoogleComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
 export class GoogleComponent implements OnInit {
   
   ngOnInit(): void {
-    // throw new Error("Method not implemented.");
+    
   }
  
   constructor( private socialAuthService: AuthService ) {}

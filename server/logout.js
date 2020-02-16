@@ -1,13 +1,10 @@
 const express=require('express')
 const session=require('express-session')
-
 const router=express.Router()
 router.get('/',function(req,res){
-    console.log("entered")
     req.session.destroy(err=>{
         if(err)
         {
-            console.log("checking for")
             res.send(JSON.stringify("error"))
 
         }
