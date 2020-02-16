@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import{ForgotpasswordService} from'../forgotpassword.service'
+import {Forgotpw} from '../forgotpw';
+// import{Login} from'../login'
+
 import { from } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 
@@ -15,6 +18,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   ngOnInit() {
   }
+  checking=new Forgotpw('')
   public c
   public passwordquery
   public mail

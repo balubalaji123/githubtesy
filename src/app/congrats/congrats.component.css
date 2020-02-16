@@ -1,83 +1,116 @@
-.container {
-    position: relative;
-    width: 50%;
+/* @import 'https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&subset=cyrillic,cyrillic-ext,latin-ext'; */
+* {
+  box-sizing:border-box
+}
+
+.container-fluid{
+  width:700px;
+  height:700px;
+  background-color: beige;
+}
+.card{
+  width: 350px;
+  border:1px solid gray;
+}
+.card-text
+{
+  font-size: 20px;
+}
+.card img{
+  height: 250px;
+  width: 100%;
+}
+.head{
+ color: #23415c;
+ font-size: 35px;
+ font-weight: 700;
+}
+.card-body{
+  text-align: center;
+}
+.card-styles{
+  padding: 10px 2px;
+}
+.button{
+  background:#23415c;
+  border-radius: 20px;  
+  font-size: 20px;
+  font-weight: 600;
+}
+.button a{
+color: #fff;
+text-decoration: none;
+}
+
+
+
+
+button
+ {
+   color:#454545;
+   background:transparent;
+   border-width:2px;
+   border-style: solid;
+   border-color: #454545;
+   position:relative;
+   margin:1em;
+   display:inline-block;
+   padding:0.5em 1em;
+   transition:all 0.3s ease-in-out;
+   text-align:center;
+font-family:comfortaa;
+font-weight:bold
+}
+button:before,
+ button:after 
+ {
+   content:'';
+   display:block;
+   position:absolute;
+   border-color:#454545;
+   box-sizing:border-box;
+   border-style:solid;
+   width:1em;
+   height:1em;
+   transition:all 0.3s ease-in-out
   }
-  
-  .image {
-    display: block;
-    width: 60%;
-    height: auto;
-    width: 100%;
+button:before
+ {
+   top:-6px;
+   left:-6px;
+   border-width:2px 0 0 2px;
+   z-index:5;
   }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color:#23415c;
+button:after 
+{
+  bottom:-6px;
+  right:-6px;
+  border-width:0 2px 2px 0;
+}
+button:hover:before,
+ button:hover:after 
+ {width:calc(100% + 12px);
+  height:calc(100% + 12px);
+  border-color:#fff
+}
+button:hover
+ {
+   color:#353535;
+   background-color:#fff;
+   border-color:#fff
   }
-  
-  .container:hover .overlay {
-    opacity: 1;
+.panel
+ {
+   max-width:960px;
+   text-align:center;
+   position:relative;
+   margin:auto;
   }
-  
-  .text {
-    color: white;
-    font-size: 30px;
-    font-weight: 600;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  .button {
-    border-radius: 4px;
-    background-color:lightblue;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    width: 200px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-  }
-  
-  .button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-  }
-  
-  .button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-  
-  .button:hover span {
-    padding-right: 25px;
-  }
-  
-  .button:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
-  .myrow{
-    vertical-align: middle;
-    padding: 50px;
-  }
+.pink button {color:#eb1777;border-color:#eb1777}
+.pink button:before, .pink button:after  {border-color:#eb1777}
+.pink button:hover:before, .pink button:hover:after {border-color:#eb1777;}
+.pink button:hover {color:#fff;background-color:#eb1777;border-color:#eb1777;}
+.pink .panel {max-width:960px;text-align:center;position:relative;margin:auto;}
+
+
+

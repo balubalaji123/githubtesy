@@ -84,8 +84,8 @@ this.registermodel=new Courseselected(this.name,this.subject,this.tutormail,this
 console.log("hello"+this.registermodel)
 this.subjectservice.subjectselected(this.registermodel)
 .subscribe(
-  data=>{console.log('course selected',data);
-  if(data==true)
+  data=>{console.log('course selected',data);if(data==true)
+
   {
     this.router.navigate(['/dashboard1'])
   };

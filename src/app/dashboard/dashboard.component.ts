@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
     )
     // for image
     sessionservice.sessioncheck().subscribe(
-      data=>{console.log("in session"+data),this.username=data},
+      data=>{console.log("in session"+JSON.stringify(data)),this.username=data},
             error=>console.log(error)
     )
     // for profile image

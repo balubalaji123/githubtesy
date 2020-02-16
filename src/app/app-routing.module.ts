@@ -16,6 +16,7 @@ import { CourseselectedComponent } from './courseselected/courseselected.compone
 import { CongratsComponent } from './congrats/congrats.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { AboutComponent } from './about/about.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'firesthome',pathMatch:'full'},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path:'forgotpassword',component:ForgotpasswordComponent},
   {path:'congrats',component:CongratsComponent},
   {path:'courseselected',component:CourseselectedComponent},
+  {path:"**",component:PagenotfoundComponent}
   // {path:'profile',component:ProfileComponent}
   
 ];

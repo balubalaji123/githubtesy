@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <app-navbar></app-navbar>
+    <!-- <app-navbar></app-navbar> -->
     <div class="container"> 
         <div class="row justify-content-center">
             <div class="col-md-12 col-sm-12">
@@ -23,7 +23,8 @@
                                     <p *ngIf="tutordate">tutordate:&nbsp;&nbsp;{{tutordate}}</p>
                                     <p>fee:&nbsp;&nbsp;{{fee}}</p>
                                     <p>subsubject:&nbsp;&nbsp;{{subsubject}}</p>
-
+                                    <p>time:&nbsp;&nbsp;{{time}}</p>   
+                                    <div *ngIf=selecteddays>  
                                     <div  *ngIf="!a">days:&nbsp;&nbsp;{{selecteddays}}</div>
                                     <div *ngIf="a">
                                         days:<br>
@@ -31,10 +32,8 @@
                                             <input (click)="onsel(day)"type="checkbox" >{{day}}
                                         </div>
 
-                                    </div>
-
-                                    <p>time:&nbsp;&nbsp;{{time}}</p>                                
-
+                                    </div></div>
+                           
                                         <button class="btn btn-primary" type="submit" (click)="fun()" > submit</button>
                                 </div>
                                 <div class="col">
@@ -62,6 +61,7 @@
         </div>
       
 </div>
+<p *ngIf="regitered">ALREADY REGISTERED</p>
 
 
 </body>

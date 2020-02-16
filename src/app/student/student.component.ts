@@ -61,7 +61,7 @@ this.oops=true
   }
  
   subjectselected(i){
-
+this.oops=false
 this.display=true
 console.log('s',this.subjectslist[i])
 this.router.navigate(['/courseselected',this.subjectslist[i]])
@@ -104,6 +104,7 @@ this.studentservice.coursetype(this.selectedcoursetype).subscribe(
 )
   }
   gettodayclasses(){
+    this.oops=false
     this.notfilter=false
 this.studentservice.todayclasses().subscribe(
   data=>{if(!data.length){
