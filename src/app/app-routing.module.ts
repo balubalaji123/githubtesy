@@ -8,16 +8,20 @@ import { TutorComponent } from './tutor/tutor.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
+
+// import { ListComponent } from './list/list.component';
+
 import { ProfileComponent } from './profile/profile.component';
-import { AboutComponent } from './about/about.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { CongratsComponent } from './congrats/congrats.component';
-// import { Courseselected } from './courseselected';
 import { CourseselectedComponent } from './courseselected/courseselected.component';
+import { CongratsComponent } from './congrats/congrats.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { AboutComponent } from './about/about.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
 const routes: Routes = [
   {path:'',redirectTo:'firesthome',pathMatch:'full'},
   {path:'',component:FiresthomeComponent},
+    // {path:'list',component: ListComponent},
   {path:'firesthome',component:FiresthomeComponent},
   {path:'register1',component:RegisterComponent},
   {path:'users1',component:HomeComponent},

@@ -5,9 +5,13 @@ import{HttpClient,HttpHeaders} from '@angular/common/http'
 })
 export class ChecksessionService {
 public url='checksession'
+public url1='username'
   constructor(private http:HttpClient) { }
   verifysession(){
 return    this.http.get<any>(this.url)
-
+  }
+  // for user name
+  getusername(){
+    return this.http.get<any>(this.url1)
   }
 }

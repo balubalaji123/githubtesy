@@ -11,7 +11,6 @@ MongoClient.connect(url, function(err, db) {
 var random=[]
 router.post('/',function(req,res){
     var c=Math.floor(100000+ Math.random() * 900000);
-console.log("c",c)
     random.push(c)
     var query={usermail:req.body.mail1}
     dbo.collection('customers').find(query).toArray(function(err,result){

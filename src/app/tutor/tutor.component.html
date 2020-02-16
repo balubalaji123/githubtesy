@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TUTOR</title>
+        <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
     <app-navbar></app-navbar>
@@ -14,15 +20,9 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="form-container">
             <h3 class="heading">Registration Form</h3>
-                  <!-- <img src={{imageUrl}} class="rounded-circle"   width="200"  height="200" alt="image not found"> -->
-            <form  #userForm="ngForm" (ngSubmit)="onsubmit()" >
-                <!-- <input type="file" (change)="selectimage($event)"> -->
 
-                <!-- <div class="form-group">
-                    <img [src]="imageUrl" ><br>
-                    <input type="file"  #name="ngModel" class="form-control" name="img"  [(ngModel)]="tutor1.img"  (change)="handleFileInput($event.target.files)" >
-                    <button type="button" (click)="onUpload()">onUpload</button>
-                </div>  -->
+            <form  #userForm="ngForm" (ngSubmit)="onsubmit()" >
+
                 <div class="form-group">
                     <label>Subject</label>
                     <input type="text" required #subject="ngModel"  [class.is-invalid]="subject.invalid && subject.touched"  placeholder="Enter Subject" class="form-control" name="Subject" [(ngModel)]="tutor1.subject">
@@ -30,22 +30,42 @@
                 </div>
                 <div class="form-group">
                     <label>sub subject</label>
-                    <input type="text" required #subsubject="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter fees" class="form-control" name="subsubject" [(ngModel)]="tutor1.subsubject">
+                    <input type="text" required #subsubject="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter subsubject" class="form-control" name="subsubject" [(ngModel)]="tutor1.subsubject">
                     <small   class="text-danger" [class.d-none]="subsubject.valid || subsubject.untouched">choose the subsubject</small>
                 </div>
                 <div class="form-group">
                     <label>Time-Duration</label>
-                    <input type="text" required #time="ngModel" [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Time 14-15" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
+                    <input type="number" required #time="ngModel"     [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Duration time in hours" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
                     <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Time Is Required</small>
                 </div>
                 <div class="form-group">
-                    <label>teaching type selection</label>
-                    <button type="button" (click)="onlyonce()">only once</button>
-                    <button type="button" (click)="continous()">continous</button>
+                    <h5>teaching type selection</h5><br>
+                    <!-- <button mat-fab>Basic</button> -->
+                    <div *ngIf="button1">
+                        <button type="button"  required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
+                    <button type="button"  required mat-stroked-button (click)="continous()">continous</button>
+                    </div>
+                    <div *ngIf="!button1&& c">
+                    <button type="button"  required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
+                    <button type="button" disabled required mat-stroked-button (click)="continous()">continous</button>
+                    </div>
+                    <div *ngIf="!button1 && !once">
+                        <button type="button" disabled required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
+                        <button type="button"  required mat-stroked-button (click)="continous()">continous</button>
+                    </div>
+
                 </div>
                 <div class="form-group" *ngIf="once">
-                    <label>select date</label>
-                    <input type="date" placeholder="select date" name="date" [(ngModel)]="tutor1.date" >
+                    <label>select date</label><br>
+                    <input type="date" placeholder="select date"  name="date" [(ngModel)]="tutor1.date"  >
+                   
+                      <!-- <mat-form-field class="example-full-width">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput #input  [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                      <button (click)="on(input.value)" >gh</button> -->
                 </div>
                 <div class="form-group" *ngIf="once">
                     <label>maximum students</label>
@@ -55,9 +75,19 @@
                 
                 <div *ngIf="continousteacher">
                     <div class="form-group">
-                        <label>Days</label>
-                        <button type="button" (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
-                        <button type="button" (click)="multiple()" mat-raised-button>MultipleDays</button>
+                        <label>Days</label>&nbsp;&nbsp;
+                 <div *ngIf="daysselection">
+                    <button type="button" required  (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
+                    <button type="button" required (click)="multiple()" mat-raised-button>MultipleDays</button>
+                 </div>
+                 <div *ngIf="!daysselection && single1">
+                    <button type="button" required  (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
+                    <button type="button" required disabled (click)="multiple()" mat-raised-button>MultipleDays</button>
+                 </div>
+                 <div *ngIf="!daysselection && multiple1">
+                    <button type="button" disabled required  (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
+                    <button type="button" required (click)="multiple()" mat-raised-button>MultipleDays</button>
+                 </div>
                     </div>      
                       <div *ngIf="a" class="form-group">
                     <label>Select a day</label>
@@ -70,17 +100,21 @@
                 <div *ngIf="b"  class="form-group">
                     <label> days:</label>
                     <div *ngFor="let day of days1">
+                        
                         <label>
                             <div *ngIf="!day2">
-                                <input type="checkbox" name="days1" value="{{day}}" (change)="updateCheckedOptions(day, $event)"/>
-                                {{day}}
+                                <input required type="checkbox" name="days1" value="{{day}}" (change)="updateCheckedOptions(day, $event)"/>
+                                <span class="btn"></span>
+
+                                <span>{{day}}</span>
                             </div>
                         </label>
                     </div>
                 </div></div>
                 <div class="form-group">
-                    <label>teaching time</label>
-                    <input type="time"  placeholder="Enter time" name="teachingtime"  [(ngModel)]="tutor1.teachingtime">
+                    <label>teaching time</label><br>
+                    <!-- <input type="time"  > -->
+                    <input atp-time-picker  type="text" placeholder="Enter time" name="teachingtime"  [(ngModel)]="tutor1.teachingtime">
                 </div>
                 <div class="form-group">
                     <label>Whatsapp Link</label>
@@ -106,7 +140,7 @@
                     <textarea required #msg="ngModel" [class.is-invalid]="msg.invalid && msg.touched" placeholder="Enter Description" class="form-control" name="msg" [(ngModel)]="tutor1.description"  id="exampleFormControlTextarea1" rows="3"></textarea>
                     <small   class="text-danger" [class.d-none]="msg.valid || msg.untouched">Description is required</small>
                   </div>
-                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit" (click)="onimage()">Submit</button>
+                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit"  (click)="onimage()">Submit</button>
             
             </form>
         </div></div>
@@ -114,6 +148,7 @@
         </div></div>
 </body>
 </html>
+
 
 
 

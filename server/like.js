@@ -16,7 +16,6 @@ router.post('/',function(req,res){
     var newvalues = { $set: {like:true} };
       dbo.collection("learnt").updateOne(myquery, newvalues, function(err, res) {
             if (err) throw err;
-            console.log("res")
           });
       var tutorquery={tutormail:req.body.tutormail,tutorname:req.body.learnername,tutorsubject:req.body.leanersubject,}
       dbo.collection("continousteacher").find(tutorquery,{likes:1}).toArray(function(err,result){
@@ -50,7 +49,6 @@ router.post('/delete',function(req,res){
         dbo.collection("continousteacher").find(c,{$exists:true}).toArray(function(err, result) {
             if (err) throw err;
             checkuser=result
-           console.log("check"+result)
             res.send(JSON.stringify(checkuser))
           });
     });

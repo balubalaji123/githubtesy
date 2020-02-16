@@ -92,7 +92,6 @@ app.get('/imageget',function(req,res){
 })
 // for dashboard
 app.get('/dashboardimage',function(req,res){
-  console.log(req.session)
   if(req.session.userimage===null){
     address=__dirname+'/server/uploads1/default.jpg'
     res.sendFile(__dirname+'/server/uploads1/default.jpg')
@@ -100,9 +99,11 @@ app.get('/dashboardimage',function(req,res){
   else{
   address=__dirname+'/server/uploads1/'+req.session.userimage
   res.sendFile(address)}
-  
   })
-
+// for name
+app.get('/username',function(req,res){
+res.send(JSON.stringify(req.session.username))
+})
 
 app.get('/*',function(req,res){
   res.sendFile(__dirname+'/dist/updated/index.html')
