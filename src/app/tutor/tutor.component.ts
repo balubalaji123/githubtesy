@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { error } from 'protractor';
 import{FileSelectDirective,FileUploader} from 'ng2-file-upload';
 import { Router, RouterModule } from '@angular/router';
+import { ChecksessionService} from'../checksession.service'
 @Component({
   selector: 'app-tutor',
   templateUrl: './tutor.component.html',
@@ -21,20 +22,33 @@ public once=false
 public continousteacher=false
 public a=false;
 public images
-public rand
+public rand;
+public button1=true;
+public c;
+public daysselection=true;
+public single1=false;
+public multiple1=false;
 // public imageurl="../../assets/TeacherStudent.jpg"
 public filetoupload:File=null
 public b=false;
+
  public result: string 
 public uri='http://localhost:3000/tutor/upload'
 public uploader:FileUploader=new FileUploader({url:this.uri})
-public tutor1=new Tutor('','','','',{},'',10,0,'','','')
-  constructor(private tutorservic:TutorService,private http: HttpClient,public router:Router) {
-
+public tutor1=new Tutor('','','','',{},'', 10,0,'','','')
+  constructor(private tutorservic:TutorService,private http: HttpClient,public router:Router,private chechsession:ChecksessionService) {
+this.chechsession.verifysession().subscribe(
+  data =>{if(!data){
+    this.router.navigate(['/login1'])
+  }}
+)
    }
 public aftersubmission=false
   ngOnInit() {
   }
+  // onKeypress($event){
+  //   console.log(event);
+  // }
 onsubmit(){
   console.log(this.tutor1)
   this.aftersubmission=true
@@ -49,21 +63,31 @@ updateCheckedOptions(option, event) {
   this.tutor1.days[option] = event.target.checked;
   
 }
+
 onlyonce(){
   this.once=true
   this.continousteacher=false
+  this.button1=false;
+  this.c=true;
 }
 continous(){
   this.once=false
   this.continousteacher=true
+  this.button1=false;
+  // this.c=false;
 }
 single(){
 this.a=true;
 this.b=false;
+this.single1=true;
+this.daysselection=false;
 }
 multiple(){
   this.b=true;
   this.a=false;
+  this.multiple1=true;
+  
+this.daysselection=false;
 }
 
 // selectimage(event){

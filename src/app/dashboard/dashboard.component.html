@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,10 @@
     <title>dashboard</title>
 </head>
 <body>
+  <!-- <p><strong>seats  left:</strong>{{a.maxstudents}}</p>
+        <p><strong>subject:</strong>{{a.tutorsubject}}</p>
+        <p><strong>sub subject :</strong>{{a.tutorsubsubject}}</p>
+        <p><strong>date:</strong>{{a.tutordate}}</p> -->
     <!-- <nav class="navbar navbar-expand-md "> -->
   <!-- <img src="dashboardimage" class="rounded-circle"   width="200"  height="200" alt="no image1"> -->
   <!-- for profile -->
@@ -53,7 +58,11 @@
           </li>
           </ul></div>
       </nav><br>
-      
+      <h3>#name</h3>
+      <p><strong>subject:</strong>{{a.tutorsubject}}</p>
+      <p><strong>sub subject:</strong>{{a.tutorsubsubject}}</p>
+    <p><strong>course type :</strong>{{a.tutorcoursetype}}</p>
+    <p><strong>likes:</strong>{{a.likes}}</p>
       <div class="container-fluid mycontainer">
           <div class="row justify-content-end ">
             <div class="col-6"></div> 
@@ -65,7 +74,10 @@
               <div style="padding: 20px;"><button type="submit" class="btn button" (click)="classesenrolled1()" ><img class="img-icon" src="../../assets/undraw_exams_g4ow.svg">&nbsp;  Enrolled</button></div>
           </div>
       </div> -->
-
+      <!-- <p><strong>seats  left:</strong>{{a.maxstudents}}</p>
+      <p><strong>subject:</strong>{{a.tutorsubject}}</p>
+      <p><strong>sub subject :</strong>{{a.tutorsubsubject}}</p>
+      <p><strong>date:</strong>{{a.tutordate}}</p> -->
 <!-- sidenavbar -->
 <div class="sidenav">
   <div *ngIf="a.tutorimage===null;else image">
@@ -95,45 +107,57 @@
 
 
       <!-- cards -->
-<div *ngIf="showimmediatecourses" class="main">
-      <div>fastfilling</div>
-      <div *ngFor="let a of immediatecourse">
-        
-        <p><strong>seats  left:</strong>{{a.maxstudents}}</p>
-        <p><strong>subject:</strong>{{a.tutorsubject}}</p>
-        <p><strong>sub subject :</strong>{{a.tutorsubsubject}}</p>
-        <p><strong>date:</strong>{{a.tutordate}}</p>
-        <!-- <p><strong>likes:</strong>{{a.likes}}</p> -->
-<br>
-      </div></div>
-
-      
-<div *ngIf="showimmediatecourses" class="main">
-  <div>famous courses</div>
-  <div *ngFor="let a of mostliked" >
-    <!-- <p><strong>subject:</strong>{{a.tutorsubject}}</p>
-    <p><strong>sub subject:</strong>{{a.tutorsubsubject}}</p>
-    <p><strong>course type :</strong>{{a.tutorcoursetype}}</p>
-    <p><strong>likes:</strong>{{a.likes}}</p> -->
+<button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>&nbsp;&nbsp;
+<button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
+  <!-- <form> -->
+    <div *ngIf="showimmediatecourses&&sele" class="main" >
+      <div style="text-align: center;">Fastfilling</div>
+        <div class="row">
+          <div  *ngFor="let a of immediatecourse" >
+            <div class="container">
+              <div class="card-wrapper">
+                <div class="card1">
+                  <img src="https://img.freepik.com/free-photo/network-with-nodes-connected-background-technology-concept_34478-108.jpg?size=626&ext=jpg" alt="card background" class="card-img">
+                  <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
+                  <!-- <p>#name</p> -->
+                  <!-- <div> -->
+                <div class="card-body">
+                  <div style="font-size: 15px;"><b>seats  left:</b>{{a.maxstudents}}</div>
+                  <div style="font-size: 15px;"><b>subject:</b>{{a.tutorsubject}}</div>
+                  <div style="font-size: 15px;"><b>sub subject :</b>{{a.tutorsubsubject}}</div>
+                  <div style="font-size: 15px;"><b>date:</b>{{a.tutordate}}</div>
+                </div>
+                  <!-- <ul class="social-media">
+                    <li><a href="www.facebook.com"><i class="fab fa-facebook-square"></i></a></li>
+                    <li><a href="www.twitter.com"><i class="fab fa-twitter-square"></i></a></li>
+                    <li><a href="www.instagram.com"><i class="fab fa-instagram-square"></i></a></li>
+                    <li><a href="www.google.com"><i class="fab fa-google-plus-square"></i></a></li>
+                  </ul> -->
+                </div>
+              </div>
+            </div>
+           
+        </div>
+      </div>
+  <br>
+  
+  
+  </div>
+<!-- </div> -->
+<!-- </form> -->
+<div *ngIf="showimmediatecourses&&!sele" class="main">
+  <div style="text-align: center;">Famous Course</div>
+  <div class="row">
+  <div class="col-4" *ngFor="let a of mostliked" >
     <section id="team">
       <div class="container my-3 py-5 ">
-      <div class="row mb-5" style="float: left;">
-      <div class="col" >
-      <!-- <h1>Our team</h1> -->
-      <p class="mt-3"></p>
-      </div>
-      </div>
-      <div class="row" >
-      <div class="col-lg-4 col-md-4">
+      <div class="row">
+      <div class="col">
       <div class="card">
       <div class="card-body">
         <img src="../../assets/default.jpg" alt="nooooo" class="img-fluid rounded-circle
         w-50 mb-3">
-      <h3>#name</h3>
-      <p><strong>subject:</strong>{{a.tutorsubject}}</p>
-    <p><strong>sub subject:</strong>{{a.tutorsubsubject}}</p>
-    <p><strong>course type :</strong>{{a.tutorcoursetype}}</p>
-    <p><strong>likes:</strong>{{a.likes}}</p>
+      
     <div class="d-flex flex-row justify-content-center">
       <div class="p-4">
         <a href="#">
@@ -158,9 +182,7 @@
       </div>
       </div>
       </section>
-</div></div>
-
-
+</div></div></div>
         <div *ngIf="a" class="main">
           <div *ngFor="let a of asastudent" class="container">
             <div class="row myrow">

@@ -44,24 +44,37 @@
                 </div>
                 <div class="form-group">
                     <label>Time-Duration</label>
-                    <input type="number" required #time="ngModel"     [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Time 14-15" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
+                    <input type="number" required #time="ngModel"     [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Duration time in hours" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
                     <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Time Is Required</small>
                 </div>
                 <div class="form-group">
                     <h5>teaching type selection</h5><br>
                     <!-- <button mat-fab>Basic</button> -->
-                    <button type="button"  required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
+                    <div *ngIf="button1">
+                        <button type="button"  required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
                     <button type="button"  required mat-stroked-button (click)="continous()">continous</button>
+                    </div>
+                    <div *ngIf="!button1&& c">
+                    <button type="button"  required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
+                    <button type="button" disabled required mat-stroked-button (click)="continous()">continous</button>
+                    </div>
+                    <div *ngIf="!button1 && !once">
+                        <button type="button" disabled required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
+                        <button type="button"  required mat-stroked-button (click)="continous()">continous</button>
+                    </div>
+
                 </div>
                 <div class="form-group" *ngIf="once">
                     <label>select date</label><br>
-                    <!-- <input type="date" placeholder="select date" name="date" [(ngModel)]="tutor1.date" > -->
-                    <mat-form-field>
-                        <!-- <mat-label>Choose a date</mat-label> -->
-                        <input required  matInput [matDatepicker]="picker" name="date"  [(ngModel)]="tutor1.date" >
+                    <input type="date" placeholder="select date"  name="date" [(ngModel)]="tutor1.date"  >
+                   
+                      <!-- <mat-form-field class="example-full-width">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput #input  [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                       </mat-form-field>
+                      <button (click)="on(input.value)" >gh</button> -->
                 </div>
                 <div class="form-group" *ngIf="once">
                     <label>maximum students</label>
@@ -71,10 +84,19 @@
                 
                 <div *ngIf="continousteacher">
                     <div class="form-group">
-                        <label>Days</label>
-                        
-                        <button type="button" required  (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
-                        <button type="button" required (click)="multiple()" mat-raised-button>MultipleDays</button>
+                        <label>Days</label>&nbsp;&nbsp;
+                 <div *ngIf="daysselection">
+                    <button type="button" required  (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
+                    <button type="button" required (click)="multiple()" mat-raised-button>MultipleDays</button>
+                 </div>
+                 <div *ngIf="!daysselection && single1">
+                    <button type="button" required  (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
+                    <button type="button" required disabled (click)="multiple()" mat-raised-button>MultipleDays</button>
+                 </div>
+                 <div *ngIf="!daysselection && multiple1">
+                    <button type="button" disabled required  (click)="single()" mat-raised-button>SingleDay</button>&nbsp;&nbsp;
+                    <button type="button" required (click)="multiple()" mat-raised-button>MultipleDays</button>
+                 </div>
                     </div>      
                       <div *ngIf="a" class="form-group">
                     <label>Select a day</label>
@@ -127,7 +149,7 @@
                     <textarea required #msg="ngModel" [class.is-invalid]="msg.invalid && msg.touched" placeholder="Enter Description" class="form-control" name="msg" [(ngModel)]="tutor1.description"  id="exampleFormControlTextarea1" rows="3"></textarea>
                     <small   class="text-danger" [class.d-none]="msg.valid || msg.untouched">Description is required</small>
                   </div>
-                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit" (click)="onimage()">Submit</button>
+                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit"  (click)="onimage()">Submit</button>
             
             </form>
         </div></div>

@@ -97,6 +97,7 @@ todaydate=year+'-'+month+'-'+date
             tutormail:tutormail,tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,tutortime:tutortime,timeduration:timeduration, tutorwatsuplink:tutorwatsuplink,
             maxstudents:req.body.maxstudents,tutordate:new Date(req.body.date),tuorgdate:req.body.date,
         }
+        console.log(JSON.stringify(myobj))
         dbo.collection("onceteacher").insertOne(myobj, function(err, res) {
             
         })
