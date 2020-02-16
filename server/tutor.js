@@ -4,7 +4,6 @@ const path=require('path')
 var ObjectId = require('mongodb').ObjectID;
 const router=express.Router()
 var dateTime = require('node-datetime');
-
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 var dbo=''
@@ -14,10 +13,7 @@ MongoClient.connect(url, function(err, db) {
 });
 var days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 var selecteddays=[]
-var subjectsarr=[]
-var subsubjectarr=[]
 var d
-
 // // var store=multer.diskStorage({
 // // destination:function(req,file,cb){
 // //         cb(null,'./server/uploads1')
@@ -52,7 +48,6 @@ var d
 //     res.send(JSON.stringify("sucess"))
 // })
 router.post('/',function(req,res){
-    // console.log('time',new Date().getHours())
     selecteddays=[]
     tutordays=req.body.days
     if(tutordays["EveryDay"]!=true){
@@ -105,14 +100,6 @@ time=req.body.date+'T'+tutortime+'z'
         })
 
     }
-
-
-
-
-
-
-
-
     // myobj={tutorimage:d,tutorname:req.session.username,tutorsubject:tutorsubject,tutortime:tutortime,
     //     tutorcoursetype:tutorcoursetype,tutorfee:tutorfee,tutordescription:tutordescription,
     //     tutorwatsuplink:tutorwatsuplink,selecteddays:selecteddays

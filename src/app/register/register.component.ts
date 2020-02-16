@@ -35,18 +35,16 @@ public imageurl="../../assets/default.jpg"
   registermodel=new Register('','','','','');
   gpwmodel = new Googlepw('','')
   reg:Googlepassword
-  // googlepasswordmodel=new Googlepassword('fgh','fcgvhbj','')
   constructor(private sessionservice:SessioncheckService, private register:RegisterService,public route:Router,private socialAuthService: AuthService,public googleregister1:GoogleloginService,private http: HttpClient) { }
   ngOnInit() {
   }
   onsubmit(x,y){
-    console.log(this.registermodel)
     this.functionreturn=this.onclick(x,y)
     if(this.functionreturn)
     {
 this.register.register(this.registermodel)
 .subscribe(
-  data=>{console.log("register"+data);
+  data=>{
 if(data=="useralreadyexists"){
   this.login1=true;
   this.a=false
@@ -71,33 +69,27 @@ if(data=="useralreadyexists"){
     {
       this.a=false;
       this.b=true;
-      console.log("b is going onclick method"+this.b);
       return false;
     }
   }
   onclick1(x1,y1){ 
     if(x1==y1)
     {
-      console.log("b value at onclick1 method password matched"+this.b);
         return true;
     }
     else
     {
       this.gpw=true;
-      console.log("b value at onclick1 method pwnot matched"+this.b);
       return false;
     }
   }
   gmailpassword(passwordgoogle,repasswordgoogle)
   {
-    console.log(this.registermodel)
      }
   check(a:string){
     this.pw=true; 
     this.b=false; 
-    console.log(""+this.pw)
     this.socialSignIn(a)
-    console.log("b value"+this.b);
   }
    socialSignIn(socialPlatform : string) {
      this.b=false;
@@ -108,7 +100,7 @@ if(data=="useralreadyexists"){
         console.log(socialPlatform+" sign in data : " , userData);
     this.googlemail=userData.email;
     this.googleuser=userData.name;
-        // console.log(this.password2);
+
         // Now sign-in with userData
         // ...  
       }
@@ -123,14 +115,14 @@ if(data=="useralreadyexists"){
       // this.googlepasswordmodel.password2=passwordgoogle
 this.register.register(this.registermodel)
 .subscribe(
-  data=>console.log("register"+data),
+  data=>{},
   error=>console.log(error)
 )   
-    console.log("gmail password");
+  
     this.reg=new Googlepassword(this.googleuser,this.googlemail,passwordgoogle,this.location)
 this.googleregister1.googlelogin(this.reg)
 .subscribe(
-  data=>{console.log("hii"+data);
+  data=>{
   if(data=="useralreadyexists")
   {
     this.route.navigate(['/login1']);
@@ -140,18 +132,14 @@ this.googleregister1.googlelogin(this.reg)
     this.route.navigate(['/users1']);
     this.users1=true;
   }
-  // this.tonavnextpage=nextpage()
+  
 },
   error=>console.log("error in google login")
 )  
-console.log("on click me");
+
   }}
   onclick2(password2)
   {
-    console.log(password2);
-    // this.reg.password=password2
-    // this.reg.password1=password2
-    console.log(this.reg)  
   }
 onlogin()
 {
@@ -161,34 +149,20 @@ selectimage(event){
   if(event.target.files.length>0){
     const file=event.target.files[0]
 this.images=file
-// this.imageUrl=event.target.result
 var reader = new FileReader();
   reader.onload = (event : any) => {
     this.imageUrl = event.target.result;
-    console.log(this.imageUrl)
 
   }
   reader.readAsDataURL(file);
   }
 }
-// tulasi
-// fileToUpload: File = null;
-// handleFileInput(file: FileList) {
-//   this.fileToUpload = file.item(0);
-//   var reader = new FileReader();
-//   reader.onload = (event : any) => {
-//     this.imageUrl = event.target.result;
-//   }
-//   reader.readAsDataURL(this.fileToUpload);
-//    console.log(file);
-// }
 
 onimage(){
   const formdata=new FormData()
-  console.log("on image")
   formdata.append('file',this.images)
   this.http.post<any>(this.uri,formdata).subscribe(
-    data=>console.log(data),
+    data=>{},
     error=>console.log(error)
   )
 }

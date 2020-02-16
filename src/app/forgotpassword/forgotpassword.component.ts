@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import{ForgotpasswordService} from'../forgotpassword.service'
 import {Forgotpw} from '../forgotpw';
-// import{Login} from'../login'
-
 import { from } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
-
 import { error } from 'protractor';
 @Component({
   selector: 'app-forgotpassword',
@@ -13,9 +10,7 @@ import { error } from 'protractor';
   styleUrls: ['./forgotpassword.component.css']
 })
 export class ForgotpasswordComponent implements OnInit {
-
   constructor(private forgorpassword:ForgotpasswordService,private router:Router) { }
-
   ngOnInit() {
   }
   checking=new Forgotpw('')
@@ -30,8 +25,7 @@ export class ForgotpasswordComponent implements OnInit {
     this.forgorpassword.checkemail(this.c).subscribe(
       data=>this.check=data,
       error=>console.log(error)
-    )
-    
+    )  
   }
   otpsubmit(otp){
     this.c={otp1:otp}
@@ -49,8 +43,5 @@ export class ForgotpasswordComponent implements OnInit {
       }},
       error=>console.log(error)
     )
-
   }
-
-
 }

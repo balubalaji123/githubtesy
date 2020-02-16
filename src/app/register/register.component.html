@@ -65,7 +65,7 @@
         </div>             
             <form [hidden]=!pw>
                 <div class="container-fluid">
-                <form #userForm1="ngForm" (ngSubmit)="onclickme(passwordgoogle.value,repasswordgoogle.value,location.value)">
+                <form #userForm1="ngForm" autocomplete="off" (ngSubmit)="onclickme(passwordgoogle.value,repasswordgoogle.value,location.value)">
                    <div class="form-group">
                     <label>Set Your Password</label>
                 <p><input type="password" name="password" class="form-control" #passwordgoogle="ngModel"

@@ -34,14 +34,13 @@ public selectedsubject:string
   constructor(private studentservice:StudentsService,public router:Router,private chechsession:ChecksessionService) {
     // to get all subjects list
 studentservice.allsubjects().subscribe(
-  data=>{console.log("data"+data);this.allsubjects=data},
+  data=>{this.allsubjects=data},
   error=>console.log(error)
 )
 // to get all details
     studentservice.subjectslist()
     .subscribe(
       data=>{if(data.length==0){
-        console.log("entered")
 this.oops=true
       }
       else{
@@ -61,7 +60,6 @@ this.oops=true
   subjectselected(i){
 this.oops=false
 this.display=true
-console.log('s',this.subjectslist[i])
 this.router.navigate(['/courseselected',this.subjectslist[i]])
   }
 
