@@ -8,13 +8,11 @@
 </head>
 <img src={{imageUrl}} [hidden]=pw class="rounded-circle"   width="200"  height="200" alt="image not found">
 <input type="file" value="" [hidden]=pw title=" " (change)="selectimage($event)">
-
     <div class="bg" >
         <div class="container-fluid mb-5">
         <div class="row justify-content-center">
             <div class="col-6">
-                 <div class="form-container">
-                     
+                 <div class="form-container">         
             <div class="heading" [hidden]=pw>Resgistration form</div>
 
             <form #userForm="ngForm" (ngSubmit)="onsubmit(pass.value,passwd.value)" [hidden]=pw>
@@ -45,10 +43,6 @@
                 <button class= "btn button" [disabled]="userForm.form.invalid" type="submit"  (click)="onimage()" >submit</button>
             </form>
             <br>
-                <!-- <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit" (click)='onclick()' [hidden]=pw>submit</button> -->
-            <!-- <button class="btn button1" (click)="check('google')" [hidden]=pw>Sign in with Google</button> -->
-        <!-- </div> -->
-
         <div class=" container row">
         <div class="row">
             <div *ngIf="!a">
@@ -82,17 +76,13 @@
     <label>enter location</label>
     <p><input type="text" n class="form-control" #location></p>
     </div>
-
-                    <button [disabled]="userForm1.form.invalid" type="submit">done</button>
+ <button [disabled]="userForm1.form.invalid" type="submit">done</button>
             </div>   
             </form> 
                 </div>
                 <a *ngIf=users1> 
                     Your Account Is Succesfully Created.
                 </a>
-                
-                <!-- </div>
-            </div> -->
         </form>
         <a *ngIf=login1>
             Your are already a user.

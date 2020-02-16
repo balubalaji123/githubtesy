@@ -8,12 +8,10 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 var dbo=''
 var d=null
-
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
    dbo = db.db("mydb");
   //Create a collection name "customers":
-  
 });
 var check=Math.random()
 var usermail
@@ -48,16 +46,12 @@ var store=multer.diskStorage({
       d=req.file.filename
       res.send(JSON.stringify("sucess"))
   })
-  
-
-
-
-
 router.post('/',function(req,res){
     username=req.body.name
-    usermail=req.body.mail
+    usermail=req.body.mail.toLowerCase()
     userpassword=req.body.password
     userlocation=req.body.location
+    userlocation=userlocation.toLowerCase()
     userimage=d
     myobj={usermail:usermail}
     dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
@@ -88,7 +82,7 @@ router.post('/',function(req,res){
           cid:"batman"
         },
       ],
-      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.100.7:3000/register?id='+check+'">click</a><br><img style="height:150px;width:150px; border-radius:10px;" src="cid:batman">',
+      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.100.9:3000/register?id='+check+'">click</a><br><img style="height:150px;width:150px; border-radius:10px;" src="cid:batman">',
 
       };  
       transporter.sendMail(mailOptions, function(error, info){
@@ -122,7 +116,7 @@ router.post('/google',function(req,res){
   username=req.body.googlename
   usermail=req.body.googleemail
   userpassword=req.body.password2
-  userlocation=req.body.location
+  userlocation=req.body.location.toLowerCase()
   myobj={usermail:usermail}
   dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
     if (err) throw err;

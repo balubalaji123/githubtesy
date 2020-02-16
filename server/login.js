@@ -1,6 +1,5 @@
 const express=require('express')
 const router=express.Router()
-const session=require('express-session')
 var MongoClient = require('mongodb').MongoClient;
 var usermail
 var userpassword
@@ -14,7 +13,7 @@ MongoClient.connect(url, function(err, db) {
 });
 router.post('/',function(req,res){
     // checkuser=[]
-usermail=req.body.mail
+usermail=req.body.mail.toLowerCase()
 userpassword=req.body.password
 c={usermail:usermail}
 dbo.collection("customers").find(c,{username:1,userpassword:1},{$exists:true}).toArray(function(err, result) {
@@ -29,7 +28,7 @@ dbo.collection("customers").find(c,{username:1,userpassword:1},{$exists:true}).t
       req.session.username=result[0].username
       req.session.userimage=result[0].userimage
       req.session.mail=usermail
-      req.session.location=result[0].userlocation
+      req.session.location=result[0].userlocation.toLowerCase()
     res.send(JSON.stringify("account exists"))
   }}
     else{
