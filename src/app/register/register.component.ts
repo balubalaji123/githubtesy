@@ -32,6 +32,10 @@ public gpw=false;
 public images
 public location
 public imageurl="../../assets/default.jpg"
+//i am adding here first and sec card
+public forseccard=false;
+public forfircard=true;
+
   registermodel=new Register('','','','','');
   gpwmodel = new Googlepw('','')
   reg:Googlepassword
@@ -93,8 +97,11 @@ if(data=="useralreadyexists"){
     console.log(this.registermodel)
      }
   check(a:string){
+    this.forfircard=false;
     this.pw=true; 
     this.b=false; 
+
+    this.forseccard=true;
     console.log(""+this.pw)
     this.socialSignIn(a)
     console.log("b value"+this.b);

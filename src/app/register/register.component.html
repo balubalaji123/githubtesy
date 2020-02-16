@@ -7,21 +7,22 @@
     <title>Document</title>
 </head>
 
-
-    <div class="bg" >
-        <div class="container-fluid mb-5">
-        <div class="row justify-content-center">
-            <div class="col-6">
+<a *ngIf="forfircard">
+<div class="bg1" style="width: 90%;text-align: center;" >
+    <div class="container-fluid mb-6" style="width: 90%;text-align: center;">
+        <div class="row justify-content-center" style="width: 100%;text-align: center;">
+            <div class="col-12" style="width: 90%;text-align: center;">
                  <div class="form-container">
-                     
-            <div class="heading" [hidden]=pw>Resgistration form</div>
-            <img src={{imageUrl}} [hidden]=pw class="rounded-circle" style="text-align: center;width:200;height:600;left:100px;"  alt="image not found">
-            <input type="file" value="" [hidden]=pw title=" " (change)="selectimage($event)">
-            <form #userForm="ngForm" (ngSubmit)="onsubmit(pass.value,passwd.value)" [hidden]=pw>
+                     <div class="heading" *ngIf=!pw>
+                         Resgistration form
+                     </div>
+                    <img src={{imageUrl}} *ngIf=!pw class="rounded-circle" style="text-align: center;width:200;height:600;left:100px;"  alt="image not found">
+                    <input type="file" *ngIf=!pw (change)="selectimage($event)">
+                    <form #userForm="ngForm" (ngSubmit)="onsubmit(pass.value,passwd.value)" *ngIf=!pw>
                 <div class="form-group">
                     <label>Email</label>
                     <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" pattern='[^@]*@[^@]*' class="form-control" name="email" [(ngModel)]="registermodel.mail">
-                <small class="text-danger" [class.d-none]="name.valid || name.untouched">GMAIL IS REQUIRED</small>
+                    <small class="text-danger" [class.d-none]="name.valid || name.untouched">GMAIL IS REQUIRED</small>
                 </div>
                 <div class="form-group">
                     <label>location</label>
@@ -30,93 +31,92 @@
                 <div class="form-group">
                     <label>Username</label>
                     <input type="text" required #names="ngModel" [class.is-invalid]="names.invalid && names.touched" class="form-control" name="user" [(ngModel)]="registermodel.name">
-                <small class="text-danger" [class.d-none]="names.valid || names.untouched">USERNAME IS REQUIRED</small>
+                    <small class="text-danger" [class.d-none]="names.valid || names.untouched">USERNAME IS REQUIRED</small>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
                     <input type="password" required #pass="ngModel" [class.is-invalid]="pass.invalid && pass.touched" class="form-control" name="password" [(ngModel)]="registermodel.password">
-                 <small class="text-danger" [class.d-none]="pass.valid || pass.untouched">PASSWORD IS REQUIRED</small>
+                     <small class="text-danger" [class.d-none]="pass.valid || pass.untouched">PASSWORD IS REQUIRED</small>
                 </div>
                 <div class="form-group">
                     <label>Confirm Password</label>
                     <input type="password" required #passwd="ngModel" [class.is-invalid]="passwd.invalid && passwd.touched" class="form-control" name="passwords" [(ngModel)]="registermodel.passwords">
-                 <small class="text-danger" [class.d-none]="passwd.valid || passwd.untouched">PASSWORD IS REQUIRED</small>
+                    <small class="text-danger" [class.d-none]="passwd.valid || passwd.untouched">PASSWORD IS REQUIRED</small>
                 </div>
-                <button class= "button2 button6" style="background-color: cadetblue;" [disabled]="userForm.form.invalid" type="submit"  (click)="onimage()" >submit</button>
-                <a *ngIf=login1>
-                    Your are already a user.
-                </a>
-                    <div *ngIf=a>
-                        <h6>please check your <b>Email</b></h6>
-                        <button class="button2 button6" onclick="window.location.href = 'http://www.gmail.com';"><a>Click</a> </button>
-                    </div>
-                   <div *ngIf=b>
-                        <h6>please check your password</h6>
-                   </div>
-                   <div *ngIf=gpw>
+                    <button class= "button2 button6" style="background-color:#23415c;" [disabled]="userForm.form.invalid" type="submit"  (click)="onimage()" >submit</button>
+                    <a *ngIf=login1>
+                         Your are already a user.
+                    </a>
+                <div *ngIf=a>
+                    <h6>please check your <b>Email</b></h6>
+                    <button class="button2 button6" onclick="window.location.href = 'http://www.gmail.com';"><a>Click</a> </button>
+                </div>
+                <div *ngIf=b>
                     <h6>please check your password</h6>
-               </div>
-                
-            </form>
-            <br>
-                <!-- <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit" (click)='onclick()' [hidden]=pw>submit</button> -->
-            <!-- <button class="btn button1" (click)="check('google')" [hidden]=pw>Sign in with Google</button> -->
-        <!-- </div> -->
-
-        <div class=" container row">
-        <div class="row">
-            
-            <div *ngIf="!a">
-            <button href="" class="button1 button5" (click)="check('google')" [hidden]=pw style="left: 30px;"><img style="height: 20px;width: 20px;" src="../../assets/googleimage.png">Sign in with Google</button>
-        </div>
-    </div>
-    </div>
-    <div class="row" *ngIf="!a">
-        <p [hidden]=pw>Already a user?</p>
-        <p><button class="button button4"  (click)=onlogin() [hidden]=pw>login</button></p> 
-    </div> 
-    </div>
-    <div class="form-container1">
-        <div class="container row">            
-            <form [hidden]=!pw>
-                <div class="container-fluid">
-                <form #userForm1="ngForm" (ngSubmit)="onclickme(passwordgoogle.value,repasswordgoogle.value,location.value)">
-                   <div class="form-group">
-                    <label style="text-align: center;">Set Your Password</label>
-                <input type="password" name="password" class="form-control" #passwordgoogle="ngModel"
-                    [class.is-invalid]="passwordgoogle.invalid && passwordgoogle.touched" [(ngModel)]="gpwmodel.passwordgoogle">
-                    <small class="text-danger" [class.d-none]="passwordgoogle.valid || passwordgoogle.untouched">This Field is required.</small>
-                   </div>
-                   <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="reenter password" class="form-control" #repasswordgoogle="ngModel"
-                    [class.is-invalid]="repasswordgoogle.invalid && repasswordgoogle.touched" [(ngModel)]="gpwmodel.repasswordgoogle">
-                    <small class="text-danger" [class.d-none]="repasswordgoogle.valid || repasswordgoogle.untouched"></small>
-<!-- for location -->
-<div class="form-group">
-    <label>enter location</label>
-    <input type="text" n class="form-control" #location>
-    </div>
-
-                    <button class="button button4" [disabled]="userForm1.form.invalid" type="submit">Submit</button>
-            </div>   
-            </form> 
                 </div>
-                
-                <a *ngIf=users1> 
-                    Your Account Is Succesfully Created.
-                </a>
-            <!-- </div> -->
-                <!-- </div>
-            </div> -->
-        </form>
-        
+                <div *ngIf=gpw>
+                    <h6>please check your password</h6>
+                </div>
+                    </form>
+        <div class=" container row">
+            <div class="row">
+                <div *ngIf="!a">
+            <button href="" class="button1 button5" (click)="check('google')" *ngIf=!pw style="left: 30px;"><img style="height: 20px;width: 20px;" src="../../assets/googleimage.png">Sign in with Google</button>
+                </div>
             </div>
         </div>
+        <div class="row" *ngIf="!a">
+            <p *ngIf=!pw>Already a user?</p>
+            <p><button class="button button4"  (click)=onlogin() *ngIf=!pw>login</button></p> 
+        </div> 
+            </div>
+         </div>
+     </div>
+   </div>
+</div>
+</a>
+
+
+<a *ngIf=forseccard>
+<div class="bg1" style="width: 90%;text-align: center;" >
+    <div class="container-fluid mb-6" style="width: 90%;text-align: center;">
+        <div class="row justify-content-center" style="width: 100%;text-align: center;" >
+            <div class="col-12" style="width: 90%;text-align: center;">
+<div class="form-container1">
+    <!-- <div class="container row">             -->
+        <!-- <div class="container-fluid"> -->
+            <form #userForm1="ngForm" *ngIf=pw (ngSubmit)="onclickme(passwordgoogle.value,repasswordgoogle.value,location.value)">
+            <div class="form-group">
+                <label style="text-align: center;">Set Your Password</label>
+                <input type="password" required name="password" class="form-control" #passwordgoogle="ngModel"
+                [class.is-invalid]="passwordgoogle.invalid && passwordgoogle.touched" [(ngModel)]="gpwmodel.passwordgoogle" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}">
+                <small class="text-danger" [class.d-none]="passwordgoogle.valid || passwordgoogle.untouched">At least 8 characters,Lowercase,Uppercase,Numbers,Special character</small>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" required name="reenter password" class="form-control" #repasswordgoogle="ngModel"
+                [class.is-invalid]="repasswordgoogle.invalid && repasswordgoogle.touched" [(ngModel)]="gpwmodel.repasswordgoogle" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}">
+                <small class="text-danger" [class.d-none]="repasswordgoogle.valid || repasswordgoogle.untouched">At least 8 characters,Lowercase,Uppercase,Numbers,Special character</small>
+            </div>
+            <!-- for location -->
+            <div class="form-group">
+                <label>enter location</label>
+                <input type="text" n class="form-control" #location>
+            </div>
+            <button class="button button4" [disabled]="userForm1.form.invalid" type="submit">Submit</button>   
+            </form> 
+        <!-- </div>  -->
+        <a *ngIf=users1> 
+            Your Account Is Succesfully Created.
+        </a>
+           
+        <!-- </div> -->
         </div>
-            
-        </div>
-        </div>
+</div>
+</div>
+</div>
+</div>
+</a>
 
 
 
@@ -125,5 +125,7 @@
 
 
 
-
+<!-- <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit" (click)='onclick()' [hidden]=pw>submit</button> -->
+            <!-- <button class="btn button1" (click)="check('google')" [hidden]=pw>Sign in with Google</button> -->
+        <!-- </div> -->
 

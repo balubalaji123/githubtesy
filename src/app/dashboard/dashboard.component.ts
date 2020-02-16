@@ -59,6 +59,7 @@ export class DashboardComponent implements OnInit {
     this.route.navigate([''])
 
   }
+  public profile=false
   public mostliked
   public hasError=true;
   public a=false;
@@ -76,10 +77,21 @@ export class DashboardComponent implements OnInit {
   public immediatecourse
   public showimmediatecourses=true
 public dislike:boolean
-  
+  forprofile(){
+    this.profile=true
+this.showbutton=false
+this.showimmediatecourses=false
+this.show=false
+this.b=false;
+this.a=false;
+
+
+
+  }
 
   classesattended1(){
     this.showbutton=true
+    this.profile=false
     this.showimmediatecourses=false
     this.show=true
     this.asastudent=[]
@@ -106,6 +118,7 @@ this.dashboard.learntselection()
 
   }
   classesenrolled1(){
+    this.profile=false;
     this.showbutton=true
     this.show=false
     this.showimmediatecourses=false

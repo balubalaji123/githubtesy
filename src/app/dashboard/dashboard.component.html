@@ -71,11 +71,13 @@
     <div *ngFor="let a of user">
 
   <div *ngIf="a.userimage===null;else image">
-    <img class="rounded-circle" src="../../assets/default.jpg" alt="dsxcz">{{a.userimage}}
+    <img class="rounded-circle" src="../../assets/default.jpg" (click)=forprofile() alt="dsxcz">
+    {{a.userimage}}<p style="color: white;text-align: center;font-size: 20px;" (click)=forprofile()>Profile</p>
     </div>
 <!-- add the else block                                          -->
      <ng-template #image>
-      <img class="rounded-circle" src="http://localhost:3000/imageget?name={{a.userimage}}" alt="dsxcz">{{a.tutorimage}}
+      <img class="rounded-circle" src="http://localhost:3000/imageget?name={{a.userimage}}" (click)=forprofile() alt="dsxcz">
+      {{a.tutorimage}}<p style="color: white;text-align: center;font-size: 20px;" (click)=forprofile()>Profile</p>
       </ng-template>
   
       </div>
@@ -109,6 +111,23 @@
         <!-- <p><strong>likes:</strong>{{a.likes}}</p> -->
 <br>
       </div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       
 <div *ngIf="showimmediatecourses" class="main">
@@ -232,6 +251,9 @@
       </div>
 
       <!-- cards -->
+      <a *ngIf=profile>
+        <app-profile></app-profile>
+      </a>
       
 
 
@@ -245,4 +267,4 @@
 
 <!-- as student -->
 
-<button routerLink="/profile">profile</button>
+<!-- <button routerLink="/profile">profile</button> -->

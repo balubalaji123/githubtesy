@@ -34,7 +34,9 @@
         <a class="nav-link" routerLink="/dashboard1" >
             <div *ngFor="let a of user">
           <div *ngIf="a.userimage===null;else image">
-            <img src="../../assets/default.jpg" style="border-radius: 20px;width:35px;height:35px"  class="nav-link" alt="no image in profile default">MyProfile
+            <div class="row" style="width:140px">
+            <img src="../../assets/default.jpg" style="border-radius: 20px;width:35px;height:35px;left:10px"  class="nav-link" alt="no image in profile default">MyProfile
+            </div>
           <!-- <p>1</p>  -->
           </div>
             <ng-template #image>
@@ -44,10 +46,45 @@
             </div></a></div>
       </li>
       <li class="nav-item">
-        <a class="nav-link"  type="submit" (click)="logout()" ><i class="fas fa-sign-out-alt"></i></a>
+        <a class="nav-link" type="submit" data-toggle="modal" data-target="#myModal" ><i class="fas fa-sign-out-alt"></i></a>
       </li>
       </ul>
     </div>
-
   </nav>
   <!-- <button type="submit" (click)="logout()">logout</button> -->
+
+
+  <div class="container">
+    <!-- Button to Open the Modal -->
+    <!-- <button type="button" class="btn btn-primary"  >
+      Open modal
+    </button> -->
+  
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Logout</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+            Do You Really Want to logout??
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="logout()" data-dismiss="modal">Yes</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  
