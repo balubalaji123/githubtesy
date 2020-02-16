@@ -41,84 +41,8 @@
             </mat-select>
           </mat-form-field>&nbsp;&nbsp;
     </div>
-<!-- 
-    <div class="container">
-    
-            
-     <br>
-             
-            
-            <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
 
-
-         <div class="card-display" *ngFor="let a of subjectslist | filter:searchText;let i=index" [hidden]=display>
-        <ul id="wrappers">
-          <li>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="card-styles">
-                            <div class="card">
-                                <div class="card-header row"><b>Subject:</b><div class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</div></div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card-body"><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
-                                    </div>
-                                    <div class="col" *ngIf="a.selecteddays">
-                                      <div class="card-body"><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</div>
-                                  </div>
-                                    <div class="col">
-                                      <div class="card-body">
-                                        <div *ngIf="a.tutorimage===null;else image">
-                                        <img src="../../assets/default.jpg" alt="dsxcz">{{a.tutorimage}}
-                                        </div>
-
-
-  add the else block -->
-<!-- 
-                                                                                  
-                                        <ng-template #image>
-                                          <img src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">{{a.tutorimage}}
-                                          </ng-template>
-                                      </div>
-                                  </div>
-                                    <div class="col">
-                                        <div class="card-body"><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</div> 
-                                    </div>
-                                    <div class="col">
-                                      <div class="card-body"><b>time duration:</b>&nbsp;&nbsp;&nbsp;{{a.timeduration}}&nbsp;&nbsp;hr</div> 
-                                  </div>
-                                  <div class="col" *ngIf="a.tuorgdate">
-                                    <div class="card-body"><b>class date:</b>&nbsp;&nbsp;&nbsp;{{a.tuorgdate}}</div> 
-                                </div>
-                                  
-
-                                    <div class="col">
-                                        <div class="card-body"><b>Course:</b>&nbsp;&nbsp;&nbsp;{{a.tutorcoursetype}}</div> 
-                                    </div>
-                                    <div class="col" *ngIf="a.likes">
-                                        <div class="card-body"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
-                                    </div>
-                                    <div class="col" *ngIf="a.maxstudents">
-                                      <div class="card-body"><b>remaining entries:</b>&nbsp;&nbsp;&nbsp;{{a.maxstudents}}</div>
-                                  </div>
-                                    <div class="col">
-                                      <div class="card-body"><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
-                                  </div>
-                                </div>
-                                <div class="card-footer"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
-                              </div>
-                              <button  class="btn btn-info btn-lg" (click)="subjectselected(i)" >Subscribe</button>
-
-                        </div>
-                    </div>
-                </div>
-                              
-            </div>
-          </li>
-        </ul>
-        </div>   -->
-<!-- new card-body -->
+    <!-- new card-body -->
  <div class="container">
   <div *ngIf="!display">
   <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
@@ -129,7 +53,7 @@
       <div class="container">
 <div class="card mycard">
   <div class="card-body">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col">
         <div *ngIf="a.tutorimage===null;else image">
           <img class="img" src="../../assets/default.jpg" alt="dsxcz">{{a.tutorimage}}
@@ -140,7 +64,7 @@
             </ng-template>
         
       </div>
-      <div class="col">
+      <div class="col data-style">
         <div ><b>Subject:</b><span class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</span></div>
           <div ><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
           <div *ngIf="a.tuorgdate"><b>date:</b>&nbsp;&nbsp;&nbsp;{{a.tuorgdate}}</div>

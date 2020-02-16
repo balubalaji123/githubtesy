@@ -22,6 +22,9 @@ export class DashboardComponent implements OnInit {
       data=>this.immediatecourse=data,
       error=>console.log(error)
     )
+
+    // for sidenavbar
+
     
     this.chechsession.verifysession().subscribe(
       data=>{if(!data){
@@ -49,6 +52,8 @@ export class DashboardComponent implements OnInit {
    
   }
   ngOnInit() {
+    document.getElementById("mySidenav").style.width = "20%";
+
   }
   logout(){
     this.logoutservice.logout()
@@ -76,6 +81,14 @@ export class DashboardComponent implements OnInit {
   public immediatecourse
   public showimmediatecourses=true
 public dislike:boolean
+
+openNav() {
+  document.getElementById("mySidenav").style.width = "20%";
+}
+closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
   
 
   classesattended1(){

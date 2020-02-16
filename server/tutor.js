@@ -9,7 +9,7 @@ var url = "mongodb://localhost:27017/";
 var dbo=''
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
-   dbo = db.db("mydb");
+   dbo = db.db("mydb"); 
 });
 var days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
 var selecteddays=[]

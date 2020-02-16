@@ -2,64 +2,13 @@ body{
     width: 100%;
     padding: 0;
     margin: 0;
-        font-family: 'Raleway', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-}
-/* #team{
-    float:left;
-} */
-#team img{
-    margin-top: -50px;
-    align-items: center;
-}
-#team i{
-    font-size: 26px;
-    color: #555;
-}
-#team p{
-    font-weight: 500;
-}
-#team .card{
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #012c41;
-    transition:all 0.3s ease-in;
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-}
-#team .card:hover{
-    background: #0e9cdd;
-    color: #fff;
-
-}
+    font-family: 'Raleway', sans-serif;
+    }
 .main{
     margin-left: 20%; 
     padding: 0px 10px;
   
 }
-.sidebar {
-    height: 100%;
-    width: 20%;
-    float: left;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #23415c;
-    padding: 16px 25px;
-  }
-  .sidebar a {
-    padding: 6px 8px 10px 60px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #fff;
-    display: block;
-    font-family: sans-serif;
-    border-bottom: 1px dotted #fff;
-       
-  }
-  .sidebar a:last-child{
-      border-bottom: none;
-  }
   .name{
       text-align: center;
       color: #fff;
@@ -67,16 +16,9 @@ body{
   }
 
   
-  .sidebar a:hover {
+  /* .sidebar a:hover {
     color: #f1f1f1;
-  }
-  .button{
-    padding: 6px 0px 0px 0px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #fff;
-    
-  }
+  } */
   .sidebar img{
       height: 100px;
       width: 100px;
@@ -85,29 +27,6 @@ body{
   .img-style{
       text-align: center;
   }
-  
-
-
-.nav-link{
-
-    color: #fff;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 5px 5px 10px #9E9E9E;
-}
-
-#team .card:hover h3,#iteam .card:hover i{
-    color: #fff;
-}
-
-.fa{
-    color: #fff;
-
-}
-.fas{
-    color: #fff;
-}
-
 .img-icon{
     width: 45px;
     height: 45px;
@@ -119,20 +38,21 @@ body{
 }
 .button{
     background:#23415c;
-    /* border: 2px solid #23415c; */
-    border-radius: 10px;
-    color:#fff;
-    font-size: 18px;
+    color:rgb(245, 237, 237);
+    font-size: 20px;
     font-weight: 600;
-    padding: 10px;
+    text-align: center;
     font-family: sans-serif;
     border-style: none; 
+    border-bottom: 1px solid #fff;
 }
-.nav-link:hover{
-    background:lightgray ;
+.button:hover{
+    background: #fff;
+    color: #23415c;
 }
-.nav-link:visited{
-    background:lightgray ;
+.active,.button:hover{
+    background: #fff;
+    color: #23415c;
 }
 .myrow{
     padding: 10% 10% 0% 10% ;
@@ -140,19 +60,19 @@ body{
 }
 .mycard{
     background: #fff;
-    padding: 2%;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 5px 0px #cacfd3;
     width: 100%;
-    
-}
-.card-data p{
-    font-size: 18px;
-    font-weight: 500;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: 400;
     color: black;
     font-family: sans-serif;
 
+    
 }
+
 .card-data button{
     border: none;
 }
@@ -169,39 +89,46 @@ body{
     border-radius: 5px;
     color:#fff;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     padding: 15px; 
 }
 
 .sidenav {
     height: 100%;
-    width: 25%;
+    width: 0;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #23415c;
     overflow-x: hidden;
-    /* padding-top: 20px; */
-    padding: 40px;
+    transition: 0.5s;
+    padding-top: 60px;
   }
   
   .sidenav a {
-    padding: 6px 8px 6px 16px;
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #fff;
     display: block;
-    border-bottom: 1px solid #fff;
-
+    transition: 0.3s;
   }
   
   .sidenav a:hover {
     color: #f1f1f1;
   }
-  .main {
-    margin-left: 20%; 
-    font-size: 28px; 
-    padding: 0px 10px;
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
   }
   
