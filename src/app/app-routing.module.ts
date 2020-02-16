@@ -23,8 +23,6 @@ const routes: Routes = [
   {path:'',component:FiresthomeComponent},
     // {path:'list',component: ListComponent},
   {path:'firesthome',component:FiresthomeComponent},
-
- 
   {path:'register1',component:RegisterComponent},
   {path:'users1',component:HomeComponent},
   {path:'login1',component:LoginComponent},

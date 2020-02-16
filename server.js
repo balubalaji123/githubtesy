@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname,'dist/updated')))
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
 
-// app.get('/',function(req,res){
+// app.get('/',function(req,res){ 
 //   console.log("in main"+req.session)
 //   res.send(__dirname+'dist/updated/index.html')
 // })
@@ -47,7 +47,7 @@ var sess={
   }  
 }
 app.use(session(sess))
-app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
+// app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 
 const redirectlogin=(req,res,next)=>{
   if(!req.session.mail){
@@ -92,7 +92,6 @@ app.get('/imageget',function(req,res){
 })
 // for dashboard
 app.get('/dashboardimage',function(req,res){
-  console.log(req.session)
   if(req.session.userimage===null){
     address=__dirname+'/server/uploads1/default.jpg'
     res.sendFile(__dirname+'/server/uploads1/default.jpg')
@@ -100,9 +99,11 @@ app.get('/dashboardimage',function(req,res){
   else{
   address=__dirname+'/server/uploads1/'+req.session.userimage
   res.sendFile(address)}
-  
   })
-
+// for name
+app.get('/username',function(req,res){
+res.send(JSON.stringify(req.session.username))
+})
 
 app.get('/*',function(req,res){
   res.sendFile(__dirname+'/dist/updated/index.html')

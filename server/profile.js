@@ -2,7 +2,6 @@ const express=require('express')
 const app=express()
 const router=express.Router()
 const multer=require('multer')
-
 const session=require('express-session')
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -18,7 +17,6 @@ var store=multer.diskStorage({
             cb(null,'./server/uploads1')
         },
         filename:function(req,file,cb){
-            // console.log("c"+JSON.stringify(file))
             function makeString() {
                 let outString = '';
                 let inOptions= 'abcdefghijklmnopqrstuvwxyz';
@@ -36,7 +34,6 @@ var store=multer.diskStorage({
                 // console.log("d",d)
               }
             rand()
-            console.log('d',d)
             cb(null,d)
         }
     });
@@ -47,11 +44,9 @@ router.post('/',upload.single('file'),function(req,res){
 usermail=req.session.mail
 var c = { $set: {userimage:d}};
 req.session.userimage=d
-console.log('check',req.session)
 var query={usermail:usermail}
 dbo.collection('customers').updateOne(query,c,function(err,res1){
     if(err)throw err
-    console.log('d',d)
     res.send(JSON.stringify("ok"))
 
 })

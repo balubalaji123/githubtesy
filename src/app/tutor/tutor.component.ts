@@ -51,11 +51,10 @@ public aftersubmission=false
   //   console.log(event);
   // }
 onsubmit(){
-  console.log(this.tutor1)
   this.aftersubmission=true
   this.tutorservic.tutor(this.tutor1)
   .subscribe(
-    data=>console.log("tutor"+data),
+    data=>{},
     error=>console.log(error)
   )
 this.router.navigate(['/congrats'])
@@ -97,33 +96,6 @@ multiple(){
   this.multiple1=true;
   
 this.daysselection=false;
-}
-
-// selectimage(event){
-//   if(event.target.files.length>0){
-//     const file=event.target.files[0]
-// this.images=file
-// this.imageUrl=event.target.result
-// console.log(this.imageUrl)
-//   }
-// }
-// onimage(){
-//     const formdata=new FormData()
-//     formdata.append('file',this.images)
-//     this.http.post<any>(this.uri,formdata).subscribe(
-//       data=>console.log(data),
-//       error=>console.log(error)
-//     )
-// }
-fileToUpload: File = null;
-handleFileInput(file: FileList) {
-  this.fileToUpload = file.item(0);
-  var reader = new FileReader();
-  reader.onload = (event : any) => {
-    this.imageUrl = event.target.result;
-  }
-  reader.readAsDataURL(this.fileToUpload);
-   console.log(file);
 }
 }
 

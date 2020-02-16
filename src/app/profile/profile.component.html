@@ -1,18 +1,37 @@
-<h5 *ngFor="let a of profile">
-    <p>  name: &nbsp; &nbsp; &nbsp; {{a.username}}</p>
-    <p>  mail: &nbsp; &nbsp; &nbsp; {{a.usermail}}</p>
-<p>location: &nbsp; &nbsp; &nbsp; {{a.userlocation}}</p>
-
+<div class="container">
+<div class="card" style="width: 38rem;box-shadow: chartreuse;">
+  
+<a *ngFor="let a of profile">
 <!-- <img src="dashboardimage" class="rounded-circle"   width="50px"  height="50px" alt="no image1"> -->
+<div class="row" >
+    <div class="col">
+      <div class="img" style="text-align: center;">
 <div *ngIf="a.userimage===null;else image">
-    <img src="{{imageUrl}}" alt="no image in profile default">
+    <img src="{{imageUrl}}" alt="no image in profile default" style="width:30rem;top:30px">
     <input type="file" (change)="selectimage($event)">
     <button class= "btn button"  type="submit"  (click)="onimage(a.usermail)" >update</button>
-
     </div>
 <!-- add the else block                                          -->
      <ng-template #image>
-      <img src="http://localhost:3000/imageget?name={{a.userimage}}" alt="no image in profile">
+      <img src="http://localhost:3000/imageget?name={{a.userimage}}" alt="no image in profile" style="width: 30rem;top:30px">
       </ng-template>
-
-</h5>
+      </div>
+</div>
+<div class="col">
+        <div class="card-header" >
+          <strong style="font-family: sans-serif;text-align: center;">DETAILS</strong>
+        </div>
+        <ul class="list-group list-group-flush" style="width:590px;">
+          <li class="list-group-item" style="width:590px;"><strong style="font-family: sans-serif;">NAME:</strong>&nbsp; &nbsp; &nbsp; {{a.username}}</li>
+          <li class="list-group-item" style="width:590px;"><strong style="font-family: sans-serif;">MAIL:</strong>&nbsp; &nbsp; &nbsp; {{a.usermail}}</li>
+          <li class="list-group-item" style="width:590px;"><strong style="font-family: sans-serif;">LOCATION:</strong>&nbsp; &nbsp; &nbsp; {{a.userlocation}}</li>
+        </ul>
+        <!-- <div class="card-header" >
+          <button style="font-family: sans-serif;text-align: center;">Edit Profile</button>
+        </div> -->
+      <!-- </div> -->
+</div>
+</div>
+</a>
+</div>
+</div>

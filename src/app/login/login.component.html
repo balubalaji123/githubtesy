@@ -16,10 +16,10 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="form-container">
                     <h3>Login form</h3>
-                    <form #userForm="ngForm" (ngSubmit)="onselect()" >
+                    <form #userForm="ngForm" (ngSubmit)="onselect()" autocomplete="off">
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" placeholder="Enter Email" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" pattern='[^@]*@[^@]*' class="form-control" name="email" [(ngModel)]="check.mail">
+                            <input type="text" placeholder="Enter Email" required #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" pattern='[^@]*@[^@]*' class="form-control" name="email" [(ngModel)]="check.mail">
                         <small class="text-danger" [class.d-none]="name.valid || name.untouched">GMAIL IS REQUIRED</small>
                         </div>
                         <div class="form-group">

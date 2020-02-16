@@ -28,7 +28,7 @@ public notexists;
   
     this.login.login(this.check)
 .subscribe(
-  (data)=>{this.loginexists=data,this.entryhome=data,console.log("login"+data),this.a=data;
+  (data)=>{this.loginexists=data,this.entryhome=data,this.a=data;
     if(this.a=="not exists")
     {
       //if user not exists
@@ -37,7 +37,6 @@ public notexists;
     }
     if(this.a=="passwordwrong")
     {
-      console.log("gfh");
       this.notexists=false;
       this.passwordwrong=true;
     }
@@ -48,7 +47,6 @@ public notexists;
     }},
   error=>console.log(error),
 )
-// console.log(this.a);
 
 }
 }

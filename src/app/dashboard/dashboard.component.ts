@@ -22,7 +22,11 @@ export class DashboardComponent implements OnInit {
       data=>this.immediatecourse=data,
       error=>console.log(error)
     )
-    
+    // for username
+    this.chechsession.getusername().subscribe(
+      data=>console.log('username',data),
+      error=>console.log(error)
+    )
     this.chechsession.verifysession().subscribe(
       data=>{if(!data){
         this.route.navigate(['/login1'])
@@ -38,7 +42,7 @@ export class DashboardComponent implements OnInit {
     )
     // for image
     sessionservice.sessioncheck().subscribe(
-      data=>{console.log("in session"+JSON.stringify(data)),this.username=data},
+      data=>{this.username=data},
             error=>console.log(error)
     )
     // for profile image
@@ -49,16 +53,19 @@ export class DashboardComponent implements OnInit {
    
   }
   ngOnInit() {
+    document.getElementById("mySidenav").style.width = "20%";
+
   }
   logout(){
     this.logoutservice.logout()
     .subscribe(
-      data=>{console.log("logout component "+data)},
+      data=>{},
       error=>console.log(error)
     )
     this.route.navigate([''])
 
   }
+  public profile=false
   public mostliked
   public hasError=true;
   public a=false;
@@ -76,17 +83,38 @@ export class DashboardComponent implements OnInit {
   public immediatecourse
   public showimmediatecourses=true
 public dislike:boolean
-  
+
+
+openNav() {
+  document.getElementById("mySidenav").style.width = "20%";
+}
+closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+  forprofile(){
+    this.profile=true
+this.showbutton=false
+this.showimmediatecourses=false
+this.show=false
+this.b=false;
+this.a=false;
+
+
+
+  }
+
 
   classesattended1(){
     this.showbutton=true
+    this.profile=false
     this.showimmediatecourses=false
     this.show=true
     this.asastudent=[]
     this.b=true;
     this.dashboard.subjectselection()
     .subscribe(
-      data=>{console.log(data),this.asatutor=data},
+      data=>{this.asatutor=data},
       error=>console.log("error in dashboard")
     )
   }
@@ -95,17 +123,18 @@ public dislike:boolean
     this.liking1=new Like(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time)
 this.Like.dislike(this.liking1)
 .subscribe(
-  data=>console.log(data),
+  data=>{},
   error=>console.log("error from dislike")
 )
 this.dashboard.learntselection()
 .subscribe(
-  data=>{console.log(data),this.asastudent=data},
+  data=>{this.asastudent=data},
   error=>console.log("error in dashboard")
 )
 
   }
   classesenrolled1(){
+    this.profile=false;
     this.showbutton=true
     this.show=false
     this.showimmediatecourses=false
@@ -114,7 +143,7 @@ this.dashboard.learntselection()
     this.a=true;
     this.dashboard.learntselection()
     .subscribe(
-      data=>{console.log(data),this.asastudent=data,this.dislike=data.like},
+      data=>{this.asastudent=data,this.dislike=data.like},
       error=>console.log("error in dashboard")
     )
     
@@ -125,21 +154,20 @@ this.liking=new Like(learnername,leanersubject,learnertime,date,likecheck,tutorm
 this.dislike=false
 this.Like.like(this.liking)
 .subscribe(
-  data=>console.log(data),
+  data=>{},
   error=>console.log("error from like"+error)
 )
     this.dashboard.learntselection()
     .subscribe(
-      data=>{console.log(data),this.asastudent=data},
+      data=>{this.asastudent=data},
       error=>console.log("error in dashboard")
     )
   }
   delete(tutorsubject,cousetype,likes,tutorsubsubject){
 this.deletemode=new Delete(tutorsubject,cousetype,likes,tutorsubsubject)
-console.log(JSON.stringify(this.deletemode))
 this.Like.delete(this.deletemode).
 subscribe(
-  data=>{console.log(data),this.asatutor=data},
+  data=>{this.asatutor=data},
   error=>console.log("error")
 )
   }
@@ -151,7 +179,7 @@ subscribe(
     this.asatutor=[]
     this.showbutton=false
     this.dashboard.temptutor().subscribe(
-      data=>{console.log(data),this.asatutor=data},
+      data=>{this.asatutor=data},
       error=>console.log(error)
     )
 
@@ -163,8 +191,6 @@ subscribe(
       data=>this.asatutor=data,
       error=>console.log(error)
     )
-// Selection1(){}
-
   }
 selection()
 {

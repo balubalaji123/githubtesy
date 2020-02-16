@@ -12,7 +12,6 @@ MongoClient.connect(url, function(err, db) {
 const router=express.Router()
 router.post('/',function(req,res){
 // check for already registered
-console.log('req',JSON.stringify(req.body))
 if(req.body.selecteddays.length){
 var checking={tutorimage:req.body.tutorimage,learnermail:req.session.mail,tutormail:req.body.tutormail,
 leanersubject:req.body.subject,leanersubsubject:req.body.subsubject,selecteddays:req.body.selecteddays,
@@ -22,7 +21,6 @@ else{
     leanersubject:req.body.subject,leanersubsubject:req.body.subsubject,selecteddays:"",
     tutororgdate:req.body.tutordate}
 }
-console.log("checking",JSON.stringify(checking))
 dbo.collection('learnt').find(checking,{$exists:true}).toArray(function(err,result1){
   if(err) throw err
 
@@ -107,9 +105,7 @@ learnertime=req.body.time
 var c={tutorsubject:leanersubject,tutorsubsubject:req.body.subsubject,tutormail:tutormail}
 
 dbo.collection('onceteacher').find(c,{$exists:true}).toArray(function(req,result){
-console.log("outside")
 if(result.length){
-  console.log('if')
 var check=result[0].maxstudents
 check=check-1
 var newtutorvalues = { $set: {maxstudents:check} };

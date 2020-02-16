@@ -8,12 +8,10 @@ var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 var dbo=''
 var d=null
-
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
    dbo = db.db("mydb");
   //Create a collection name "customers":
-  
 });
 var check=Math.random()
 var usermail
@@ -23,7 +21,6 @@ var store=multer.diskStorage({
           cb(null,'./server/uploads1')
       },
       filename:function(req,file,cb){
-          // console.log("c"+JSON.stringify(file))
           function makeString() {
               let outString = '';
               let inOptions= 'abcdefghijklmnopqrstuvwxyz';
@@ -38,10 +35,8 @@ var store=multer.diskStorage({
             }
             const rand=()=>{
               d=makeString()+".jpg"
-              // console.log("d",d)
             }
           rand()
-          console.log('d',d)
           cb(null,d)
       }
   });
@@ -51,22 +46,18 @@ var store=multer.diskStorage({
       d=req.file.filename
       res.send(JSON.stringify("sucess"))
   })
-  
-
-
-
-
 router.post('/',function(req,res){
     username=req.body.name
-    usermail=req.body.mail
+    usermail=req.body.mail.toLowerCase()
     userpassword=req.body.password
     userlocation=req.body.location
     userlocation=userlocation.toLowerCase()
+
     console.log("loc",userlocation)
+
     userimage=d
     myobj={usermail:usermail}
     dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
-     console.log(result)
       if (err) throw err;
       // checkuser=result
       if(result.length){
@@ -87,7 +78,16 @@ router.post('/',function(req,res){
         from: 'find my tutor',
         to: usermail,
         subject: 'account conformation',
-        html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://localhost:3000/register?id='+check+'">click</a>'
+      attachments:[
+        {
+          filename:'mail.jpg',
+          path:__dirname+'/uploads1/mail.jpg',
+          cid:"batman"
+        },
+      ],
+
+      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.100.9:3000/register?id='+check+'">click</a><br><img style="height:150px;width:150px; border-radius:10px;" src="cid:batman">'
+
       };  
       transporter.sendMail(mailOptions, function(error, info){
         if (error) {
@@ -120,7 +120,7 @@ router.post('/google',function(req,res){
   username=req.body.googlename
   usermail=req.body.googleemail
   userpassword=req.body.password2
-  userlocation=req.body.location
+  userlocation=req.body.location.toLowerCase()
   myobj={usermail:usermail}
   dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
     if (err) throw err;
@@ -136,7 +136,6 @@ router.post('/google',function(req,res){
           req.session.mail=usermail
           req.session.userimage=d
         req.session.location=userlocation
-        console.log('google',req.session)
       myobj={userimage:d,username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
       dbo.collection("customers").insertOne(myobj, function(err, res) {
           // req.session.userid=res.ops[0]._id
@@ -182,11 +181,5 @@ router.post('/google',function(req,res){
   
   
 })
-
-
-
-
-
-
 
 module.exports=router

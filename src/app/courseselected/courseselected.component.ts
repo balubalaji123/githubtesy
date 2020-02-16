@@ -39,12 +39,9 @@ public registermodel:Courseselected
     this.watsuplink=this.roter.snapshot.paramMap.get('tutorwatsuplink')
 this.image=this.roter.snapshot.paramMap.get('tutorimage')
 
-console.log('data',this.tutordate)
 this.selecteddays = this.roter.snapshot.paramMap.get('selecteddays')
-console.log('selected',this.selecteddays)
 if(this.selecteddays!=null){
 var str=this.selecteddays;
-console.log(str.length);
 var splitted = str.split(","); 
 this.days = splitted;
   this.split=splitted.length;
@@ -72,20 +69,16 @@ public image
 public regitered=false
 onsel(q1)
 {
- //  console.log(q1);
  this.array.push(q1);
- console.log(this.array)
   
 }
   fun(a){
 this.course=a
 // this.mail=b
 this.registermodel=new Courseselected(this.name,this.subject,this.tutormail,this.subsubject,this.watsuplink,this.image,this.tutordate,this.time,this.array)
-console.log("hello"+this.registermodel)
 this.subjectservice.subjectselected(this.registermodel)
 .subscribe(
-  data=>{console.log('course selected',data);if(data==true)
-
+  data=>{if(data==true)
   {
     this.router.navigate(['/dashboard1'])
   };

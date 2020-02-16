@@ -20,7 +20,6 @@ todaydate=year+'-'+month+'-'+date
 var subjectarray=[]
 var subsubjectarray=[]
 var checkuser=[]
-
 router.get('/', function(req,res){
     // for date
     time=new Date()
@@ -31,19 +30,16 @@ var dt = dateTime.create();
 var formatted = dt.format('Y-m-d H:M:S');
 todaydate=year+'-'+month+'-'+date
 var time1=todaydate+'T'+time.getHours()+':'+time.getMinutes()+':'+time.getSeconds()+'Z'
-console.log('time1',time1)
     checkuser=[]
-
     c={tutorlocation:req.session.location}
     dbo.collection("continousteacher").find(c,{$exists:true}).sort({"likes":-1}).toArray(function(err, result) {
         if (err) throw err;
-        console.log("entered in student.js")
         if(result.length){
         checkuser=result
     }
-        d={tutorlocation:req.session.location,maxstudents: { $gt: 0 },tutordate:{$gte:new Date()} } 
-        console.log('d',JSON.stringify(d))
-        dbo.collection("onceteacher").find(d).toArray(function(err,result1){
+        d={tutorlocation:req.session.location,maxstudents: { $gt: 0 },tutordate:{$gte:new Date()}} 
+
+        dbo.collection("onceteacher").find(d).sort({"tutordate":1}).toArray(function(err,result1){
             if(err) throw err
             if(result1.length){
             for(i=0;i<result1.length;i++)
@@ -214,7 +210,7 @@ router.get('/todayclasses',function(req,res){
     var dt = dateTime.create();
     var formatted = dt.format('Y-m-d H:M:S');
     todaydate=year+'-'+month+'-'+date
-    var f={tutordate:{ $gte:new Date()},tutorlocation:req.session.location}
+    var f={tuorgdate:todaydate,tutorlocation:req.session.location}
     dbo.collection('onceteacher').find(f,{$exists:true}).toArray(function(err,response){
         if(err)throw err
         checkuser=response
@@ -222,3 +218,8 @@ router.get('/todayclasses',function(req,res){
     })
 })
 module.exports=router
+
+
+
+// for not showing their respective courses
+// ,tutormail:{$ne:req.session.mail}

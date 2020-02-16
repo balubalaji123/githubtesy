@@ -1,8 +1,7 @@
 const express=require('express')
 const router=express.Router()
 router.get('/',function(req,res){
-if(req.session.mail){
-    
+if(req.session.mail){ 
     res.send(JSON.stringify(req.session))}
     else
     res.send(JSON.stringify("session not exists"))
