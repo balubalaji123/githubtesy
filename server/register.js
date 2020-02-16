@@ -82,7 +82,8 @@ router.post('/',function(req,res){
           cid:"batman"
         },
       ],
-      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.100.9:3000/register?id='+check+'">click</a><br><img style="height:150px;width:150px; border-radius:10px;" src="cid:batman">',
+
+      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.100.9:3000/register?id='+check+'">click</a><br><img style="height:150px;width:150px; border-radius:10px;" src="cid:batman">'
 
       };  
       transporter.sendMail(mailOptions, function(error, info){
@@ -177,11 +178,5 @@ router.post('/google',function(req,res){
   
   
 })
-
-
-
-
-
-
 
 module.exports=router
