@@ -104,7 +104,7 @@ router.post('/subsubjects',function(req,res){
         todaydate=year+'-'+month+'-'+date
         
     subsubjectarray=[]
-    var c={tutorsubject:req.body.subject}
+    var c={tutorsubject:req.body.subject,tutorlocation:req.session.location}
     dbo.collection('continousteacher').find(c,{$exists:true}).toArray(function(err,result){
         if(result.length){
         for(i=0;i<result.length;i++){
@@ -156,7 +156,7 @@ router.post('/filter',function(req,res){
         todaydate=year+'-'+month+'-'+date
         
 checkuser=[]
-    var c={tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject}
+    var c={tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject,tutorlocation:req.session.location}
     dbo.collection("continousteacher").find(c,{$exists:true}).toArray(function(err,response){
         if (err) throw err;
         checkuser=response
