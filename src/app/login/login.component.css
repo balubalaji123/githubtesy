@@ -13,6 +13,13 @@
    height: 100vh;
    background-size: 300%;
 }
+.form-heading{
+    text-align: center;
+    color: #23415c;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
 .button{
     background:#23415c;
     border-radius: 20px;  

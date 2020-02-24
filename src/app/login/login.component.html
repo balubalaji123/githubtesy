@@ -15,7 +15,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="form-container">
-                    <h3>Login form</h3>
+                    <div class="form-heading">LOGIN FORM</div>
                     <form #userForm="ngForm" (ngSubmit)="onselect()" autocomplete="off">
                         <div class="form-group">
                             <label>Email</label>
@@ -30,7 +30,7 @@
                         <p *ngIf="passwordwrong">
                             Please check your password.
                         </p>
-                        <button type="submit" class="btn button btn-block"><a>Submit</a></button>
+                        <button type="submit" class="btn button btn-block"><a>LOGIN</a></button>
                         <!-- <p *ngIf="true" routerLink="/users1" routerLinkActive="active">yup</p> -->
                         <!-- this.router.navigate(['/users1']) -->
                         <!-- <a>{{data}}</a> -->
