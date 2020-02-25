@@ -74,10 +74,39 @@
         <!-- <div class=" container row"> -->
             <div class="row justify-content-center">
                 <div *ngIf="!a">
-            <a  (click)="check('google')" *ngIf=!pw ><img style="height: 20px;width: 20px;" src="../../assets/googleimage.png">&nbsp;&nbsp;<span>Sign in with Google</span></a>
+
+            <button href="" class="button1 button5" (click)="check('google')" *ngIf=!pw style="left: 30px;"><img style="height: 20px;width: 20px;" src="../../assets/googleimage.png">Sign in with Google</button>
+                </div>
+            </div>
+        </div>
+<!-- <<<<<<< HEAD
+        </div>             
+            <form [hidden]=!pw>
+                <div class="container-fluid">
+                <form #userForm1="ngForm" autocomplete="off" (ngSubmit)="onclickme(passwordgoogle.value,repasswordgoogle.value,location.value)">
+                   <div class="form-group">
+                    <label>Set Your Password</label>
+                <p><input type="password" name="password" class="form-control" #passwordgoogle="ngModel"
+                    [class.is-invalid]="passwordgoogle.invalid && passwordgoogle.touched" [(ngModel)]="gpwmodel.passwordgoogle"></p>
+                    <small class="text-danger" [class.d-none]="passwordgoogle.valid || passwordgoogle.untouched">This Field is required.</small>
+                   </div>
+                   <div class="form-group">
+                <label>Confirm Password</label>
+                <p><input type="password" name="reenter password" class="form-control" #repasswordgoogle="ngModel"
+                    [class.is-invalid]="repasswordgoogle.invalid && repasswordgoogle.touched" [(ngModel)]="gpwmodel.repasswordgoogle"></p>
+                    <small class="text-danger" [class.d-none]="repasswordgoogle.valid || repasswordgoogle.untouched"></small>
+ for location -->
+<!-- <div class="form-group">
+    <label>enter location</label>
+    <p><input type="text" n class="form-control" #location></p>
+    </div>
+ <button [disabled]="userForm1.form.invalid" type="submit">done</button>
+            </div>   
+            </form> 
+
                 </div>
             </div><br>
-        <!-- </div> -->
+         </div> -->
         <div class="row justify-content-center" *ngIf="!a">
             <span *ngIf=!pw>Already a user?</span>&nbsp;&nbsp;&nbsp;
             <a class="span"  (click)=onlogin() *ngIf=!pw><span>login </span></a>
@@ -85,7 +114,7 @@
             </div>
          </div>
      </div>
-   </div>
+   <!-- </div> -->
 </div>
 </a>
 
