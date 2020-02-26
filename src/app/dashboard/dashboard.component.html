@@ -46,18 +46,19 @@
 
       <!-- cards -->
   <!-- <form> -->
-    <div class=" container row main">
-      <div class="col">
-        <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>
-      </div>
-      <div class="col">
-    <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
-      </div>
-    </div>
+   
     <div *ngIf="showimmediatecourses&&sele" class="main" >
      
       <!-- <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>&nbsp;&nbsp; -->
       <!-- <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button> -->
+      <div class=" container row ">
+        <div class="col">
+          <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>
+        </div>
+        <div class="col">
+      <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
+        </div>
+      </div>
 
       <div style="text-align: center;">Fastfilling</div>
         <div class="row">
@@ -91,16 +92,16 @@
 <!-- </div> -->
 <!-- </form> -->   
  <div *ngIf="showimmediatecourses&&!sele" class="main" >
-  <div class="row">
-    <div class="col-6">
-      <button (click)="selection()" style="font-size: 28px;" mat-stroked-button color="primary" class="ma" >fastfilling</button>&nbsp;&nbsp;
-  
+  <div class=" container row ">
+    <div class="col">
+      <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>
     </div>
-    <div class="col-6">
-      
-      <button (click)="selection1()" style="font-size: 25px;" mat-stroked-button color="primary" >famous courses</button>
+    <div class="col">
+  <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
     </div>
   </div>
+  
+  <!-- </div> -->
       <div style="text-align:center; font-size: 25px; color: blue;">Famousfilling</div>
 
       <div class="row">
