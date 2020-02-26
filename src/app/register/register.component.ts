@@ -95,12 +95,14 @@ if(data=="useralreadyexists"){
   {
      }
   check(a:string){
+
     this.forfircard=false;
     this.pw=true; 
     this.b=false; 
 
 
     this.forseccard=true;
+
     console.log(""+this.pw)
 
     this.socialSignIn(a)

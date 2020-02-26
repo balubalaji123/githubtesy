@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- sidenavbar -->
+
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
@@ -46,18 +46,19 @@
 
       <!-- cards -->
   <!-- <form> -->
-    <div class=" container row main">
-      <div class="col">
-        <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>
-      </div>
-      <div class="col">
-    <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
-      </div>
-    </div>
+   
     <div *ngIf="showimmediatecourses&&sele" class="main" >
      
       <!-- <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>&nbsp;&nbsp; -->
       <!-- <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button> -->
+      <div class=" container row ">
+        <div class="col">
+          <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>
+        </div>
+        <div class="col">
+      <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
+        </div>
+      </div>
 
       <div style="text-align: center;">Fastfilling</div>
         <div class="row">
@@ -69,11 +70,14 @@
                   <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
                   <!-- <p>#name</p> -->
                   <!-- <div> -->
-                <div class="card-body" style="font-size: 20px;">
-                  <div ><b>seats  left:</b>{{a.maxstudents}}</div>
-                  <div ><b>subject:</b>{{a.tutorsubject}}</div>
-                  <div ><b>sub subject :</b>{{a.tutorsubsubject}}</div>
-                  <div ><b>date:</b>{{a.tutordate}}</div>
+
+                <div class="card-body">
+                  <div style="font-size: 18px;"><b>seats  left:</b>{{a.maxstudents}}</div>
+                  <div style="font-size: 18px;"><b>subject:</b>{{a.tutorsubject}}</div>
+                  <div style="font-size: 18px;"><b>sub subject :</b>{{a.tutorsubsubject}}</div>
+                  <div style="font-size: 18px;"><b>date:</b>{{a.tutordate}}</div>
+
+                
                 </div>
                 </div>
               </div>
@@ -88,7 +92,18 @@
 <!-- </div> -->
 <!-- </form> -->   
  <div *ngIf="showimmediatecourses&&!sele" class="main" >
-      <div style="text-align: center;">Famousfilling</div>
+  <div class=" container row ">
+    <div class="col">
+      <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>
+    </div>
+    <div class="col">
+  <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
+    </div>
+  </div>
+  
+  <!-- </div> -->
+      <div style="text-align:center; font-size: 25px; color: blue;">Famousfilling</div>
+
       <div class="row">
         <div  *ngFor="let a of mostliked" >
           <div class="container">
@@ -98,16 +113,17 @@
                 <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
                 <!-- <p>#name</p> -->
                 <!-- <div> -->
-              <div class="card-body" style="font-size: 20px;">
-                <div><strong>Name:</strong>{{a.tutorname}}</div>
 
+              <div class="card-body">
 
-                <div><strong>subject:</strong>{{a.tutorsubject}}</div>
-              <div><strong>sub subject:</strong>{{a.tutorsubsubject}}</div>
-              <div><strong>course type :</strong>{{a.tutorcoursetype}}</div>
-              <div><strong>likes:</strong>{{a.likes}}</div>
+                <!-- <h4>{{a.tutorname}}</h4> -->
+                <div style="font-size: 18px;"><b>subject:</b>{{a.tutorsubject}}</div>
+              <div style="font-size: 18px;"><strong>sub subject:</strong>{{a.tutorsubsubject}}</div>
+              <div style="font-size: 18px;"><strong>course type :</strong>{{a.tutorcoursetype}}</div>
+              <div style="font-size: 18px;"><strong>likes:</strong>{{a.likes}}</div>
               </div>
-               
+
+              
               </div>
             </div>
           </div>
@@ -221,3 +237,81 @@
 
 <!-- <button routerLink="/profile">profile</button> -->
 
+ <!-- <p><strong>seats  left:</strong>{{a.maxstudents}}</p>
+        <p><strong>subject:</strong>{{a.tutorsubject}}</p>
+        <p><strong>sub subject :</strong>{{a.tutorsubsubject}}</p>
+        <p><strong>date:</strong>{{a.tutordate}}</p> -->
+
+    <!-- <nav class="navbar navbar-expand-md "> -->
+  <!-- <img src="dashboardimage" class="rounded-circle"   width="200"  height="200" alt="no image1"> -->
+  <!-- for profile -->
+  
+  <!-- <div *ngFor="let a of user">
+    <div *ngIf="a.userimage===null;else image">
+    <img src="../../assets/default.jpg" width="50px"  height="50px" alt="no image in profile default">
+  
+    </div> -->
+  <!-- add the else block                                          -->
+     <!-- <ng-template #image>
+      <img src="http://localhost:3000/imageget?name={{a.userimage}}" width="50px"  height="50px" alt="no image in profile">
+      </ng-template>
+
+  </div>
+
+
+
+
+
+
+
+  
+        <div class="navbar-brand" >Find my Tutor</div>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+          <span class="fa fa-bars"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav  ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/firesthome" ><i class="fa fa-home"> &nbsp;Home</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about" ><i class="fa fa-clone"> &nbsp;How It works</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/tutor1" ><i class="fa fa-user"> &nbsp;Tutor</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/student1" ><i class="fa fa-graduation-cap"> &nbsp;Student</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  type="submit" (click)="logout()" ><i class="fas fa-sign-out-alt"></i></a>
+          </li>
+          </ul></div>
+      </nav><br>
+      <h3>#name</h3>
+      <p><strong>subject:</strong>{{a.tutorsubject}}</p>
+      <p><strong>sub subject:</strong>{{a.tutorsubsubject}}</p>
+    <p><strong>course type :</strong>{{a.tutorcoursetype}}</p>
+    <p><strong>likes:</strong>{{a.likes}}</p>
+      <div class="container-fluid mycontainer">
+          <div class="row justify-content-end ">
+            <div class="col-6"></div> 
+              <div style="padding: 20px;" ><button type="submit" class="btn button " (click)="classesattended1()" ><img class="img-icon" src="../../assets/undraw_teaching_f1cm.svg">&nbsp;  Teached</button></div>
+             <div *ngIf="show">
+              <button type="submit" (click)="onlyonce()">once</button>
+              <button type="submit" (click)="multiple()">multiple</button>
+            </div>
+              <div style="padding: 20px;"><button type="submit" class="btn button" (click)="classesenrolled1()" ><img class="img-icon" src="../../assets/undraw_exams_g4ow.svg">&nbsp;  Enrolled</button></div>
+          </div>
+      </div> -->
+      <!--   -->
+      <!-- <p><strong>seats  left:</strong>{{a.maxstudents}}</p>
+      <p><strong>subject:</strong>{{a.tutorsubject}}</p>
+      <p><strong>sub subject :</strong>{{a.tutorsubsubject}}</p>
+      <p><strong>date:</strong>{{a.tutordate}}</p> -->
+      <!-- <h4>{{a.tutorname}}</h4>
+      <div><strong>subject:</strong>{{a.tutorsubject}}</div>
+    <div><strong>sub subject:</strong>{{a.tutorsubsubject}}</div>
+    <div><strong>course type :</strong>{{a.tutorcoursetype}}</div>
+    <div><strong>likes:</strong>{{a.likes}}</div> -->
+<!-- sidenavbar -->

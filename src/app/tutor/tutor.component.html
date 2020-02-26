@@ -19,45 +19,50 @@
             <div class="row justify-content-center ">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="form-container">
-            <h3 class="heading">Registration Form</h3>
+
+            <h3 class="heading">Tutor Registration</h3>
+                  <!-- <img src={{imageUrl}} class="rounded-circle"   width="200"  height="200" alt="image not found"> -->
+                  <!-- <img [src]="imageUrl" style="width: 250px; height: 200px;">
+            <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)"> -->
+
 
             <form  #userForm="ngForm" (ngSubmit)="onsubmit()" >
 
                 <div class="form-group">
                     <label>Subject</label>
                     <input type="text" required #subject="ngModel"  [class.is-invalid]="subject.invalid && subject.touched"  placeholder="Enter Subject" class="form-control" name="Subject" [(ngModel)]="tutor1.subject">
-                    <small   class="text-danger" [class.d-none]="subject.valid || subject.untouched">Subject Is Required</small>
+                    <small   class="text-danger" [class.d-none]="subject.valid || subject.untouched">Subject is required</small>
                 </div>
                 <div class="form-group">
-                    <label>sub subject</label>
-                    <input type="text" required #subsubject="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter subsubject" class="form-control" name="subsubject" [(ngModel)]="tutor1.subsubject">
-                    <small   class="text-danger" [class.d-none]="subsubject.valid || subsubject.untouched">choose the subsubject</small>
+                    <label>Topic</label>
+                    <input type="text" required #subsubject="ngModel" [class.is-invalid]="subsubject.invalid && subsubject.touched" placeholder="Enter Topic" class="form-control" name="subsubject" [(ngModel)]="tutor1.subsubject">
+                    <small   class="text-danger" [class.d-none]="subsubject.valid || subsubject.untouched">Topic is required</small>
                 </div>
                 <div class="form-group">
                     <label>Time-Duration</label>
-                    <input type="number" required #time="ngModel"     [class.is-invalid]="time.invalid && time.touched" placeholder="Enter Duration time in hours" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
-                    <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Time Is Required</small>
+                    <input type="number" required #time="ngModel"     [class.is-invalid]="time.invalid && time.touched" placeholder="Time-Duration per day (in hrs)" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
+                    <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Duration Is Required</small>
                 </div>
                 <div class="form-group">
-                    <h5>teaching type selection</h5><br>
+                    <h5>Course-Duration</h5><br>
                     <!-- <button mat-fab>Basic</button> -->
                     <div *ngIf="button1">
-                        <button type="button"  required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
-                    <button type="button"  required mat-stroked-button (click)="continous()">continous</button>
+                        <button type="button"  required  mat-stroked-button (click)="onlyonce()">One-Day</button>&nbsp;&nbsp;
+                    <button type="button"  required mat-stroked-button (click)="continous()">Permanent</button>
                     </div>
                     <div *ngIf="!button1&& c">
-                    <button type="button"  required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
-                    <button type="button" disabled required mat-stroked-button (click)="continous()">continous</button>
+                    <button type="button"  required  mat-stroked-button (click)="onlyonce()">One-Day</button>&nbsp;&nbsp;
+                    <button type="button" disabled required mat-stroked-button (click)="continous()">Permanent</button>
                     </div>
                     <div *ngIf="!button1 && !once">
-                        <button type="button" disabled required  mat-stroked-button (click)="onlyonce()">only once</button>&nbsp;&nbsp;
-                        <button type="button"  required mat-stroked-button (click)="continous()">continous</button>
+                        <button type="button" disabled required  mat-stroked-button (click)="onlyonce()">One-Day</button>&nbsp;&nbsp;
+                        <button type="button"  required mat-stroked-button (click)="continous()">Permanent</button>
                     </div>
 
                 </div>
                 <div class="form-group" *ngIf="once">
-                    <label>select date</label><br>
-                    <input type="date" placeholder="select date"  name="date" [(ngModel)]="tutor1.date"  >
+                    <label>Select Date</label><br>
+                    <input type="date" placeholder=""  name="date" [(ngModel)]="tutor1.date"  >
                    
                       <!-- <mat-form-field class="example-full-width">
                         <mat-label>Choose a date</mat-label>
@@ -68,9 +73,9 @@
                       <button (click)="on(input.value)" >gh</button> -->
                 </div>
                 <div class="form-group" *ngIf="once">
-                    <label>maximum students</label>
-                    <input type="number" required #maxstudents="ngModel" [class.is-invalid]="maxstudents.invalid && maxstudents.touched" placeholder="Enter maximum students" class="form-control" name="maxstudents" [(ngModel)]="tutor1.maxstudents">
-                    <small   class="text-danger" [class.d-none]="maxstudents.valid || maxstudents.untouched">maxstudents Is Required</small>
+                    <label>Maximum Students</label>
+                    <input type="number" required #maxstudents="ngModel" [class.is-invalid]="maxstudents.invalid && maxstudents.touched" placeholder="Enter maximum student intake" class="form-control" name="maxstudents" [(ngModel)]="tutor1.maxstudents">
+                    <small   class="text-danger" [class.d-none]="maxstudents.valid || maxstudents.untouched">Student intake is required</small>
                 </div>
                 
                 <div *ngIf="continousteacher">
@@ -112,27 +117,29 @@
                     </div>
                 </div></div>
                 <div class="form-group">
-                    <label>teaching time</label><br>
+                    <label>Teaching Time</label><br>
                     <!-- <input type="time"  > -->
-                    <input atp-time-picker  type="text" placeholder="Enter time" name="teachingtime"  [(ngModel)]="tutor1.teachingtime">
+                    <input atp-time-picker  type="text" placeholder="Enter Time" name="teachingtime"  [(ngModel)]="tutor1.teachingtime">
                 </div>
                 <div class="form-group">
+                    <img src="../../assets/what.png">
                     <label>Whatsapp Link</label>
+                    
                     <input type="text" required #link="ngModel" [class.is-invalid]="link.invalid && link.touched" placeholder="Enter Whatsapp link" class="form-control" name="link" [(ngModel)]="tutor1.watsuplink">
                     <small   class="text-danger" [class.d-none]="link.valid || link.untouched">Link Is Required</small>
                 </div>
                 <div class="form-group">
-                    <label>Course</label>
+                    <label>Course Type</label>
                     <select  required #course="ngModel" [class.is-invalid]="course.invalid && course.touched" class="custom-select" name="course" [(ngModel)]="tutor1.coursetype">
                         <option value="">Select Course Type</option>
                         <option *ngFor="let Course of Courses">{{Course}}</option>
                     </select>
-                    <small   class="text-danger" [class.d-none]="course.valid || course.untouched">choose tyep of course</small>
+                    <small   class="text-danger" [class.d-none]="course.valid || course.untouched">Choose type of course</small>
                 </div>
                 <div class="form-group">
-                    <label>Fee</label>
+                    <label>Course Fee</label>
                     <input type="text" required #fee="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter fees" class="form-control" name="fee" [(ngModel)]="tutor1.fee">
-                    <small   class="text-danger" [class.d-none]="fee.valid || fee.untouched">choose the fees</small>
+                    <small   class="text-danger" [class.d-none]="fee.valid || fee.untouched">Enter fees</small>
                 </div>
                
                 <div class="form-group">
@@ -140,7 +147,7 @@
                     <textarea required #msg="ngModel" [class.is-invalid]="msg.invalid && msg.touched" placeholder="Enter Description" class="form-control" name="msg" [(ngModel)]="tutor1.description"  id="exampleFormControlTextarea1" rows="3"></textarea>
                     <small   class="text-danger" [class.d-none]="msg.valid || msg.untouched">Description is required</small>
                   </div>
-                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit"  (click)="onimage()">Submit</button>
+                <button [disabled]="userForm.form.invalid"  class="btn btn-primary" type="submit"  (click)="onimage()">Register</button>
             
             </form>
         </div></div>
