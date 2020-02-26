@@ -17,28 +17,16 @@ const updateprofile=require('./server/profile')
 const checksession=require('./server/entrancecheck')
 const app=express();
 const forgotpassword=require('./server/forgotpassword')
-const cors=require('cors')
 app.use(cookieParser());
-// for checking session in home page
 const sessioncheck=require('./server/session')
-// app.use(cors({origin:'http://localhost:4200',credentials=true}))
-
 app.use(express.static(path.join(__dirname,'dist/updated')))
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
-
-// app.get('/',function(req,res){ 
-//   console.log("in main"+req.session)
-//   res.send(__dirname+'dist/updated/index.html')
-// })
-
-
 var sess={
   name:'sid',
   resave:false,
   saveUninitialized:true,
   secret:'a',
-  
   cookie:{
     maxAge:100*60*69*2,
     sameSite:false,
@@ -47,8 +35,6 @@ var sess={
   }  
 }
 app.use(session(sess))
-// app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
-
 const redirectlogin=(req,res,next)=>{
   if(!req.session.mail){
     console.log('redirect to login')
@@ -104,7 +90,6 @@ app.get('/dashboardimage',function(req,res){
 app.get('/username',function(req,res){
 res.send(JSON.stringify(req.session.username))
 })
-
 app.get('/*',function(req,res){
   res.sendFile(__dirname+'/dist/updated/index.html')
 })
