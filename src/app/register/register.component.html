@@ -6,21 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
-
-
-<a *ngIf="forfircard">
-<div class="bg1" style="width: 90%;text-align: center;" >
-    <div class="container-fluid mb-6" style="width: 90%;text-align: center;">
-        <div class="row justify-content-center" style="width: 100%;text-align: center;">
-            <div class="col-12" style="width: 90%;text-align: center;">
-
                  <div class="form-container">
-                     <div class="heading" *ngIf=!pw>
-                         Resgistration form
+                     <div class="form-heading" *ngIf=!pw>
+                         SIGN-UP FORM
                      </div>
-                    <img src={{imageUrl}} *ngIf=!pw class="rounded-circle" style="text-align: center;width:200;height:600;left:100px;"  alt="image not found">
+                     <div class="row justify-content-center">
+                        <img src={{imageUrl}} *ngIf=!pw class="rounded-circle"  alt="image not found">
+                     </div>
                     <input type="file" *ngIf=!pw (change)="selectimage($event)">
+                   
                     <form #userForm="ngForm" (ngSubmit)="onsubmit(pass.value,passwd.value)" *ngIf=!pw>
 
                 <div class="form-group">
@@ -47,12 +41,9 @@
                     <input type="password" required #passwd="ngModel" [class.is-invalid]="passwd.invalid && passwd.touched" class="form-control" name="passwords" [(ngModel)]="registermodel.passwords">
                     <small class="text-danger" [class.d-none]="passwd.valid || passwd.untouched">PASSWORD IS REQUIRED</small>
                 </div>
-<!-- <<<<<<< HEAD
-                <button class= "btn button" [disabled]="userForm.form.invalid" type="submit"  (click)="onimage()" >submit</button>
-            </form>
-            <br>
-======= -->
-                    <button class= "button2 button6" style="background-color:#23415c;" [disabled]="userForm.form.invalid" type="submit"  (click)="onimage()" >submit</button>
+
+                <button class= "btn button btn-block"  [disabled]="userForm.form.invalid" type="submit"  (click)="onimage()" >SIGN-UP</button>
+                   <br>
                     <a *ngIf=login1>
                          Your are already a user.
                     </a>
@@ -68,9 +59,10 @@
                 </div>
                     </form>
 
-        <div class=" container row">
-            <div class="row">
+        <!-- <div class=" container row"> -->
+            <div class="row justify-content-center">
                 <div *ngIf="!a">
+
             <button href="" class="button1 button5" (click)="check('google')" *ngIf=!pw style="left: 30px;"><img style="height: 20px;width: 20px;" src="../../assets/googleimage.png">Sign in with Google</button>
                 </div>
             </div>
@@ -91,7 +83,7 @@
                 <p><input type="password" name="reenter password" class="form-control" #repasswordgoogle="ngModel"
                     [class.is-invalid]="repasswordgoogle.invalid && repasswordgoogle.touched" [(ngModel)]="gpwmodel.repasswordgoogle"></p>
                     <small class="text-danger" [class.d-none]="repasswordgoogle.valid || repasswordgoogle.untouched"></small>
-<!-- for location -->
+ for location -->
 <!-- <div class="form-group">
     <label>enter location</label>
     <p><input type="text" n class="form-control" #location></p>
@@ -99,23 +91,18 @@
  <button [disabled]="userForm1.form.invalid" type="submit">done</button>
             </div>   
             </form> 
-                </div>
-                <a *ngIf=users1> 
-                    Your Account Is Succesfully Created.
-                </a>
-        </form>
-        <a *ngIf=login1>
-            Your are already a user. -->
-<!-- ======= --> 
 
-        <div class="row" *ngIf="!a">
-            <p *ngIf=!pw>Already a user?</p>
-            <p><button class="button button4"  (click)=onlogin() *ngIf=!pw>login</button></p> 
+                </div>
+            </div><br>
+         </div> -->
+        <div class="row justify-content-center" *ngIf="!a">
+            <span *ngIf=!pw>Already a user?</span>&nbsp;&nbsp;&nbsp;
+            <a class="span"  (click)=onlogin() *ngIf=!pw><span>login </span></a>
         </div> 
             </div>
          </div>
      </div>
-   </div>
+   <!-- </div> -->
 </div>
 </a>
 
@@ -162,7 +149,7 @@
 </div>
 </div>
 </a>
-
+</body>
 
 
 
@@ -173,4 +160,6 @@
 <!-- <button [disabled]="userForm.form.invalid" class="btn btn-primary" type="submit" (click)='onclick()' [hidden]=pw>submit</button> -->
             <!-- <button class="btn button1" (click)="check('google')" [hidden]=pw>Sign in with Google</button> -->
         <!-- </div> -->
+
+        
 

@@ -88,7 +88,7 @@ body{
     color: #23415c;
 }
 .myrow{
-    padding: 10% 10% 0% 10% ;
+    padding: 30px 50px ;
     width: 100%;
 }
 .mycard{
@@ -97,17 +97,12 @@ body{
     border-radius: 10px;
     box-shadow: 0px 0px 5px 0px #cacfd3;
     width: 100%;
-
-    line-height: 30px;
+    /* line-height: 30px; */
     font-size: 20px;
     font-weight: 400;
     color: black;
     font-family: sans-serif;
-
-    
-
-
-    
+  
 }
 
 .card-data button{
@@ -117,26 +112,19 @@ body{
     color: gray;
     font-size: 25px;
 }
-.card-data button i:visited{
-    color: #23415c;
-}
 .del-button{
     background:#23415c;
-    border: 2px solid #23415c;
-    border-radius: 5px;
+    border: 1px solid #23415c;
+    border-radius: 10px;
     color:#fff;
     font-size: 18px;
     font-weight: 400;
-    padding: 15px; 
+    padding:10px 15px; 
 }
 
 .sidenav {
     height: 100%;
     width: 0;
-
-
-
-
     position: fixed;
     z-index: 1;
     top: 0;
@@ -144,7 +132,7 @@ body{
     background-color: #23415c;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 50px;
   }
   .sidenav a {
     padding: 8px 8px 8px 32px;
@@ -168,9 +156,26 @@ body{
   }
 
   
-  @media screen and (max-height: 450px) {
+  @media screen and (max-height: 400px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+  }
+    @media screen and (max-width: 400px) {
+
+    .rounded-circle{
+        height: 50px;
+        width: 50px;
+        align-items: center;
+    }
+    .span{
+        display: none;
+    }
+    
+  }
+  .rounded-circle{
+      height: 200px;
+      width: 200px;
+      align-items: center;
   }
   
 
@@ -203,6 +208,7 @@ body{
     margin-top: -10rem;
     z-index: 999;
     border: 1rem solid #ebeef8;
+
 }
 
 .ma{

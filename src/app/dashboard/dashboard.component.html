@@ -9,49 +9,57 @@
 <body>
 
 
+
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-  
-    <div *ngFor="let a of user">
-  <div *ngIf="a.userimage===null;else image">
-
-    <img class="rounded-circle" src="../../assets/default.jpg" (click)=forprofile() alt="dsxcz">
-    {{a.userimage}}<p style="color: white;text-align: center;font-size: 20px;" (click)=forprofile()>Profile</p>
-    </div>
-<!-- add the else block                                          -->
+     <div *ngFor="let a of user" class="row justify-content-center">
+        <div *ngIf="a.userimage===null;else image">
+          <img class="rounded-circle"  src="../../assets/default.jpg" (click)=forprofile() alt="dsxcz">
+          {{a.userimage}}<p style="color: white;text-align: center;font-size: 20px;" (click)=forprofile()>Profile</p>
+          </div>
+<!-- add the else block-->
      <ng-template #image>
       <img class="rounded-circle" src="http://localhost:3000/imageget?name={{a.userimage}}" (click)=forprofile() alt="dsxcz">
       {{a.tutorimage}}<p style="color: white;text-align: center;font-size: 20px;" (click)=forprofile()>Profile</p>
-
       </ng-template>
       </div><br>
+      
       <div id="myDIV">
-  <button  routerLink="/firesthome"  class="btn button btn-block  "><span><i class="fa fa-home"></i></span> &nbsp;<span>Home</span></button>
-  <button routerLink="/about" class="btn button btn-block "><span><i class="fa fa-clone"></i></span> &nbsp;<span>How it works</span></button>
-  <button  routerLink="/tutor1" class="btn button btn-block "><span><i class="fa fa-user"></i></span> &nbsp;<span>Tutor</span></button>
- <button  routerLink="/student1" class="btn button btn-block "><span><i class="fa fa-graduation-cap"></i></span> &nbsp;<span>Student</span></button>
-  <button  type="submit" (click)="classesattended1()" class="btn button btn-block"><span><i class="fa fa-user"></i></span> &nbsp;<span>Taught</span></button>
+  <button  routerLink="/firesthome"  class="btn button btn-block  "><span><i class="fa fa-home"></i></span> &nbsp;<span class="span">Home</span></button>
+  <button routerLink="/about" class="btn button btn-block "><span><i class="fa fa-question-circle"></i></span> &nbsp;<span class="span">How it Works</span></button>
+  <button  routerLink="/tutor1" class="btn button btn-block "><span><i class="fa fa-user"></i></span> &nbsp;<span class="span">Add Course</span></button>
+ <button  routerLink="/student1" class="btn button btn-block "><span><i class="fa fa-graduation-cap"></i></span> &nbsp;<span class="span">Explore Courses</span></button>
+  <button  type="submit" (click)="classesattended1()" class="btn button btn-block"><span><i class="fa fa-user"></i></span> &nbsp;<span class="span">Courses Taught</span></button>
   <!-- <a *ngIf="show" class="nav-link">
    <a class="nav-link"><button type="submit" class="btn button btn-block " (click)="onlyonce()">once</button></a><br>
    <a class="nav-link"></a><button type="submit" class="btn button btn-block " (click)="multiple()">multiple</button></a>
    -->
-   <button type="submit" (click)="classesenrolled1()" class="btn button btn-block" ><span><i class="fa fa-graduation-cap"></i></span> &nbsp;<span>Enrolled</span></button>
+   <button type="submit" (click)="classesenrolled1()" class="btn button btn-block" ><span><i class="fa fa-graduation-cap"></i></span> &nbsp;<span class="span">Courses Enrolled</span></button>
 
-  <button type="submit" (click)="logout()" class="btn button btn-block "><span><i class="fas fa-sign-out-alt"></i></span> &nbsp;<span>logout</span></button>
+  <button type="submit" (click)="logout()" class="btn button btn-block "><span><i class="fas fa-sign-out-alt"></i></span> &nbsp;<span class="span">Logout</span></button>
    </div></div>
-<span style="font-size: 25px;cursor: pointer;" (click)="openNav()"><i style="color: #23415c;" class="fa fa-bars"></i></span>
-    <div *ngIf="showimmediatecourses&&sele" class="main" >
-<div class="row">
-  <div class="col-6">
-    <button (click)="selection()" style="font-size: 28px;" mat-stroked-button color="primary"  >fastfilling</button>&nbsp;&nbsp;
+<span style="font-size: 25px;cursor: pointer;padding: 10px;" (click)="openNav()"><i style="color: #23415c;" class="fa fa-bars"></i></span>
 
-  </div>
-  <div class="col-6">
-    
-    <button (click)="selection1()" style="font-size: 25px;" mat-stroked-button color="primary" >famous courses</button>
-  </div>
-</div>
-      <div style="text-align: center; font-size: 25px; color: blue;">Fastfilling</div>
+
+<!-- </div> -->
+
+
+      <!-- cards -->
+  <!-- <form> -->
+    <div class=" container row main">
+      <div class="col">
+        <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>
+      </div>
+      <div class="col">
+    <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
+      </div>
+    </div>
+    <div *ngIf="showimmediatecourses&&sele" class="main" >
+     
+      <!-- <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>&nbsp;&nbsp; -->
+      <!-- <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button> -->
+
+      <div style="text-align: center;">Fastfilling</div>
         <div class="row">
           <div  *ngFor="let a of immediatecourse" >
             <div class="container">
@@ -61,11 +69,14 @@
                   <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
                   <!-- <p>#name</p> -->
                   <!-- <div> -->
+
                 <div class="card-body">
                   <div style="font-size: 18px;"><b>seats  left:</b>{{a.maxstudents}}</div>
                   <div style="font-size: 18px;"><b>subject:</b>{{a.tutorsubject}}</div>
                   <div style="font-size: 18px;"><b>sub subject :</b>{{a.tutorsubsubject}}</div>
                   <div style="font-size: 18px;"><b>date:</b>{{a.tutordate}}</div>
+
+                
                 </div>
                 </div>
               </div>
@@ -101,6 +112,7 @@
                 <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
                 <!-- <p>#name</p> -->
                 <!-- <div> -->
+
               <div class="card-body">
 
                 <!-- <h4>{{a.tutorname}}</h4> -->
@@ -109,6 +121,8 @@
               <div style="font-size: 18px;"><strong>course type :</strong>{{a.tutorcoursetype}}</div>
               <div style="font-size: 18px;"><strong>likes:</strong>{{a.likes}}</div>
               </div>
+
+              
               </div>
             </div>
           </div>
@@ -119,8 +133,6 @@
 
 
 </div>
-
-
 
 
         <div *ngIf="a" class="main">
@@ -172,24 +184,22 @@
             <div class="row myrow">
             <div   class="card mycard">
               <div class="card-body">
-                <div class="card-data" >
+                <div class="card-data">
 
-                  <h5><b>Subject</b>&nbsp; &nbsp; {{b.tutorsubject}}</h5>
-                  <h5><b>Subsubject</b>&nbsp; &nbsp; {{b.tutorsubsubject}}</h5>
-                  <h5><b>time</b>&nbsp; &nbsp; {{b.tutortime}}</h5>
-
-
-                  <p><b>Coursetype</b>&nbsp; &nbsp; {{b.tutorcoursetype}}</p>
-                  <p *ngIf="b.selecteddays"><b>Days</b>&nbsp; &nbsp; {{b.selecteddays}}</p>
-                  <p *ngIf="b.likes"><b>Likes</b>&nbsp; &nbsp; {{b.likes}}</p>
-                  <p *ngIf="b.tuorgdate"><b>data:&nbsp;&nbsp;{{b.tuorgdate}}</b></p>
+                  <div><b>Subject</b>&nbsp; &nbsp; {{b.tutorsubject}}</div>
+                  <div><b>Subsubject</b>&nbsp; &nbsp; {{b.tutorsubsubject}}</div>
+                  <div><b>time</b>&nbsp; &nbsp; {{b.tutortime}}</div>
+                  <div><b>Coursetype</b>&nbsp; &nbsp; {{b.tutorcoursetype}}</div>
+                  <div *ngIf="b.selecteddays"><b>Days</b>&nbsp; &nbsp; {{b.selecteddays}}</div>
+                  <div *ngIf="b.likes"><b>Likes</b>&nbsp; &nbsp; {{b.likes}}</div>
+                  <div *ngIf="b.tuorgdate"><b>data:&nbsp;&nbsp;{{b.tuorgdate}}</b></div>
                   <br>
                   <button class="del-button" type="submit" *ngIf="showbutton" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes,b.tutorsubsubject)">delete</button >
               </div>
               </div>
             </div>
           </div><br>
-        </div>
+        <!-- </div> -->
       </div>
 
 
@@ -216,7 +226,7 @@
 
     
 
-      </body>
+      <!-- </body> -->
 
 
    <!-- as tutor -->
