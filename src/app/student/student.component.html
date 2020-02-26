@@ -70,7 +70,7 @@
             </div> -->
 
             <div class="container">
-              <div *ngIf="!display">
+              <div  class="row search" *ngIf="!display">
               <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
             </div>
             <div class="card-display" *ngFor="let a of subjectslist | filter:searchText;let i=index ">
@@ -92,26 +92,27 @@
                   </div>
                   <div class="col-6">
                     <div class="row">
-                      <div class="col-md-6 col-sm-6"><b>Subject:</b><span class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</span></div>
-                      <div class="col-md-6 col-sm-6" ><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
+                      <p class="col-md-6 col-sm-6"><b>Subject:</b><span class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</span></p>
+                      <p class="col-md-6 col-sm-6" ><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</p>
                     </div>
                      <div class="row">
-                      <div class="col-md-6 col-sm-6" *ngIf="a.tuorgdate"><b>date:</b>&nbsp;&nbsp;&nbsp;{{a.tuorgdate}}</div>
-                      <div class="col-md-6 col-sm-6" *ngIf="a.maxstudents" ><b>remaining entries:</b>&nbsp;&nbsp;&nbsp;{{a.maxstudents}}</div> 
+                      <p class="col-md-6 col-sm-6" *ngIf="a.tuorgdate"><b>date:</b>&nbsp;&nbsp;&nbsp;{{a.tuorgdate}}</p>
+                      <p class="col-md-6 col-sm-6" *ngIf="a.maxstudents" ><b>remaining entries:</b>&nbsp;&nbsp;&nbsp;{{a.maxstudents}}</p> 
+                      <!-- <br> -->
                      </div>
                      <div class="row">
-                      <div class="col-md-6 col-sm-6"><b>Course:</b>&nbsp;&nbsp;&nbsp;{{a.tutorcoursetype}}</div> 
-                      
-                      <div class="col-md-6 col-sm-6"><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</div> 
+                      <p class="col-md-6 col-sm-6"><b>Course:</b>&nbsp;&nbsp;&nbsp;{{a.tutorcoursetype}}</p> 
+                      <p class="col-md-6 col-sm-6"><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</p> 
                      </div>
                       <div class="row">
-                        <div class="col-md-6 col-sm-6" *ngIf="a.likes"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
-                        <div class="col-6" *ngIf="a.selecteddays" ><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</div>
+                        <p class="col-md-6 col-sm-6" *ngIf="a.likes"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</p>
+                        <p class="col-6" *ngIf="a.selecteddays" ><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</p>
+                        
                       </div>
                      <div class="row">
-                      <div class="col-md-6 col-sm-6"><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
-                      <div class="col-md-6 col-sm-6"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</div>
-                     </div>    
+                      <p class="col-md-6 col-sm-6"><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</p>
+                      <p class="col-md-6 col-sm-6"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</p>
+                     </div>
                   <div class="row sub justify-content-end">
                     <button  class="btn btn-info btn-lg"  (click)="subjectselected(i)" >Subscribe</button>
                   </div>
