@@ -41,7 +41,7 @@
           </div>
             <ng-template #image>
             <!-- <p>2</p> -->
-              <img src="http://localhost:3000/imageget?name={{a.userimage}}"  style="border-radius: 20px;width:35px;height:35px" routerLink="/dashboard1" alt="no image in profile">MyProfile
+              <img src="http://192.168.137.187:3000/imageget?name={{a.userimage}}"  style="border-radius: 20px;width:35px;height:35px" routerLink="/dashboard1" alt="no image in profile">MyProfile
               </ng-template>
             </div></a></div>
       </li>
@@ -78,7 +78,7 @@
           
           <!-- Modal footer -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" (click)="logout()" data-dismiss="modal">Yes</button>
+            <a href="#" type="button" class="btn btn-danger" (click)="logout()" data-dismiss="modal">Yes</a>
           </div>
           
         </div>

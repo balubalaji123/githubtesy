@@ -64,8 +64,13 @@ router.post('/',function(req,res){
     tutorsubject=req.body.subject
     tutortime=req.body.teachingtime
     timeduration=req.body.timeduration
-    tutorcoursetype=req.body.coursetype 
-    tutorfee=req.body.fee 
+    tutorcoursetype=req.body.coursetype
+    if(req.body.fee<10){ 
+    tutorfee=req.body.fee}
+    else{
+        tutorfee=Math.ceil(req.body.fee)
+        tutorfee=Math.ceil(((tutorfee)+(tutorfee/10)))
+    } 
     tutordescription=req.body.description 
     tutorwatsuplink=req.body.watsuplink
     tutormail=req.session.mail

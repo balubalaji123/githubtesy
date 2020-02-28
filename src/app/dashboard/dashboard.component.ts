@@ -173,7 +173,6 @@ subscribe(
   }
   public sele=true;
   public techer=true
-
   public student=false
   onlyonce(){
     this.asatutor=[]
@@ -195,12 +194,15 @@ subscribe(
 selection()
 {
   this.sele=true;
-  // console.log(this.sele);
 }
 selection1()
 {
   this.sele=false;
-  // console.log(this.sele);
+}
+courseenrolled(a){
+  console.log('dashboard',a)
+  this.route.navigate(['/courseselected',a])
+
 }
 }
 

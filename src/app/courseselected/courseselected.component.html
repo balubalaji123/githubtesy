@@ -31,40 +31,28 @@
                                         <div  *ngFor="let day of days">
                                             <input (click)="onsel(day)"type="checkbox" >{{day}}
                                         </div>
-
-                                    </div></div>
-                           
+                                    </div></div>                        
                                         <button class="btn btn-primary" type="submit" (click)="fun()" > submit</button>
                                 </div>
                                 <div class="col">
                                     <div *ngIf="image==='null';else image1">
                                         <img  class="rounded-circle" src="../../assets/default.jpg" alt="nooooo">
                                         </div>
-
-
  <!-- add the else block -->
-
-                                                                                  
-                                        <ng-template #image1>
-                                          <img class="rounded-circle" src="http://localhost:3000/imageget?name={{image}}" alt="dsxcz">
+                                    <ng-template #image1>
+                                          <img class="rounded-circle" src="http://192.168.137.187:3000/imageget?name={{image}}" alt="dsxcz">
                                           </ng-template>
 
                                </div>
-                                </div>
-                               
-                
-                            </div>
-                            
+                                </div>              
+                            </div>                            
                       </div>
                     </div>
             </div>
-        </div>
-      
+        </div>  
 </div>
 <br><div style="color: blue; text-align: center;"  *ngIf="regitered">
     ALREADY REGISTERED
 </div>
-
-
 </body>
 </html>

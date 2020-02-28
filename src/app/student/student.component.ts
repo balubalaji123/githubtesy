@@ -23,7 +23,8 @@ public display=false
 public notfilter=true
 public subject
 public todayclasseslist:Tutor[]
-public   Courses=['Crash','Competative'];
+public Courses=['Academic Course','Competitive Course', 'Art Course','Technical Course'];
+
 public filterdata:Filter
 public subsubject
 public allsubjects=[]
@@ -66,6 +67,7 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
   }
 
   subjectselection(subject){
+    this.filter1=''
     this.filter2=subject;
     this.oops=false
     this.subject=subject
@@ -77,6 +79,7 @@ this.router.navigate(['/courseselected',this.subjectslist[i]])
     
   }
   subsubjectselection(subject){
+    this.filter1=''
     this.filter3=subject;
     this.oops=false
     this.subsubject=subject
@@ -107,7 +110,7 @@ this.studentservice.coursetype(this.selectedcoursetype).subscribe(
 this.studentservice.todayclasses().subscribe(
   data=>{if(!data.length){
     this.oops=true
-    
+    this.subjectslist=[]
           }
           else{
           this.subjectslist=data}},
