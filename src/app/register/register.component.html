@@ -8,6 +8,28 @@
 </head>
 
 <body>
+    <nav class="navbar  navbar-expand-sm" role="navigation" [hidden]="normalnavbar">
+        <div style="padding-left:25px ;" class="navbar-brand">FindMyTutor</div>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+           <span class="fa fa-bars"></span>
+         </button>
+       <div class="collapse navbar-collapse" id="navbarMenu">  
+       <ul class="navbar-nav  ml-auto">
+           <li class="nav-item">
+             <a class="nav-link"  routerLink="/firesthome" routerLinkActive="active"  >Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" routerLink="/about" routerLinkActive="active" >How It Works</a>
+           </li>
+           <li class="nav-item">
+               <a class="nav-link" type="button" routerLink="/login1" routerLinkActive="active" >Login</a>
+           </li>
+        <!-- <button type="button" ><a  type="button" routerLink="/login1" routerLinkActive="active" >Login</a></button>
+        <button type="button"><a  type="button" routerLink="/register1" routerLinkActive="active">Register</a></button> -->
+       </ul>
+       </div>
+    </nav>
+    
 <a *ngIf="forfircard">
 <!-- <div class="bg1" style="width: 90%;text-align: center;" >
     <div class="container-fluid mb-6" style="width: 90%;text-align: center;">

@@ -1,65 +1,39 @@
 
-<nav class="navbar navbar-expand-sm ">
-  <!-- image code for image -->
-  <!-- <img src="dashboardimage" class="rounded-circle" width="50px"  height="50px" alt="no image in navbar"> -->
-  <!-- checking for MyProfile   -->
-  <!-- <div *ngFor="let username1 of username"></div> -->
-  
-<!-- add the else block                                          -->
-   
-  <div class="navbar-brand" >Find my Tutor</div>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-      <span class="fa fa-bars"></span>
-    </button>
-  <div class="collapse navbar-collapse" id="navbarMenu">
-    <ul class="navbar-nav  ml-auto">
+<nav class="navbar  navbar-expand-sm" role="navigation" [hidden]="normalnavbar">
+  <div style="padding-left:10px ;" class="navbar-brand">FindMyTutor</div>
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+     <span style="color: #fff;" class="fa fa-bars"></span>
+   </button>
+ <div class="collapse navbar-collapse" id="navbarMenu">  
+ <ul class="navbar-nav  ml-auto">
+     <li class="nav-item">
+       <a class="nav-link"  routerLink="/firesthome" ><i class="fa fa-home"></i>&nbsp;<span>Home</span></a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" routerLink="/about" ><i class="fa fa-question-circle"></i>&nbsp;<span>How It Works</span></a>
+     </li>
+
       <li class="nav-item">
-        <a class="nav-link"  routerLink="/firesthome" ><i class="fa fa-home"> &nbsp; Home</i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/about" ><i class="fa fa-clone"> &nbsp;How It works</i></a>
-      </li>
-      <!-- <li class="nav-item">
-        <div *ngFor="let a of user">
-      <div *ngIf="a.userimage===null;else image">
-        <img src="../../assets/default.jpg" width="50px"  height="50px" class="nav-link" alt="no image in profile default">My Profile
-        </div>
-        <ng-template #image>
-          <img src="http://localhost:3000/imageget?name={{a.userimage}}" width="50px"  height="50px" alt="no image in profile">
-          </ng-template>
-        </div>
-      </li> -->
-      <li class="nav-item">
-        <div class="row">
         <a class="nav-link" routerLink="/dashboard1" >
             <div *ngFor="let a of user">
-          <div *ngIf="a.userimage===null;else image">
-            <div class="row" style="width:140px">
-            <img src="../../assets/default.jpg" style="border-radius: 20px;width:35px;height:35px;left:10px"  class="nav-link" alt="no image in profile default">MyProfile
+          <div *ngIf="a.userimage===null;else image"><i class="fa fa-user"></i>&nbsp;<span>MyProfile</span>
             </div>
-          <!-- <p>1</p>  -->
-          </div>
             <ng-template #image>
-            <!-- <p>2</p> -->
               <img src="http://localhost:3000/imageget?name={{a.userimage}}"  style="border-radius: 20px;width:35px;height:35px" routerLink="/dashboard1" alt="no image in profile">MyProfile
               </ng-template>
-            </div></a></div>
+            </div>
+          </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" type="submit" data-toggle="modal" data-target="#myModal" ><i class="fas fa-sign-out-alt"></i></a>
+        <a class="nav-link" type="submit" data-toggle="modal" data-target="#myModal" ><i class="fa fa-sign-out"></i>&nbsp;<span>Logout</span></a>
       </li>
       </ul>
     </div>
   </nav>
-  <!-- <button type="submit" (click)="logout()">logout</button> -->
 
 
   <div class="container">
-    <!-- Button to Open the Modal -->
-    <!-- <button type="button" class="btn btn-primary"  >
-      Open modal
-    </button> -->
-  
+   
     <!-- The Modal -->
     <div class="modal" id="myModal">
       <div class="modal-dialog">

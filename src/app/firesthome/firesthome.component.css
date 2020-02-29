@@ -1,8 +1,9 @@
 .navbar{
     background: #23415c;
     color: #fff;
-    padding: 10px 30px 10px 0;
+    padding: 10px 40px 10px 0;
     font-size: 1.2rem;
+    font-weight: 500;
     font-family:'Segoe UI';
 }
 .navbar-brand{
@@ -12,7 +13,6 @@
 }
 .nav-link{
     color: #fff;
-    padding: 10px;
     
 }
 
@@ -64,4 +64,18 @@ footer{
 .button a{
     color:#23415c;
     text-decoration: none;
+}
+@media screen and (max-width: 400px) {
+    .button{
+        background: #fff;
+        border: 5px solid #23415c;
+        border-radius: 20px;
+        color: #23415c;
+        font-size: 18px;
+        font-weight: 700;
+        width: 100%;
+        text-align: center;
+        
+    }
+    
 }

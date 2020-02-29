@@ -53,7 +53,9 @@ export class DashboardComponent implements OnInit {
    
   }
   ngOnInit() {
-    document.getElementById("mySidenav").style.width = "20%";
+    // document.getElementById("mySidenav").style.width = "20%";
+  document.getElementById("mySidenav").style.width = "20%";
+  document.getElementById("main").style.marginLeft = "20%";
 
   }
   logout(){
@@ -86,10 +88,14 @@ public dislike:boolean
 
 
 openNav() {
+  // document.getElementById("mySidenav").style.width = "20%";
   document.getElementById("mySidenav").style.width = "20%";
+  document.getElementById("main").style.marginLeft = "20%";
 }
 closeNav() {
+  // document.getElementById("mySidenav").style.width = "0";
   document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
 }
 
   forprofile(){

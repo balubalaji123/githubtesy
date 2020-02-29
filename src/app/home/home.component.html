@@ -9,35 +9,33 @@
 <body>
   
   <app-navbar></app-navbar>
+
 <div class="container-fluid">
     <div class="row justify-content-center head">
-
-        <div>What you want to be?</div>
-        
-
+        <div>Choose Your Path</div>
     </div>
 </div>
 
-<div class="container-fluid">
-   <div class="row justify-content-center" >
-       <div class="col-md-4 col-sm-12 card-styles">
+<div class="container">
+   <div class="row justify-content-center"  >
+       <div class="col col-md-6 col-sm-12  " style="text-align: center;padding:7%;">
           <div class="card" >
               <img class="card-img-top" src="../../assets/teacher-img1.png" alt="Card image">
               <div class="card-body">
-                <h4 class="card-title">Teacher</h4>
-                <p class="card-text">If you want to be<b>Teacher?</b></p>
-                <button type="submit" (click)="tutor()" class="btn button" routerLink="/tutor1" routerLinkActive="active"><a>Click here</a></button>
+                <h4 class="card-title">Teacher</h4><br>
+                <!-- <p class="card-text">If you want to be<b>Teacher?</b></p> -->
+                <button type="submit" (click)="tutor()" class="btn button" routerLink="/tutor1" routerLinkActive="active"><a>Register</a></button>
               </div>
             </div>
        </div>
 
-       <div class="col-md-4 col-sm-12 card-styles">
+       <div class=" col col-md-6 col-sm-12" style="text-align: center;padding:7%;">
           <div class="card" >
               <img class="card-img-top" src="../../assets/student-img1.jpg" alt="Card image">
               <div class="card-body">
-                <h4 class="card-title">Student</h4>
-                <p class="card-text">If you want to be<b>Student?</b></p>
-                <button type="submit" class="btn button" (click)="student()" routerLink="/student1" routerLinkActive="active"><a>Click here</a></button>
+                <h4 class="card-title">Student</h4><br>
+                <!-- <p class="card-text">If you want to be<b>Student?</b></p> -->
+                <button type="submit" class="btn button" (click)="student()" routerLink="/student1" routerLinkActive="active"><a>Enroll</a></button>
               </div>
             </div>
        </div>

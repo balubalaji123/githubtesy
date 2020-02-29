@@ -12,14 +12,15 @@
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+
      <div *ngFor="let a of user" class="row justify-content-center">
         <div *ngIf="a.userimage===null;else image">
-          <img class="rounded-circle"  src="../../assets/default.jpg" (click)=forprofile() alt="dsxcz">
+          <img class="sidenav-img"  src="../../assets/default.jpg" (click)=forprofile() alt="dsxcz">
           {{a.userimage}}<p style="color: white;text-align: center;font-size: 20px;" (click)=forprofile()>Profile</p>
           </div>
 <!-- add the else block-->
      <ng-template #image>
-      <img class="rounded-circle" src="http://localhost:3000/imageget?name={{a.userimage}}" (click)=forprofile() alt="dsxcz">
+      <img class="sidenav-img" src="http://localhost:3000/imageget?name={{a.userimage}}" (click)=forprofile() alt="dsxcz">
       {{a.tutorimage}}<p style="color: white;text-align: center;font-size: 20px;" (click)=forprofile()>Profile</p>
       </ng-template>
       </div><br>
@@ -36,24 +37,112 @@
    -->
    <button type="submit" (click)="classesenrolled1()" class="btn button btn-block" ><span><i class="fa fa-graduation-cap"></i></span> &nbsp;<span class="span">Courses Enrolled</span></button>
 
-  <button type="submit" (click)="logout()" class="btn button btn-block "><span><i class="fas fa-sign-out-alt"></i></span> &nbsp;<span class="span">Logout</span></button>
+  <button type="submit" (click)="logout()" class="btn button btn-block "><span><i class="fa fa-sign-out"></i></span> &nbsp;<span class="span">Logout</span></button>
    </div></div>
-<span style="font-size: 25px;cursor: pointer;padding: 10px;" (click)="openNav()"><i style="color: #23415c;" class="fa fa-bars"></i></span>
+
+   <div id="main">
+    <nav class="navbar  navbar-expand-sm" role="navigation" [hidden]="normalnavbar">
+    <span  style="font-size: 25px;cursor: pointer;padding: 10px;"  (click)="openNav()"><i style="color: #23415c;" class="fa fa-bars"></i></span>
+    <div class="navbar-brand">FindMyTutor</div>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+      <span style="color: #fff;" class="fa fa-bars"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarMenu">  
+  <ul class="navbar-nav  ml-auto">
+      <li class="nav-item">
+        <a class="nav-link button1"  routerLink="/firesthome" ><i class="fa fa-home"></i>&nbsp;<span>Home</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link button1" routerLink="/about" ><i class="fa fa-question-circle"></i>&nbsp;<span>How It Works</span></a>
+      </li>
+       <li class="nav-item">
+         <a class="nav-link button1 logout" type="submit" data-toggle="modal" data-target="#myModal" ><i class="fa fa-sign-out"></i>&nbsp;<span>Logout</span></a>
+       </li>
+       </ul>
+     </div> 
+       </nav>
+
+       <div *ngIf="b">
+        <div *ngFor="let b of asatutor" >
+          <div class="container">
+          <div   class="card mycard">
+            <div class="card-body myrow mycol">
+              <div class="card-data">
+                <div><b>Subject</b>&nbsp; &nbsp; {{b.tutorsubject}}</div>
+                <div><b>Subsubject</b>&nbsp; &nbsp; {{b.tutorsubsubject}}</div>
+                <div><b>time</b>&nbsp; &nbsp; {{b.tutortime}}</div>
+                <div><b>Coursetype</b>&nbsp; &nbsp; {{b.tutorcoursetype}}</div>
+                <div *ngIf="b.selecteddays"><b>Days</b>&nbsp; &nbsp; {{b.selecteddays}}</div>
+                <div *ngIf="b.likes"><b>Likes</b>&nbsp; &nbsp; {{b.likes}}</div>
+                <div *ngIf="b.tuorgdate"><b>data:</b>&nbsp;&nbsp;{{b.tuorgdate}}</div>
+                <br>
+                <button class="del-button" type="submit" *ngIf="showbutton" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes,b.tutorsubsubject)">delete</button >
+            </div>
+            </div>
+          </div>
+        </div><br>
+    </div>
+
+    <div *ngIf="a">
+      <div *ngFor="let a of asastudent" >
+        <div class="container">
+        <div  class="card mycard">
+          <div class="card-body ">
+            <!-- <div class="card-data"> -->
+              <div class="row justify-content-center ">
+                <div class="col" >
+                  <div *ngIf="a.tutorimage==='null';else image1">
+                    <img class="rounded-circle" src="../../assets/default.jpg" alt="nooooo">
+                    </div>
+<!-- add the else block -->                                        
+                    <ng-template #image1>
+                      <img class="rounded-circle" src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">
+                      </ng-template>
+                </div>
+                <div class="col">
+                  <div class="card-data">
+                  <div><b>Name &nbsp;:</b>  &nbsp;{{a.learnername}}</div>
+              <div><b>Subject&nbsp;:</b>&nbsp;{{a.leanersubject}}</div>
+              <div><b>Time&nbsp;:</b>&nbsp;{{a.time}}</div>
+              <div *ngIf="a.tutororgdate===null;else date">
+<!-- try to implement dates for continous teachers -->
+              </div>
+              <ng-template #date>
+                <div><b>date&nbsp;:</b>&nbsp;{{a.tutororgdate}}</div>
+                </ng-template>
+              
+              <div><b>Like &nbsp;:</b> &nbsp;{{a.like}}</div>
+          <button type="submit" *ngIf="!a.like" (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail,a.time)"><i [style.color]= "hasError ? '#23415c' :'gray'"  class="fa fa-thumbs-up"></i></button>
+          <button type="submit" *ngIf="a.like" (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail,a.time)" ><i class="fa fa-thumbs-up"></i></button>
+              </div></div>
+              <!-- </div> -->
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
 
 
-<!-- </div> -->
+  </div>
+
+ <!-- <span style="font-size: 25px;cursor: pointer;padding: 10px;" (click)="openNav()"><i style="color: #23415c;" class="fa fa-bars"></i></span> -->
+
+
 
 
       <!-- cards -->
-  <!-- <form> -->
-    <div class=" container row main">
+  
+    <!-- <div class=" container row">
       <div class="col">
         <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>
       </div>
       <div class="col">
     <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
       </div>
-    </div>
+    </div> -->
+
     <div *ngIf="showimmediatecourses&&sele" class="main" >
      
       <!-- <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>&nbsp;&nbsp; -->
@@ -67,9 +156,7 @@
                 <div class="card1">
                   <img src="https://img.freepik.com/free-photo/network-with-nodes-connected-background-technology-concept_34478-108.jpg?size=626&ext=jpg" alt="card background" class="card-img">
                   <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
-                  <!-- <p>#name</p> -->
-                  <!-- <div> -->
-                <div class="card-body" style="font-size: 20px;">
+                  <div class="card-body" style="font-size: 20px;">
                   <div ><b>seats  left:</b>{{a.maxstudents}}</div>
                   <div ><b>subject:</b>{{a.tutorsubject}}</div>
                   <div ><b>sub subject :</b>{{a.tutorsubsubject}}</div>
@@ -82,8 +169,6 @@
         </div>
       </div>
   <br>
-  
-  
   </div>
 <!-- </div> -->
 <!-- </form> -->   
@@ -99,19 +184,15 @@
                 <!-- <p>#name</p> -->
                 <!-- <div> -->
               <div class="card-body" style="font-size: 20px;">
-                <div><strong>Name:</strong>{{a.tutorname}}</div>
-
-
-                <div><strong>subject:</strong>{{a.tutorsubject}}</div>
-              <div><strong>sub subject:</strong>{{a.tutorsubsubject}}</div>
-              <div><strong>course type :</strong>{{a.tutorcoursetype}}</div>
-              <div><strong>likes:</strong>{{a.likes}}</div>
+                <div><b>Name:</b>{{a.tutorname}}</div>
+                <div><b>subject:</b>{{a.tutorsubject}}</div>
+              <div><b>sub subject:</b>{{a.tutorsubsubject}}</div>
+              <div><b>course type :</b>{{a.tutorcoursetype}}</div>
+              <div><b>likes:</b>{{a.likes}}</div>
               </div>
-               
               </div>
             </div>
-          </div>
-         
+          </div>        
       </div>
     </div>
 <br>
@@ -119,41 +200,39 @@
 
 </div>
 
+<!-- courses Taught -->
 
-        <div *ngIf="a" class="main">
-          <div *ngFor="let a of asastudent" class="container">
+        <!-- <div *ngIf="a" class="main">
+          <div *ngFor="let a of asastudent" class="container-fluid">
             <div class="row myrow">
             <div  class="card mycard">
               <div class="card-body">
                 <div class="card-data">
-
                   <div class="row">
-                    <div class="col">
+                    <div class="col" style="text-align: center;">
                       <div *ngIf="a.tutorimage==='null';else image1">
                         <img class="rounded-circle" src="../../assets/default.jpg" alt="nooooo">
                         </div>
-    <!-- add the else block -->                                        
+    add the else block                                     
                         <ng-template #image1>
                           <img class="rounded-circle" src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">
                           </ng-template>
-    
                     </div>
                     <div class="col">
-                      <div><b>Name</b> &nbsp;: &nbsp;{{a.learnername}}</div>
-                  <div><b>Subject</b>&nbsp;:&nbsp;{{a.leanersubject}}</div>
-                  <div><b>Time</b>&nbsp;:&nbsp;{{a.time}}</div>
+                      <div><b>Name &nbsp;:</b>  &nbsp;{{a.learnername}}</div>
+                  <div><b>Subject&nbsp;:</b>&nbsp;{{a.leanersubject}}</div>
+                  <div><b>Time&nbsp;:</b>&nbsp;{{a.time}}</div>
                   <div *ngIf="a.tutororgdate===null;else date">
-<!-- try to implement dates for continous teachers -->
+ try to implement dates for continous teachers 
                   </div>
                   <ng-template #date>
-                    <div>date:&nbsp;{{a.tutororgdate}}</div>
+                    <div><b>date&nbsp;:</b>&nbsp;{{a.tutororgdate}}</div>
                     </ng-template>
                   
-                  <div><b>Like</b>&nbsp;:&nbsp;{{a.like}}</div>
+                  <div><b>Like &nbsp;:</b> &nbsp;{{a.like}}</div>
               <button type="submit" *ngIf="!a.like" (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail,a.time)"><i [style.color]= "hasError ? '#23415c' :'gray'"  class="fa fa-thumbs-up"></i></button>
               <button type="submit" *ngIf="a.like" (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail,a.time)" ><i class="fa fa-thumbs-up"></i></button>
-              
-                    </div>
+                  </div>
                   </div>
 
                   </div>
@@ -161,32 +240,31 @@
             </div>
           </div>
         </div> 
-      </div>
+      </div> -->
 
-      
-        <div *ngIf="b" class="main">
-          <div *ngFor="let b of asatutor" class="container">
+      <!-- courses Enrolled -->
+
+        <!-- <div *ngIf="b" class="main">
+          <div *ngFor="let b of asatutor" class="container-fluid">
             <div class="row myrow">
             <div   class="card mycard">
               <div class="card-body">
                 <div class="card-data">
-
                   <div><b>Subject</b>&nbsp; &nbsp; {{b.tutorsubject}}</div>
                   <div><b>Subsubject</b>&nbsp; &nbsp; {{b.tutorsubsubject}}</div>
                   <div><b>time</b>&nbsp; &nbsp; {{b.tutortime}}</div>
                   <div><b>Coursetype</b>&nbsp; &nbsp; {{b.tutorcoursetype}}</div>
                   <div *ngIf="b.selecteddays"><b>Days</b>&nbsp; &nbsp; {{b.selecteddays}}</div>
                   <div *ngIf="b.likes"><b>Likes</b>&nbsp; &nbsp; {{b.likes}}</div>
-                  <div *ngIf="b.tuorgdate"><b>data:&nbsp;&nbsp;{{b.tuorgdate}}</b></div>
+                  <div *ngIf="b.tuorgdate"><b>data:</b>&nbsp;&nbsp;{{b.tuorgdate}}</div>
                   <br>
                   <button class="del-button" type="submit" *ngIf="showbutton" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes,b.tutorsubsubject)">delete</button >
               </div>
               </div>
             </div>
           </div><br>
-        <!-- </div> -->
       </div>
-
+ -->
 
       <!-- cards -->
       <a *ngIf=profile>
