@@ -60,6 +60,7 @@ padding: 0px 10px;
 }
 .card-body{
     border:2px solid gray;
+
 }
 /* .button1{
     position: absolute;
@@ -151,4 +152,5 @@ padding: 0px 10px;
     top: 100%;
     transition: 1s;
     transition-delay: 0.75s;
+
 }

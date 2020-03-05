@@ -28,7 +28,11 @@ const routes: Routes = [
   {path:'login1',component:LoginComponent},
   {path:'student1',component:StudentComponent},
   {path:'tutor1',component:TutorComponent},
-  {path:'dashboard1',component:DashboardComponent},
+  {
+    path:'dashboard1',
+    component:DashboardComponent
+    
+   },
   {path: 'navbar' , component:NavbarComponent},
   {path:'profile',component:ProfileComponent},
   {path:'about',component:AboutComponent},

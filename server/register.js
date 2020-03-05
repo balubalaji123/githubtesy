@@ -42,7 +42,6 @@ var store=multer.diskStorage({
   });
   var upload=multer({storage:store})
   router.post('/upload',upload.single('file'),function(req,res){
-      
       d=req.file.filename
       res.send(JSON.stringify("sucess"))
   })
@@ -56,11 +55,7 @@ router.post('/',function(req,res){
     myobj={usermail:usermail}
     dbo.collection("customers").find(myobj,{$exists:true}).toArray(function(err, result) {
       if (err) throw err;
-      // checkuser=result
       if(result.length){
-        // req.session.userid=result[0]._id;
-        // req.session.mail=usermail
-        // console.log("user exists")
       res.send(JSON.stringify("useralreadyexists"))
     }
       else{
@@ -81,9 +76,9 @@ router.post('/',function(req,res){
           path:__dirname+'/uploads1/mail.jpg',
           cid:"batman"
         },
-      ],
+      ], 
+      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.137.187:3000/register?id='+check+'">click</a><br><img style="height:150px;width:150px; border-radius:10px;" src="cid:batman">'
 
-      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.100.9:3000/register?id='+check+'">click</a><br><img style="height:150px;width:150px; border-radius:10px;" src="cid:batman">'
 
       };  
       transporter.sendMail(mailOptions, function(error, info){
@@ -94,15 +89,13 @@ router.post('/',function(req,res){
         }
       });
       res.send(JSON.stringify("mailsent"))
-    }});
-    
-    
+    }}); 
 })
 router.get('/',function(req,res){
    if(check==req.query['id']){
    myobj={userimage:d,username:username,usermail:usermail,userpassword:userpassword,userlocation:userlocation}
     dbo.collection("customers").insertOne(myobj, function(err, res) {
-        req.session.userid=res.ops[0]._id
+      
       })
       res.sendFile(__dirname+'/confirmmail.html')
       ;}

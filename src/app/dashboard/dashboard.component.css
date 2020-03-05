@@ -2,27 +2,16 @@ body{
     width: 100%;
     padding: 0;
     margin: 0;
+
 }
-/* .card-wrapper{
+ .card-wrapper{
     display: flex;
     align-items: center;
     align-content: center;
     flex-direction: column
 }
-.card1{
-    width: 22em;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem 0;
-    border: 2px solid gray;
-}
-.card1 .card1-img{
-    width: 50%;
-    height: 10rem;
-    object-fit: cover;
+.container{
+    padding:20px 50px;
 }
 .profile-img{
     width: 10rem;
@@ -34,59 +23,16 @@ body{
     border: 1rem solid #ebeef8;
 
 }
- */
-
 /* .main{
     margin-left: 30%; 
     padding: 0px 10px;
     margin-top: 5%;
-    /* font-size: small; 
 }
 .main1{
     margin-left: 40%; 
     padding: 0px 10px;
-    margin-top: 5%;
-    font-size: 50px;
-}
-  .name{
-      text-align: center;
-      color: #fff;
-      font-size: 20px;
-  }
- */
-  
-  /* .sidebar img{
-      height: 100px;
-      width: 100px;
-      border-radius: 50%;
-  }
-  .img-style{
-      text-align: center;
-  }
-.img-icon{
-    width: 45px;
-    height: 45px;
-    border: 2px solid #23415c;
-    border-radius: 50%;
-    background: #fff;
-
+    margin-top: 5%; 
 } */
-
-/* .button{
-    background:#23415c;
-     border: 2px solid #23415c;
-    border-radius: 10px;
-    color:#fff;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px;
-    font-family: sans-serif;
-    border-style: none;
-} */
-.container{
-    padding-top:50px;
-}
-
 .button{
     background:#23415c;
     color:rgb(245, 237, 237);
@@ -107,7 +53,7 @@ body{
     color: #23415c;
 }
 .myrow{
-    /* padding: 10px ; */
+
     width: 100%;
     border: 2px solid lightgrey;
     border-radius: 10px;
@@ -140,7 +86,7 @@ body{
     color:#fff;
     font-size: 18px;
     font-weight: 400;
-    padding:10px 15px; 
+    padding:7px 10px; 
 }
 
 .sidenav {
@@ -265,6 +211,7 @@ body{
     width: 170px;
     text-align: center;
 }
+
 .button1 a{
     color:#23415c;
     text-decoration: none;
@@ -281,5 +228,28 @@ color: #23415c;
         width: 100%;
         text-align: center;
     }
+}
+.card1{
+    width: 350px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    border: 2px solid gray;
+}
+.card1 .card1-img{
+    width: 50%;
+    height: 10rem;
+    object-fit: cover;
+}
+.heading{
+    text-align: center;
+    color: #23415c;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: sans-serif;
+
 }
 

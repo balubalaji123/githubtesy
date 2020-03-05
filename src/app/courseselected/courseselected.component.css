@@ -1,4 +1,8 @@
-
+.container{
+    /* font-style: sans; */
+    margin-top: 2%;
+    font-family: sans-serif;
+}
 .card-styles{
     background: #fff;
     border-radius: 10px;

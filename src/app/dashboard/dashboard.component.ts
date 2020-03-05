@@ -7,16 +7,17 @@ import { from } from 'rxjs';
 import { error } from 'protractor';
 import{Delete}  from'../delete';
 import{LogoutService} from'../logout.service';
-import { Router, RouterModule } from '@angular/router';
+import {Routes, Router, RouterModule,ActivatedRoute } from '@angular/router';
 import { SessioncheckService } from '../sessioncheck.service';
 import { ChecksessionService } from '../checksession.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  constructor(public sessionservice:SessioncheckService,private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router,private chechsession:ChecksessionService) {
+  constructor(public sessionservice:SessioncheckService,private dashboard:DashboardService,public Like:LikeService,public logoutservice:LogoutService,public route:Router,private chechsession:ChecksessionService,public router:Router) {
     // for fast filling classes
     this.dashboard.getfastfilling().subscribe(
       data=>this.immediatecourse=data,
@@ -35,7 +36,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-    // for most liked
+    // for most liked famous courses
     this.dashboard.highliked().subscribe(
       data=>this.mostliked=data,
       error=>console.log(error)
@@ -118,11 +119,16 @@ this.a=false;
     this.show=true
     this.asastudent=[]
     this.b=true;
+
+    // this.router.navigate(['taught'],{ relativeTo :this.router});
+   
+    // teacher constuctor
     this.dashboard.subjectselection()
     .subscribe(
       data=>{this.asatutor=data},
       error=>console.log("error in dashboard")
     )
+
   }
   dislikedf(learnername,leanersubject,learnertime,date,likecheck,tutormail,learnermail,time){
     this.showbutton=true
@@ -139,6 +145,8 @@ this.dashboard.learntselection()
 )
 
   }
+
+  
   classesenrolled1(){
     this.profile=false;
     this.showbutton=true
@@ -147,6 +155,7 @@ this.dashboard.learntselection()
     this.asatutor=[]
     this.student=!this.student
     this.a=true;
+    // student constuctor
     this.dashboard.learntselection()
     .subscribe(
       data=>{this.asastudent=data,this.dislike=data.like},
@@ -179,11 +188,11 @@ subscribe(
   }
   public sele=true;
   public techer=true
-
   public student=false
   onlyonce(){
     this.asatutor=[]
     this.showbutton=false
+    // for onetime teaching
     this.dashboard.temptutor().subscribe(
       data=>{this.asatutor=data},
       error=>console.log(error)
@@ -193,6 +202,7 @@ subscribe(
   multiple(){
     this.showbutton=true
     this.asatutor=[]
+    // for multiple teaching
     this.dashboard.permenattutor().subscribe(
       data=>this.asatutor=data,
       error=>console.log(error)
@@ -201,12 +211,16 @@ subscribe(
 selection()
 {
   this.sele=true;
-  // console.log(this.sele);
 }
 selection1()
 {
   this.sele=false;
-  // console.log(this.sele);
+}
+// subscribe button
+courseenrolled(a){
+  console.log('dashboard',a)
+  this.route.navigate(['/courseselected',a])
+
 }
 }
 

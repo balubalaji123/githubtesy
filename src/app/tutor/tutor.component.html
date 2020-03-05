@@ -34,20 +34,24 @@
                     <small   class="text-danger" [class.d-none]="subject.valid || subject.untouched">Subject is required</small>
                 </div>
                 <div class="form-group">
+
                     <img src="../../assets/icons8-open-book-48.png" width="30px">&nbsp;
                     <label><b style="font-size: 20px;">Topic</b></label>
+
                     <input type="text" required #subsubject="ngModel" [class.is-invalid]="subsubject.invalid && subsubject.touched" placeholder="Enter Topic" class="form-control" name="subsubject" [(ngModel)]="tutor1.subsubject">
                     <small   class="text-danger" [class.d-none]="subsubject.valid || subsubject.untouched">Topic is required</small>
                 </div>
                 <div class="form-group">
                     <img src="../../assets/icons8-clock-30 (1).png" width="30px">&nbsp;
                     <label><b style="font-size: 20px;">Time-Duration</b></label>
+
                     <input type="number" required #time="ngModel"     [class.is-invalid]="time.invalid && time.touched" placeholder="Time-Duration per day (in hrs)" class="form-control" name="Time" [(ngModel)]="tutor1.timeduration">
                     <small   class="text-danger" [class.d-none]="time.valid || time.untouched">Duration Is Required</small>
                 </div>
                 <div class="form-group">
                     <img src="../../assets/icons8-timesheet-30.png" width="30px">&nbsp;
                     <label><b style="font-size: 20px;">Course-Duration</b></label><br>
+
                     <!-- <button mat-fab>Basic</button> -->
                     <div *ngIf="button1">
                         <button type="button"  required  mat-stroked-button (click)="onlyonce()">One-Day</button>&nbsp;&nbsp;
@@ -65,6 +69,7 @@
                 </div>
                 <div class="form-group" *ngIf="once">
                     <label><b style="font-size: 20px;">Select Date</b></label><br>
+
                     <input type="date" placeholder=""  name="date" [(ngModel)]="tutor1.date"  >
                    
                       <!-- <mat-form-field class="example-full-width">
@@ -76,7 +81,9 @@
                       <button (click)="on(input.value)" >gh</button> -->
                 </div>
                 <div class="form-group" *ngIf="once">
+
                     <label><b style="font-size: 20px;">Maximum Students</b></label>
+
                     <input type="number" required #maxstudents="ngModel" [class.is-invalid]="maxstudents.invalid && maxstudents.touched" placeholder="Enter maximum student intake" class="form-control" name="maxstudents" [(ngModel)]="tutor1.maxstudents">
                     <small   class="text-danger" [class.d-none]="maxstudents.valid || maxstudents.untouched">Student intake is required</small>
                 </div>
@@ -121,12 +128,14 @@
                 <div class="form-group">
                     <img src="../../assets/icons8-meeting-time-100.png" width="30px">&nbsp;
                     <label><b style="font-size: 20px;">Teaching Time</b></label><br>
+
                     <!-- <input type="time"  > -->
                     <input atp-time-picker  type="text" placeholder="Enter Time" name="teachingtime"  [(ngModel)]="tutor1.teachingtime">
                 </div>
                 <div class="form-group">
                     <img src="../../assets/what.png" width="40px">&nbsp;
                     <label><b style="font-size: 20px;">Whatsapp Link</b></label>
+
                     
                     <input type="text" required #link="ngModel" [class.is-invalid]="link.invalid && link.touched" placeholder="Enter Whatsapp link" class="form-control" name="link" [(ngModel)]="tutor1.watsuplink">
                     <small   class="text-danger" [class.d-none]="link.valid || link.untouched">Link Is Required</small>
@@ -134,6 +143,7 @@
                 <div class="form-group">
                     <img src="../../assets/icons8-syllabus-80.png" width="40px">&nbsp;
                        <label><b style="font-size: 20px;">Course Type</b></label><br>
+
                     <select  required #course="ngModel" [class.is-invalid]="course.invalid && course.touched" class="custom-select" name="course" [(ngModel)]="tutor1.coursetype">
                         <option value="">Select Course Type</option>
                         <option *ngFor="let Course of Courses">{{Course}}</option>
@@ -141,8 +151,10 @@
                     <small   class="text-danger" [class.d-none]="course.valid || course.untouched">Choose type of course</small>
                 </div>
                 <div class="form-group">
+
                     <img src="../../assets/icons8-money-bag-128.png" width="40px">&nbsp;
                     <label><b style="font-size: 20px;">Course Fee</b></label>
+
                     <input type="text" required #fee="ngModel" [class.is-invalid]="fee.invalid && fee.touched" placeholder="Enter fees" class="form-control" name="fee" [(ngModel)]="tutor1.fee">
                     <small   class="text-danger" [class.d-none]="fee.valid || fee.untouched">Enter fees</small>
                 </div>

@@ -16,53 +16,43 @@
                         <div class="card-body">
                             <div class="row ">
                                 <div class="col">
-                                    <p>name:&nbsp;&nbsp;{{name}}</p>
-                                    <p>subject:&nbsp;&nbsp;{{subject}}</p>
-                                    <p>coursetype:&nbsp;&nbsp;{{coursetype}}</p>
-                                    <p>time:&nbsp;&nbsp;{{time}}</p>
-                                    <p *ngIf="tutordate">tutordate:&nbsp;&nbsp;{{tutordate}}</p>
-                                    <p>fee:&nbsp;&nbsp;{{fee}}</p>
-                                    <p>subsubject:&nbsp;&nbsp;{{subsubject}}</p>
-                                    <p>time:&nbsp;&nbsp;{{time}}</p>   
+                                    <div><b>name:</b>&nbsp;&nbsp;{{name}}</div><br>
+                                    <div><b>subject:</b>&nbsp;&nbsp;{{subject}}</div><br>
+                                    <div><b>coursetype:</b>&nbsp;&nbsp;{{coursetype}}</div><br>
+                                    <div><b>time:</b>&nbsp;&nbsp;{{time}}</div><br>
+                                    <div *ngIf="tutordate"><b>tutordate:</b>&nbsp;&nbsp;{{tutordate}}</div><br>
+                                    <div><b>fee:</b>&nbsp;&nbsp;{{fee}}</div><br>
+                                    <div><b>subsubject:</b>&nbsp;&nbsp;{{subsubject}}</div><br>
+                                    <div><b>time:</b>&nbsp;&nbsp;{{time}}</div><br> 
                                     <div *ngIf=selecteddays>  
-                                    <div  *ngIf="!a">days:&nbsp;&nbsp;{{selecteddays}}</div>
+                                    <div  *ngIf="!a"><b>days:</b>&nbsp;&nbsp;{{selecteddays}}</div>
                                     <div *ngIf="a">
                                         days:<br>
                                         <div  *ngFor="let day of days">
                                             <input (click)="onsel(day)"type="checkbox" >{{day}}
                                         </div>
-
-                                    </div></div>
-                           
+                                    </div></div>                        
                                         <button class="btn btn-primary" type="submit" (click)="fun()" > submit</button>
                                 </div>
                                 <div class="col">
                                     <div *ngIf="image==='null';else image1">
-                                        <img src="../../assets/default.jpg" alt="nooooo">
+                                        <img  class="rounded-circle" src="../../assets/default.jpg" alt="nooooo">
                                         </div>
-
-
  <!-- add the else block -->
-
-                                                                                  
-                                        <ng-template #image1>
-                                          <img src="http://localhost:3000/imageget?name={{image}}" alt="dsxcz">
+                                    <ng-template #image1>
+                                          <img class="rounded-circle" src="http://192.168.137.187:3000/imageget?name={{image}}" alt="dsxcz">
                                           </ng-template>
 
                                </div>
-                                </div>
-                               
-                
-                            </div>
-                            
+                                </div>              
+                            </div>                            
                       </div>
                     </div>
             </div>
-        </div>
-      
+        </div>  
 </div>
-<p *ngIf="regitered">ALREADY REGISTERED</p>
-
-
+<br><div style="color: blue; text-align: center;"  *ngIf="regitered">
+    ALREADY REGISTERED
+</div>
 </body>
 </html>

@@ -36,7 +36,6 @@ import {MatNativeDateModule} from '@angular/material';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-// import { ForgotpwComponent } from './forgotpw/forgotpw.component';
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig([
@@ -66,7 +65,7 @@ export function getAuthServiceConfigs() {
     AboutComponent,
     ForgotpasswordComponent,
     PagenotfoundComponent,
-    // ForgotpwComponent,
+    
   ],
   imports: [
     BrowserModule,

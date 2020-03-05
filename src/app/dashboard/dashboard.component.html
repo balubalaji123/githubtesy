@@ -7,9 +7,6 @@
     <title>dashboard</title>
 </head>
 <body>
-
-<!-- sidenavbar -->
-
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
 
@@ -21,6 +18,7 @@
 <!-- add the else block-->
      <ng-template #image>
       <img class="sidenav-img" src="http://localhost:3000/imageget?name={{a.userimage}}" (click)=forprofile() alt="dsxcz">
+
       {{a.tutorimage}}<p style="color: white;text-align: center;font-size: 20px;" (click)=forprofile()>Profile</p>
       </ng-template>
       </div><br>
@@ -28,13 +26,10 @@
       <div id="myDIV">
   <button  routerLink="/firesthome"  class="btn button btn-block  "><span><i class="fa fa-home"></i></span> &nbsp;<span class="span">Home</span></button>
   <button routerLink="/about" class="btn button btn-block "><span><i class="fa fa-question-circle"></i></span> &nbsp;<span class="span">How it Works</span></button>
-  <button  routerLink="/tutor1" class="btn button btn-block "><span><i class="fa fa-user"></i></span> &nbsp;<span class="span">Add Course</span></button>
- <button  routerLink="/student1" class="btn button btn-block "><span><i class="fa fa-graduation-cap"></i></span> &nbsp;<span class="span">Explore Courses</span></button>
-  <button  type="submit" (click)="classesattended1()" class="btn button btn-block"><span><i class="fa fa-user"></i></span> &nbsp;<span class="span">Courses Taught</span></button>
-  <!-- <a *ngIf="show" class="nav-link">
-   <a class="nav-link"><button type="submit" class="btn button btn-block " (click)="onlyonce()">once</button></a><br>
-   <a class="nav-link"></a><button type="submit" class="btn button btn-block " (click)="multiple()">multiple</button></a>
-   -->
+  <button  routerLink="/tutor1" class="btn button btn-block "><span><i class="fa fa-plus"></i></span> &nbsp;<span class="span">Add Course</span></button>
+ <button  routerLink="/student1" class="btn button btn-block "><span><i class="fa fa-search"></i></span> &nbsp;<span class="span">Explore Courses</span></button>
+  <button  type="submit" (click)="classesattended1()" class="btn button btn-block"><span><i class="fa fa-check"></i></span> &nbsp;<span class="span">Courses Taught</span></button>
+  
    <button type="submit" (click)="classesenrolled1()" class="btn button btn-block" ><span><i class="fa fa-graduation-cap"></i></span> &nbsp;<span class="span">Courses Enrolled</span></button>
 
   <button type="submit" (click)="logout()" class="btn button btn-block "><span><i class="fa fa-sign-out"></i></span> &nbsp;<span class="span">Logout</span></button>
@@ -66,7 +61,7 @@
         <div *ngFor="let b of asatutor" >
           <div class="container">
           <div   class="card mycard">
-            <div class="card-body myrow mycol">
+            <div class="card-body myrow">
               <div class="card-data">
                 <div><b>Subject</b>&nbsp; &nbsp; {{b.tutorsubject}}</div>
                 <div><b>Subsubject</b>&nbsp; &nbsp; {{b.tutorsubsubject}}</div>
@@ -79,7 +74,7 @@
                 <button class="del-button" type="submit" *ngIf="showbutton" (click)="delete(b.tutorsubject,b.tutorcoursetype,b.likes,b.tutorsubsubject)">delete</button >
             </div>
             </div>
-          </div>
+          </div></div>
         </div><br>
     </div>
 
@@ -87,7 +82,7 @@
       <div *ngFor="let a of asastudent" >
         <div class="container">
         <div  class="card mycard">
-          <div class="card-body ">
+          <div class="card-body myrow">
             <!-- <div class="card-data"> -->
               <div class="row justify-content-center ">
                 <div class="col" >
@@ -115,8 +110,6 @@
           <button type="submit" *ngIf="!a.like" (click)="like(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail,a.time)"><i [style.color]= "hasError ? '#23415c' :'gray'"  class="fa fa-thumbs-up"></i></button>
           <button type="submit" *ngIf="a.like" (click)="dislikedf(a.learnername,a.leanersubject,a.learnertime,a.date,a.like,a.tutormail,a.learnermail,a.time)" ><i class="fa fa-thumbs-up"></i></button>
               </div></div>
-              <!-- </div> -->
-
               </div>
           </div>
         </div>
@@ -124,31 +117,22 @@
     </div> 
   </div>
 
+    <!-- cards -->
 
-  </div>
-
- <!-- <span style="font-size: 25px;cursor: pointer;padding: 10px;" (click)="openNav()"><i style="color: #23415c;" class="fa fa-bars"></i></span> -->
-
-
-
-
-      <!-- cards -->
-  
-    <!-- <div class=" container row">
-      <div class="col">
-        <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>
+    <!-- fast filling -->
+    <div *ngIf="showimmediatecourses&&sele" >
+      <div class=" container">
+        <div class="row">
+        <div class="col">
+          <button (click)="selection()" mat-stroked-button color="primary" style="width: 100%;font-size: 20px;">fastfilling</button>
+        </div>
+        <div class="col">
+      <button (click)="selection1()" mat-stroked-button color="primary"  style="width: 100%;font-size: 20px;">famous courses</button>
+        </div>
+        </div>
       </div>
-      <div class="col">
-    <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button>
-      </div>
-    </div> -->
 
-    <div *ngIf="showimmediatecourses&&sele" class="main" >
-     
-      <!-- <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>&nbsp;&nbsp; -->
-      <!-- <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button> -->
-
-      <div style="text-align: center;">Fastfilling</div>
+      <div class="heading">Fastfilling</div>
         <div class="row">
           <div  *ngFor="let a of immediatecourse" >
             <div class="container">
@@ -156,11 +140,13 @@
                 <div class="card1">
                   <img src="https://img.freepik.com/free-photo/network-with-nodes-connected-background-technology-concept_34478-108.jpg?size=626&ext=jpg" alt="card background" class="card-img">
                   <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
-                  <div class="card-body" style="font-size: 20px;">
-                  <div ><b>seats  left:</b>{{a.maxstudents}}</div>
-                  <div ><b>subject:</b>{{a.tutorsubject}}</div>
-                  <div ><b>sub subject :</b>{{a.tutorsubsubject}}</div>
-                  <div ><b>date:</b>{{a.tutordate}}</div>
+
+                <div class="card-body">
+                  <div style="font-size: 18px;"><b>seats  left:</b>{{a.maxstudents}}</div>
+                  <div style="font-size: 18px;"><b>subject:</b>{{a.tutorsubject}}</div>
+                  <div style="font-size: 18px;"><b>sub subject :</b>{{a.tutorsubsubject}}</div>
+                  <div style="font-size: 18px;"><b>date:</b>{{a.tuorgdate}}</div>
+                <button class="del-button" (click)="courseenrolled(a)">subscribe</button>
                 </div>
                 </div>
               </div>
@@ -170,36 +156,58 @@
       </div>
   <br>
   </div>
+  <!-- famous courses -->
+  <div *ngIf="showimmediatecourses&&!sele" >
+    <div class=" container ">
+      <div class="row">
+      <div class="col">
+        <button (click)="selection()" mat-stroked-button color="primary"  style="width: 100%; font-size: 20px;">fastfilling</button>
+      </div>
+      <div class="col">
+    <button (click)="selection1()" mat-stroked-button color="primary" style="width: 100%;font-size: 20px;">famous courses</button>
+      </div></div>
+    </div>
+        <div class="heading">Famousfilling</div>
+        <div class="row">
+          <div  *ngFor="let a of mostliked" >
+            <div class="container">
+              <div class="card-wrapper">
+                <div class="card1">
+                  <img src="https://img.freepik.com/free-photo/network-with-nodes-connected-background-technology-concept_34478-108.jpg?size=626&ext=jpg" alt="card background" class="card-img">
+                  <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
+                <div class="card-body">
+                  <div style="font-size: 18px;"><b>subject:</b>{{a.tutorsubject}}</div>
+                <div style="font-size: 18px;"><strong>sub subject:</strong>{{a.tutorsubsubject}}</div>
+                <div style="font-size: 18px;"><strong>course type :</strong>{{a.tutorcoursetype}}</div>
+                <div style="font-size: 18px;"><strong>likes:</strong>{{a.likes}}</div>
+                <button class="del-button" (click)="courseenrolled(a)">subscribe</button>
+                </div>
+                </div>
+              </div>
+            </div>        
+        </div>
+      </div>
+  <br>
+  </div>
+  
+<!-- profile -->
+  <a *ngIf=profile>
+    <app-profile></app-profile>
+  </a>
+
+  </div>
+
+ <!-- <span style="font-size: 25px;cursor: pointer;padding: 10px;" (click)="openNav()"><i style="color: #23415c;" class="fa fa-bars"></i></span> -->
+
+ <!-- <button (click)="selection()" mat-stroked-button color="primary" class="main1">fastfilling</button>&nbsp;&nbsp; -->
+      <!-- <button (click)="selection1()" mat-stroked-button color="primary" class="main">famous courses</button> -->
+     
+
+
+    
 <!-- </div> -->
 <!-- </form> -->   
- <div *ngIf="showimmediatecourses&&!sele" class="main" >
-      <div style="text-align: center;">Famousfilling</div>
-      <div class="row">
-        <div  *ngFor="let a of mostliked" >
-          <div class="container">
-            <div class="card-wrapper">
-              <div class="card1">
-                <img src="https://img.freepik.com/free-photo/network-with-nodes-connected-background-technology-concept_34478-108.jpg?size=626&ext=jpg" alt="card background" class="card-img">
-                <img src="../../assets/default.jpg" alt="profile image" class="profile-img">
-                <!-- <p>#name</p> -->
-                <!-- <div> -->
-              <div class="card-body" style="font-size: 20px;">
-                <div><b>Name:</b>{{a.tutorname}}</div>
-                <div><b>subject:</b>{{a.tutorsubject}}</div>
-              <div><b>sub subject:</b>{{a.tutorsubsubject}}</div>
-              <div><b>course type :</b>{{a.tutorcoursetype}}</div>
-              <div><b>likes:</b>{{a.likes}}</div>
-              </div>
-              </div>
-            </div>
-          </div>        
-      </div>
-    </div>
-<br>
-
-
-</div>
-
+ 
 <!-- courses Taught -->
 
         <!-- <div *ngIf="a" class="main">
@@ -215,7 +223,7 @@
                         </div>
     add the else block                                     
                         <ng-template #image1>
-                          <img class="rounded-circle" src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">
+                          <img class="rounded-circle" src="http://192.168.137.187:3000/imageget?name={{a.tutorimage}}" alt="dsxcz">
                           </ng-template>
                     </div>
                     <div class="col">
@@ -267,35 +275,13 @@
  -->
 
       <!-- cards -->
-      <a *ngIf=profile>
-        <app-profile></app-profile>
-      </a>
+     
+      <!-- <router-outlet></router-outlet> -->
 
       
-      <script>
-        // Add active class to the current button (highlight it)
-        var header = document.getElementById("myDIV");
-        var btns = header.getElementsByClassName("button");
-        for (var i = 0; i < buttons.length; i++) {
-          btns[i].addEventListener("click", function() {
-          var current = document.getElementsByClassName("active");
-          current[0].className = current[0].className.replace(" active", "");
-          this.className += " active";
-          });
-        }
-        </script>
-        
+     
         
 
     
 
-      <!-- </body> -->
-
-
-   <!-- as tutor -->
- 
-
-<!-- as student -->
-
-<!-- <button routerLink="/profile">profile</button> -->
-
+     

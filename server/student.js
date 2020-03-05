@@ -31,13 +31,13 @@ var formatted = dt.format('Y-m-d H:M:S');
 todaydate=year+'-'+month+'-'+date
 var time1=todaydate+'T'+time.getHours()+':'+time.getMinutes()+':'+time.getSeconds()+'Z'
     checkuser=[]
-    c={tutorlocation:req.session.location}
+    c={tutorlocation:req.session.location,tutormail:{$ne:req.session.mail}}
     dbo.collection("continousteacher").find(c,{$exists:true}).sort({"likes":-1}).toArray(function(err, result) {
         if (err) throw err;
         if(result.length){
         checkuser=result
     }
-        d={tutorlocation:req.session.location,maxstudents: { $gt: 0 },tutordate:{$gte:new Date()}} 
+        d={tutorlocation:req.session.location,maxstudents: { $gt: 0 },tutordate:{$gte:new Date()},tutormail:{$ne:req.session.mail}} 
 
         dbo.collection("onceteacher").find(d).sort({"tutordate":1}).toArray(function(err,result1){
             if(err) throw err
@@ -61,7 +61,7 @@ router.get('/subjects',function(req,res){
         
     subjectarray=[]
     subsubjectarray=[]
-    dbo.collection('continousteacher').find({tutorlocation:req.session.location}).toArray(function(err,result){
+    dbo.collection('continousteacher').find({tutorlocation:req.session.location,tutormail:{$ne:req.session.mail}}).toArray(function(err,result){
         for(i=0;i<result.length;i++){
             check=0
             for(j=0;j<subjectarray.length;j++){
@@ -73,7 +73,7 @@ router.get('/subjects',function(req,res){
                 {
                     subjectarray.push(result[i].tutorsubject)
                 }}
-                var e={tutordate: { $gte:new Date()},tutorlocation:req.session.location}
+                var e={tutordate: { $gte:new Date()},tutorlocation:req.session.location,tutormail:{$ne:req.session.mail}}
                dbo.collection('onceteacher').find(e,{$exists:true}).toArray(function(err,result1){
                 for(i=0;i<result1.length;i++){
                     check=0
@@ -104,7 +104,7 @@ router.post('/subsubjects',function(req,res){
         todaydate=year+'-'+month+'-'+date
         
     subsubjectarray=[]
-    var c={tutorsubject:req.body.subject,tutorlocation:req.session.location}
+    var c={tutorsubject:req.body.subject,tutorlocation:req.session.location,tutormail:{$ne:req.session.mail}}
     dbo.collection('continousteacher').find(c,{$exists:true}).toArray(function(err,result){
         if(result.length){
         for(i=0;i<result.length;i++){
@@ -121,7 +121,7 @@ router.post('/subsubjects',function(req,res){
                 }
            
         }}
-        var e={tutorsubject:req.body.subject,tutordate:{ $gte:new Date()},tutorlocation:req.session.location}
+        var e={tutorsubject:req.body.subject,tutordate:{ $gte:new Date()},tutorlocation:req.session.location,tutormail:{$ne:req.session.mail}}
         dbo.collection('onceteacher').find(e,{$exists:true}).toArray(function(err,result1){
             if(result1.length){
             for(i=0;i<result1.length;i++){
@@ -156,11 +156,11 @@ router.post('/filter',function(req,res){
         todaydate=year+'-'+month+'-'+date
         
 checkuser=[]
-    var c={tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject,tutorlocation:req.session.location}
+    var c={tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject,tutorlocation:req.session.location,tutormail:{$ne:req.session.mail}}
     dbo.collection("continousteacher").find(c,{$exists:true}).toArray(function(err,response){
         if (err) throw err;
         checkuser=response
-        var e={tutorlocation:req.session.location,tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject,tutordate:{ $gt:new Date()  }}
+        var e={tutorlocation:req.session.location,tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject,tutordate:{ $gt:new Date()},tutormail:{$ne:req.session.mail}}
         dbo.collection("onceteacher").find(e).toArray(function(err,result1){
             if(err) throw err
             for(i=0;i<result1.length;i++)
@@ -182,6 +182,7 @@ router.post('/coursetype',function(req,res){
         var formatted = dt.format('Y-m-d H:M:S');
         todaydate=year+'-'+month+'-'+date
         req.body["tutorlocation"]=req.session.location
+        req.body["tutormail"]={tutormail:{$ne:req.session.mail}}
 
 checkuser=[]
     dbo.collection("continousteacher").find(req.body,{$exists:true}).toArray(function(err,response){
@@ -210,7 +211,7 @@ router.get('/todayclasses',function(req,res){
     var dt = dateTime.create();
     var formatted = dt.format('Y-m-d H:M:S');
     todaydate=year+'-'+month+'-'+date
-    var f={tuorgdate:todaydate,tutorlocation:req.session.location}
+    var f={tuorgdate:todaydate,tutorlocation:req.session.location,tutormail:{$ne:req.session.mail}}
     dbo.collection('onceteacher').find(f,{$exists:true}).toArray(function(err,response){
         if(err)throw err
         checkuser=response

@@ -10,11 +10,13 @@
     <app-navbar></app-navbar>
     <!-- <app-courseselected [selectedcouse]="selectedcouse" *ngIf=display></app-courseselected>  -->
     
-   
-    <div class="container">
-      <div class="container">
+    
+        
+      <!-- <button (click)="gettodayclasses()">today classes</button> -->
+    <div class="container-fluid">
          <div class="row">
-          <div class="col-3 col-sm-6">
+          <div class="col">
+
             <mat-form-field>
               <mat-label>{{filter2}}</mat-label>
               <mat-select>
@@ -26,7 +28,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-         <div class="col-3 col-sm-6">
+         <div class="col">
           <mat-form-field>
             <mat-label>{{filter3}}</mat-label>
             <mat-select>
@@ -39,7 +41,8 @@
           </mat-form-field>&nbsp;&nbsp;
        
          </div>
-          <div class="col-3 col-sm-6">
+          <div class="col">
+
             <mat-form-field>
               <mat-label>{{filter1}}</mat-label>
               <mat-select>
@@ -49,41 +52,19 @@
               </mat-select>
             </mat-form-field>
           </div>
+
          
-         <div class="col-3 col-sm-6">
+         <div class="col">
           <button type="button" (click)="gettodayclasses()" class="btn btn-outline-primary">Today Clases</button>
          </div> 
         </div>
-    </div>
- <!-- <div class="container"> -->
-  <!-- <div class="button1">
-    <a style="color: blanchedalmond;"(click)="gettodayclasses()">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-        Today Classes
-    </a>
-  </div> -->
-  
- <!-- </div> -->
-<!-- 
-    <div class="container">
-    
-            
-     <br> -->
-             
-            
-            <!-- <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search"> -->
-            <!-- <div class="main">
-              <div *ngIf="!display">
-                <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
-                
-              </div>
-            </div> -->
 
+    
+ 
             <div class="container">
+
               <div  class="row search" *ngIf="!display"><br><br>
+
               <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
             </div>
             <div class="card-display" *ngFor="let a of subjectslist | filter:searchText;let i=index ">
@@ -99,12 +80,15 @@
                       </div>
             <!-- add the else block                                          -->
                        <ng-template #image>
+
                         <img class="img rounded-circle" src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="">{{a.tutorimage}}
+
                         </ng-template>
                     
                   </div>
                   <div class="col-6">
                     <div class="row">
+
                       <div class="col-md-6 col-sm-6"><b>Subject:</b><span class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</span></div>
                       <div class="col-md-6 col-sm-6" ><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
                     </div>
@@ -125,6 +109,7 @@
                      <div class="row">
                       <div class="col-md-6 col-sm-6"><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
                       <!-- <p class="col-md-6 col-sm-6"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</p> -->
+
                      </div>
                   <div class="row sub justify-content-end">
                     <button  class="btn btn-info btn-lg"  (click)="subjectselected(i)" >Subscribe</button>

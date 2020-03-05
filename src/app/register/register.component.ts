@@ -27,10 +27,8 @@ public googlemail;
 public googleuser;
 public tonavnextpage;
 public login1=false;
-
 public imageUrl1 = '../../assets/default.jpg';
-
-public uri='http://localhost:3000/register/upload'
+public uri='http://192.168.43.5:3000/register/upload'
 public users1;
 public gpw=false;
 public images
@@ -95,12 +93,14 @@ if(data=="useralreadyexists"){
   {
      }
   check(a:string){
+
     this.forfircard=false;
     this.pw=true; 
     this.b=false; 
 
 
     this.forseccard=true;
+
     console.log(""+this.pw)
 
     this.socialSignIn(a)
@@ -136,7 +136,7 @@ this.register.register(this.registermodel)
     this.reg=new Googlepassword(this.googleuser,this.googlemail,passwordgoogle,this.location)
 this.googleregister1.googlelogin(this.reg)
 .subscribe(
-  data=>{
+  data=>{console.log(data)
   if(data=="useralreadyexists")
   {
     this.route.navigate(['/login1']);
