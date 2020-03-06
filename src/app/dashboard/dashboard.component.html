@@ -29,6 +29,10 @@
   <button  routerLink="/tutor1" class="btn button btn-block "><span><i class="fa fa-plus"></i></span> &nbsp;<span class="span">Add Course</span></button>
  <button  routerLink="/student1" class="btn button btn-block "><span><i class="fa fa-search"></i></span> &nbsp;<span class="span">Explore Courses</span></button>
   <button  type="submit" (click)="classesattended1()" class="btn button btn-block"><span><i class="fa fa-check"></i></span> &nbsp;<span class="span">Courses Taught</span></button>
+  <a *ngIf="show" class="nav-link">
+   <a class="nav-link"><button type="submit" class="btn button btn-block " (click)="onlyonce()">once</button></a><br>
+   <a class="nav-link"><button type="submit" class="btn button btn-block " (click)="multiple()">multiple</button></a>
+  </a>
   
    <button type="submit" (click)="classesenrolled1()" class="btn button btn-block" ><span><i class="fa fa-graduation-cap"></i></span> &nbsp;<span class="span">Courses Enrolled</span></button>
 
