@@ -1,11 +1,10 @@
 <!-- session navbar  code -->
 <div [hidden]=sessionnavbar>
   <app-navbar></app-navbar>
-  </div>
-  
+</div>
   <!-- session not exists navbar code -->
   <nav class="navbar  navbar-expand-sm" role="navigation" [hidden]="normalnavbar">
-    <div class="navbar-brand">Find myTutor</div>
+    <div style="padding-left:25px ;" class="navbar-brand">FindMyTutor</div>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
        <span class="fa fa-bars"></span>
      </button>
@@ -15,44 +14,49 @@
          <a class="nav-link"  routerLink="/firesthome" >Home</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link" routerLink="/about" >How It works</a>
+         <a class="nav-link" routerLink="/about" >How It Works</a>
        </li>
-    <button type="button" class=" button"><a routerLink="/login1" routerLinkActive="active" >Login</a></button>
-    <button type="button" class=" button"><a routerLink="/register1" routerLinkActive="active">Register</a></button>
-   </ul>
+       <li class="nav-item">
+           <a class="nav-link" type="button" routerLink="/login1" routerLinkActive="active" >Login</a>
+       </li>
+         <li class="nav-item">
+           <a class="nav-link" type="button" routerLink="/register1" routerLinkActive="active">Register</a>
+       </li>
+    </ul>
    </div>
 </nav>
 
-<!-- <div class="container-fluid"> -->
+  
+  <!-- session not exists navbar code -->
+  
+
        <div style="text-align: center;" class="container-fluid">
        <div class="row">
            <div class="col-3">
 
            </div>
            <div class="col-6">
-            <h3 style="font-size: 25px;" ><b>HOW TO USE FIND MY TUTOR ?</b></h3><br>
+            <h2 style="font-size: 25px;" ><b>HOW TO USE FIND MY TUTOR ?</b></h2><br>
            </div>
        </div>
     <div style="text-align: center;"><i  class='fas fa-meh-rolling-eyes' style='font-size:50px;color:black'></i></div>
   </div>
     
-    <!-- <div style="text-align: center;"><div style="width:80%;margin: auto;color:black;padding-bottom: 50px;border: 2px solid gray;border-radius: 10px;overflow: auto;" >
-      <div>
-        <img style="width: 30%;float: right;min-width: 300px;padding-right:2vw ;padding-left: 2vw;padding-top: 2.5%;margin: auto;" src="../assets/this.jpg" alt="IMAGE">
-        <p style="font-size: 15px;text-align:left;padding: 1vw;padding-top:20%;text-align: justify;" >FindMyTutor is all about connecting people and sharing knowledge. We help you in finding your Ideal Tutor at your comfort.
-          Our tutors provide a wide range of courses, you name it and you got it! So where do you start ?</p>
-      </div>  
-    </div> -->
+   <div class="container">
     <div class="row">
-      <div class="col-4">
-        <img src="../assets/this.jpg">
-      </div>
-      <div class="col-6">
-        <p>FindMyTutor is all about connecting people and sharing knowledge. We help you in finding your Ideal Tutor at your comfort.
-          Our tutors provide a wide range of courses, you name it and you got it! So where do you start ?</p>
-      </div>
+    <div class="col-md-4 col-sm-12 idea">
+      <img src="../../assets/how.jpg" width="300">
     </div>
-    <!-- </div> -->
+    <div class="col-md-6 col-sm-12 align-self-center">
+      <p style="font-size: 20px;">
+        FindMyTutor is all about connecting people and sharing knowledge.
+        We help you in finding your Ideal Tutor at your comfort.
+        Our tutors provide a wide range of courses, you name it and you got it!
+        So where do you start ?</p>
+    </div>
+  </div>
+   </div>
+  
 <div class="container-fluid">
       <div class="a" >
           <h3 ><b>ALL YOU NEED TO DO IS</b></h3>
@@ -64,7 +68,7 @@
      
       <!-- RIGHT AFTER BUTTONS -->
     <div class="container box">  
-      <h3>AND PICK A PATH</h3>
+      <div class="form-container">AND PICK A PATH</div>
       <div class="row">
         <div class="col-sm-6 btn-div"><button class="btn" (click)="onClickT()">TUTOR</button></div>
         <br>

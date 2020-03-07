@@ -8,7 +8,7 @@
     padding: 30px;
 }
 .card{
-    width: 350px;
+    width:100%;
     border:1px solid gray;
 }
 .card img{
@@ -28,9 +28,11 @@
 }
 .button{
     background:#23415c;
-    border-radius: 20px;  
-    font-size: 20px;
-    font-weight: 600;
+    border-radius: 10px;  
+    font-size: 18px;
+    font-weight: 500;
+    width: 150px;
+    text-align: center;
   
 }
  .button a{

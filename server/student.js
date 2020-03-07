@@ -160,7 +160,7 @@ checkuser=[]
     dbo.collection("continousteacher").find(c,{$exists:true}).toArray(function(err,response){
         if (err) throw err;
         checkuser=response
-        var e={tutorlocation:req.session.location,tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject,tutordate:{ $gt:new Date()  }}
+        var e={tutorlocation:req.session.location,tutorsubject:req.body.subject,tutorsubsubject:req.body.subsubject,tutordate:{ $gt:new Date()}}
         dbo.collection("onceteacher").find(e).toArray(function(err,result1){
             if(err) throw err
             for(i=0;i<result1.length;i++)
@@ -182,6 +182,7 @@ router.post('/coursetype',function(req,res){
         var formatted = dt.format('Y-m-d H:M:S');
         todaydate=year+'-'+month+'-'+date
         req.body["tutorlocation"]=req.session.location
+
 
 checkuser=[]
     dbo.collection("continousteacher").find(req.body,{$exists:true}).toArray(function(err,response){

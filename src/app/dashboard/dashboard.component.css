@@ -4,7 +4,26 @@ body{
     margin: 0;
 
 }
-.main{
+ .card-wrapper{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column
+}
+.container{
+    padding:20px 50px;
+}
+.profile-img{
+    width: 10rem;
+    height: 12rem;
+    object-fit: cover;
+    border-radius:50% ;
+    margin-top: -10rem;
+    z-index: 999;
+    border: 1rem solid #ebeef8;
+
+}
+/* .main{
     margin-left: 30%; 
     padding: 0px 10px;
     margin-top: 5%;
@@ -13,58 +32,7 @@ body{
     margin-left: 40%; 
     padding: 0px 10px;
     margin-top: 5%; 
-}
-.card-body
-{
-    font-size: 25px;
-}
-  .name{
-      text-align: center;
-      color: #fff;
-      font-size: 20px;
-  }
-
-  
-  /* .sidebar a:hover {
-    color: #f1f1f1;
-  } */
-  .sidebar img{
-      height: 100px;
-      width: 100px;
-      border-radius: 50%;
-  }
-  .img-style{
-      text-align: center;
-  }
-.img-icon{
-    width: 45px;
-    height: 45px;
-    border: 2px solid #23415c;
-    border-radius: 50%;
-    background: #fff;
-
-}
-.button{
-    background:#23415c;
-    /* border: 2px solid #23415c; */
-    border-radius: 10px;
-    color:#fff;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px;
-    font-family: sans-serif;
-    border-style: none;
-    
-  
-}
-.mycontainer{
-    border-bottom: 2px solid lightgrey;
-    padding-bottom: 20px;
-    float: right;
-
-    
-
-}
+} */
 .button{
     background:#23415c;
     color:rgb(245, 237, 237);
@@ -72,6 +40,7 @@ body{
     font-weight: 600;
     text-align: center;
     font-family: sans-serif;
+    padding: 10px;
     border-style: none; 
     border-bottom: 1px solid #fff;
 }
@@ -84,18 +53,20 @@ body{
     color: #23415c;
 }
 .myrow{
-    padding: 30px 50px ;
+
     width: 100%;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
 }
+
 .mycard{
     background: #fff;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 0px #cacfd3;
-    width: 100%;
-    /* line-height: 30px; */
-    font-size: 20px;
-    font-weight: 400;
+    box-shadow: 0px 0px 5px 0px lightgrey;
+    border: 2px solid lightgrey;
+    font-size: 18px;
+    width: 80%;
     color: black;
     font-family: sans-serif;
   
@@ -115,7 +86,7 @@ body{
     color:#fff;
     font-size: 18px;
     font-weight: 400;
-    padding:10px 15px; 
+    padding:7px 10px; 
 }
 
 .sidenav {
@@ -128,8 +99,10 @@ body{
     background-color: #23415c;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 50px;
+    padding-top: 60px;
+    /* border-bottom:1px solid #fff; */
   }
+  
   .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -150,39 +123,114 @@ body{
     font-size: 36px;
     margin-left: 50px;
   }
-
   
-  @media screen and (max-height: 400px) {
+  #main {
+    transition: margin-left .5s;
+    padding: 0;
+  }
+  
+  @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
-    @media screen and (max-width: 400px) {
-
-    .rounded-circle{
-        height: 50px;
-        width: 50px;
-        align-items: center;
-    }
+      @media screen and (max-width: 400px) {
+        .sidebar img{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+        .rounded-circle{
+            height: 100px;
+            width: 100px;
+            /* align-items: center; */
+        } 
+        .sidenav{
+            width: 15%;
+        }
     .span{
         display: none;
     }
-    
+     .mycard{
+        background: #fff;
+        /* text-align: center; */
+        padding-right:5px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px 0px lightgrey;
+        border: 1px solid lightgrey;
+        font-size: 15px;
+        width: 100%;
+        color: black;
+        font-family: sans-serif;
+      
+    }
+     
   }
-  .rounded-circle{
+  .sidenav-img{
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      align-items: center;
+  }
+  /* .rounded-circle{
       height: 200px;
       width: 200px;
       align-items: center;
   }
-  
+   */
 
-.card-wrapper{
-    display: flex;
-    align-items: center;
-    align-content: center;
-    flex-direction: column
+.navbar{
+    background: #fff;
+    color: #23415c;
+    padding: 5px 15px 5px 0;
+    font-size: 1.2rem;
+    font-family:'Segoe UI';
+    border-bottom: 1px solid lightgrey;
+}
+.navbar-brand{
+    color: #23415c;
+    font-size: 25px;
+    font-weight: 600;
+    padding-left: 1%;
+}
+.nav-link{
+    color: #fff;
+    padding: 10px;
+    
+}
+
+.nav-item .fa{
+    color: #23415c;
+    font-size: 1.2rem;
+
+}
+.button1{
+    background: #fff;
+    color: #23415c;
+    font-size: 18px;
+    font-weight: 700;
+    width: 170px;
+    text-align: center;
+}
+
+.button1 a{
+    color:#23415c;
+    text-decoration: none;
+}
+.logout:hover{
+color: #23415c;
+}
+@media screen and (max-width: 400px) {
+    .button1{
+        background: #fff;
+        color: #23415c;
+        font-size: 18px;
+        font-weight: 700;
+        width: 100%;
+        text-align: center;
+    }
 }
 .card1{
-    width: 22em;
+    width: 350px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -196,19 +244,12 @@ body{
     height: 10rem;
     object-fit: cover;
 }
-.profile-img{
-    width: 10rem;
-    height: 12rem;
-    object-fit: cover;
-    border-radius:50% ;
-    margin-top: -10rem;
-    z-index: 999;
-    border: 1rem solid #ebeef8;
+.heading{
+    text-align: center;
+    color: #23415c;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: sans-serif;
 
-}
-
-.ma{
-    margin-top: 0%;
-    /* padding-top: 10%; */
 }
 

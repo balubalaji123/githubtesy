@@ -7,12 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <app-navbar></app-navbar> 
-      <button (click)="gettodayclasses()">today classes</button>
-    <div class="container">
-      <div class="container">
+
+    <app-navbar></app-navbar>
+    <!-- <app-courseselected [selectedcouse]="selectedcouse" *ngIf=display></app-courseselected>  -->
+    
+    
+        
+      <!-- <button (click)="gettodayclasses()">today classes</button> -->
+    <div class="container-fluid">
+
          <div class="row">
-          <div class="col-3">
+          <div class="col">
+
             <mat-form-field>
               <mat-label>{{filter2}}</mat-label>
               <mat-select>
@@ -22,7 +28,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-         <div class="col-3">
+         <div class="col">
           <mat-form-field>
             <mat-label>{{filter3}}</mat-label>
             <mat-select>
@@ -32,7 +38,8 @@
             </mat-select>
           </mat-form-field>&nbsp;&nbsp;
          </div>
-          <div class="col-3">
+          <div class="col">
+
             <mat-form-field>
               <mat-label>{{filter1}}</mat-label>
               <mat-select>
@@ -41,11 +48,18 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-          </div>  
-         </div>
-    </div>
+
+          </div>
+
+         
+         <div class="col">
+          <button type="button" (click)="gettodayclasses()" class="btn btn-outline-primary">Today Clases</button>
+         </div> 
+        </div>
             <div class="container">
-              <div  class="row search" *ngIf="!display">
+
+              <div  class="row search" *ngIf="!display"><br><br>
+
               <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
             </div>
             <div class="card-display" *ngFor="let a of subjectslist | filter:searchText;let i=index ">
@@ -61,32 +75,37 @@
                       </div>
             <!-- add the else block                                          -->
                        <ng-template #image>
-                        <img class="img rounded-circle" src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="">{{a.tutorimage}}
+
+                        <img class="img rounded-circle" src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="no tutor image">
+
+
                         </ng-template>
                     
                   </div>
                   <div class="col-6">
                     <div class="row">
-                      <p class="col-md-6 col-sm-6"><b>Subject:</b><span class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</span></p>
-                      <p class="col-md-6 col-sm-6" ><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</p>
+
+                      <div class="col-md-6 col-sm-6"><b>Subject:</b><span class="subject">&nbsp;&nbsp;&nbsp;{{a.tutorsubject}}</span></div>
+                      <div class="col-md-6 col-sm-6" ><b>Name:</b>&nbsp;&nbsp;&nbsp;{{a.tutorname}}</div>
                     </div>
                      <div class="row">
-                      <p class="col-md-6 col-sm-6" *ngIf="a.tuorgdate"><b>date:</b>&nbsp;&nbsp;&nbsp;{{a.tuorgdate}}</p>
-                      <p class="col-md-6 col-sm-6" *ngIf="a.maxstudents" ><b>remaining entries:</b>&nbsp;&nbsp;&nbsp;{{a.maxstudents}}</p> 
+                      <div class="col-md-6 col-sm-6" *ngIf="a.tuorgdate"><b>date:</b>&nbsp;&nbsp;&nbsp;{{a.tuorgdate}}</div>
+                      <div class="col-md-6 col-sm-6" *ngIf="a.maxstudents" ><b>remaining entries:</b>&nbsp;&nbsp;&nbsp;{{a.maxstudents}}</div> 
                       <!-- <br> -->
                      </div>
                      <div class="row">
-                      <p class="col-md-6 col-sm-6"><b>Course:</b>&nbsp;&nbsp;&nbsp;{{a.tutorcoursetype}}</p> 
-                      <p class="col-md-6 col-sm-6"><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</p> 
+                      <div class="col-md-6 col-sm-6"><b>Course:</b>&nbsp;&nbsp;&nbsp;{{a.tutorcoursetype}}</div> 
+                      <div class="col-md-6 col-sm-6"><b>Time:</b>&nbsp;&nbsp;&nbsp;{{a.tutortime}}</div> 
                      </div>
                       <div class="row">
-                        <p class="col-md-6 col-sm-6" *ngIf="a.likes"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</p>
-                        <p class="col-6" *ngIf="a.selecteddays" ><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</p>
+                        <div class="col-md-6 col-sm-6" *ngIf="a.likes"><b>likes:</b>&nbsp;&nbsp;&nbsp;{{a.likes}}</div>
+                        <div class="col-6" *ngIf="a.selecteddays" ><b>days:</b>&nbsp;&nbsp;&nbsp;{{a.selecteddays}}</div>
                         
                       </div>
                      <div class="row">
-                      <p class="col-md-6 col-sm-6"><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</p>
-                      <p class="col-md-6 col-sm-6"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</p>
+                      <div class="col-md-6 col-sm-6"><b>subsubject:</b>&nbsp;&nbsp;&nbsp;{{a.tutorsubsubject}}</div>
+                      <!-- <p class="col-md-6 col-sm-6"><b>description:</b>&nbsp;&nbsp;&nbsp;{{a.tutordescription}}</p> -->
+
                      </div>
                   <div class="row sub justify-content-end">
                     <button  class="btn btn-info btn-lg"  (click)="subjectselected(i)" >Subscribe</button>
@@ -112,5 +131,3 @@
               </div>
             </div>
             
-            
-
