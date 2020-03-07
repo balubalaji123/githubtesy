@@ -2,7 +2,6 @@ const express=require('express')
 var nodemailer = require('nodemailer');
 var MongoClient = require('mongodb').MongoClient;
 var dateTime = require('node-datetime');
-var formatted
 var url = "mongodb://localhost:27017/";
 var dbo=''
 MongoClient.connect(url, function(err, db) {
@@ -29,9 +28,6 @@ dbo.collection('learnt').find(checking,{$exists:true}).toArray(function(err,resu
   }
   else{
 // if not registered
-
-
-
 if(req.body.selecteddays.length){
   // multiple days course
   learnermail=req.session.mail

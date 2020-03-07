@@ -1,12 +1,5 @@
 
-<nav class="navbar navbar-expand-sm ">
-  <!-- image code for image -->
-  <!-- <img src="dashboardimage" class="rounded-circle" width="50px"  height="50px" alt="no image in navbar"> -->
-  <!-- checking for MyProfile   -->
-  <!-- <div *ngFor="let username1 of username"></div> -->
-  
-<!-- add the else block                                          -->
-   
+<nav class="navbar navbar-expand-sm ">  
   <div class="navbar-brand" >Find my Tutor</div>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
       <span class="fa fa-bars"></span>
@@ -19,16 +12,7 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/about" ><i class="fa fa-clone"> &nbsp;How It works</i></a>
       </li>
-      <!-- <li class="nav-item">
-        <div *ngFor="let a of user">
-      <div *ngIf="a.userimage===null;else image">
-        <img src="../../assets/default.jpg" width="50px"  height="50px" class="nav-link" alt="no image in profile default">My Profile
-        </div>
-        <ng-template #image>
-          <img src="http://localhost:3000/imageget?name={{a.userimage}}" width="50px"  height="50px" alt="no image in profile">
-          </ng-template>
-        </div>
-      </li> -->
+      
       <li class="nav-item">
         <div class="row">
         <a class="nav-link" routerLink="/dashboard1" >

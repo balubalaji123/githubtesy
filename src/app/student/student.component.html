@@ -7,11 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <app-navbar></app-navbar>
-    <!-- <app-courseselected [selectedcouse]="selectedcouse" *ngIf=display></app-courseselected>  -->
-    
-    
-        
+    <app-navbar></app-navbar> 
       <button (click)="gettodayclasses()">today classes</button>
     <div class="container">
       <div class="container">
@@ -20,10 +16,8 @@
             <mat-form-field>
               <mat-label>{{filter2}}</mat-label>
               <mat-select>
-    
                 <mat-option *ngFor="let subject of allsubjects"  >
                <p (click)="subjectselection(subject)">  {{subject}}</p>  
-    
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -32,14 +26,11 @@
           <mat-form-field>
             <mat-label>{{filter3}}</mat-label>
             <mat-select>
-
               <mat-option *ngFor="let sub of subsubjects"  >
                 <p (click)="subsubjectselection(sub)">  {{sub}}</p> 
-
               </mat-option>
             </mat-select>
           </mat-form-field>&nbsp;&nbsp;
-       
          </div>
           <div class="col-3">
             <mat-form-field>
@@ -50,25 +41,9 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-          </div>
-            
+          </div>  
          </div>
     </div>
-<!-- 
-    <div class="container">
-    
-            
-     <br> -->
-             
-            
-            <!-- <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search"> -->
-            <!-- <div class="main">
-              <div *ngIf="!display">
-                <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
-                
-              </div>
-            </div> -->
-
             <div class="container">
               <div  class="row search" *ngIf="!display">
               <input  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="enter text to search">
@@ -86,7 +61,7 @@
                       </div>
             <!-- add the else block                                          -->
                        <ng-template #image>
-                        <img class="img rounded-circle" src="http://192.168.137.187:3000/imageget?name={{a.tutorimage}}" alt="">{{a.tutorimage}}
+                        <img class="img rounded-circle" src="http://localhost:3000/imageget?name={{a.tutorimage}}" alt="">{{a.tutorimage}}
                         </ng-template>
                     
                   </div>

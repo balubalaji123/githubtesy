@@ -70,14 +70,8 @@ router.post('/',function(req,res){
         from: 'find my tutor',
         to: usermail,
         subject: 'account conformation',
-      attachments:[
-        {
-          filename:'mail.jpg',
-          path:__dirname+'/uploads1/mail.jpg',
-          cid:"batman"
-        },
-      ], 
-      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.137.187:3000/register?id='+check+'">click</a><br><img style="height:150px;width:150px; border-radius:10px;" src="cid:batman">'
+      
+      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://localhost:3000/register?id='+check+'">click</a><br>'
 
 
       };  

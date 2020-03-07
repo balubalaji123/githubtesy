@@ -22,13 +22,15 @@ public a;
 public functionreturn;
 public b=false;
 public pw=false;
+// to check if image is selected
+public imagecheck=false
 public password2;
 public googlemail;
 public googleuser;
 public tonavnextpage;
 public login1=false;
 public imageUrl1 = '../../assets/default.jpg';
-public uri='http://192.168.43.5:3000/register/upload'
+public uri='http://localhost:3000/register/upload'
 public users1;
 public gpw=false;
 public images
@@ -160,6 +162,7 @@ onlogin()
   this.route.navigate(['/login1'])
 }
 selectimage(event){
+  this.imagecheck=true
   if(event.target.files.length>0){
     const file=event.target.files[0]
 this.images=file
@@ -173,12 +176,13 @@ var reader = new FileReader();
 }
 
 onimage(){
+  if(this.imagecheck){
   const formdata=new FormData()
   formdata.append('file',this.images)
   this.http.post<any>(this.uri,formdata).subscribe(
     data=>{},
     error=>console.log(error)
-  ) 
+  ) }
 }
 
 
