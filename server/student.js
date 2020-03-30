@@ -19,7 +19,7 @@ var formatted = dt.format('Y-m-d H:M:S');
 todaydate=year+'-'+month+'-'+date
 var subjectarray=[]
 var subsubjectarray=[]
-var checkuser=[]
+var checkuser=[] 
 router.get('/', function(req,res){
     // for date
     time=new Date()

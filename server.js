@@ -35,6 +35,9 @@ var sess={
   }  
 }
 app.use(session(sess))
+app.get('/',function(req,res){
+  res.sendFile(__dirname+'/dist/updated')
+})
 const redirectlogin=(req,res,next)=>{
   if(!req.session.mail){
     console.log('redirect to login')
