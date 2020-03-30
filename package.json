@@ -49,6 +49,10 @@
     "xoauth2": "^1.2.0",
     "zone.js": "~0.9.1"
   },
+  "engines": {
+    "node":"10.16.3",
+    "npm":"6.9.0"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.25",
     "@angular/cli": "^8.3.25",
@@ -84,3 +88,4 @@
   },
   "homepage": "https://github.com/balubalaji123/githubtesy#readme"
 }
+
