@@ -96,4 +96,4 @@ res.send(JSON.stringify(req.session.username))
 app.get('/*',function(req,res){
   res.sendFile(__dirname+'/dist/updated/index.html')
 })
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
