@@ -71,7 +71,7 @@ router.post('/',function(req,res){
         to: usermail,
         subject: 'account conformation',
       
-      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="http://192.168.100.8:3000/register?id='+check+'">click</a><br>'
+      html:'welcome Mr.'+username+'   to find mytutor   to confirm your mail <a href="https://quiet-forest-75023.herokuapp.com/:3000/register?id='+check+'">click</a><br>'
 
 
       };  
