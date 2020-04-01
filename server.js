@@ -97,5 +97,5 @@ app.get('/*',function(req,res){
   res.sendFile(__dirname+'/dist/updated/index.html')
 })
 app.listen(process.env.PORT || 8080,()=>{
-console.log("listening")
+
 })
