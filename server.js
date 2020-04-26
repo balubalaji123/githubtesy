@@ -22,6 +22,7 @@ const sessioncheck=require('./server/session')
 app.use(express.static(path.join(__dirname,'dist/updated')))
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
+app.use(require('cookie-session'))
 var sess={
   name:'sid',
   resave:false,
